@@ -1,0 +1,133 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ru:
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d %b"
+      long: "%d %B %Y"
+
+    day_names: [воскресенье, понедельник, вторник, среда, четверг, пятница, суббота]
+    standalone_day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
+    abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
+
+    month_names: [~, января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]
+    # see russian gem for info on "standalone" day names
+    standalone_month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
+    abbr_month_names: [~, янв., февр., марта, апр., мая, июня, июля, авг., сент., окт., нояб., дек.]
+    standalone_abbr_month_names: [~, янв., февр., март, апр., май, июнь, июль, авг., сент., окт., нояб., дек.]
+
+    order: [ :day, :month, :year ]
+
+  time:
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      short: "%d %b, %H:%M"
+      long: "%d %B %Y, %H:%M"
+
+    am: "утра"
+    pm: "вечера"
+
+  activerecord:
+    models:
+      transaction: "Транзакцию"
+      category: "Категорию"
+      
+    attributes:
+      category:
+        name: "Название"
+        type_id: "Тип"
+      transaction: 
+        summ: "Сумма"
+        category_id: "Категория"
+        comment: "Комментарий"
+      user:
+        email: "email"
+        password: "Пароль"
+        password_confirmation: "Подтверждение"
+        
+    errors:
+      template:
+        header:
+          one:   "Cохранение не удалось из-за %{count} ошибки"
+          other: "Cохранение не удалось из-за %{count} ошибок"
+
+        body: "Проблемы возникли со следующими полями:"
+      messages: 
+        blank: "не может быть пустым"
+        not_a_number: "должна быть числом"
+        
+      models:
+        transaction:
+          attributes:
+            summ:
+              not_a_number: "должна быть числом"
+              blank: "не может быть пустой"
+              
+  main_menu:
+    transactions: "Транзакции"
+    categories: "Категории"
+
+  helpers:
+    submit:
+      create: "Добавить %{model}"
+      update: "Сохранить %{model}"
+
+  common:
+    edit: "Ред."
+    destroy: "Удал."
+    back: "Назад"
+    show: "Просмотр"
+    are_you_sure: "Вы уверены?"
+    category: "Категория"
+    transaction: "Транзакция"
+    cannot_be_less_than: "не может быть меньше чем %{value}"
+    or: "или"
+
+  parts:
+    categories:
+      categories_list: "Категории"
+      new_category: "Новая категория"
+      add_category: "Добавить категорию"
+      edit_category: "Редактировать категорию"
+      type: "Тип"
+      name: "Название"
+      successfully_created: "Категория успешно создана."
+      successfully_updated: "Категория успешно изменена."
+      you_have_no_categories: "Список категорий пуст."
+
+    transactions:
+      transactions_list: "Транзакции"
+      new_transaction: "Новая транзакция"
+      edit_transaction: "Редактировать транзакцию"
+      type: "Тип"
+      name: "Название"
+      date: "Дата"
+      comment: "Комментарий"
+      sum: "Сумма"
+      no_category: "Нет категории"
+      successfully_created: "Транзакция успешно создана."
+      successfully_updated: "Транзакция успешно изменена."
+      you_have_no_transactions: "Список транзакций пуст."
+    auth:
+      sign_out: "Выход"
+      sign_in: "Вход"
+      sign_up: "Регистрация"
+      signed_in_as: "Вы вошли как"
+      
+      header:
+        sign_up: "Регистрация"
+        sign_in: "Вход"    
+      notice:
+        signed_up: "Регистрация прошла успешно."
+        signed_in: "Вы вошли"
+        signed_out: "Вы вышли"
+        invalid_email_or_password: "Неверные email или пароль"
+      
+    session:
+      email: "email"
+      password: "Пароль"
+
+
+

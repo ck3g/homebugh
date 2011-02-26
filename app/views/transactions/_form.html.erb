@@ -1,0 +1,35 @@
+<%= form_for(@transaction) do |f| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t( 'activerecord.errors.template.header', :count => @transaction.errors.count ) %>:</h2>
+
+      <ul>
+      <% @transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <% unless @categories.empty? %>
+        <div class="field">
+            <%= f.label :category_id %><br />
+            <%= f.collection_select :category_id, @categories, :id, :name %>
+        </div>
+        <div class="field">
+        <%= f.label :summ %><br />
+        <%= f.text_field :summ %>
+        </div>
+        <div class="field">
+        <%= f.label :comment %><br />
+        <%= f.text_area :comment %>
+        </div>
+        <div class="actions">
+        <%= f.submit %>
+        <%= link_to t( 'common.back' ), transactions_path %>
+        </div>
+    <% else %>
+        <%= t('parts.categories.you_have_no_categories') %> <%= link_to t( 'parts.categories.add_category' ), new_category_path %>
+    <% end %>
+
+<% end %>

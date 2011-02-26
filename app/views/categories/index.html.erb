@@ -1,0 +1,30 @@
+<h1><%= t( 'parts.categories.categories_list' ) %></h1>
+
+<%= link_to t( 'parts.categories.new_category' ), new_category_path %><br />
+
+<% unless (@categories.empty?) %>
+    <table>
+      <tr>
+        <th><%= t( 'activerecord.attributes.category.type_id' ) %></th>
+        <th><%= t( 'activerecord.attributes.category.name' ) %></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @categories.each do |category| %>
+
+      <tr class="type_<%= category.type_id %>">
+        <td><%= category.type.name %></td>
+        <td><%= category.name %></td>
+        <td><%= link_to t( 'common.edit' ), edit_category_path(category) %></td>
+        <td><%= link_to t( 'common.destroy' ), category, :confirm => t( 'common.are_you_sure' ), :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+
+<% else %>
+    <p class="empty-data">
+        <%= t( 'parts.categories.you_have_no_categories' ) %>
+    </p>
+<% end %>
+

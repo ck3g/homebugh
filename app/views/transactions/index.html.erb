@@ -1,0 +1,32 @@
+<h1><%= t( 'parts.transactions.transactions_list' ) %></h1>
+
+<%= link_to t( 'parts.transactions.new_transaction' ), new_transaction_path %><br />
+
+<% unless @transactions.empty? %>
+    <table class="transactions">
+      <tr>
+        <th><%= t( 'parts.transactions.date' ) %></th>
+        <th><%= t( 'common.category' ) %>/<%= t( 'parts.transactions.comment' ) %></th>
+        <th><%= t( 'parts.transactions.sum' ) %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td>
+          <%= I18n.l( transaction.created_at.to_date, :format => :long ) %>
+        </td>
+        <td>
+          <div class="category"><%= transaction.category ? transaction.category.name : t( 'parts.transactions.no_category' ) %></div>
+          <div class="comment"><%= transaction.comment %></div>
+        </td>
+        <td class="numbers"><%= number_to_currency( transaction.category.type_id == 1 ? transaction.summ : -transaction.summ, :unit => 'лей', :format => '%n %u' ) %></td>
+        <td><%= link_to t( 'common.edit' ), edit_transaction_path(transaction) %></td>
+        <td><%= link_to t( 'common.destroy' ), transaction, :confirm => t( 'common.are_you_sure' ), :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+<% else %>
+    <p class="empty-data"><%= t( 'parts.transactions.you_have_no_transactions' ) %></p>
+<% end %>
+

@@ -1,0 +1,12 @@
+.main-menu { list-style: none; }
+.main-menu li { display: inline; }
+
+.transactions { width: 50%; }
+.transactions .comment { color: #888; }
+.transactions .numbers { text-align: right; }
+
+/* types */
+.type_1 { background-color: #cec; }
+.type_2 { background-color: #fcc; }
+.type_3 { background-color: #cce; }
+}

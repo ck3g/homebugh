@@ -1,0 +1,91 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  activerecord:
+    models:
+      transaction: "Transaction"
+      category: "Category"
+    attributes:
+      category:
+        name: "Name"
+        type_id: "Type"
+      transaction: 
+        summ: "Sum"
+        category_id: "Category"
+        comment: "Commentary"
+      user:
+        email: "email"
+        password: "Password"
+        password_confirmation: "Confirmation"
+        
+    errors:
+      template:
+        header:
+          one:    "1 error prohibited from being saved"
+          other:  "%{count} errors prohibited from being saved"
+          
+        body: "There were problems with the following fields:"
+      messages: 
+        blank: "cannot be blank"
+        not_a_number: "is not a number"
+        
+  main_menu:
+    transactions: "Transactions"
+    categories: "Categories"
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
+  common:
+    edit: "Edit"
+    destroy: "Destroy"
+    back: "Back"
+    show: "Show"
+    are_you_sure: "Are you sure?"
+    category: "Category"
+    transaction: "Transaction"
+    or: "or"
+  parts:
+    categories:
+      categories_list: "List of categories"
+      new_category: "New category"
+      add_category: "Add category"
+      edit_category: "Edit category"
+      type: "Type"
+      name: "Name"
+      successfully_created: "Category was successfully created."
+      successfully_updated: "Category was successfully updated."
+      you_have_no_categories: "You have no categories."
+    transactions:
+      transactions_list: "List of transactions"
+      new_transaction: "New transaction"
+      edit_transaction: "Edit transaction"
+      type: "Type"
+      name: "Name"
+      date: "Date"
+      comment: "Comment"
+      sum: "Sum"
+      no_category: "No category"
+      successfully_created: "Transaction was successfully created."
+      successfully_updated: "Transaction was successfully updated."
+      you_have_no_transactions: "You have no transactions."
+    auth:
+      sign_in: "Sign in"
+      sign_out: "Sign out"
+      sign_up: "Sign up"
+      signed_in_as: "Signed in as"
+     
+      header:
+        sign_up: "Sign up"
+        sign_in: "Sign in"    
+      notices:
+        signed_up: "Signed up successfully."
+        signed_in: "Signed in"
+        signed_out: "Signed out"
+        invalid_email_or_password: "Invalid email or password"
+    session:
+      email: "email"
+      password: "Password"
+        
+
