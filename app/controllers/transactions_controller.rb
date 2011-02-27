@@ -37,7 +37,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
-    @transaction = Transaction.find(params[:id]).where( :user_id => current_user.id )
+    @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
     @categories = Category.where( :user_id => current_user.id )
   end
 
