@@ -57,6 +57,8 @@ en:
       successfully_created: "Category was successfully created."
       successfully_updated: "Category was successfully updated."
       you_have_no_categories: "You have no categories."
+      income: "Income"
+      charge: "Charge"
     transactions:
       transactions_list: "List of transactions"
       new_transaction: "New transaction"

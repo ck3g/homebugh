@@ -5,7 +5,6 @@ class TransactionsController < ApplicationController
   # GET /transactions.xml
   def index
     @transactions = Transaction.includes( :category ).order( 'created_at desc' ).limit( 50 ).where( :user_id => current_user.id )
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @transactions }
@@ -77,7 +76,7 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.xml
   def destroy
-    @transaction = Transaction.find(params[:id]).where( :user_id => current_user.id )
+    @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
     @transaction.destroy
 
     respond_to do |format|
