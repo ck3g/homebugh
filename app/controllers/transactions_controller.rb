@@ -14,7 +14,14 @@ class TransactionsController < ApplicationController
   # GET /transactions/1
   # GET /transactions/1.xml
   def show
-    @transaction = Transaction.find(params[:id]).where( :user_id => current_user.id )
+    begin
+      raise ActiveRecord::RecordNotFound
+      # unavailable now
+      @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render_404
+      return
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +43,13 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
-    @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
+    begin
+      @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render_404
+      return
+    end
+
     @categories = Category.where( :user_id => current_user.id )
   end
 
@@ -76,7 +89,12 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.xml
   def destroy
-    @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
+    begin
+      @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render_404
+      return
+    end
     @transaction.destroy
 
     respond_to do |format|

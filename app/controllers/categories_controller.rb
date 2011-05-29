@@ -15,7 +15,14 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.xml
   def show
-    @category = Category.find(params[:id]).where( :user_id => current_user.id )
+    begin
+      raise ActiveRecord::RecordNotFound
+      # unavailable now
+      @category = Category.find(params[:id]).where( :user_id => current_user.id )
+    rescue ActiveRecord::RecordNotFound
+      render_404
+      return
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,6 +44,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     @category = Category.where( :user_id => current_user.id ).find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render_404
   end
 
   # POST /categories
@@ -75,7 +84,13 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
+    begin
     @category = Category.where( :user_id => current_user.id ).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render_404
+      return
+    end
+
     @category.destroy
 
     respond_to do |format|
