@@ -20,7 +20,7 @@
           <div class="category"><%= transaction.category ? transaction.category.name : t( 'parts.transactions.no_category' ) %></div>
           <div class="comment"><%= transaction.comment %></div>
         </td>
-        <td class="numbers"><%= number_to_currency( transaction.category.type_id == 1 ? transaction.summ : -transaction.summ, :unit => 'лей', :format => '%n %u' ) %></td>
+        <td class="numbers"><%= number_to_currency( transaction.category.category_type_id == 1 ? transaction.summ : -transaction.summ, :unit => 'лей', :format => '%n %u' ) %></td>
         <td><%= link_to t( 'common.edit' ), edit_transaction_path(transaction) %></td>
         <td><%= link_to t( 'common.destroy' ), transaction, :confirm => t( 'common.are_you_sure' ), :method => :delete %></td>
       </tr>

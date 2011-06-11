@@ -6,5 +6,5 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-Type.create(:name => 'income')
-Type.create(:name => 'charge')
+CategoryType.create(:name => 'income')
+CategoryType.create(:name => 'spending')

@@ -97,7 +97,7 @@ ru:
       successfully_updated: "Категория успешно изменена."
       you_have_no_categories: "Список категорий пуст."
       income: "Приход"
-      charge: "Расход"
+      spending: "Расход"
 
     transactions:
       transactions_list: "Транзакции"

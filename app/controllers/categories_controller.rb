@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.includes( :type ).where( :user_id => current_user.id )
+    @categories = Category.includes( :category_type ).where( :user_id => current_user.id )
 
     respond_to do |format|
       format.html # index.html.erb

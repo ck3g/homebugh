@@ -15,10 +15,11 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :type_id %><br />
-    <select name="type_id">
-    <% Type.all.each do |type| %>
-        <option value="<%=type.id%>"><%=I18n.translate( 'parts.categories.' + type.name )%></option>
+    <%= f.label :category_type_id %><br />
+    <select id="category_type_id" name="category[category_type_id]">
+    <% CategoryType.all.each do |type| %>
+        <option value="<%=type.id%>" <%=' selected="selected"' if @category.category_type_id == type.id  %> >
+          <%=I18n.translate( 'parts.categories.' + type.name )%></option>
     <% end %>
     </select>
 

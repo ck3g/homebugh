@@ -12,7 +12,7 @@ development:
   database: homebugh_development
   pool: 5
   username: root
-  password:
+  password: '31415926'
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -25,7 +25,7 @@ test:
   database: homebugh_test
   pool: 5
   username: root
-  password:
+  password: '31415926'
   host: localhost
 
 production:
@@ -35,5 +35,5 @@ production:
   database: homebugh_production
   pool: 5
   username: root
-  password:
+  password: '31415926'
   host: localhost
