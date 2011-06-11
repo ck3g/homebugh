@@ -37,7 +37,7 @@ ru:
     attributes:
       category:
         name: "Название"
-        type_id: "Тип"
+        category_type_id: "Тип"
       transaction: 
         summ: "Сумма"
         category_id: "Категория"

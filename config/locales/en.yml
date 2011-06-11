@@ -9,7 +9,7 @@ en:
     attributes:
       category:
         name: "Name"
-        type_id: "Type"
+        category_type_id: "Type"
       transaction: 
         summ: "Sum"
         category_id: "Category"
