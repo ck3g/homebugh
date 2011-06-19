@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.xml
   def index
-    @transactions = Transaction.includes( :category ).order( 'created_at desc' ).limit( 50 ).where( :user_id => current_user.id )
+    @transactions = Transaction.includes( :category, :account ).order( 'created_at desc' ).limit( 50 ).where( :user_id => current_user.id )
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @transactions }
@@ -34,6 +34,7 @@ class TransactionsController < ApplicationController
   def new
     @transaction = Transaction.new
     @categories = Category.where( :user_id => current_user.id )
+    @accounts = Account.where( :user_id => current_user.id )
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,12 +46,12 @@ class TransactionsController < ApplicationController
   def edit
     begin
       @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
+      @categories = Category.where( :user_id => current_user.id )
+      @accounts = Account.where( :user_id => current_user.id )
     rescue ActiveRecord::RecordNotFound
       render_404
       return
     end
-
-    @categories = Category.where( :user_id => current_user.id )
   end
 
   # POST /transactions
@@ -60,7 +61,7 @@ class TransactionsController < ApplicationController
     @transaction.user_id = current_user.id
 
     respond_to do |format|
-      if @transaction.save
+      if @transaction.extended_save
         format.html { redirect_to(transactions_path, :notice => t( 'parts.transactions.successfully_created' )) }
         format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
       else
@@ -76,7 +77,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
 
     respond_to do |format|
-      if @transaction.update_attributes(params[:transaction])
+      if @transaction.extended_update_attributes(params[:transaction])
         format.html { redirect_to(transactions_path , :notice => t( 'parts.transactions.successfully_updated' )) }
         format.xml  { head :ok }
       else
@@ -95,7 +96,7 @@ class TransactionsController < ApplicationController
       render_404
       return
     end
-    @transaction.destroy
+    @transaction.extended_destroy
 
     respond_to do |format|
       format.html { redirect_to(transactions_url) }

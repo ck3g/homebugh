@@ -2,10 +2,10 @@
 
 <%= link_to t( 'parts.categories.new_category' ), new_category_path %><br />
 
-<% unless (@categories.empty?) %>
+<% unless @categories.empty? %>
     <table>
       <tr>
-        <th><%= t( 'activerecord.attributes.category.type_id' ) %></th>
+        <th><%= t( 'activerecord.attributes.category.category_type_id' ) %></th>
         <th><%= t( 'activerecord.attributes.category.name' ) %></th>
         <th></th>
         <th></th>

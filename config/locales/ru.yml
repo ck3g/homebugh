@@ -33,6 +33,7 @@ ru:
     models:
       transaction: "Транзакцию"
       category: "Категорию"
+      account: "Счет"
       
     attributes:
       category:
@@ -41,11 +42,15 @@ ru:
       transaction: 
         summ: "Сумма"
         category_id: "Категория"
+        account_id: "Счет"
         comment: "Комментарий"
       user:
         email: "email"
         password: "Пароль"
         password_confirmation: "Подтверждение"
+      account:
+        name: "Название"
+        funds: "Доступные средсва"
         
     errors:
       template:
@@ -68,6 +73,8 @@ ru:
   main_menu:
     transactions: "Транзакции"
     categories: "Категории"
+    accounts: "Счета"
+    cash_flows: "Движение средств"
 
   helpers:
     submit:
@@ -82,8 +89,11 @@ ru:
     are_you_sure: "Вы уверены?"
     category: "Категория"
     transaction: "Транзакция"
+    account: "Счет"
     cannot_be_less_than: "не может быть меньше чем %{value}"
     or: "или"
+    total_funds: "Всего"
+    date: "Дата"
 
   parts:
     categories:
@@ -112,6 +122,26 @@ ru:
       successfully_created: "Транзакция успешно создана."
       successfully_updated: "Транзакция успешно изменена."
       you_have_no_transactions: "Список транзакций пуст."
+    accounts:
+      edit_account: "Редактировать данные о счете"
+      new_account: "Создание нового счета"
+      add_account: "Добавить счет"
+      accounts_list: "Список счетов"
+      you_have_no_accounts: "Список счетов пуст"
+      successfully_created: "Счет успешно создан"
+      successfully_updated: "Счет успешно изменен"
+      account_not_empty: "Баланс счета ненулевой"
+    cash_flows:
+      submit: "Перевести средства"
+      edit_cash_flows: "Редактировать перевод средств"
+      new_cash_flows: "Перевести средства"
+      flows_list: "Список переводов средств"
+      successfully_created: "Средства успешно переведены"
+      successfully_updated: "Средства успешно переведены"
+      amount: "Сумма"
+      from: "С"
+      to: "На"
+      accounts_cannot_be_equal: "Вы не можете переводить средства на тот же счет"
     auth:
       sign_out: "Выход"
       sign_in: "Вход"

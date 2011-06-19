@@ -1,4 +1,10 @@
 Homebugh::Application.routes.draw do
+  resources :transactions
+  resources :categories
+
+  resources :accounts
+  resources :cash_flows
+
   root :to => "transactions#index"
 
   devise_for :users
@@ -12,9 +18,6 @@ Homebugh::Application.routes.draw do
   #get "sign_out" => "sessions#destroy", :as => "sign_out"
   #get "sign_in" => "sessions#new", :as => "sign_in"
   #get "sign_up" => "users#new", :as => "sign_up"
-
-  resources :transactions
-  resources :categories
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

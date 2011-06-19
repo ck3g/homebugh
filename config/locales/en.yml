@@ -6,6 +6,8 @@ en:
     models:
       transaction: "Transaction"
       category: "Category"
+      account: "Account"
+
     attributes:
       category:
         name: "Name"
@@ -13,11 +15,15 @@ en:
       transaction: 
         summ: "Sum"
         category_id: "Category"
+        account_id: "Account"
         comment: "Commentary"
       user:
         email: "email"
         password: "Password"
         password_confirmation: "Confirmation"
+      account:
+        name: "Name"
+        funds: "Funds"
         
     errors:
       template:
@@ -33,6 +39,8 @@ en:
   main_menu:
     transactions: "Transactions"
     categories: "Categories"
+    accounts: "Accounts"
+    cash_flows: "Cash Flows"
   helpers:
     submit:
       create: "Create %{model}"
@@ -45,7 +53,11 @@ en:
     are_you_sure: "Are you sure?"
     category: "Category"
     transaction: "Transaction"
+    account: "Account"
+    cannot_be_less_than: "Cannot be less than %{value}"
     or: "or"
+    total_funds: "Total"
+    date: "Date"
   parts:
     categories:
       categories_list: "List of categories"
@@ -72,12 +84,33 @@ en:
       successfully_created: "Transaction was successfully created."
       successfully_updated: "Transaction was successfully updated."
       you_have_no_transactions: "You have no transactions."
+    accounts:
+      edit_account: "Edit account"
+      new_account: "New account"
+      add_account: "Add account"
+      accounts_list: "List of accounts"
+      you_have_no_accounts: "You have no accounts."
+      successfully_created: "Account was successfully created."
+      successfully_updated: "Account was successfully updated."
+      account_not_empty: "Account is not empty"
+    cash_flows:
+      submit: "Move funds"
+      edit_cash_flows: "Edit moving funds"
+      new_cash_flows: "Move funds"
+      flows_list: "List of cash flows"
+      successfully_created: "Funds was successfully moved."
+      successfully_updated: "Funds was successfully moved."
+      amount: "Amount"
+      from: "From"
+      to: "To"
+      accounts_cannot_be_equal: "You cannot move funds to same account"
+
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"
       sign_up: "Sign up"
       signed_in_as: "Signed in as"
-     
+
       header:
         sign_up: "Sign up"
         sign_in: "Sign in"    

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :instantiate_controller_and_action_names
+  before_filter :instantiate_accounts
 
   def set_locale
     session[:locale] ||= params[:locale]
@@ -11,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404
-    render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404
+    render :file => "#{::Rails.root.to_s}/public/404.html", :layout => false, :status => 404
   end
 
   private
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
   def instantiate_controller_and_action_names
     @controller_name = controller_name
     @action_name = action_name
+  end
+
+  def instantiate_accounts
+    @accounts = Account.where( :user_id => current_user.id )
   end
 
   def current_user?

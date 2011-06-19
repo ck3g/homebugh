@@ -10,7 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110611124821) do
+ActiveRecord::Schema.define(:version => 20110612173858) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name",       :limit => 50,                  :null => false
+    t.integer  "user_id",                                   :null => false
+    t.float    "funds",                    :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cash_flows", :force => true do |t|
+    t.integer  "user_id",         :null => false
+    t.integer  "from_account_id", :null => false
+    t.integer  "to_account_id",   :null => false
+    t.float    "amount",          :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", :force => true do |t|
     t.string  "name"
@@ -29,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110611124821) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "account_id"
   end
 
   create_table "users", :force => true do |t|

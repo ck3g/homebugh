@@ -12,22 +12,30 @@
   <% end %>
 
     <% unless @categories.empty? %>
-        <div class="field">
-            <%= f.label :category_id %><br />
-            <%= f.collection_select :category_id, @categories, :id, :name %>
-        </div>
-        <div class="field">
-        <%= f.label :summ %><br />
-        <%= f.text_field :summ %>
-        </div>
-        <div class="field">
-        <%= f.label :comment %><br />
-        <%= f.text_area :comment, :rows => 2 %>
-        </div>
-        <div class="actions">
-        <%= f.submit %>
-        <%= link_to t( 'common.back' ), transactions_path %>
-        </div>
+        <% unless @accounts.empty? %>
+            <div class="field">
+                <%= f.label :account_id %><br />
+                <%= f.collection_select :account_id, @accounts, :id, :name %>
+            </div>
+            <div class="field">
+                <%= f.label :category_id %><br />
+                <%= f.collection_select :category_id, @categories, :id, :name %>
+            </div>
+            <div class="field">
+                <%= f.label :summ %><br />
+                <%= f.text_field :summ %>
+            </div>
+            <div class="field">
+                <%= f.label :comment %><br />
+                <%= f.text_area :comment, :rows => 2 %>
+            </div>
+            <div class="actions">
+                <%= f.submit %>
+                <%= link_to t( 'common.back' ), transactions_path %>
+            </div>
+        <% else %>
+            <%= t( 'parts.accounts.you_have_no_accounts' ) %> <%= link_to t( 'parts.accounts.add_account' ), new_account_path %>
+        <% end %>
     <% else %>
         <%= t('parts.categories.you_have_no_categories') %> <%= link_to t( 'parts.categories.add_category' ), new_category_path %>
     <% end %>

@@ -28,9 +28,17 @@
     <ul class="main-menu">
         <li><%= link_to t('main_menu.transactions'), transactions_path %></li>
         <li><%= link_to t('main_menu.categories'), categories_path %></li>
+        <li><%= link_to t('main_menu.accounts'), accounts_path %></li>
+        <li><%= link_to t('main_menu.cash_flows'), cash_flows_path %></li>
     </ul>
 
-    <div><%= number_to_currency get_total, :unit => 'лей', :format => '%n %u' %></div>
+    <% #accounts_recalculate %>
+    <% unless @accounts.empty? %>
+        <% @accounts.each do |account| %>
+        <div><%= account.name %>: <%= get_number_to_currency get_account_funds( account.id ) %></div>
+        <% end %>
+        <div><%= t( 'common.total_funds' ) %>: <%= get_number_to_currency get_total_funds %></div>
+    <% end %>
 <% end %>
 
 <%= yield %>

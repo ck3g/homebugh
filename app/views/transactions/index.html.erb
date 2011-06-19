@@ -5,9 +5,10 @@
 <% unless @transactions.empty? %>
     <table class="transactions">
       <tr>
-        <th><%= t( 'parts.transactions.date' ) %></th>
+        <th><%= t( 'common.date' ) %></th>
         <th><%= t( 'common.category' ) %>/<%= t( 'parts.transactions.comment' ) %></th>
         <th><%= t( 'parts.transactions.sum' ) %></th>
+        <th><%= t( 'common.account' ) %></th>
         <th></th>
         <th></th>
       </tr>
@@ -20,7 +21,8 @@
           <div class="category"><%= transaction.category ? transaction.category.name : t( 'parts.transactions.no_category' ) %></div>
           <div class="comment"><%= transaction.comment %></div>
         </td>
-        <td class="numbers"><%= number_to_currency( transaction.category.category_type_id == 1 ? transaction.summ : -transaction.summ, :unit => 'лей', :format => '%n %u' ) %></td>
+        <td class="numbers"><%= get_number_to_currency( transaction.category.category_type_id == 1 ? transaction.summ : -transaction.summ ) %></td>
+        <td><%= transaction.account.name %></td>
         <td><%= link_to t( 'common.edit' ), edit_transaction_path(transaction) %></td>
         <td><%= link_to t( 'common.destroy' ), transaction, :confirm => t( 'common.are_you_sure' ), :method => :delete %></td>
       </tr>
