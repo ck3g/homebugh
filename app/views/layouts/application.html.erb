@@ -33,6 +33,7 @@
     </ul>
 
     <% #accounts_recalculate %>
+    <% @accounts = Account.where( :user_id => current_user.id ) %>
     <% unless @accounts.empty? %>
         <% @accounts.each do |account| %>
         <div><%= account.name %>: <%= get_number_to_currency get_account_funds( account.id ) %></div>
