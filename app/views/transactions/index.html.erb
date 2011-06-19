@@ -22,7 +22,7 @@
           <div class="comment"><%= transaction.comment %></div>
         </td>
         <td class="numbers"><%= get_number_to_currency( transaction.category.category_type_id == 1 ? transaction.summ : -transaction.summ ) %></td>
-        <td><%= transaction.account.name %></td>
+        <td><%= transaction.account.name unless transaction.account_id.nil? %></td>
         <td><%= link_to t( 'common.edit' ), edit_transaction_path(transaction) %></td>
         <td><%= link_to t( 'common.destroy' ), transaction, :confirm => t( 'common.are_you_sure' ), :method => :delete %></td>
       </tr>

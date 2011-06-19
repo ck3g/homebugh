@@ -18,10 +18,25 @@ module ApplicationHelper
   end
 
   def accounts_recalculate
-    Account.all.each do |account|
-      account.funds = get_total_income( account.id, account.user_id ).to_f - get_total_spending( account.id, account.user_id ).to_f
-      account.save
+    user_id = current_user.id
+
+    account = Account.where( :user_id => user_id ).first
+    incomes = Transaction.where( :user_id => user_id, 'categories.category_type_id' => 1 ).all
+    total_income = 0.0
+    incomes.each do |income|
+      total_income += income.summ.to_f
     end
+
+    spendings = Transaction.where( :user_id => user_id, 'categories.category_type_id' => 2 ).all
+    total_spending = 0.0
+    spendings.each do |spending|
+      total_spending += spending.summ.to_f
+    end
+
+    diff = total_income - total_spending
+
+    account.deposit( diff )
+    Transaction.where( :user_id => user_id ).update_all( :account_id => account.id )
   end
 
   def get_total_income( account_id, user_id = nil )
