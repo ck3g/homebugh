@@ -1,0 +1,26 @@
+<h1><%= t( 'parts.cash_flows.flows_list' ) %></h1>
+
+<%= link_to t( 'parts.cash_flows.new_cash_flows' ), new_cash_flow_path %>
+
+<table>
+  <tr>
+    <th><%= t( 'common.date' ) %></th>
+    <th><%= t( 'parts.cash_flows.from' ) %> → <%= t( 'parts.cash_flows.to' ) %></th>
+    <th><%= t( 'parts.cash_flows.amount' ) %></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cash_flows.each do |cash_flow| %>
+  <tr>
+    <td><%= I18n.l( cash_flow.created_at.to_date, :format => :long ) %></td>
+    <td><%= cash_flow.from_account.name %> → <%= cash_flow.to_account.name %></td>
+    <td><%= get_number_to_currency( cash_flow.amount ) %></td>
+    <td><%= link_to t( 'common.edit' ), edit_cash_flow_path(cash_flow) %></td>
+    <td><%= link_to t( 'common.destroy' ), cash_flow, :confirm => t( 'common.are_you_sure' ), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

@@ -1,0 +1,35 @@
+<h1><%= t( 'parts.accounts.accounts_list' ) %></h1>
+
+<%= link_to t( 'parts.accounts.new_account' ), new_account_path %>
+
+<% unless @accounts.empty? %>
+    <table>
+      <tr>
+        <th><%= t( 'activerecord.attributes.account.name' ) %></th>
+        <th class="t-right"><%= t( 'activerecord.attributes.account.funds' ) %></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.name %></td>
+        <td class="t-right"><%= account.funds %></td>
+        <td><%= link_to t( 'common.edit' ), edit_account_path(account) %></td>
+        <td>
+          <% if account.funds.to_f.zero? %>
+            <%= link_to t( 'common.destroy' ), account, :confirm => t( 'common.are_you_sure' ), :method => :delete %>
+          <% else %>
+            <%= t( 'parts.accounts.account_not_empty' ) %> <%= link_to t( 'parts.cash_flows.new_cash_flows' ), new_cash_flow_path  %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+
+<% else %>
+    <p class="empty-data">
+        <%= t( 'parts.accounts.you_have_no_accounts' ) %>
+    </p>
+<% end %>
+
