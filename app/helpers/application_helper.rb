@@ -21,13 +21,13 @@ module ApplicationHelper
     user_id = current_user.id
 
     account = Account.where( :user_id => user_id ).first
-    incomes = Transaction.where( :user_id => user_id, 'categories.category_type_id' => 1 ).all
+    incomes = Transaction.includes( :category ).where( :user_id => user_id, 'categories.category_type_id' => 1 ).all
     total_income = 0.0
     incomes.each do |income|
       total_income += income.summ.to_f
     end
 
-    spendings = Transaction.where( :user_id => user_id, 'categories.category_type_id' => 2 ).all
+    spendings = Transaction.includes( :category ).where( :user_id => user_id, 'categories.category_type_id' => 2 ).all
     total_spending = 0.0
     spendings.each do |spending|
       total_spending += spending.summ.to_f
