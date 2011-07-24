@@ -14,6 +14,7 @@ class CashFlowsController < ApplicationController
   # GET /cash_flows/new.xml
   def new
     @cash_flow = CashFlow.new
+    @accounts = Account.where( :user_id => current_user.id )
 
     respond_to do |format|
       format.html # new.html.erb

@@ -50,7 +50,7 @@ ru:
         password_confirmation: "Подтверждение"
       account:
         name: "Название"
-        funds: "Доступные средсва"
+        funds: "Доступные средства"
         
     errors:
       template:

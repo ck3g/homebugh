@@ -30,7 +30,7 @@
                 <%= f.text_area :comment, :rows => 2 %>
             </div>
             <div class="actions">
-                <%= f.submit %>
+                <%= f.submit nil, :class => "button orange nil" %>
                 <%= link_to t( 'common.back' ), transactions_path %>
             </div>
         <% else %>

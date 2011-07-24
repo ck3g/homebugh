@@ -1,25 +1,34 @@
 <h1><%= t( 'parts.categories.categories_list' ) %></h1>
 
-<%= link_to t( 'parts.categories.new_category' ), new_category_path %><br />
+<div id=child_navigation>
+    <%= link_to t( 'parts.categories.new_category' ), new_category_path, :class => 'button orange' %>
+</div>
 
 <% unless @categories.empty? %>
-    <table>
-      <tr>
-        <th><%= t( 'activerecord.attributes.category.category_type_id' ) %></th>
-        <th><%= t( 'activerecord.attributes.category.name' ) %></th>
-        <th></th>
-        <th></th>
-      </tr>
+    <table class="list-table">
+        <thead>
+        <tr>
+            <th class=medium><%= t('activerecord.attributes.category.category_type_id') %></th>
+            <th><%= t('activerecord.attributes.category.name') %></th>
+            <th class=small></th>
+        </tr>
 
-    <% @categories.each do |category| %>
+        </thead>
+        <tbody>
+        <% @categories.each do |category| %>
 
-      <tr class="type_<%= category.category_type_id %>">
-        <td><%= I18n.translate( 'parts.categories.' + category.category_type.name ) %></td>
-        <td><%= category.name %></td>
-        <td><%= link_to t( 'common.edit' ), edit_category_path(category) %></td>
-        <td><%= link_to t( 'common.destroy' ), category, :confirm => t( 'common.are_you_sure' ), :method => :delete %></td>
-      </tr>
-    <% end %>
+            <tr class="type_<%= category.category_type_id %>">
+                <td class=medium><%= I18n.translate('parts.categories.' + category.category_type.name) %></td>
+                <td><%= category.name %></td>
+                <td class=small>
+                    <%= link_to edit_category_path(category), :title => t('common.edit') do %>
+                        <%= image_tag 'icons/edit.png', :alt => t('common.edit') %><%end%>
+                    <%= link_to category, :confirm => t('common.are_you_sure'), :method => :delete, :title => t('common.destroy') do %>
+                        <%= image_tag 'icons/delete.png', :alt => t('common.destroy') %><%end%>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
     </table>
 
 <% else %>
