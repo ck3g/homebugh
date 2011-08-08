@@ -35,22 +35,20 @@
     color: #735005;
     font-size: 130%;
     font-weight: bold;
-    height: 0;
     left: 0;
-    position: fixed;
     text-align: center;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1300;
 }
 
-#notify-container div.error {
+#notify-container div.alert {
     background-color: #F0A8A8;
     border-bottom: 1px solid #F0A8A8;
     padding: 7px 0;
 }
 
-#notify-container div.info {
+#notify-container div.notice {
     background-color: #BADA55;
     border-bottom: 1px solid #CBEB66;
     padding: 7px 0;

@@ -8,8 +8,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-    <div class="notice"><%= notice %></div>
-    <div class="alert"><%= alert %></div>
+    <% if flash[:notice] || flash[:alert] %>
+        <div id=notify-container>
+        <% if flash[:notice] %>
+            <div class="notice"><%= notice %></div>
+        <% elsif flash[:alert] %>
+            <div class="alert"><%= alert %></div>
+        <% end %>
+        </div>
+    <% end %>
 
     <div id=container>
         <div id=header>
