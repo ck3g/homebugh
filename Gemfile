@@ -11,6 +11,8 @@ gem 'devise'
 
 gem "bcrypt-ruby", :require => "bcrypt"
 
+gem 'jquery-rails'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
