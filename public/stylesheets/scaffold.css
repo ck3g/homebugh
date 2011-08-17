@@ -1,8 +1,8 @@
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
-  font-family: helvetica, verdana, arial, helvetica, sans-serif;
-  font-size:   15px;
+  /*font-family: helvetica, verdana, arial, helvetica, sans-serif;
+  font-size:   15px;*/
   line-height: 18px;
 }
 

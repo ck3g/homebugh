@@ -1,7 +1,7 @@
 # coding: utf-8
 
 module ApplicationHelper
-  def get_number_to_currency( number )
+  def get_number_to_currency number
     number_to_currency number, :unit => 'лей', :format => '%n %u'
   end
 
@@ -23,12 +23,14 @@ module ApplicationHelper
     user_id = current_user.id
 
     account = Account.where( :user_id => user_id ).first
+    # todo: refactor to sum() method
     incomes = Transaction.includes( :category ).where( :user_id => user_id, 'categories.category_type_id' => 1 ).all
     total_income = 0.0
     incomes.each do |income|
       total_income += income.summ.to_f
     end
 
+    # todo: refactor to sum() method
     spendings = Transaction.includes( :category ).where( :user_id => user_id, 'categories.category_type_id' => 2 ).all
     total_spending = 0.0
     spendings.each do |spending|

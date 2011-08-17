@@ -34,6 +34,8 @@
                             <%= link_to accounts_path do %><span><%= t('main_menu.accounts') %></span><% end %></li>
                         <li <%='class=selected' if @controller_name == 'cash_flows'%>>
                             <%= link_to cash_flows_path do %><span><%= t('main_menu.cash_flows') %></span><% end %></li>
+                        <li <%='class=selected' if @controller_name == 'statistics'%>>
+                            <%= link_to statistics_path do %><span><%= t('main_menu.statistics') %></span><% end %></li>
                         <li><%= link_to t("parts.auth.sign_out"), destroy_user_session_path %></li>
                     <% else %>
                         <li><%= link_to t("parts.auth.sign_up"), new_user_registration_path %></li>

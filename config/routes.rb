@@ -1,6 +1,7 @@
 Homebugh::Application.routes.draw do
   resources :transactions
   resources :categories
+  resources :statistics
 
   resources :accounts
   resources :cash_flows

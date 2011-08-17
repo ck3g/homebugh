@@ -7,6 +7,8 @@ ru:
       default: "%d.%m.%Y"
       short: "%d %b"
       long: "%d %B %Y"
+      month_year: "%B %Y"
+      month: "%B"
 
     day_names: [воскресенье, понедельник, вторник, среда, четверг, пятница, суббота]
     standalone_day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
@@ -75,6 +77,7 @@ ru:
     categories: "Категории"
     accounts: "Счета"
     cash_flows: "Движение средств"
+    statistics: "Статистика"
 
   helpers:
     submit:
@@ -142,6 +145,10 @@ ru:
       from: "С"
       to: "На"
       accounts_cannot_be_equal: "Вы не можете переводить средства на тот же счет"
+    statistics:
+      stats_by_months: "Статистика по месяцам"
+      income_total: "Приход всего"
+      spending_total: "Расход всего"
     auth:
       sign_out: "Выход"
       sign_in: "Вход"

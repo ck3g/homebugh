@@ -1,4 +1,6 @@
 class CashFlowsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /cash_flows
   # GET /cash_flows.xml
   def index

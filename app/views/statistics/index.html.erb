@@ -1,0 +1,48 @@
+<h1><%= t("parts.statistics.stats_by_months") %></h1>
+
+
+<% @statistics.each do |stats| %>
+    <fieldset class=statistics>
+        <legend><%= stats[:title] %></legend>
+        <table class="list-table">
+        <% stats[:income_categories].each do |category| %>
+            <% percent = percent_of category[:sum], stats[:income] %>
+            <tr>
+                <td class="width150px"><%=category[:name]%></td>
+                <td class="width150px">
+                    <div class="progressbar">
+                        <div class="active-income" <%= "style='width: #{percent}%;'" %>></div>
+                    </div>
+                </td>
+                <td class="medium align-right"><%=percent%>%</td>
+                <td class="medium align-right"><%=get_number_to_currency category[:sum]%></td>
+            </tr>
+        <% end %>
+        <tr class="total">
+            <td colspan="3"><%= t("parts.statistics.income_total") %></td>
+            <td class="medium align-right"><%= get_number_to_currency stats[:income] %></td>
+        </tr>
+
+        <% stats[:spending_categories].each do |category| %>
+            <% percent = percent_of category[:sum], stats[:spending] %>
+            <tr>
+                <td class="width150px"><%=category[:name]%></td>
+                <td class="width150px">
+                    <div class="progressbar">
+                        <div class="active-spending" <%= "style='width: #{percent}%;'" %>></div>
+                    </div>
+                </td>
+                <td class="medium align-right"><%=percent%>%</td>
+                <td class="medium align-right"><%=get_number_to_currency category[:sum]%></td>
+            </tr>
+        <% end %>
+        <tr class="total">
+            <td colspan="3"><%= t("parts.statistics.spending_total") %></td>
+            <td class="medium align-right"><%= get_number_to_currency stats[:spending] %></td>
+        </tr>
+        </table>
+
+    </fieldset>
+<% end %>
+
+

@@ -41,6 +41,7 @@ en:
     categories: "Categories"
     accounts: "Accounts"
     cash_flows: "Cash Flows"
+    statistics: "Statistics"
   helpers:
     submit:
       create: "Create %{model}"
@@ -104,7 +105,10 @@ en:
       from: "From"
       to: "To"
       accounts_cannot_be_equal: "You cannot move funds to same account"
-
+    statistics:
+      stats_by_months: "Statistics by months"
+      income_total: "Income total"
+      spending_total: "Spending total"
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"
