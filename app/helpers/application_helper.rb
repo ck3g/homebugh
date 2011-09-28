@@ -44,16 +44,34 @@ module ApplicationHelper
   end
 
   def get_total_income( account_id, user_id = nil )
-    get_total_by_type( 1, account_id, user_id )
+    get_total_by_type(1, account_id, user_id)
   end
 
   def get_total_spending( account_id, user_id = nil )
-    get_total_by_type( 2, account_id, user_id )
+    get_total_by_type(2, account_id, user_id)
+  end
+
+  def language_selector
+    to_locale = is_ru? ? 'en' : 'ru'
+
+    html = "<li>"
+    html << link_to("?locale=#{to_locale}") { image_tag("flags/#{to_locale}.png") }
+    html << "</li>"
+
+    html.html_safe
   end
 
   private
 
-  def get_total_by_type( type_id, account_id, user_id = nil )
+  def is_ru?
+    I18n.locale == :ru
+  end
+
+  def is_en?
+    I18n.locale == :en
+  end
+
+  def get_total_by_type(type_id, account_id, user_id = nil)
     user_id ||= current_user.id
     transactions = Transaction.includes( :category ).where( 'categories.category_type_id' => type_id, :user_id => user_id, :account_id => account_id )
     total_funds = 0

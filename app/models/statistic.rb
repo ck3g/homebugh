@@ -7,7 +7,7 @@ class Statistic < ActiveRecord::Base
     current_date = Date.new(today.year, today.month, 1)
 
     stats = Array.new
-    while current_date > first_date - 1.month do
+    while current_date >= first_date do
       first_day = Date.new current_date.year, current_date.month, 1
       last_day = Date.new current_date.year, current_date.month, -1
       month_stats = Statistics.new(user_id, first_day, last_day)
