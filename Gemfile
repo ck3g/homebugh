@@ -13,6 +13,21 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem 'jquery-rails'
 
+group :development, :test do
+  gem "rspec-rails"
+  gem "launchy"
+  gem "cucumber"
+  gem "cucumber-rails"
+  gem "spork"
+
+end
+
+group :test do
+  gem "capybara"
+  gem "database_cleaner"
+  gem "factory_girl_rails"
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -3,18 +3,14 @@ class Account < ActiveRecord::Base
   has_many :cash_flows, :as => :from_account
   has_many :cash_flows, :as => :to_account
 
-  validates_presence_of :name
+  validates_presence_of :name, :user_id
 
-  def deposit( funds )
-    account = Account.find( self.id )
-    account.funds += funds
-    account.save!
+  def deposit(funds)
+    self.funds += funds
   end
 
-  def withdrawal( funds )
-    account = Account.find( self.id )
-    account.funds -= funds
-    account.save!
+  def withdrawal(funds)
+    self.funds -= funds
   end
 
 end
