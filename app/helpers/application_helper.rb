@@ -53,12 +53,7 @@ module ApplicationHelper
 
   def language_selector
     to_locale = is_ru? ? 'en' : 'ru'
-
-    html = "<li>"
-    html << link_to("?locale=#{to_locale}") { image_tag("flags/#{to_locale}.png") }
-    html << "</li>"
-
-    html.html_safe
+    content_tag :li, link_to("?locale=#{to_locale}") { image_tag("flags/#{to_locale}.png") }
   end
 
   private

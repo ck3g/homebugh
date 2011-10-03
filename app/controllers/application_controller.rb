@@ -6,9 +6,8 @@ class ApplicationController < ActionController::Base
   before_filter :instantiate_controller_and_action_names
 
   def set_locale
-    I18n.locale = params[:locale] || session[:locale]
+    I18n.locale = params[:locale] || I18n.locale || I18n.default_locale
   end
-
 
   def render_404
     render :file => "#{::Rails.root.to_s}/public/404.html", :layout => false, :status => 404
