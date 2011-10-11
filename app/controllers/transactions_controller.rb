@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.xml
   def index
-    @transactions = Transaction.includes( :category, :account ).order( 'created_at desc' ).limit( 50 ).where( :user_id => current_user.id )
+    @transactions = Transaction.includes(:category, :account).order('created_at desc').limit(50).where(:user_id => current_user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @transactions }
@@ -45,9 +45,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/1/edit
   def edit
     begin
-      @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
-      @categories = Category.where( :user_id => current_user.id )
-      @accounts = Account.where( :user_id => current_user.id )
+      @transaction = Transaction.where(:user_id => current_user.id ).find(params[:id])
+      @categories = Category.where(:user_id => current_user.id)
+      @accounts = Account.where(:user_id => current_user.id)
     rescue ActiveRecord::RecordNotFound
       render_404
       return
@@ -59,6 +59,8 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(params[:transaction])
     @transaction.user_id = current_user.id
+    @categories = Category.where(:user_id => current_user.id)
+    @accounts = Account.where(:user_id => current_user.id)
 
     respond_to do |format|
       if @transaction.extended_save
@@ -75,6 +77,8 @@ class TransactionsController < ApplicationController
   # PUT /transactions/1.xml
   def update
     @transaction = Transaction.find(params[:id])
+    @categories = Category.where :user_id => current_user.id
+    @accounts = Account.where :user_id => current_user.id
 
     respond_to do |format|
       if @transaction.extended_update_attributes(params[:transaction])

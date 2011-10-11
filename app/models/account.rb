@@ -6,11 +6,15 @@ class Account < ActiveRecord::Base
   validates_presence_of :name, :user_id
 
   def deposit(funds)
+    raise ArgumentError if funds.nil?
     self.funds += funds
+    self.save!
   end
 
   def withdrawal(funds)
+    raise ArgumentError if funds.nil?
     self.funds -= funds
+    self.save!
   end
 
 end

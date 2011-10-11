@@ -4,11 +4,11 @@ class CashFlowsController < ApplicationController
   # GET /cash_flows
   # GET /cash_flows.xml
   def index
-    @cash_flows = CashFlow.includes( :from_account, :to_account ).order( 'created_at desc' ).limit( 50 ).where( :user_id => current_user.id )
+    @cash_flows = CashFlow.includes(:from_account, :to_account).order('created_at desc').limit(50).where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @cash_flows }
+      format.xml { render :xml => @cash_flows }
     end
   end
 
@@ -16,17 +16,18 @@ class CashFlowsController < ApplicationController
   # GET /cash_flows/new.xml
   def new
     @cash_flow = CashFlow.new
-    @accounts = Account.where( :user_id => current_user.id )
+    @accounts = Account.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @cash_flow }
+      format.xml { render :xml => @cash_flow }
     end
   end
 
   # GET /cash_flows/1/edit
   def edit
-    @cash_flow = CashFlow.where( :user_id => current_user.id ).find(params[:id])
+    @cash_flow = CashFlow.where(:user_id => current_user.id).find(params[:id])
+    @accounts = Account.where(:user_id => current_user.id)
   rescue ActiveRecord::RecordNotFound
     render_404
   end
@@ -36,7 +37,8 @@ class CashFlowsController < ApplicationController
   def create
     @cash_flow = CashFlow.new(params[:cash_flow])
     @cash_flow.user_id = current_user.id
-    @accounts = Account.where( :user_id => current_user.id )
+    @cash_flow.valid?
+    @accounts = Account.where(:user_id => current_user.id)
 
     respond_to do |format|
       if @cash_flow.move_funds
@@ -53,7 +55,8 @@ class CashFlowsController < ApplicationController
   # PUT /cash_flows/1.xml
   def update
     begin
-      @cash_flow = CashFlow.where( :user_id => current_user.id ).find(params[:id])
+      @cash_flow = CashFlow.find(params[:id])
+      @accounts = Account.where(:user_id => current_user.id)
     rescue ActiveRecord.RecordNotFound
       render_404
     end

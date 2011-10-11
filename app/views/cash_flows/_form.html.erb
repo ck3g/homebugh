@@ -1,7 +1,7 @@
 <%= form_for(@cash_flow) do |f| %>
   <% if @cash_flow.errors.any? %>
     <div id="error_explanation">
-      <h2><%= t( 'activerecord.errors.template.header', :count => @cash_flow.errors.count ) %>:</h2>
+      <h2><%= t('activerecord.errors.template.header', :count => @cash_flow.errors.count) %>:</h2>
 
       <ul>
       <% @cash_flow.errors.full_messages.each do |msg| %>

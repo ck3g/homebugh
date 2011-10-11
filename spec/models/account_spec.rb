@@ -25,26 +25,35 @@ describe Account do
   end
 
   it "amount of fresh created account should be zero" do
-    account = Account.new(:name => "New Account", :user_id => 1)
-    account.save!
-    account.funds.should eql 0.0
+    create_account
+    @account.funds.should eql 0.0
   end
 
   it "amount of account should be increased by 100" do
-    Account.create!(:name => "New Account", :user_id => 1)
-    account = Account.last
-    account.deposit(100)
-
-    account.funds.should eql 100.00
+    create_account
+    @account.deposit(100)
+    @account.funds.should eql 100.00
   end
 
   it "amount of account should be decreased by 100" do
-    account = Account.new(:name => "New Account", :user_id => 1)
-    account.save!
-    account.withdrawal(100)
-
-    account.funds.should eql -100.00
+    create_account
+    @account.withdrawal(100)
+    @account.funds.should eql -100.00
   end
 
+  it "should raise argument error if nil passed to deposit" do
+    create_account
+    lambda { @account.deposit(nil) }.should raise_exception ArgumentError
+  end
 
+  it "should raise argument error if nil passed to withdrawal" do
+    create_account
+    lambda { @account.withdrawal(nil) }.should raise_exception ArgumentError
+  end
+
+  private
+  def create_account
+    @account = Account.new(:name => "New Account", :user_id => 1)
+    @account.save!
+  end
 end

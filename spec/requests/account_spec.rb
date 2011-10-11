@@ -31,7 +31,7 @@ describe "Accounts" do
     create_and_move_to_edit_account
     page.should have_content("Edit account")
     page.has_button?("Update Account").should
-    find_field("account_name").value.should == 'New Account Name'
+    page.has_field?("account_name", :with => "New Account Name").should
   end
 
   it "edit account name" do
@@ -51,10 +51,6 @@ describe "Accounts" do
 
     page.should_not have_content("New Account Name")
     page.should have_content("You have no accounts.")
-  end
-
-  it "should not remove account if it is not empty" do
-
   end
 
   private
