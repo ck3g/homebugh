@@ -8,6 +8,7 @@
 .type_1 { background-color: #ebffeb; }
 .type_2 { background-color: #ffebeb; }
 .type_3 { background-color: #e1e1ff; }
+.type_inactive { background-color: #eee; color: #aaa; }
 
 /* aligns */
 .t-right {

@@ -22,7 +22,10 @@
             ><%=I18n.translate( 'parts.categories.' + type.name )%></option>
     <% end %>
     </select>
-
+  </div>
+  <div class="field">
+    <%= f.check_box :inactive %>
+    <%= f.label :inactive %>
   </div>
   <div class="actions">
     <%= f.submit nil, :class => "button orange tall" %>

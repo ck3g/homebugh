@@ -33,8 +33,8 @@ class TransactionsController < ApplicationController
   # GET /transactions/new.xml
   def new
     @transaction = Transaction.new
-    @categories = Category.where( :user_id => current_user.id )
-    @accounts = Account.where( :user_id => current_user.id )
+    @categories = Category.where(:user_id => current_user.id, :inactive => false)
+    @accounts = Account.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +46,7 @@ class TransactionsController < ApplicationController
   def edit
     begin
       @transaction = Transaction.where(:user_id => current_user.id ).find(params[:id])
-      @categories = Category.where(:user_id => current_user.id)
+      @categories = Category.where(:user_id => current_user.id, :inactive => false)
       @accounts = Account.where(:user_id => current_user.id)
     rescue ActiveRecord::RecordNotFound
       render_404
@@ -59,7 +59,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(params[:transaction])
     @transaction.user_id = current_user.id
-    @categories = Category.where(:user_id => current_user.id)
+    @categories = Category.where(:user_id => current_user.id, :inactive => false)
     @accounts = Account.where(:user_id => current_user.id)
 
     respond_to do |format|
@@ -77,7 +77,7 @@ class TransactionsController < ApplicationController
   # PUT /transactions/1.xml
   def update
     @transaction = Transaction.find(params[:id])
-    @categories = Category.where :user_id => current_user.id
+    @categories = Category.where :user_id => current_user.id, :inactive => false
     @accounts = Account.where :user_id => current_user.id
 
     respond_to do |format|
@@ -95,7 +95,7 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1.xml
   def destroy
     begin
-      @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
+      @transaction = Transaction.where(:user_id => current_user.id).find(params[:id])
     rescue ActiveRecord::RecordNotFound
       render_404
       return

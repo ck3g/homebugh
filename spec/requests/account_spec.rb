@@ -17,7 +17,7 @@ describe "Accounts" do
     visit accounts_path
     click_link "New account"
     page.should have_content("New account")
-    page.has_button?("Create Account").should
+    page.has_button?("Create Account").should == true
   end
 
   it "create account" do
@@ -30,7 +30,7 @@ describe "Accounts" do
   it "move to edit account page" do
     create_and_move_to_edit_account
     page.should have_content("Edit account")
-    page.has_button?("Update Account").should
+    page.has_button?("Update Account").should == true
     page.has_field?("account_name", :with => "New Account Name").should
   end
 

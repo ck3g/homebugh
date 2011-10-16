@@ -41,6 +41,7 @@ ru:
       category:
         name: "Название"
         category_type_id: "Тип"
+        inactive: "Неактивна"
       transaction: 
         summ: "Сумма"
         category_id: "Категория"

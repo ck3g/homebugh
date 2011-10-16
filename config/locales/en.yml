@@ -15,6 +15,7 @@ en:
       category:
         name: "Name"
         category_type_id: "Type"
+        inactive: "Inactive"
       transaction: 
         summ: "Sum"
         category_id: "Category"

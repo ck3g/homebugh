@@ -17,7 +17,7 @@
         <tbody>
         <% @categories.each do |category| %>
 
-            <tr class="type_<%= category.category_type_id %>">
+            <tr class="<%= category_type(category) %>">
                 <td class=medium><%= I18n.translate('parts.categories.' + category.category_type.name) %></td>
                 <td><%= category.name %></td>
                 <td class=small>

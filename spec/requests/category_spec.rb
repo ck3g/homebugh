@@ -23,7 +23,10 @@ describe "Categories" do
       click_link "New category"
 
       page.should have_content("New category")
-      page.has_button?("Create category").should
+      page.has_button?("Create Category").should == true
+      page.has_field?("category_name").should == true
+      page.has_select?("category_type_id", :options => ['Income', 'Spending']).should == true
+      page.has_unchecked_field?("category_inactive").should == true
     end
   end
 
@@ -39,7 +42,7 @@ describe "Categories" do
       create_and_move_to_edit_category
 
       page.should have_content("Edit category")
-      page.has_button?("Update Category").should
+      page.has_button?("Update Category").should == true
       find_field("category_name").value.should == 'Food'
     end
 

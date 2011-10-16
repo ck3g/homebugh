@@ -11,7 +11,7 @@ describe "Cash Flows" do
   it "should get list of cash flows" do
     visit cash_flows_path
     page.should have_content("List of cash flows")
-    page.has_button?("Move funds").should
+    page.has_link?("Move funds").should == true
   end
 
   it "should create flow" do

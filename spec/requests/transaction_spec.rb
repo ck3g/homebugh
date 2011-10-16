@@ -37,7 +37,7 @@ describe "Transaction" do
     page.should have_content("Edit transaction")
     page.has_field?("transaction_summ", :with => 1000.0).should
     page.has_field?("transaction_comment", :with => "My first salary").should
-    page.has_button?("Update Transaction").should
+    page.has_button?("Update Transaction").should == true
 
     fill_in "transaction_summ", :with => 1500
     fill_in "transaction_comment", :with => "Edited salary"

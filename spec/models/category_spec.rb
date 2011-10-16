@@ -30,4 +30,10 @@ describe Category do
     category.save
     Category.find(category.id).name.should eql "Food"
   end
+
+  it "should be active category by default" do
+    category = Category.new(:name => "Active Category", :category_type_id => CategoryType.spending, :user_id => 1)
+    category.save
+    Category.find(category.id).inactive?.should == false
+  end
 end
