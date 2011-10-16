@@ -8,13 +8,9 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-    <% if flash[:notice] || flash[:alert] %>
+    <% flash.each do |name, message| %>
         <div id=notify-container>
-        <% if flash[:notice] %>
-            <div class="notice"><%= notice %></div>
-        <% elsif flash[:alert] %>
-            <div class="alert"><%= alert %></div>
-        <% end %>
+            <%= content_tag :div, message, :class => name %>
         </div>
     <% end %>
 
@@ -25,40 +21,12 @@
                     <span>HomeBugh</span>
                 </a>
                 <ul id=account_box>
-                    <% if user_signed_in?%>
-                        <li <%='class=selected' if @controller_name == 'transactions' %>>
-                            <%= link_to transactions_path do %><span><%= t('main_menu.transactions') %></span><% end %></li>
-                        <li <%='class=selected' if @controller_name == 'categories' %>>
-                            <%= link_to categories_path do %><span><%= t('main_menu.categories') %></span><% end %></li>
-                        <li <%='class=selected' if @controller_name == 'accounts'%>>
-                            <%= link_to accounts_path do %><span><%= t('main_menu.accounts') %></span><% end %></li>
-                        <li <%='class=selected' if @controller_name == 'cash_flows'%>>
-                            <%= link_to cash_flows_path do %><span><%= t('main_menu.cash_flows') %></span><% end %></li>
-                        <li <%='class=selected' if @controller_name == 'statistics'%>>
-                            <%= link_to statistics_path do %><span><%= t('main_menu.statistics') %></span><% end %></li>
-                        <li><%= link_to t("parts.auth.sign_out"), destroy_user_session_path %></li>
-                    <% else %>
-                        <li><%= link_to t("parts.auth.sign_up"), new_user_registration_path %></li>
-                        <li><%= link_to t("parts.auth.sign_in"), new_user_session_path %></li>
-                    <% end %>
-
-                    <%=language_selector%>
+                    <%= render 'layouts/menu' %>
                 </ul>
             </div>
         </div>
         <div id=main>
-            <% if current_user %>
-                <div id=page_header>
-                <% @accounts = Account.where( :user_id => current_user.id ) %>
-                <% unless @accounts.empty? %>
-                    <% @accounts.each do |account| %>
-                    <div><%= account.name %>: <%= get_number_to_currency get_account_funds( account.id ) %></div>
-                    <% end %>
-                    <div><%= t( 'common.total_funds' ) %>: <%= get_number_to_currency get_total_funds %></div>
-                <% end %>
-                </div>
-            <% end %>
-
+            <%= render 'layouts/total_funds' %>
             <div id=page_content>
                 <%= yield %>
             </div>
@@ -83,16 +51,7 @@
                     copyright @2011
                 </p>
                 <ul class=site_links>
-                    <% if user_signed_in? %>
-                        <li><%= link_to transactions_path do %><span><%= t('main_menu.transactions') %></span><% end %></li>
-                        <li><%= link_to categories_path do %><span><%= t('main_menu.categories') %></span><% end %></li>
-                        <li><%= link_to accounts_path do %><span><%= t('main_menu.accounts') %></span><% end %></li>
-                        <li><%= link_to cash_flows_path do %><span><%= t('main_menu.cash_flows') %></span><% end %></li>
-                        <li><%= link_to t("parts.auth.sign_out"), destroy_user_session_path %></li>
-                    <% else %>
-                        <li><%= link_to t("parts.auth.sign_up"), new_user_registration_path %></li>
-                        <li><%= link_to t("parts.auth.sign_in"), new_user_session_path %></li>
-                    <% end %>
+                    <%= render 'layouts/footer_menu' %>
                 </ul>
             </div>
         </div>

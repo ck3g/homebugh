@@ -5,15 +5,15 @@ module ApplicationHelper
     number_to_currency number, :unit => 'лей', :format => '%n %u'
   end
 
-  def get_account_funds( account_id, user_id = nil )
+  def get_account_funds(account_id, user_id = nil)
     user_id ||= current_user.id
-    Account.where( :user_id => user_id ).find( account_id ).funds
+    Account.where(:user_id => user_id).find(account_id).funds
   end
 
   def get_total_funds
     total_funds = 0
-    Account.where( :user_id => current_user.id ).each do |account|
-      total_funds += get_account_funds( account.id ).to_f
+    Account.where(:user_id => current_user.id).each do |account|
+      total_funds += get_account_funds(account.id).to_f
     end
 
     total_funds
@@ -22,16 +22,16 @@ module ApplicationHelper
   def accounts_recalculate
     user_id = current_user.id
 
-    account = Account.where( :user_id => user_id ).first
+    account = Account.where(:user_id => user_id).first
     # todo: refactor to sum() method
-    incomes = Transaction.includes( :category ).where( :user_id => user_id, 'categories.category_type_id' => 1 ).all
+    incomes = Transaction.includes(:category).where(:user_id => user_id, 'categories.category_type_id' => CategoryType.income).all
     total_income = 0.0
     incomes.each do |income|
       total_income += income.summ.to_f
     end
 
     # todo: refactor to sum() method
-    spendings = Transaction.includes( :category ).where( :user_id => user_id, 'categories.category_type_id' => 2 ).all
+    spendings = Transaction.includes(:category).where(:user_id => user_id, 'categories.category_type_id' => CategoryType.spending).all
     total_spending = 0.0
     spendings.each do |spending|
       total_spending += spending.summ.to_f
@@ -39,8 +39,8 @@ module ApplicationHelper
 
     diff = total_income - total_spending
 
-    account.deposit( diff )
-    Transaction.where( :user_id => user_id ).update_all( :account_id => account.id )
+    account.deposit(diff)
+    Transaction.where(:user_id => user_id).update_all(:account_id => account.id)
   end
 
   def get_total_income( account_id, user_id = nil )
@@ -56,6 +56,18 @@ module ApplicationHelper
     content_tag :li, link_to("?locale=#{to_locale}") { image_tag("flags/#{to_locale}.png") }
   end
 
+  def menu_items
+    %w(transactions categories accounts cash_flows statistics)
+  end
+
+  def menu_item(for_controller, add_class = true)
+    menu_link = link_to send("#{for_controller}_path") do
+      content_tag :span, t("main_menu.#{for_controller}")
+    end
+    class_name = add_class && @controller_name == for_controller ? "selected" : ""
+    content_tag :li, menu_link, :class => class_name
+  end
+
   private
 
   def is_ru?
@@ -68,7 +80,7 @@ module ApplicationHelper
 
   def get_total_by_type(type_id, account_id, user_id = nil)
     user_id ||= current_user.id
-    transactions = Transaction.includes( :category ).where( 'categories.category_type_id' => type_id, :user_id => user_id, :account_id => account_id )
+    transactions = Transaction.includes(:category ).where('categories.category_type_id' => type_id, :user_id => user_id, :account_id => account_id)
     total_funds = 0
     transactions.each do |transaction|
       total_funds += transaction.summ.to_f
