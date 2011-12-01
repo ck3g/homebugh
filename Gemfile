@@ -19,7 +19,7 @@ group :development, :test do
   gem "cucumber"
   gem "cucumber-rails"
   gem "spork"
-
+  gem "fuubar"
 end
 
 group :test do

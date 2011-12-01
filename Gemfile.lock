@@ -71,6 +71,10 @@ GEM
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
+    fuubar (0.0.6)
+      rspec (~> 2.0)
+      rspec-instafail (~> 0.1.8)
+      ruby-progressbar (~> 0.0.10)
     gherkin (2.5.1)
       json (>= 1.4.6)
     highline (1.6.8)
@@ -125,12 +129,14 @@ GEM
     rspec-core (2.6.4)
     rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
+    rspec-instafail (0.1.9)
     rspec-mocks (2.6.0)
     rspec-rails (2.6.1)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
+    ruby-progressbar (0.0.10)
     rubyzip (0.9.4)
     selenium-webdriver (2.7.0)
       childprocess (>= 0.2.1)
@@ -160,6 +166,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  fuubar
   jquery-rails
   launchy
   mysql2 (= 0.2.7)
