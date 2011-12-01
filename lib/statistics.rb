@@ -38,7 +38,7 @@ class Statistics
   def get_data type_id
     if @data[type_id].nil?
       @data[type_id] = Transaction.includes(:category).where("transactions.user_id = :user_id AND categories.category_type_id = :type_id AND transactions.created_at >= :date_from AND transactions.created_at <= :date_to",
-                                          {:user_id => @user_id, :type_id => type_id, :date_from => @date_from, :date_to => @date_to})
+                                          {:user_id => @user_id, :type_id => type_id, :date_from => @date_from, :date_to => (@date_to + 23.hours + 59.minutes)})
     end
 
     @data[type_id]
