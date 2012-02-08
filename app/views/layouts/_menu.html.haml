@@ -1,0 +1,9 @@
+- if user_signed_in?
+  - menu_items.each do |for_controller|
+    = menu_item for_controller
+  %li= link_to t("parts.auth.sign_out"), destroy_user_session_path
+- else
+  %li= link_to t("parts.auth.sign_up"), new_user_registration_path
+  %li= link_to t("parts.auth.sign_in"), new_user_session_path
+
+= language_selector

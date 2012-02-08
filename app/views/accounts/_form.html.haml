@@ -1,0 +1,16 @@
+= form_for(@account) do |f|
+  - if @account.errors.any?
+    #error_explanation
+      %h2
+        = t( 'activerecord.errors.template.header', :count => @account.errors.count )
+        \:
+      %ul
+        - @account.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .actions
+    = f.submit nil, :class => "button orange tall"
+    = link_to t( 'common.back' ), accounts_path

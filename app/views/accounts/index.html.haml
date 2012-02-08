@@ -1,0 +1,28 @@
+%h1= t( 'parts.accounts.accounts_list' )
+#child_navigation
+  = link_to t( 'parts.accounts.new_account' ), new_account_path, :class => 'button orange'
+- unless @accounts.empty?
+  %table.list-table
+    %thead
+      %tr
+        %th= t('activerecord.attributes.account.name')
+        %th.numbers= t('activerecord.attributes.account.funds')
+        %th.small
+    %tbody
+      - @accounts.each do |account|
+        %tr
+          %td= account.name
+          %td.numbers= get_number_to_currency(account.funds)
+          %td.small
+            = link_to edit_account_path(account), :title => t('common.edit') do
+              = image_tag 'icons/edit.png', :alt => t('common.edit')
+            - if account.funds.to_f.zero?
+              = link_to account, :confirm => t('common.are_you_sure'), :method => :delete, :title => t('common.destroy') do
+                = image_tag 'icons/delete.png', :alt => t('common.destroy')
+            - else
+              - alt_text = t('parts.accounts.account_not_empty') + ' ' + t('parts.cash_flows.new_cash_flows')
+              = link_to new_cash_flow_path, :title => alt_text do
+                = image_tag 'icons/move_funds.png', :alt => alt_text
+- else
+  %p.empty-data
+    = t( 'parts.accounts.you_have_no_accounts' )

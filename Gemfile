@@ -8,6 +8,7 @@ gem 'rake', '0.8.7'
 
 gem 'mysql2', '0.2.7'
 gem 'devise'
+gem 'haml'
 
 gem "bcrypt-ruby", :require => "bcrypt"
 
@@ -20,6 +21,7 @@ group :development, :test do
   gem "cucumber-rails"
   gem "spork"
   gem "fuubar"
+  gem "erb2haml"
 end
 
 group :test do

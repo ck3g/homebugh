@@ -1,0 +1,9 @@
+- if current_user
+  #page_header
+  - @accounts = Account.where(:user_id => current_user.id)
+  - unless @accounts.empty?
+    - @accounts.each do |account|
+      %div
+        = "#{account.name}: #{get_number_to_currency(get_account_funds(account.id))}"
+        %div
+          = "#{t("common.total_funds")}: #{get_number_to_currency(get_total_funds)}"

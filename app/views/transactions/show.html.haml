@@ -1,0 +1,18 @@
+%p#notice= notice
+%p
+  %b
+    = t( 'common.category' )
+    \:
+  = @transaction.category_id
+%p
+  %b
+    = t( 'parts.transactions.sum' )
+    \:
+  = @transaction.summ
+%p
+  %b
+    = t( 'parts.transactions.comment' )
+    \:
+  = @transaction.comment
+= link_to t( 'common.edit' ), edit_transaction_path(@transaction)
+|
