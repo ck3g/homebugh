@@ -4,7 +4,7 @@ describe "Accounts" do
   before(:each) do
     I18n.locale = :en
 
-    @current_user = Factory.create(:user)
+    @current_user = FactoryGirl.create(:user)
     login @current_user
   end
 

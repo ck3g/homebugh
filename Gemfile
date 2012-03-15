@@ -17,8 +17,6 @@ gem 'jquery-rails'
 group :development, :test do
   gem "rspec-rails"
   gem "launchy"
-  gem "cucumber"
-  gem "cucumber-rails"
   gem "spork"
   gem "fuubar"
   gem "erb2haml"

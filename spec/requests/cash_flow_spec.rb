@@ -1,10 +1,11 @@
+# encoding: utf-8
 require "spec_helper"
 
 describe "Cash Flows" do
 
   before(:each) do
     I18n.locale = :en
-    @current_user = Factory.create(:user)
+    @current_user = FactoryGirl.create(:user)
     login @current_user
   end
 

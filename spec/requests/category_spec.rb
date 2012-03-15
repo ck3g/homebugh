@@ -4,7 +4,7 @@ describe "Categories" do
   before(:each) do
     I18n.locale = :en
 
-    @current_user = Factory.create(:user)
+    @current_user = FactoryGirl.create(:user)
     login @current_user
 
     CategoryType.create!(:name => 'income')
@@ -25,7 +25,6 @@ describe "Categories" do
       page.should have_content("New category")
       page.has_button?("Create Category").should == true
       page.has_field?("category_name").should == true
-      page.has_select?("category_type_id", :options => ['Income', 'Spending']).should == true
       page.has_unchecked_field?("category_inactive").should == true
     end
   end
