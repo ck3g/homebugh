@@ -5,5 +5,5 @@
     - @accounts.each do |account|
       %div
         = "#{account.name}: #{get_number_to_currency(get_account_funds(account.id))}"
-        %div
-          = "#{t("common.total_funds")}: #{get_number_to_currency(get_total_funds)}"
+    %div
+      = "#{t("common.total_funds")}: #{get_number_to_currency(get_total_funds)}"
