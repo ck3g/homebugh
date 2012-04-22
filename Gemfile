@@ -20,6 +20,7 @@ group :development, :test do
   gem "spork"
   gem "fuubar"
   gem "erb2haml"
+  gem "rails_best_practices"
 end
 
 group :test do
