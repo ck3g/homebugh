@@ -5,6 +5,7 @@ gem 'rails', '3.2.6'
 gem 'mysql2'
 gem 'devise'
 gem 'haml'
+gem 'has_scope'
 
 gem "bcrypt-ruby", :require => "bcrypt"
 

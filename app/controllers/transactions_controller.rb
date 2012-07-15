@@ -1,110 +1,55 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_transaction, only: [:show, :edit, :update, :destroy]
+  before_filter :find_categories, only: [:new, :edit, :create, :update]
+  before_filter :find_accounts, only: [:new, :edit, :create, :update]
 
-  # GET /transactions
-  # GET /transactions.xml
   def index
-    @transactions = Transaction.includes(:category, :account).order('created_at desc').limit(50).where(:user_id => current_user.id)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @transactions }
-    end
+    @transactions = current_user.transactions.includes(:category, :account).order('created_at desc').limit(50)
   end
 
-  # GET /transactions/1
-  # GET /transactions/1.xml
   def show
-    begin
-      raise ActiveRecord::RecordNotFound
-      # unavailable now
-      @transaction = Transaction.where( :user_id => current_user.id ).find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
-      return
-    end
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @transaction }
-    end
   end
 
-  # GET /transactions/new
-  # GET /transactions/new.xml
   def new
-    @transaction = Transaction.new
-    @categories = Category.where(:user_id => current_user.id, :inactive => false)
-    @accounts = Account.where(:user_id => current_user.id)
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @transaction }
-    end
+    @transaction = current_user.transactions.new
   end
 
-  # GET /transactions/1/edit
   def edit
-    begin
-      @transaction = Transaction.where(:user_id => current_user.id ).find(params[:id])
-      @categories = Category.where(:user_id => current_user.id, :inactive => false)
-      @accounts = Account.where(:user_id => current_user.id)
-    rescue ActiveRecord::RecordNotFound
-      render_404
-      return
-    end
   end
 
-  # POST /transactions
-  # POST /transactions.xml
   def create
-    @transaction = Transaction.new(params[:transaction])
-    @transaction.user_id = current_user.id
-    @categories = Category.where(:user_id => current_user.id, :inactive => false)
-    @accounts = Account.where(:user_id => current_user.id)
-
-    respond_to do |format|
-      if @transaction.extended_save
-        format.html { redirect_to(transactions_path, :notice => t( 'parts.transactions.successfully_created' )) }
-        format.xml  { render :xml => @transaction, :status => :created, :location => @transaction }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @transaction.errors, :status => :unprocessable_entity }
-      end
+    @transaction = current_user.transactions.new(params[:transaction])
+    if @transaction.extended_save
+      redirect_to transactions_path, notice: t('parts.transactions.successfully_created')
+    else
+      render "new"
     end
   end
 
-  # PUT /transactions/1
-  # PUT /transactions/1.xml
   def update
-    @transaction = Transaction.find(params[:id])
-    @categories = Category.where :user_id => current_user.id, :inactive => false
-    @accounts = Account.where :user_id => current_user.id
-
-    respond_to do |format|
-      if @transaction.extended_update_attributes(params[:transaction])
-        format.html { redirect_to(transactions_path , :notice => t( 'parts.transactions.successfully_updated' )) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @transaction.errors, :status => :unprocessable_entity }
-      end
+    if @transaction.extended_update_attributes(params[:transaction])
+      redirect_to transactions_path, notice: t('parts.transactions.successfully_updated')
+    else
+      render "edit"
     end
   end
 
-  # DELETE /transactions/1
-  # DELETE /transactions/1.xml
   def destroy
-    begin
-      @transaction = Transaction.where(:user_id => current_user.id).find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
-      return
-    end
     @transaction.extended_destroy
+    redirect_to transactions_path
+  end
 
-    respond_to do |format|
-      format.html { redirect_to(transactions_url) }
-      format.xml  { head :ok }
-    end
+  private
+  def find_transaction
+    @transaction = current_user.transactions.find(params[:id])
+  end
+
+  def find_categories
+    @categories = current_user.categories.active
+  end
+
+  def find_accounts
+    @accounts = current_user.accounts
   end
 end
