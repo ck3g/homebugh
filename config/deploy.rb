@@ -20,14 +20,14 @@ role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
 role :db,  domain, :primary => true # This is where Rails migrations will run
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+# set :rake, "#{rake} --trace"
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 after "deploy:update_code", "deploy:migrate"
+after "deploy:finalize_update", "deploy:symlink_config"
 
 namespace :deploy do
-  task :after_symlink do
+  task :symlink_config do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   end
 
