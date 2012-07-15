@@ -1,19 +1,22 @@
 %h1= t( 'parts.categories.categories_list' )
-#child_navigation
-  = link_to t( 'parts.categories.new_category' ), new_category_path, :class => 'button orange'
-- unless @categories.empty?
-  %table.list-table
+.spacer
+
+= link_to t( 'parts.categories.new_category' ), new_category_path, :class => 'btn'
+.spacer
+
+- if @categories.present?
+  %table.table
     %thead
       %tr
-        %th.medium= t('activerecord.attributes.category.category_type_id')
+        %th.span3= t('activerecord.attributes.category.category_type_id')
         %th= t('activerecord.attributes.category.name')
-        %th.small
+        %th.span2
     %tbody
       - @categories.each do |category|
         %tr{:class => category_type(category)}
-          %td.medium= I18n.translate('parts.categories.' + category.category_type.name)
+          %td.span3= I18n.translate('parts.categories.' + category.category_type.name)
           %td= category.name
-          %td.small
+          %td.span2
             = link_to edit_category_path(category), :title => t('common.edit') do
               = image_tag 'icons/edit.png', :alt => t('common.edit')
             = link_to category, :data => { :confirm => t('common.are_you_sure') }, :method => :delete, :title => t('common.destroy') do

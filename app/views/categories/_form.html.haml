@@ -9,18 +9,16 @@
           %li= msg
   .field
     = f.label :name
-    %br/
     = f.text_field :name
   .field
     = f.label :category_type_id
-    %br/
     %select#category_type_id{:name => "category[category_type_id]"}
       - CategoryType.all.each do |type|
         <option value="#{type.id}" #{' selected="selected"' if @category.category_type_id == type.id}
         >#{I18n.translate( 'parts.categories.' + type.name )}
   .field
-    = f.check_box :inactive
-    = f.label :inactive
-  .actions
-    = f.submit nil, :class => "button orange tall", :id => :category_submit
-    = link_to t( 'common.back' ), categories_path
+    = f.check_box :inactive, :class => :inline
+    = f.label :inactive, :class => :inline
+  .form-actions
+    = f.submit nil, :class => "btn btn-primary", :id => :category_submit
+    = link_to t('common.back'), categories_path, :class => "btn"

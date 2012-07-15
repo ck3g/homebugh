@@ -51,21 +51,15 @@ module ApplicationHelper
     get_total_by_type(2, account_id, user_id)
   end
 
-  def language_selector
-    to_locale = is_ru? ? 'en' : 'ru'
-    content_tag :li, link_to("?locale=#{to_locale}") { image_tag("flags/#{to_locale}.png") }
+  def inverse_locale
+    is_ru? ? 'en' : 'ru'
   end
 
-  def menu_items
-    %w(transactions categories accounts cash_flows statistics)
-  end
-
-  def menu_item(for_controller, add_class = true)
-    menu_link = link_to send("#{for_controller}_path") do
-      content_tag :span, t("main_menu.#{for_controller}")
-    end
-    class_name = add_class && @controller_name == for_controller ? "selected" : ""
-    content_tag :li, menu_link, :class => class_name
+  def flash_class(name)
+    css_classes = ["alert"]
+    css_classes << " alert-error" if name == :alert
+    css_classes << " alert-success" if name == :notice
+    css_classes.join(" ")
   end
 
   private

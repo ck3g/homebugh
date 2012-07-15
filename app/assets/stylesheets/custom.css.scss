@@ -1,0 +1,31 @@
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.row {
+  margin-left: 0;
+}
+
+.spacer { margin-bottom: 10px; }
+.clear { clear: both; }
+.left { float: left; }
+.right { float: right; }
+
+ul.site-links {
+  list-style: none;
+  li {
+    display: inline;
+    padding: 0 10px 0 10px;
+    border-left: solid #bbb 1px;
+  }
+
+  li.first {
+    border-left: none;
+  }
+}
+
+.number, .actions {
+  text-align: right !important;
+}

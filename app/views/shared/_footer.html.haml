@@ -1,0 +1,14 @@
+%ul.site-links
+  %li.first
+    copyright @2011 -
+    = Date.current.year
+  - if user_signed_in?
+    %li= link_to t("main_menu.transactions"), transactions_path
+    %li= link_to t("main_menu.categories"), categories_path
+    %li= link_to t("main_menu.accounts"), accounts_path
+    %li= link_to t("main_menu.cash_flows"), cash_flows_path
+    %li= link_to t("main_menu.statistics"), statistics_path
+    %li= link_to t("parts.auth.sign_out"), destroy_user_session_path
+  - else
+    %li= link_to t("parts.auth.sign_up"), new_user_registration_path
+    %li= link_to t("parts.auth.sign_in"), new_user_session_path

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 63d8eed8bff9c81e4c572627f0ff4d59fd98e980
+  specs:
+    anjlab-bootstrap-rails (2.0.4.3)
+      railties (>= 3.0)
+      sass
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -82,6 +90,11 @@ GEM
       factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
+    formtastic (2.1.1)
+      actionpack (~> 3.0)
+    formtastic-bootstrap (1.1.1)
+      formtastic
+      rails (~> 3.1)
     growl (1.0.3)
     guard (1.2.3)
       listen (>= 0.4.2)
@@ -222,6 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anjlab-bootstrap-rails!
   bcrypt-ruby
   capistrano
   capistrano-recipes
@@ -232,6 +246,8 @@ DEPENDENCIES
   devise
   erb2haml
   factory_girl_rails (~> 3.5.0)
+  formtastic (= 2.1.1)
+  formtastic-bootstrap
   growl (~> 1.0.3)
   guard-bundler (~> 1.0.0)
   guard-rspec (~> 1.2.0)

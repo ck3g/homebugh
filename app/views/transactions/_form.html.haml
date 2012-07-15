@@ -7,30 +7,26 @@
       %ul
         - @transaction.errors.full_messages.each do |msg|
           %li= msg
-  - unless @categories.empty?
-    - unless @accounts.empty?
+  - if @categories.present?
+    - if @accounts.present?
       .field
         = f.label :account_id
-        %br/
         = f.collection_select :account_id, @accounts, :id, :name
       .field
         = f.label :category_id
-        %br/
         = f.collection_select :category_id, @categories, :id, :name
       .field
         = f.label :summ
-        %br/
         = f.text_field :summ
       .field
         = f.label :comment
-        %br/
-        = f.text_area :comment, :rows => 2
-      .actions
-        = f.submit nil, :class => "button orange nil", :id => :transaction_submit
-        = link_to t( 'common.back' ), transactions_path
+        = f.text_area :comment, :rows => 3
+      .form-actions
+        = f.submit nil, :class => "btn btn-primary", :id => :transaction_submit
+        = link_to t( 'common.back' ), transactions_path, :class => "btn"
     - else
       = t( 'parts.accounts.you_have_no_accounts' )
-      = link_to t( 'parts.accounts.add_account' ), new_account_path
+      = link_to t( 'parts.accounts.add_account' ), new_account_path, :class => "btn"
   - else
     = t('parts.categories.you_have_no_categories')
-    = link_to t( 'parts.categories.add_category' ), new_category_path
+    = link_to t( 'parts.categories.add_category' ), new_category_path, :class => "btn"

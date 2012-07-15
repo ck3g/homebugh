@@ -1,4 +1,6 @@
 /*
 *= require_self
+*= require bootstrap
+*= require responsive
 *= require_tree .
 */

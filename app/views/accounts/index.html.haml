@@ -1,19 +1,22 @@
 %h1= t( 'parts.accounts.accounts_list' )
-#child_navigation
-  = link_to t( 'parts.accounts.new_account' ), new_account_path, :class => 'button orange'
-- unless @accounts.empty?
-  %table.list-table
+.spacer
+
+= link_to t( 'parts.accounts.new_account' ), new_account_path, :class => 'btn'
+.spacer
+
+- if @accounts.present?
+  %table.table
     %thead
       %tr
         %th= t('activerecord.attributes.account.name')
-        %th.numbers= t('activerecord.attributes.account.funds')
-        %th.small
+        %th.span2.number= t('activerecord.attributes.account.funds')
+        %th.span2.actions
     %tbody
       - @accounts.each do |account|
         %tr
           %td= account.name
-          %td.numbers= get_number_to_currency(account.funds)
-          %td.small
+          %td.span2.number= get_number_to_currency(account.funds)
+          %td.span2.actions
             = link_to edit_account_path(account), :title => t('common.edit') do
               = image_tag 'icons/edit.png', :alt => t('common.edit')
             - if account.funds.to_f.zero?

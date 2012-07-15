@@ -8,6 +8,11 @@ gem 'haml'
 
 gem "bcrypt-ruby", :require => "bcrypt"
 
+gem 'formtastic', "2.1.1"
+gem "formtastic-bootstrap"
+# gem 'bootstrap-sass', '~> 2.0.2'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :git => 'git://github.com/anjlab/bootstrap-rails.git'
 
 group :assets do
   gem "sass-rails", "~> 3.2.5"

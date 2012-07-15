@@ -1,0 +1,37 @@
+.progressbar {
+  display: inline-block;
+  width: 100%;
+  background: #E9E9E9;
+  height: 12px;
+  font-size: 10px;
+  border-radius: 5px;
+}
+
+.progressbar > .active-income {
+  background: #33dd33;
+  height: 12px;
+  border-radius: 5px;
+}
+
+.progressbar > .active-spending {
+  background: #dd3333;
+  height: 12px;
+  border-radius: 5px;
+}
+
+fieldset.statistics {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+fieldset.statistics legend {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+fieldset.statistics tr.total {
+  vertical-align: top;
+  font-weight: bold;
+  height: 30px;
+}
+

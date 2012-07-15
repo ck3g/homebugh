@@ -9,8 +9,7 @@
           %li= msg
   .field
     = f.label :name
-    %br/
     = f.text_field :name
-  .actions
-    = f.submit nil, :class => "button orange tall", :id => :account_submit
-    = link_to t( 'common.back' ), accounts_path
+  .form-actions
+    = f.submit nil, :class => "btn btn-primary", :id => :account_submit
+    = link_to t( 'common.back' ), accounts_path, :class => "btn"

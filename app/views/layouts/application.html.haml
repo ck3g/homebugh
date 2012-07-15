@@ -3,37 +3,26 @@
   %head
     %title HomeBugh
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}/
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tag
   %body
-    - flash.each do |name, message|
-      #notify-container
-        = content_tag :div, message, :class => name
-    #container
-      #header
-        #header_content
-          %a#site_logo{:href => "/"}
-            %span HomeBugh
-          %ul#account_box
-            = render 'layouts/menu'
-      #main
-        = render 'layouts/total_funds'
-        #page_content
-          = yield
-      #footer
-        #footer_content
-          %ul#nav_bottom
-            %li
-              %a{:href => "#"} About
-              %p Comming soon
-            %li
-              %a{:href => "#"} Feedback
-              %p Comming soon
-            %li
-              %a{:href => "#"} FAQ
-              %p Comming soon
-          %p.copyright
-            copyright @2011-2012
-          %ul.site_links
-            = render 'layouts/footer_menu'
+    = render :partial => 'shared/top_navbar'
+
+    .container
+      - flash.each do |name, message|
+        #notify-container
+          = content_tag :div, message, :class => flash_class(name)
+
+      - if user_signed_in?
+        .hero-unit
+          = render 'layouts/total_funds'
+
+      .row
+        = yield
+
+      %hr/
+      %footer
+        = render :partial => 'shared/footer'
+
