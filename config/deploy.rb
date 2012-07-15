@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 
 set :application, "homebugh"
 set :repository,  "git@github.com:ck3g/homebugh.git"
-set :branch, "rails3.2"
+set :branch, "master"
 set :domain, "homebugh.info"
 
 set :scm, :git
