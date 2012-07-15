@@ -1,5 +1,4 @@
 class Statistic < ActiveRecord::Base
-  require 'statistics'
 
   def self.stats_by_months user_id
     first_date = Transaction.first.created_at.to_date

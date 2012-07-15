@@ -31,13 +31,13 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails',        '~> 2.7.0'
+  gem 'rspec-rails',        '~> 2.11.0'
   gem 'factory_girl_rails', '~> 3.5.0'
   gem 'spork',              '>= 0.9.0.rc9'
-  gem 'guard-spork',        '~> 0.3.1'
-  gem 'guard-rspec',        '~> 0.5.0'
-  gem 'guard-bundler',      '~> 0.1.3'
-  gem "capybara",           "~> 1.1.1"
+  gem 'guard-spork',        '~> 1.1.0'
+  gem 'guard-rspec',        '~> 1.2.0'
+  gem 'guard-bundler',      '~> 1.0.0'
+  gem "capybara",           "~> 1.1.2"
   gem "database_cleaner"
 
   gem 'rb-fsevent', '>= 0.4.3', :require => false

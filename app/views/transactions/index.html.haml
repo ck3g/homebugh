@@ -25,7 +25,7 @@
           %td.small
             = link_to edit_transaction_path(transaction), :title => t('common.edit') do
               = image_tag 'icons/edit.png', :alt => t('common.edit')
-            = link_to transaction, :confirm => t('common.are_you_sure'), :method => :delete, :title => t('common.destroy') do
+            = link_to transaction, :data => { :confirm => t('common.are_you_sure') }, :method => :delete, :title => t('common.destroy') do
               = image_tag 'icons/delete.png', :alt => t('common.destroy')
 - else
   %p.empty-data= t( 'parts.transactions.you_have_no_transactions' )
