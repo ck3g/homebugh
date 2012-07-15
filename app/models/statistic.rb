@@ -11,11 +11,11 @@ class Statistic < ActiveRecord::Base
       last_day = Date.new current_date.year, current_date.month, -1
       month_stats = Statistics.new(user_id, first_day, last_day)
       stats_data = {
-          :title => month_stats.title,
-          :income => month_stats.total_income,
-          :income_categories => month_stats.get_income_categories,
-          :spending => month_stats.total_spending,
-          :spending_categories => month_stats.get_spending_categories
+          title: month_stats.title,
+          income: month_stats.total_income,
+          income_categories: month_stats.get_income_categories,
+          spending: month_stats.total_spending,
+          spending_categories: month_stats.get_spending_categories
       }
       stats << stats_data
       current_date -= 1.month
