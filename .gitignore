@@ -5,3 +5,4 @@ log/*.log
 tmp/**/*
 *.swp
 .idea/*
+.sass-cache/

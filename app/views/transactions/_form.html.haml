@@ -26,7 +26,7 @@
         %br/
         = f.text_area :comment, :rows => 2
       .actions
-        = f.submit nil, :class => "button orange nil"
+        = f.submit nil, :class => "button orange nil", :id => :transaction_submit
         = link_to t( 'common.back' ), transactions_path
     - else
       = t( 'parts.accounts.you_have_no_accounts' )
