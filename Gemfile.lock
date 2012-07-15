@@ -76,6 +76,8 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    devise-encryptable (0.1.1)
+      devise (>= 2.1.0.rc)
     diff-lcs (1.1.3)
     erb2haml (0.1.2)
       haml
@@ -245,6 +247,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   database_cleaner
   devise
+  devise-encryptable
   erb2haml
   factory_girl_rails (~> 3.5.0)
   formtastic (= 2.1.1)

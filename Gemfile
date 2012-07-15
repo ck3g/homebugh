@@ -4,10 +4,12 @@ gem 'rails', '3.2.6'
 
 gem 'mysql2'
 gem 'devise'
+gem "bcrypt-ruby", :require => "bcrypt"
+gem "devise-encryptable"
+
 gem 'haml'
 gem 'has_scope'
 
-gem "bcrypt-ruby", :require => "bcrypt"
 
 gem 'formtastic', "2.1.1"
 gem "formtastic-bootstrap"
