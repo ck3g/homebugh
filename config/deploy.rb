@@ -35,3 +35,13 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+desc "Tail production log files"
+task :tail_logs, :roles => :app do
+  run "tail -f #{shared_path}/log/production.log" do |channel, stream, data|
+    trap ("INT") { puts "\nInterrupded"; exit 0; }
+    puts
+    puts "#{channel[:host]}: #{data}"
+    break if stream == :err
+  end
+end
