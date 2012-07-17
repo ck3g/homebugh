@@ -11,9 +11,6 @@ gem 'haml'
 gem 'has_scope'
 
 
-gem 'formtastic', "2.1.1"
-gem "formtastic-bootstrap"
-# gem 'bootstrap-sass', '~> 2.0.2'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :git => 'git://github.com/anjlab/bootstrap-rails.git'
 
@@ -52,4 +49,8 @@ group :test do
   gem 'growl',      '~> 1.0.3', :require => false
   gem 'rb-inotify', '>= 0.8.6', :require => false
   gem 'libnotify',  '~> 0.5.7', :require => false
+end
+
+group :production do
+  gem "exception_notification"
 end

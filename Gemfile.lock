@@ -84,6 +84,8 @@ GEM
       hpricot
       ruby_parser
     erubis (2.7.0)
+    exception_notification (2.6.1)
+      actionmailer (>= 3.0.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (3.5.0)
@@ -92,11 +94,6 @@ GEM
       factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
-    formtastic (2.1.1)
-      actionpack (~> 3.0)
-    formtastic-bootstrap (1.1.1)
-      formtastic
-      rails (~> 3.1)
     growl (1.0.3)
     guard (1.2.3)
       listen (>= 0.4.2)
@@ -249,9 +246,8 @@ DEPENDENCIES
   devise
   devise-encryptable
   erb2haml
+  exception_notification
   factory_girl_rails (~> 3.5.0)
-  formtastic (= 2.1.1)
-  formtastic-bootstrap
   growl (~> 1.0.3)
   guard-bundler (~> 1.0.0)
   guard-rspec (~> 1.2.0)

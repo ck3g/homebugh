@@ -29,6 +29,7 @@ after "deploy:finalize_update", "deploy:symlink_config"
 namespace :deploy do
   task :symlink_config do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/mail.yml #{release_path}/config/mail.yml"
   end
 
   task :restart, :roles => :app, :except => { :no_release => true } do
