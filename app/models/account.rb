@@ -3,18 +3,17 @@ class Account < ActiveRecord::Base
   has_many :cash_flows, as: :from_account
   has_many :cash_flows, as: :to_account
 
-  validates_presence_of :name, :user_id
+  validates :name, :user_id, presence: true
+  validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
 
   def deposit(funds)
-    raise ArgumentError if funds.nil?
-    self.funds += funds
-    self.save!
+    funds ||= 0.0
+    self.increment!(:funds, funds)
   end
 
   def withdrawal(funds)
-    raise ArgumentError if funds.nil?
-    self.funds -= funds
-    self.save!
+    funds ||= 0.0
+    self.decrement!(:funds, funds)
   end
 
 end

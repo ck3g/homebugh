@@ -1,59 +1,56 @@
 require "spec_helper"
 
 describe Account do
-  it "should have no records" do
-    Account.delete_all
-    Account.should have(:no).records
+  it "has a valid factory" do
+    FactoryGirl.create(:account).should be_valid
   end
 
-  it "should create an account" do
-    Account.delete_all
-    Account.create!(:name => "New Account", :user_id => 1)
-    Account.should have(1).record
+  it "invalid without name" do
+    FactoryGirl.build(:account, name: nil).should_not be_valid
   end
 
-  it "with no parameters should not create Account" do
-    lambda { Account.create! }.should raise_exception ActiveRecord::RecordInvalid
+  it "invalid without user" do
+    FactoryGirl.build(:account, user: nil).should_not be_valid
   end
 
-  it "without name shouldn't create Account" do
-    lambda { Account.create!(:user_id => 1) }.should raise_exception ActiveRecord::RecordInvalid
+  it "is invalid with a duplicate name" do
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:account, name: "Account", user: user)
+    FactoryGirl.build(:account, name: "ACCOUNT", user: user).should_not be_valid
   end
 
-  it "without user shouldn't create Account" do
-    lambda { Account.create!(:name => "New Account") }.should raise_exception ActiveRecord::RecordInvalid
+  it "allows two users have account with same name" do
+    FactoryGirl.create(:account, name: "Account")
+    FactoryGirl.build(:account, name: "Account").should be_valid
   end
 
-  it "amount of fresh created account should be zero" do
-    create_account
-    @account.funds.should eql 0.0
+  it "has 0.0 funds" do
+    FactoryGirl.create(:account).funds.should == 0.0
   end
 
-  it "amount of account should be increased by 100" do
-    create_account
-    @account.deposit(100)
-    @account.funds.should eql 100.00
-  end
+  describe "change amount" do
+    before do
+      @account = FactoryGirl.create(:account)
+    end
 
-  it "amount of account should be decreased by 100" do
-    create_account
-    @account.withdrawal(100)
-    @account.funds.should eql -100.00
-  end
+    it "increased amount by 100" do
+      @account.deposit 100
+      @account.funds.should == 100.0
+    end
 
-  it "should raise argument error if nil passed to deposit" do
-    create_account
-    lambda { @account.deposit(nil) }.should raise_exception ArgumentError
-  end
+    it "decreased amount by 100" do
+      @account.withdrawal 100
+      @account.funds.should == -100.00
+    end
 
-  it "should raise argument error if nil passed to withdrawal" do
-    create_account
-    lambda { @account.withdrawal(nil) }.should raise_exception ArgumentError
-  end
+    it "not increased amount" do
+      @account.deposit nil
+      @account.funds.should == 0.0
+    end
 
-  private
-  def create_account
-    @account = Account.new(:name => "New Account", :user_id => 1)
-    @account.save!
+    it "not decreased amount" do
+      @account.withdrawal nil
+      @account.funds.should == 0.0
+    end
   end
 end
