@@ -31,6 +31,8 @@ RSpec.configure do |config|
 
   config.include RequestMacros, :type => :request
 
+  # Include Factory Girl syntax to simplify calls to factories
+  config.include FactoryGirl::Syntax::Methods
 
   #config.before(:suite) do
   #  DatabaseCleaner.strategy = :truncation

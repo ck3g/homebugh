@@ -93,6 +93,8 @@ GEM
     factory_girl_rails (3.5.0)
       factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
+    faker (1.0.1)
+      i18n (~> 0.4)
     ffi (1.0.11)
     growl (1.0.3)
     guard (1.2.3)
@@ -249,6 +251,7 @@ DEPENDENCIES
   erb2haml
   exception_notification
   factory_girl_rails (~> 3.5.0)
+  faker (~> 1.0.1)
   growl (~> 1.0.3)
   guard-bundler (~> 1.0.0)
   guard-rspec (~> 1.2.0)

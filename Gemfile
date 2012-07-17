@@ -33,15 +33,16 @@ group :development do
 end
 
 group :development, :test do
-  gem "launchy"
+  gem 'rspec-rails',        '~> 2.11.0'
+  gem 'factory_girl_rails', '~> 3.5.0'
+  gem 'guard-rspec',        '~> 1.2.0'
 end
 
 group :test do
-  gem 'rspec-rails',        '~> 2.11.0'
-  gem 'factory_girl_rails', '~> 3.5.0'
+  gem "faker", "~> 1.0.1"
+  gem "launchy"
   gem 'spork',              '>= 0.9.0.rc9'
   gem 'guard-spork',        '~> 1.1.0'
-  gem 'guard-rspec',        '~> 1.2.0'
   gem 'guard-bundler',      '~> 1.0.0'
   gem "capybara",           "~> 1.1.2"
   gem "database_cleaner"
