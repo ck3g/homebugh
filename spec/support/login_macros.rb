@@ -1,4 +1,4 @@
-module ControllerMacros
+module LoginMacros
   def login_admin
     before(:each) do
       @request.env["device.mapping"] = Devise.mappings[:admin]
