@@ -13,4 +13,5 @@ module LoginMacros
       sign_in user
     end
   end
+
 end
