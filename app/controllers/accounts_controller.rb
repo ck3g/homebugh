@@ -35,7 +35,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @account.destroy
+    @account.destroy if @account.funds == 0.0
     redirect_to accounts_url
   end
 

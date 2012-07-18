@@ -12,5 +12,9 @@ FactoryGirl.define do
     factory :to_account do
       name "To Account"
     end
+
+    factory :invalid_account do
+      name nil
+    end
   end
 end

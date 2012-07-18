@@ -4,6 +4,7 @@ config/mail.yml
 db/*.sqlite3
 log/*.log
 tmp/**/*
+tmp/
 *.swp
 .idea/*
 .sass-cache/
