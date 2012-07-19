@@ -5,54 +5,73 @@ describe "Cash Flows" do
 
   before(:each) do
     I18n.locale = :en
-    @current_user = FactoryGirl.create(:user)
-    login @current_user
+    @user = create(:user)
+    login @user
+
+    @from_account = create(:from_account, user: @user)
+    @to_account = create(:to_account, user: @user)
   end
 
-  it "should get list of cash flows" do
-    visit cash_flows_path
-    page.should have_content("List of cash flows")
-    page.has_link?("Move funds").should == true
+  describe "cash_flows_path" do
+    before do
+      visit cash_flows_path
+    end
+
+    it "get list of cash flows" do
+      page.should have_content("List of cash flows")
+    end
+
+    it "have link to Move funds" do
+      page.has_link?("Move funds").should be_true
+    end
   end
 
-  it "should create flow" do
-    create_accounts
-    create_flow
+  describe "create" do
+    context "when success" do
+      before { create_flow }
+      subject { page }
+      it { should have_content("Funds was successfully moved.") }
+      it { should have_content("From Account → To Account") }
+      it { should have_content("15.00") }
+      it { current_path.should == cash_flows_path }
+    end
 
-    page.should have_content("Funds was successfully moved.")
-    page.should have_content("From Account → To Account")
-    page.should have_content("15.00")
+    context "when fail" do
+
+    end
   end
 
-  it "should visit edit flow form" do
-    create_accounts
-    create_flow
+  describe "#edit" do
+    context "when wisit edit page" do
+      before do
+        cash_flow = create(:cash_flow, user: @user, from_account: @from_account, to_account: @to_account)
+        visit edit_cash_flow_path(cash_flow)
+      end
 
-    click_link "Edit"
+      subject { page }
+      it { should have_content("Edit moving funds") }
+      it { has_select?("cash_flow_from_account_id", selected: "From Account").should }
+      it { has_select?("cash_flow_to_account_id", selected: "To Account").should }
+      it { has_field?("cash_flow_amount", with: "10.0").should }
 
-    page.should have_content("Edit moving funds")
-    page.has_select?("cash_flow_from_account_id", :selected => "From Account").should
-    page.has_select?("cash_flow_to_account_id", :selected => "To Account").should
-    page.has_field?("cash_flow_amount", :with => "10.0").should
-  end
+      context "when edit cash flow" do
+        before do
+          select "To Account", from: "cash_flow_from_account_id"
+          select "From Account", from: "cash_flow_to_account_id"
+          fill_in "cash_flow_amount", with: "25"
+          click_button "cash_flow_submit"
+        end
 
-  it "should edit flow" do
-    create_accounts
-    create_flow
-
-    click_link "Edit"
-    select "To Account", :from => "cash_flow_from_account_id"
-    select "From Account", :from => "cash_flow_to_account_id"
-    fill_in "cash_flow_amount", :with => "25"
-    click_button "cash_flow_submit"
-
-    page.should have_content("Funds was successfully moved.")
-    page.should have_content("To Account → From Account")
-    page.should have_content("25.00")
+        subject { page }
+        it { should have_content("Funds was successfully moved.") }
+        it { should have_content("To Account → From Account") }
+        it { should have_content("25.00") }
+        it { current_path.should == cash_flows_path }
+      end
+    end
   end
 
   it "should destroy flow" do
-    create_accounts
     create_flow
 
     page.should have_content("From Account → To Account")
@@ -63,7 +82,6 @@ describe "Cash Flows" do
   end
 
   it "should raise validation on create" do
-    create_accounts
     visit new_cash_flow_path
     select "From Account", :from => "cash_flow_from_account_id"
     select "From Account", :from => "cash_flow_to_account_id"
@@ -75,7 +93,6 @@ describe "Cash Flows" do
   end
 
   it "should raise validation on update" do
-    create_accounts
     create_flow
     visit cash_flows_path
     click_link "Edit"
@@ -97,17 +114,6 @@ describe "Cash Flows" do
     select "To Account", :from => "cash_flow_to_account_id"
     fill_in "cash_flow_amount", :with => 15
     click_button "cash_flow_submit"
-  end
-
-  def create_accounts
-    create_account "From Account"
-    create_account "To Account"
-  end
-
-  def create_account(name)
-    visit new_account_path
-    fill_in "account_name", :with => name
-    click_button "Create Account"
   end
 
 end

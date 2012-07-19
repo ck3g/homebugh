@@ -2,15 +2,40 @@ require "spec_helper"
 
 describe CashFlow do
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    @from_account = FactoryGirl.create(:from_account, user: @user)
-    @to_account = FactoryGirl.create(:to_account, user: @user)
-    @cash_flow = FactoryGirl.create(:cash_flow, user: @user, from_account: @from_account, to_account: @to_account)
+    @user = create(:user)
+    @from_account = create(:from_account, user: @user)
+    @to_account = create(:to_account, user: @user)
+    @cash_flow = create(:cash_flow, user: @user, from_account: @from_account, to_account: @to_account)
   end
 
-  it "should have no records" do
-    CashFlow.delete_all
-    CashFlow.should have(:no).records
+  it "should have valid factory" do
+    create(:cash_flow).should be_valid
+  end
+
+  describe ".association" do
+    it { should belong_to :user }
+    it { should belong_to :from_account }
+    it { should belong_to :to_account }
+  end
+
+  describe ".validation" do
+    context "valid" do
+      subject { create(:cash_flow) }
+      it { should validate_presence_of(:amount) }
+      it { should validate_presence_of(:user_id) }
+      it { should validate_presence_of(:from_account_id) }
+      it { should validate_presence_of(:to_account_id) }
+      it { should allow_value(1).for(:amount) }
+    end
+
+    context "invalid" do
+      subject { create(:cash_flow) }
+      it { should_not allow_value(nil).for(:amount) }
+      it { should_not allow_value(0).for(:amount) }
+      it { should_not allow_value(nil).for(:user_id) }
+      it { should_not allow_value(nil).for(:from_account_id) }
+      it { should_not allow_value(nil).for(:to_account_id) }
+    end
   end
 
   describe "#move_funds" do
@@ -61,12 +86,12 @@ describe CashFlow do
   end
 
   it "should not save if amount less than 0.01" do
-    cash_flow = CashFlow.new(:from_account => @from_account, :to_account => @to_account, user: @user, :amount => 0)
-    cash_flow.move_funds.should_not
+    cash_flow = build(:cash_flow, amount: 0)
+    cash_flow.should_not be_valid
   end
 
   it "should not move to same account" do
-    cash_flow = CashFlow.new(:from_account => @from_account, :to_account => @from_account, user: @user, :amount => 1)
-    cash_flow.move_funds.should_not
+    cash_flow = build(:cash_flow, from_account: @from_account, to_account: @from_account)
+    cash_flow.should_not be_valid
   end
 end

@@ -7,28 +7,53 @@ describe Transaction do
     @account = FactoryGirl.create(:account, name: "Cash", funds: 50, user: @user)
   end
 
-  it "should have no records" do
-    Transaction.delete_all
-    Transaction.should have(:no).records
+  it "have a valid factory" do
+    create(:transaction).should be_valid
   end
 
-  it "should create single transaction" do
-    Transaction.delete_all
-    transaction = Transaction.new(:category_id => @category.id, :account_id => @account.id, :summ => 10.5, :comment => "First transaction", user: @user)
-    transaction.extended_save
-
-    Transaction.should have(1).record
-    transaction = Transaction.last
-    transaction.category_id.should eql @category.id
-    transaction.account_id.should eql @account.id
-    transaction.summ.should eql 10.5
-    transaction.comment.should eql "First transaction"
-    Account.find(@account.id).funds.should eql 39.5
+  describe ".association" do
+    it { should belong_to :category }
+    it { should belong_to :user }
+    it { should belong_to :account }
   end
 
-  it "should not save if sum less than 0.01" do
-    transaction = Transaction.new(:category_id => @category.id, :account_id => @account.id, user: @user, :summ => 0)
-    transaction.extended_save.should_not
+  describe ".validations" do
+    context "valid" do
+      subject { create(:transaction) }
+      it { should validate_presence_of(:summ) }
+      it { should validate_numericality_of(:summ) }
+      it { should allow_value(0.01).for(:summ) }
+    end
+
+    context "invalid" do
+      subject { create(:transaction) }
+      it { should_not allow_value(nil).for(:summ) }
+      it { should_not allow_value(0).for(:summ) }
+      it { should_not allow_value("string").for(:summ) }
+    end
+  end
+
+  it "save transaction to the database" do
+    expect {
+      create(:transaction)
+    }.to change(Transaction, :count).by(1)
+  end
+
+  describe "change account's amount" do
+    before do
+      @account = create(:account, user: @user, funds: 30)
+    end
+
+    it "creates and decreases account's amount by 15" do
+      transaction = build(:transaction, summ: 15, account: @account, user: @user)
+      transaction.extended_save
+      @account.reload
+      @account.funds.should == 15
+    end
+  end
+
+  it "is not valid if summ less than 0.01" do
+    build(:transaction, summ: 0).should_not be_valid
   end
 
   it "should raise exception if have no category" do

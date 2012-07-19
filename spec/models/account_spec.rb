@@ -43,28 +43,26 @@ describe Account do
   end
 
   describe "change amount" do
-    before do
-      @account = create(:account)
-    end
+    let(:account) { create(:account) }
 
     it "increased amount by 100" do
-      @account.deposit 100
-      @account.funds.should == 100.0
+      account.deposit 100
+      account.funds.should == 100.0
     end
 
     it "decreased amount by 100" do
-      @account.withdrawal 100
-      @account.funds.should == -100.00
+      account.withdrawal 100
+      account.funds.should == -100.00
     end
 
     it "not increased amount" do
-      @account.deposit nil
-      @account.funds.should == 0.0
+      account.deposit nil
+      account.funds.should == 0.0
     end
 
     it "not decreased amount" do
-      @account.withdrawal nil
-      @account.funds.should == 0.0
+      account.withdrawal nil
+      account.funds.should == 0.0
     end
   end
 end
