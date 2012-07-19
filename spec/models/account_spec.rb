@@ -5,6 +5,20 @@ describe Account do
     create(:account).should be_valid
   end
 
+  describe ".associations" do
+    it { should belong_to :user }
+    it { should have_many(:cash_flows) }
+  end
+
+  describe ".validation" do
+    context "valid" do
+      subject { create(:account) }
+      it { should validate_presence_of(:name) }
+      it { should validate_presence_of(:user_id) }
+      it { should validate_uniqueness_of(:name).scoped_to(:user_id) }
+    end
+  end
+
   it "invalid without name" do
     build(:account, name: nil).should_not be_valid
   end

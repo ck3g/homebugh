@@ -46,6 +46,8 @@ group :test do
   gem 'guard-bundler',      '~> 1.0.0'
   gem "capybara",           "~> 1.1.2"
   gem "database_cleaner"
+  gem "shoulda"
+  gem "email_spec"
 
   gem 'rb-fsevent', '>= 0.4.3', :require => false
   gem 'growl',      '~> 1.0.3', :require => false

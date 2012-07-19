@@ -6,6 +6,29 @@ describe Category do
     create(:category).should be_valid
   end
 
+  describe ".asscociations" do
+    it { should belong_to(:user) }
+    it { should belong_to(:category_type) }
+    it { should have_many(:transactions) }
+  end
+
+  describe ".validations" do
+    context "valid" do
+      subject { create(:category) }
+      it { should validate_presence_of(:name) }
+      it { should validate_presence_of(:category_type_id) }
+      it { should validate_presence_of(:user_id) }
+      it { should validate_uniqueness_of(:name).scoped_to(:user_id) }
+    end
+
+    context "invalid" do
+      subject { create(:category) }
+      it { should_not allow_value(nil).for(:name) }
+      it { should_not allow_value(nil).for(:category_type_id) }
+      it { should_not allow_value(nil).for(:user_id)}
+    end
+  end
+
   it "invalid without name" do
     build(:category, name: nil).should_not be_valid
   end
@@ -33,11 +56,6 @@ describe Category do
     food = create(:category, name: "Food")
     job_salary = create(:category, name: "Job Salary", category_type_id: CategoryType.income)
     Category.all.should == [food, job_salary]
-  end
-
-  it "model should have no categories" do
-    Category.delete_all
-    Category.should have(:no).records
   end
 
   it "has active category by default" do
