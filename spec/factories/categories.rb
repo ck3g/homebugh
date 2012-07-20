@@ -13,5 +13,10 @@ FactoryGirl.define do
       name "Category"
       category_type_id CategoryType.spending
     end
+
+    factory :income_category do
+      name "Salary"
+      category_type_id CategoryType.income
+    end
   end
 end

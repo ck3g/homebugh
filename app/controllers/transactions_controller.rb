@@ -20,7 +20,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = current_user.transactions.new(params[:transaction])
-    if @transaction.extended_save
+    if @transaction.save
       redirect_to transactions_path, notice: t('parts.transactions.successfully_created')
     else
       render "new"
@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    if @transaction.extended_update_attributes(params[:transaction])
+    if @transaction.update_attributes(params[:transaction])
       redirect_to transactions_path, notice: t('parts.transactions.successfully_updated')
     else
       render "edit"
@@ -36,7 +36,7 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
-    @transaction.extended_destroy
+    @transaction.destroy
     redirect_to transactions_path
   end
 

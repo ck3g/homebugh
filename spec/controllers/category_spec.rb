@@ -2,49 +2,46 @@ require "spec_helper"
 
 describe CategoriesController do
   login_user
-  before do
-    @user = subject.current_user
-  end
+
+  let(:user) { subject.current_user }
+  let(:category) { create(:category, user: user) }
 
   it "should have a current_user" do
-    @user.should_not be_nil
+    user.should_not be_nil
   end
 
   describe "GET #index" do
+    before { get :index }
+
     it "populates an array of categories" do
-      category = create(:category, user: @user)
-      get :index
       assigns(:categories).should == [category]
     end
 
     it "renders the :index view" do
-      get :index
       response.should render_template :index
     end
   end
 
   describe "GET #new" do
+    before { get :new }
+
     it "assigns a new category to @category" do
-      get :new
       assigns(:category).should be_a_new(Category)
     end
 
     it "renders the :new template" do
-      get :new
       response.should render_template :new
     end
   end
 
   describe "GET #edit" do
+    before { get :edit, id: category }
+
     it "assigns the requested category to @category" do
-      category = create(:category, user: @user)
-      get :edit, id: category
       assigns(:category).should == category
     end
 
     it "renders the :edit template" do
-      category = create(:category, user: @user)
-      get :edit, id: category
       response.should render_template :edit
     end
   end
@@ -79,7 +76,7 @@ describe CategoriesController do
 
   describe "PUT #update" do
     before :each do
-      @category = create(:category, name: "Salary", category_type_id: CategoryType.income, user: @user)
+      @category = create(:category, name: "Salary", category_type_id: CategoryType.income, user: user)
     end
 
     it "locates the requested category" do
@@ -116,7 +113,7 @@ describe CategoriesController do
 
   describe "DELETE #destroy" do
     before :each do
-      @category = create(:category, user: @user)
+      @category = create(:category, user: user)
     end
 
     it "deletes the category" do

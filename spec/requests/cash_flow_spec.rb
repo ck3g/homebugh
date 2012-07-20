@@ -46,28 +46,17 @@ describe "Cash Flows" do
       before do
         cash_flow = create(:cash_flow, user: @user, from_account: @from_account, to_account: @to_account)
         visit edit_cash_flow_path(cash_flow)
+        select "To Account", from: "cash_flow_from_account_id"
+        select "From Account", from: "cash_flow_to_account_id"
+        fill_in "cash_flow_amount", with: "25"
+        click_button "cash_flow_submit"
       end
 
       subject { page }
-      it { should have_content("Edit moving funds") }
-      it { has_select?("cash_flow_from_account_id", selected: "From Account").should }
-      it { has_select?("cash_flow_to_account_id", selected: "To Account").should }
-      it { has_field?("cash_flow_amount", with: "10.0").should }
-
-      context "when edit cash flow" do
-        before do
-          select "To Account", from: "cash_flow_from_account_id"
-          select "From Account", from: "cash_flow_to_account_id"
-          fill_in "cash_flow_amount", with: "25"
-          click_button "cash_flow_submit"
-        end
-
-        subject { page }
-        it { should have_content("Funds was successfully moved.") }
-        it { should have_content("To Account → From Account") }
-        it { should have_content("25.00") }
-        it { current_path.should == cash_flows_path }
-      end
+      it { should have_content("Funds was successfully moved.") }
+      it { should have_content("To Account → From Account") }
+      it { should have_content("25.00") }
+      it { current_path.should == cash_flows_path }
     end
   end
 

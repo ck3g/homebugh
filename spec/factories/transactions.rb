@@ -8,7 +8,7 @@ FactoryGirl.define do
     association :account
 
     factory :invalid_transaction do
-      summ nil
+      summ ""
     end
   end
 end

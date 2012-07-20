@@ -6,6 +6,14 @@ describe Category do
     create(:category).should be_valid
   end
 
+  it "be an income category" do
+    create(:category, category_type_id: CategoryType.income).income?.should be_true
+  end
+
+  it "be a spending category" do
+    create(:category, category_type_id: CategoryType.spending).income?.should be_false
+  end
+
   describe ".asscociations" do
     it { should belong_to(:user) }
     it { should belong_to(:category_type) }

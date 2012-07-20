@@ -1,14 +1,18 @@
 require "spec_helper"
 
 describe "Transaction" do
+  let(:user) { create(:user) }
+  let(:account) { create(:account, user: user, name: "Cash") }
+  let(:category) { create(:income_category, user: user) }
+  let(:transaction) { create(:transaction, user: user, category: category, summ: 100, comment: "My first salary") }
+
   before(:each) do
     I18n.locale = :en
 
-    @current_user = FactoryGirl.create :user
-    login @current_user
+    login user
 
-    CategoryType.create!(:name => 'income')
-    CategoryType.create!(:name => 'spending')
+    account
+    category
   end
 
   it "should visit transactions page" do
@@ -21,84 +25,64 @@ describe "Transaction" do
     page.should have_content("New transaction")
   end
 
-  it "should create single transaction" do
-    create_transaction
+  describe "create" do
+    before do
+      visit new_transaction_path
+      select "Cash", from: "transaction_account_id"
+      select "Salary", from: "transaction_category_id"
+      fill_in "transaction_summ", with: 1000
+      fill_in "transaction_comment", with: "My first salary"
+      click_button "transaction_submit"
+    end
 
-    page.should have_content("Transaction was successfully created.")
-    page.should have_content("1,000.00")
-    page.should have_content("My first salary")
+    subject { page }
+    it { should have_content("Transaction was successfully created.") }
+    it { should have_content("1,000.00") }
+    it { should have_content("My first salary") }
+    it { current_path.should == transactions_path }
   end
 
-  it "should edit transaction" do
-    create_transaction
-    visit transactions_path
-    click_link "Edit"
+  describe "edit transaction" do
+    before do
+      transaction
+      visit edit_transaction_path(transaction)
+      fill_in "transaction_summ", with: 1500
+      fill_in "transaction_comment", with: "Edited salary"
+      click_button "transaction_submit"
+    end
 
-    page.should have_content("Edit transaction")
-    page.has_field?("transaction_summ", :with => 1000.0).should
-    page.has_field?("transaction_comment", :with => "My first salary").should
-    page.has_button?("Update Transaction").should == true
-
-    fill_in "transaction_summ", :with => 1500
-    fill_in "transaction_comment", :with => "Edited salary"
-    click_button "transaction_submit"
-
-    page.should have_content("Transaction was successfully updated.")
-    page.should have_content("1,500.00")
-    page.should have_content("Edited salary")
+    subject { page }
+    it { should have_content("Transaction was successfully updated.") }
+    it { should have_content("1,500.00") }
+    it { should have_content("Edited salary") }
+    it { current_path.should == transactions_path }
   end
 
-  it "should delete transaction" do
-    create_transaction
-    visit transactions_path
-    click_link "Destroy"
+  describe "delete" do
+    before do
+      transaction
+      visit transactions_path
+      click_link "Destroy"
+    end
 
-    page.should_not have_content("1,000.00")
-    page.should_not have_content("My first salary")
-    page.should have_content("You have no transactions.")
+    subject { page }
+    it { should_not have_content("1,000.00") }
+    it { should_not have_content("My first salary") }
+    it { should have_content("You have no transactions.") }
+    it { current_path.should == transactions_path }
   end
 
   it "should raise validation on create" do
-    create_category_and_account
     visit new_transaction_path
     click_button "transaction_submit"
     page.should have_content("Sum Cannot be less than 0.01")
   end
 
   it "should raise validation on update" do
-    create_category_and_account
     visit new_transaction_path
-    fill_in "transaction_summ", :with => 0
+    fill_in "transaction_summ", with: 0
     click_button "transaction_submit"
     page.should have_content("Sum Cannot be less than 0.01")
   end
 
-  private
-  def create_transaction
-    create_category_and_account
-    visit new_transaction_path
-    select "Cash", :from => "transaction_account_id"
-    select "Salary", :from => "transaction_category_id"
-    fill_in "transaction_summ", :with => 1000
-    fill_in "transaction_comment", :with => "My first salary"
-    click_button "transaction_submit"
-  end
-
-  def create_category_and_account
-    create_category
-    create_account
-  end
-
-  def create_category
-    visit new_category_path
-    fill_in "category_name", :with => "Salary"
-    select "Income", :from => "category_type_id"
-    click_button "category_submit"
-  end
-
-  def create_account
-    visit new_account_path
-    fill_in "account_name", :with => "Cash"
-    click_button "account_submit"
-  end
 end

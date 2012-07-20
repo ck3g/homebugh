@@ -7,4 +7,8 @@ class Category < ActiveRecord::Base
   validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
 
   scope :active, -> { where(inactive: false) }
+
+  def income?
+    category_type_id == CategoryType.income
+  end
 end
