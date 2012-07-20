@@ -1,4 +1,6 @@
 class CashFlow < ActiveRecord::Base
+  attr_accessible :from_account_id, :to_account_id, :amount, :user_id
+
   belongs_to :user
   belongs_to :from_account, class_name: 'Account'
   belongs_to :to_account, class_name: 'Account'

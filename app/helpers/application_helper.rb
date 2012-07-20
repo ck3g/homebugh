@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def get_total_funds
     total_funds = 0
-    Account.where(:user_id => current_user.id).each do |account|
+    current_user.accounts.each do |account|
       total_funds += get_account_funds(account.id).to_f
     end
 

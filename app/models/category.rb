@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+  attr_accessible :name, :inactive, :user_id, :category_type_id
+
   has_many :transactions
   belongs_to :category_type
   belongs_to :user

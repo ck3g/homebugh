@@ -2,7 +2,7 @@
   - if @transaction.errors.any?
     #error_explanation
       %h2
-        = t( 'activerecord.errors.template.header', :count => @transaction.errors.count )
+        = t( 'activerecord.errors.template.header', count: @transaction.errors.count )
         \:
       %ul
         - @transaction.errors.full_messages.each do |msg|
@@ -20,13 +20,13 @@
         = f.text_field :summ
       .field
         = f.label :comment
-        = f.text_area :comment, :rows => 3
+        = f.text_area :comment, rows: 3
       .form-actions
-        = f.submit nil, :class => "btn btn-primary", :id => :transaction_submit
-        = link_to t( 'common.back' ), transactions_path, :class => "btn"
+        = f.submit nil, class: "btn btn-primary", id: :transaction_submit
+        = link_to t( 'common.back' ), transactions_path, class: "btn"
     - else
       = t( 'parts.accounts.you_have_no_accounts' )
-      = link_to t( 'parts.accounts.add_account' ), new_account_path, :class => "btn"
+      = link_to t( 'parts.accounts.add_account' ), new_account_path, class: "btn"
   - else
     = t('parts.categories.you_have_no_categories')
-    = link_to t( 'parts.categories.add_category' ), new_category_path, :class => "btn"
+    = link_to t( 'parts.categories.add_category' ), new_category_path, class: "btn"

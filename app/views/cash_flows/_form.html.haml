@@ -2,7 +2,7 @@
   - if @cash_flow.errors.any?
     #error_explanation
       %h2
-        = t('activerecord.errors.template.header', :count => @cash_flow.errors.count)
+        = t('activerecord.errors.template.header', count: @cash_flow.errors.count)
         \:
       %ul
         - @cash_flow.errors.full_messages.each do |msg|
@@ -17,5 +17,5 @@
     = f.label :amount
     = f.text_field :amount
   .form-actions
-    = f.submit t('parts.cash_flows.submit'), :class => 'btn btn-primary', :id => :cash_flow_submit
-    = link_to t("common.back"), cash_flows_path, :class => "btn"
+    = f.submit t('parts.cash_flows.submit'), class: 'btn btn-primary', id: :cash_flow_submit
+    = link_to t("common.back"), cash_flows_path, class: "btn"

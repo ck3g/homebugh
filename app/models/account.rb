@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  attr_accessible :name, :funds, :user_id
+
   belongs_to :user
   has_many :cash_flows, as: :from_account
   has_many :cash_flows, as: :to_account

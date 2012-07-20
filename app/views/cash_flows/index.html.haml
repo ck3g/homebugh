@@ -1,7 +1,7 @@
 %h1= t( 'parts.cash_flows.flows_list' )
 .spacer
 
-= link_to t( 'parts.cash_flows.new_cash_flows' ), new_cash_flow_path, :class => 'btn'
+= link_to t( 'parts.cash_flows.new_cash_flows' ), new_cash_flow_path, class: 'btn'
 .spacer
 
 %table.table
@@ -16,13 +16,13 @@
   %tbody
     - @cash_flows.each do |cash_flow|
       %tr
-        %td.span2= I18n.l(cash_flow.created_at.to_date, :format => :long)
+        %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
         %td
           = cash_flow.from_account.name
           → #{cash_flow.to_account.name}
         %td.span2.number= get_number_to_currency(cash_flow.amount)
         %td.span2.actions
-          = link_to edit_cash_flow_path(cash_flow), :title => t('common.edit') do
-            = image_tag 'icons/edit.png', :alt => t('common.edit')
-          = link_to cash_flow, :data => { :confirm => t('common.are_you_sure') }, :method => :delete, :title => t('common.destroy') do
-            = image_tag 'icons/delete.png', :alt => t('common.destroy')
+          = link_to edit_cash_flow_path(cash_flow), title: t('common.edit') do
+            = image_tag 'icons/edit.png', alt: t('common.edit')
+          = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy') do
+            = image_tag 'icons/delete.png', alt: t('common.destroy')

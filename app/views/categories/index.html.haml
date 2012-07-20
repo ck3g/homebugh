@@ -1,7 +1,7 @@
 %h1= t( 'parts.categories.categories_list' )
 .spacer
 
-= link_to t( 'parts.categories.new_category' ), new_category_path, :class => 'btn'
+= link_to t( 'parts.categories.new_category' ), new_category_path, class: 'btn'
 .spacer
 
 - if @categories.present?
@@ -13,14 +13,14 @@
         %th.span2
     %tbody
       - @categories.each do |category|
-        %tr{:class => category_type(category)}
+        %tr{class: category_type(category)}
           %td.span3= I18n.translate('parts.categories.' + category.category_type.name)
           %td= category.name
           %td.span2
-            = link_to edit_category_path(category), :title => t('common.edit') do
-              = image_tag 'icons/edit.png', :alt => t('common.edit')
-            = link_to category, :data => { :confirm => t('common.are_you_sure') }, :method => :delete, :title => t('common.destroy') do
-              = image_tag 'icons/delete.png', :alt => t('common.destroy')
+            = link_to edit_category_path(category), title: t('common.edit') do
+              = image_tag 'icons/edit.png', alt: t('common.edit')
+            = link_to category, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy') do
+              = image_tag 'icons/delete.png', alt: t('common.destroy')
 - else
   %p.empty-data
     = t( 'parts.categories.you_have_no_categories' )

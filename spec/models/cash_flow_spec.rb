@@ -77,7 +77,7 @@ describe CashFlow do
     @to_account.reload.funds.should eql 55.0
     @from_account.reload.funds.should eql 45.0
 
-    params = { :from_account_id => @from_account.id, :to_account_id => @to_account.id, user: @user, :amount => 35 }
+    params = { :from_account_id => @from_account.id, :to_account_id => @to_account.id, user_id: @user.id, :amount => 35 }
     update_result = CashFlow.last.extended_update_attributes(params)
 
     update_result.should eql true
