@@ -8,14 +8,24 @@ class Account < ActiveRecord::Base
   validates :name, :user_id, presence: true
   validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
 
-  def deposit(funds)
-    funds ||= 0.0
-    self.increment!(:funds, funds)
+  def deposit(amount)
+    amount ||= 0.0
+    update_attribute :funds, funds + amount
   end
 
-  def withdrawal(funds)
-    funds ||= 0.0
-    self.decrement!(:funds, funds)
+  def deposit!(funds)
+    deposit(funds)
+    # self.save!
+  end
+
+  def withdrawal(amount)
+    amount ||= 0.0
+    update_attribute :funds, funds - amount
+  end
+
+  def withdrawal!(funds)
+    withdrawal(funds)
+    # self.save!
   end
 
 end

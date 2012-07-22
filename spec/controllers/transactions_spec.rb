@@ -6,7 +6,7 @@ describe TransactionsController do
   let(:user) { subject.current_user }
   let(:account) { create(:account, user: user) }
   let(:category) { create(:category, user: user) }
-  let(:transaction) { create(:transaction, user: user) }
+  let(:transaction) { create(:transaction, user: user, account: account, category: category) }
 
   it "have a current_user" do
     user.should_not be_nil
@@ -40,81 +40,47 @@ describe TransactionsController do
     end
   end
 
-  describe "GET #edit" do
-    before do
-      get :edit, id: transaction
-    end
-
-    it "assigns the requested transation to @transaction" do
-      assigns(:transaction).should == transaction
-    end
-
-    it "renders the :edit template" do
-      response.should render_template :edit
-    end
-  end
-
   describe "POST #create" do
     context "with valid attributes" do
+      before do
+        @attributes = {
+          summ: 12,
+          account_id: account.id,
+          category_id: category.id,
+          user_id: user.id
+        }
+      end
+
       it "saves the new transaction in the database" do
-        # expect {
-        #   post :create, transaction: attributes_for(:transaction)
-        # }.to change(Transaction, :count).by(1)
+        expect {
+          post :create, transaction: @attributes
+        }.to change(Transaction, :count).by(1)
       end
 
       it "redirects to the transactions page" do
-        # post :create, transaction: attributes_for(:transaction)
-        # response.should redirect_to transactions_path
-      end
-    end
-
-    context "with invalid attributes" do
-      it "does not save the new transaction in the database" do
-        expect {
-          post :create, transaction: attributes_for(:transaction)
-        }.to_not change(Transaction, :count).by(1)
-      end
-
-      it "re-renders the :new template" do
-        post :create, transaction: attributes_for(:transaction)
-        response.should render_template :new
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    before :each do
-      transaction
-    end
-
-    it "locates the requested transaction" do
-      put :update, id: transaction, transaction: attributes_for(:transaction)
-      assigns(:transaction).should == transaction
-    end
-
-    context "valid attributes" do
-      it "changes @transaction's attributes" do
-        put :update, id: transaction, transaction: attributes_for(:transaction, summ: 20)
-        transaction.reload
-        transaction.summ.should == 20.0
-      end
-
-      it "redirects to transactions page" do
-        put :update, id: transaction, transaction: attributes_for(:transaction)
+        post :create, transaction: @attributes
         response.should redirect_to transactions_path
       end
     end
 
-    context "invalid attributes" do
-      it "does not change @transaction's attributes" do
-        put :update, id: transaction, transaction: attributes_for(:transaction, summ: 30, category_id: nil)
-        transaction.reload
-        transaction.summ.should_not == 30.0
+    context "with invalid attributes" do
+      before do
+        @attributes = {
+          summ: 0,
+          category_id: category.id,
+          user_id: user.id
+        }
       end
 
-      it "re-renders the edit method" do
-        put :update, id: transaction, transaction: attributes_for(:invalid_transaction)
-        response.should render_template :edit
+      it "does not save the new transaction in the database" do
+        expect {
+          post :create, transaction: @attributes
+        }.to_not change(Transaction, :count).by(1)
+      end
+
+      it "re-renders the :new template" do
+        post :create, transaction: @attributes
+        response.should render_template :new
       end
     end
   end

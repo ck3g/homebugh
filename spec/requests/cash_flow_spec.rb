@@ -41,25 +41,6 @@ describe "Cash Flows" do
     end
   end
 
-  describe "#edit" do
-    context "when wisit edit page" do
-      before do
-        cash_flow = create(:cash_flow, user: @user, from_account: @from_account, to_account: @to_account)
-        visit edit_cash_flow_path(cash_flow)
-        select "To Account", from: "cash_flow_from_account_id"
-        select "From Account", from: "cash_flow_to_account_id"
-        fill_in "cash_flow_amount", with: "25"
-        click_button "cash_flow_submit"
-      end
-
-      subject { page }
-      it { should have_content("Funds was successfully moved.") }
-      it { should have_content("To Account → From Account") }
-      it { should have_content("25.00") }
-      it { current_path.should == cash_flows_path }
-    end
-  end
-
   it "should destroy flow" do
     create_flow
 
@@ -72,20 +53,6 @@ describe "Cash Flows" do
 
   it "should raise validation on create" do
     visit new_cash_flow_path
-    select "From Account", :from => "cash_flow_from_account_id"
-    select "From Account", :from => "cash_flow_to_account_id"
-    fill_in "cash_flow_amount", :with => "0"
-
-    click_button "cash_flow_submit"
-    page.should have_content("You cannot move funds to same account")
-    page.should have_content("Cannot be less than 0.01")
-  end
-
-  it "should raise validation on update" do
-    create_flow
-    visit cash_flows_path
-    click_link "Edit"
-
     select "From Account", :from => "cash_flow_from_account_id"
     select "From Account", :from => "cash_flow_to_account_id"
     fill_in "cash_flow_amount", :with => "0"

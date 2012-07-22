@@ -42,22 +42,6 @@ describe "Transaction" do
     it { current_path.should == transactions_path }
   end
 
-  describe "edit transaction" do
-    before do
-      transaction
-      visit edit_transaction_path(transaction)
-      fill_in "transaction_summ", with: 1500
-      fill_in "transaction_comment", with: "Edited salary"
-      click_button "transaction_submit"
-    end
-
-    subject { page }
-    it { should have_content("Transaction was successfully updated.") }
-    it { should have_content("1,500.00") }
-    it { should have_content("Edited salary") }
-    it { current_path.should == transactions_path }
-  end
-
   describe "delete" do
     before do
       transaction

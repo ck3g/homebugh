@@ -1,5 +1,7 @@
 Homebugh::Application.routes.draw do
-  resources :transactions, :categories, :statistics, :accounts, :cash_flows
+  resources :transactions, :cash_flows, only: [:index, :new, :create, :destroy]
+  resources :categories, :accounts, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :statistics
 
   devise_for :users
 

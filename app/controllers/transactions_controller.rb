@@ -1,21 +1,15 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_transaction, only: [:show, :edit, :update, :destroy]
-  before_filter :find_categories, only: [:new, :edit, :create, :update]
-  before_filter :find_accounts, only: [:new, :edit, :create, :update]
+  before_filter :find_transaction, only: [:destroy]
+  before_filter :find_categories, only: [:new, :create]
+  before_filter :find_accounts, only: [:new, :create]
 
   def index
     @transactions = current_user.transactions.includes(:category, :account).order('created_at desc').limit(50)
   end
 
-  def show
-  end
-
   def new
     @transaction = current_user.transactions.new
-  end
-
-  def edit
   end
 
   def create
@@ -24,14 +18,6 @@ class TransactionsController < ApplicationController
       redirect_to transactions_path, notice: t('parts.transactions.successfully_created')
     else
       render "new"
-    end
-  end
-
-  def update
-    if @transaction.update_attributes(params[:transaction])
-      redirect_to transactions_path, notice: t('parts.transactions.successfully_updated')
-    else
-      render "edit"
     end
   end
 

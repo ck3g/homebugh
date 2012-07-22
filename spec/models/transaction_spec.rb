@@ -13,6 +13,18 @@ describe Transaction do
     create(:transaction).should be_valid
   end
 
+  it "have a invalid factory" do
+    build(:invalid_transaction).should_not be_valid
+  end
+
+  it "have a valid spending transaction factory" do
+    spending_transaction.should be_valid
+  end
+
+  it "have a valid income transaction factory" do
+    income_transaction.should be_valid
+  end
+
   describe ".association" do
     it { should belong_to :category }
     it { should belong_to :user }
@@ -75,122 +87,6 @@ describe Transaction do
         expect {
           income_transaction
         }.to change(Transaction, :count).by(1)
-      end
-    end
-  end
-
-  describe "#update" do
-    context "when transaction was spending" do
-      before do
-        spending_transaction
-      end
-
-      context "when summ changed" do
-        before do
-          spending_transaction.update_attributes({summ: 20})
-        end
-
-        it "changes account funds" do
-          account.reload
-          account.funds.should == 30
-        end
-
-        it "update summ" do
-          spending_transaction.reload.summ.should == 20
-        end
-      end
-
-      context "when account changed" do
-        before do
-          spending_transaction.update_attributes({account: bank_account})
-        end
-
-        it "changes the account" do
-          spending_transaction.account.should == bank_account
-        end
-
-        it "refund money back to previous account" do
-          account.reload.funds.should == 50
-        end
-
-        it "affect to current account" do
-          bank_account.reload.funds.should == 89
-        end
-      end
-
-      context "when category changed" do
-        before do
-          spending_transaction.update_attributes({category: income_category})
-        end
-
-        it "changes the category" do
-          spending_transaction.reload.category.should == income_category
-        end
-
-        it "become income transaction" do
-          spending_transaction.reload.income?.should be_true
-        end
-
-        it "affect on account" do
-          account.reload.funds.should == 61
-        end
-      end
-    end
-
-    context "when transaction was income" do
-      before do
-        income_transaction
-      end
-
-      context "when summ changed" do
-        before do
-          income_transaction.update_attributes({summ: 25})
-        end
-
-        it "changes account funds" do
-          account.reload
-          account.funds.should == 75
-        end
-
-        it "update summ" do
-          income_transaction.reload.summ.should == 25
-        end
-      end
-
-      context "when account changed" do
-        before do
-          income_transaction.update_attributes({account: bank_account})
-        end
-
-        it "changes the account" do
-          income_transaction.account.should == bank_account
-        end
-
-        it "refund money back to previous account" do
-          account.reload.funds.should == 50
-        end
-
-        it "affect to current account" do
-          bank_account.reload.funds.should == 112
-        end
-      end
-
-      context "when category changed" do
-        before do
-          income_transaction.update_attributes({category: category})
-        end
-
-        it "changes the category" do
-          income_transaction.reload.category.should == category
-        end
-
-        it "become spending transaction" do
-          income_transaction.reload.income?.should be_false
-        end
-
-        it "affect on account" do
-          account.reload.funds.should == 38
-        end
       end
     end
   end

@@ -1,12 +1,11 @@
 require "spec_helper"
 
 describe CashFlow do
-  before(:each) do
-    @user = create(:user)
-    @from_account = create(:from_account, user: @user)
-    @to_account = create(:to_account, user: @user)
-    @cash_flow = create(:cash_flow, user: @user, from_account: @from_account, to_account: @to_account)
-  end
+  let(:user) { create(:user) }
+  let(:from_account) { create(:from_account, user: user) }
+  let(:to_account) { create(:to_account, user: user) }
+  let(:account) { create(:account, user: user, funds: 150) }
+  let(:cash_flow) { create(:cash_flow, user: user, from_account: from_account, to_account: to_account) }
 
   it "should have valid factory" do
     create(:cash_flow).should be_valid
@@ -38,60 +37,44 @@ describe CashFlow do
     end
   end
 
-  describe "#move_funds" do
-    context "when move funds from one account to another" do
-      before do
-        @move_result = @cash_flow.move_funds
-      end
-
-      it "move_result should be true" do
-        @move_result.should be_true
-      end
-
-      it "to_account should have 55.0" do
-        @to_account.reload.funds.should eql 55.0
-      end
-
-      it "from_account should have 45.0" do
-        @from_account.reload.funds.should eql 45.0
-      end
-    end
-  end
-
-  it "should refund money back on extended destroy" do
-    @cash_flow.move_funds
-
-    @to_account.reload.funds.should eql 55.0
-    @from_account.reload.funds.should eql 45.0
-
-    destroy_result = CashFlow.last.extended_destroy
-
-    destroy_result.should eql true
-    @to_account.reload.funds.should eql 0.0
-    @from_account.reload.funds.should eql 100.0
-  end
-
-  it "should refund money back on extended update" do
-    @cash_flow.move_funds
-
-    @to_account.reload.funds.should eql 55.0
-    @from_account.reload.funds.should eql 45.0
-
-    params = { :from_account_id => @from_account.id, :to_account_id => @to_account.id, user_id: @user.id, :amount => 35 }
-    update_result = CashFlow.last.extended_update_attributes(params)
-
-    update_result.should eql true
-    @to_account.reload.funds.should eql 35.0
-    @from_account.reload.funds.should eql 65.0
-  end
-
   it "should not save if amount less than 0.01" do
     cash_flow = build(:cash_flow, amount: 0)
     cash_flow.should_not be_valid
   end
 
   it "should not move to same account" do
-    cash_flow = build(:cash_flow, from_account: @from_account, to_account: @from_account)
+    cash_flow = build(:cash_flow, from_account: from_account, to_account: from_account)
     cash_flow.should_not be_valid
+  end
+
+  describe "#create" do
+    before do
+      cash_flow
+    end
+
+    it "withdraw from from_account" do
+      from_account.reload.funds.should == 45
+    end
+
+    it "deposit to to_account" do
+      to_account.reload.funds.should == 55
+    end
+  end
+
+  describe "#destroy" do
+    before do
+      cash_flow
+      cash_flow.destroy
+    end
+
+    it "refund money back to from_account" do
+      from_account.reload
+      from_account.funds.should == 100
+    end
+
+    it "take money from to_account" do
+      to_account.reload
+      to_account.funds.should == 0
+    end
   end
 end

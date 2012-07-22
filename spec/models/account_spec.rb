@@ -45,9 +45,18 @@ describe Account do
   describe "change amount" do
     let(:account) { create(:account) }
 
+    it "have an empty account" do
+      account.funds.should == 0
+    end
+
     it "increased amount by 100" do
       account.deposit 100
       account.funds.should == 100.0
+    end
+
+    it "increased amount by 100 2" do
+      account.deposit 100
+      account.reload.funds.should == 100.0
     end
 
     it "decreased amount by 100" do
