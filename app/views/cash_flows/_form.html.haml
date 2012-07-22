@@ -1,18 +1,18 @@
-= form_for(@cash_flow) do |f|
-  - if @cash_flow.errors.any?
+= form_for(cash_flow) do |f|
+  - if cash_flow.errors.any?
     #error_explanation
       %h2
-        = t('activerecord.errors.template.header', count: @cash_flow.errors.count)
+        = t('activerecord.errors.template.header', count: cash_flow.errors.count)
         \:
       %ul
-        - @cash_flow.errors.full_messages.each do |msg|
+        - cash_flow.errors.full_messages.each do |msg|
           %li= msg
   .field
     = f.label :from_account_id
-    = f.collection_select :from_account_id, @accounts, :id, :name
+    = f.collection_select :from_account_id, accounts, :id, :name
   .field
     = f.label :to_account_id
-    = f.collection_select :to_account_id, @accounts, :id, :name
+    = f.collection_select :to_account_id, accounts, :id, :name
   .field
     = f.label :amount
     = f.text_field :amount

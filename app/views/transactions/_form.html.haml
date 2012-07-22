@@ -1,20 +1,20 @@
-= form_for(@transaction) do |f|
-  - if @transaction.errors.any?
+= form_for(transaction) do |f|
+  - if transaction.errors.any?
     #error_explanation
       %h2
-        = t( 'activerecord.errors.template.header', count: @transaction.errors.count )
+        = t( 'activerecord.errors.template.header', count: transaction.errors.count )
         \:
       %ul
-        - @transaction.errors.full_messages.each do |msg|
+        - transaction.errors.full_messages.each do |msg|
           %li= msg
-  - if @categories.present?
-    - if @accounts.present?
+  - if categories.present?
+    - if accounts.present?
       .field
         = f.label :account_id
-        = f.collection_select :account_id, @accounts, :id, :name
+        = f.collection_select :account_id, accounts, :id, :name
       .field
         = f.label :category_id
-        = f.collection_select :category_id, @categories, :id, :name
+        = f.collection_select :category_id, categories, :id, :name
       .field
         = f.label :summ
         = f.text_field :summ

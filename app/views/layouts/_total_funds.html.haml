@@ -1,9 +1,11 @@
 - if user_signed_in?
   #page_header
-  - @accounts = Account.where(user_id: current_user.id)
-  - unless @accounts.empty?
-    - @accounts.each do |account|
+    - current_user.accounts.each do |account|
       %div
-        = "#{account.name}: #{get_number_to_currency(get_account_funds(account.id))}"
+        = succeed ":" do
+          = account.name
+        = get_number_to_currency account.funds
     %div
-      = "#{t("common.total_funds")}: #{get_number_to_currency(get_total_funds)}"
+      = succeed ":" do
+        = t("common.total_funds")
+      = get_number_to_currency get_total_funds

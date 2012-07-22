@@ -5,15 +5,10 @@ module ApplicationHelper
     number_to_currency number, unit: 'лей', format: '%n %u'
   end
 
-  def get_account_funds(account_id, user_id = nil)
-    user_id ||= current_user.id
-    Account.where(:user_id => user_id).find(account_id).funds
-  end
-
   def get_total_funds
     total_funds = 0
     current_user.accounts.each do |account|
-      total_funds += get_account_funds(account.id).to_f
+      total_funds += account.funds
     end
 
     total_funds
@@ -61,10 +56,6 @@ module ApplicationHelper
   private
   def is_ru?
     I18n.locale == :ru
-  end
-
-  def is_en?
-    I18n.locale == :en
   end
 
   def get_total_by_type(type_id, account_id, user_id = nil)

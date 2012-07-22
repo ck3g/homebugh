@@ -6,14 +6,8 @@ class AccountsController < ApplicationController
     @accounts = current_user.accounts
   end
 
-  def show
-  end
-
   def new
-    @account = current_user.accounts.new
-  end
-
-  def edit
+    @account = Account.new
   end
 
   def create

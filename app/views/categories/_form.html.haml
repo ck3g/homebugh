@@ -1,11 +1,11 @@
-= form_for(@category) do |f|
-  - if @category.errors.any?
+= form_for(category) do |f|
+  - if category.errors.any?
     #error_explanation
       %h2
-        = t( 'activerecord.errors.template.header', count: @category.errors.count )
+        = t( 'activerecord.errors.template.header', count: category.errors.count )
         \:
       %ul
-        - @category.errors.full_messages.each do |msg|
+        - category.errors.full_messages.each do |msg|
           %li= msg
   .field
     = f.label :name
@@ -14,7 +14,7 @@
     = f.label :category_type_id
     %select#category_type_id{name: "category[category_type_id]"}
       - CategoryType.all.each do |type|
-        <option value="#{type.id}" #{' selected="selected"' if @category.category_type_id == type.id}
+        <option value="#{type.id}" #{' selected="selected"' if category.category_type_id == type.id}
         >#{I18n.translate( 'parts.categories.' + type.name )}
   .field
     = f.check_box :inactive, class: :inline
