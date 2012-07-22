@@ -18,8 +18,8 @@
       %tr
         %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
         %td
-          = cash_flow.from_account.name
-          → #{cash_flow.to_account.name}
+          = cash_flow.from_account_name
+          → #{cash_flow.to_account_name}
         %td.span2.number= get_number_to_currency(cash_flow.amount)
         %td.span2.actions
           = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini" do

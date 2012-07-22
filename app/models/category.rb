@@ -8,6 +8,8 @@ class Category < ActiveRecord::Base
   validates :name, :category_type_id, :user_id, presence: true
   validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
 
+  delegate :name, to: :category_type, prefix: true
+
   scope :active, -> { where(inactive: false) }
 
   def income?

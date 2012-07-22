@@ -14,7 +14,7 @@
     %tbody
       - @categories.each do |category|
         %tr{class: category_type(category)}
-          %td.span3= I18n.translate('parts.categories.' + category.category_type.name)
+          %td.span3= I18n.translate('parts.categories.' + category.category_type_name)
           %td= category.name
           %td.span2
             = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-mini" do

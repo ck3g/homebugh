@@ -13,19 +13,8 @@ class Account < ActiveRecord::Base
     update_attribute :funds, funds + amount
   end
 
-  def deposit!(funds)
-    deposit(funds)
-    # self.save!
-  end
-
   def withdrawal(amount)
     amount ||= 0.0
     update_attribute :funds, funds - amount
   end
-
-  def withdrawal!(funds)
-    withdrawal(funds)
-    # self.save!
-  end
-
 end

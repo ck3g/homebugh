@@ -10,6 +10,9 @@ class CashFlow < ActiveRecord::Base
   validate :cannot_be_less_than_0_01, unless: 'amount.nil?'
   validate :accounts_cannot_be_equal
 
+  delegate :name, to: :from_account, prefix: true
+  delegate :name, to: :to_account, prefix: true
+
   after_create :affect_on_accounts_after_create
   before_destroy :affect_on_accounts_before_destroy
 
