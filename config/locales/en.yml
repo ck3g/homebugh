@@ -16,7 +16,7 @@ en:
         name: "Name"
         category_type_id: "Type"
         inactive: "Inactive"
-      transaction: 
+      transaction:
         summ: "Sum"
         category_id: "Category"
         account_id: "Account"
@@ -28,18 +28,18 @@ en:
       account:
         name: "Name"
         funds: "Funds"
-        
+
     errors:
       template:
         header:
           one:    "1 error prohibited from being saved"
           other:  "%{count} errors prohibited from being saved"
-          
+
         body: "There were problems with the following fields:"
-      messages: 
+      messages:
         blank: "cannot be blank"
         not_a_number: "is not a number"
-        
+
   main_menu:
     transactions: "Transactions"
     categories: "Categories"
@@ -53,6 +53,7 @@ en:
   common:
     edit: "Edit"
     destroy: "Destroy"
+    rollback: "Rollback"
     back: "Back"
     show: "Show"
     are_you_sure: "Are you sure?"
@@ -121,7 +122,7 @@ en:
 
       header:
         sign_up: "Sign up"
-        sign_in: "Sign in"    
+        sign_in: "Sign in"
       notices:
         signed_up: "Signed up successfully."
         signed_in: "Signed in"
@@ -130,5 +131,5 @@ en:
     session:
       email: "email"
       password: "Password"
-        
+
 

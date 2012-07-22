@@ -26,7 +26,7 @@
           %td.span2.number= get_number_to_currency(transaction.category.category_type_id == 1 ? transaction.summ : -transaction.summ)
           %td.span2= transaction.account.try(:name)
           %td.span2.actions
-            = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy') do
-              = image_tag 'icons/delete.png', alt: t('common.destroy')
+            = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini" do
+              %i.icon-share-alt.icon-white
 - else
   %p.empty-data= t( 'parts.transactions.you_have_no_transactions' )

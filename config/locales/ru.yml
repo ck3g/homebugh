@@ -36,13 +36,13 @@ ru:
       transaction: "Транзакцию"
       category: "Категорию"
       account: "Счет"
-      
+
     attributes:
       category:
         name: "Название"
         category_type_id: "Тип"
         inactive: "Неактивна"
-      transaction: 
+      transaction:
         summ: "Сумма"
         category_id: "Категория"
         account_id: "Счет"
@@ -54,7 +54,7 @@ ru:
       account:
         name: "Название"
         funds: "Доступные средства"
-        
+
     errors:
       template:
         header:
@@ -62,17 +62,17 @@ ru:
           other: "Cохранение не удалось из-за %{count} ошибок"
 
         body: "Проблемы возникли со следующими полями:"
-      messages: 
+      messages:
         blank: "не может быть пустым"
         not_a_number: "должна быть числом"
-        
+
       models:
         transaction:
           attributes:
             summ:
               not_a_number: "должна быть числом"
               blank: "не может быть пустой"
-              
+
   main_menu:
     transactions: "Транзакции"
     categories: "Категории"
@@ -88,6 +88,7 @@ ru:
   common:
     edit: "Ред."
     destroy: "Удал."
+    rollback: "Возврат"
     back: "Назад"
     show: "Просмотр"
     are_you_sure: "Вы уверены?"
@@ -155,16 +156,16 @@ ru:
       sign_in: "Вход"
       sign_up: "Регистрация"
       signed_in_as: "Вы вошли как"
-      
+
       header:
         sign_up: "Регистрация"
-        sign_in: "Вход"    
+        sign_in: "Вход"
       notice:
         signed_up: "Регистрация прошла успешно."
         signed_in: "Вы вошли"
         signed_out: "Вы вышли"
         invalid_email_or_password: "Неверные email или пароль"
-      
+
     session:
       email: "email"
       password: "Пароль"

@@ -42,11 +42,11 @@ describe "Transaction" do
     it { current_path.should == transactions_path }
   end
 
-  describe "delete" do
+  describe "delete (rollback)" do
     before do
       transaction
       visit transactions_path
-      click_link "Destroy"
+      click_link "Rollback"
     end
 
     subject { page }

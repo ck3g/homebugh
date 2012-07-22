@@ -41,12 +41,12 @@ describe "Cash Flows" do
     end
   end
 
-  it "should destroy flow" do
+  it "should destroy(rollback) flow" do
     create_flow
 
     page.should have_content("From Account → To Account")
     page.should have_content("15.00")
-    click_link "Destroy"
+    click_link "Rollback"
     page.should_not have_content("From Account → To Account")
     page.should_not have_content("15.00")
   end
