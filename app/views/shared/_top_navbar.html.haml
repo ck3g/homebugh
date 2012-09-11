@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
       = link_to "HomeBugh", root_path, class: "brand"
-      .nav-collapse
+      .container.nav-collapse
         - if user_signed_in?
           %ul.nav
             %li{class: ("active" if current_page?(transactions_path))}= link_to t("main_menu.transactions"), transactions_path

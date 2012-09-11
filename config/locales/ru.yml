@@ -65,6 +65,7 @@ ru:
       messages:
         blank: "не может быть пустым"
         not_a_number: "должна быть числом"
+        valid_email: Должен быть валидный email адрес
 
       models:
         transaction:
