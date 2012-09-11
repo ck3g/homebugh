@@ -48,6 +48,7 @@ group :test do
   gem "database_cleaner"
   gem "shoulda"
   gem "email_spec"
+  gem "simplecov", require: false
 
   gem 'rb-fsevent', '>= 0.4.3', :require => false
   gem 'growl',      '~> 1.0.3', :require => false
