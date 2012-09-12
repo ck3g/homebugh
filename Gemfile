@@ -30,6 +30,7 @@ group :development do
   gem 'capistrano_colors', :require => false
   gem "erb2haml"
   gem "rails_best_practices"
+  gem "pry-rails"
 end
 
 group :development, :test do
