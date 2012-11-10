@@ -3,6 +3,7 @@ class TransactionsController < ApplicationController
   before_filter :find_transaction, only: [:destroy]
   before_filter :find_categories, only: [:new, :create]
   before_filter :find_accounts, only: [:new, :create]
+  after_filter :expire_statistics_cache, only: [:create, :destroy]
 
   def index
     @transactions = current_user.transactions.includes(:category, :account).order('created_at desc').limit(50)
