@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Transaction" do
   let(:user) { create(:user) }
   let(:account) { create(:account, user: user, name: "Cash") }
-  let(:category) { create(:income_category, user: user) }
+  let(:category) { create(:income_category, user: user, name: "Salary") }
   let(:transaction) { create(:transaction, user: user, category: category, summ: 100, comment: "My first salary") }
 
   before(:each) do

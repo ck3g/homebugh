@@ -1,7 +1,7 @@
 
 FactoryGirl.define do
   factory :category do
-    name "Food"
+    sequence(:name) { |n| "category ##{n}" }
     category_type_id CategoryType.spending
     association :user
 
@@ -10,12 +10,12 @@ FactoryGirl.define do
     end
 
     factory :spending_category do
-      name "Category"
+      sequence(:name) { |n| "spending ##{n}" }
       category_type_id CategoryType.spending
     end
 
     factory :income_category do
-      name "Salary"
+      sequence(:name) { |n| "income ##{n}" }
       category_type_id CategoryType.income
     end
   end
