@@ -1,7 +1,7 @@
-%h1= t( 'parts.accounts.accounts_list' )
+%h1= t('parts.accounts.accounts_list')
 .spacer
 
-= link_to t( 'parts.accounts.new_account' ), new_account_path, class: 'btn'
+= link_to t('parts.accounts.new_account'), new_account_path, class: 'btn btn-success'
 .spacer
 
 - if @accounts.present?
@@ -28,4 +28,4 @@
                 %i.icon-retweet
 - else
   %p.empty-data
-    = t( 'parts.accounts.you_have_no_accounts' )
+    = t('parts.accounts.you_have_no_accounts')

@@ -147,6 +147,7 @@ ru:
       amount: "Сумма"
       from: "С"
       to: "На"
+      from_to: "C → На"
       accounts_cannot_be_equal: "Вы не можете переводить средства на тот же счет"
     statistics:
       stats_by_months: "Статистика по месяцам"
@@ -171,5 +172,6 @@ ru:
       email: "email"
       password: "Пароль"
 
+  arrow: "→"
 
 

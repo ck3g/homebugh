@@ -1,7 +1,7 @@
 %h1= t('parts.transactions.transactions_list')
 
 .spacer
-= link_to t( 'parts.transactions.new_transaction' ), new_transaction_path, class: 'btn'
+= link_to t('parts.transactions.new_transaction'), new_transaction_path, class: 'btn btn-success'
 
 .spacer
 - if @transactions.present?
@@ -10,8 +10,7 @@
       %tr
         %th.span2= t('common.date')
         %th
-          = t('common.category')
-          \/#{t('parts.transactions.comment')}
+          = "#{t('common.category')} / #{t('parts.transactions.comment')}"
         %th.span2= t('parts.transactions.sum')
         %th.span2= t('common.account')
         %th.span2

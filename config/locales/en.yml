@@ -109,6 +109,7 @@ en:
       amount: "Amount"
       from: "From"
       to: "To"
+      from_to: "From → To"
       accounts_cannot_be_equal: "You cannot move funds to same account"
     statistics:
       stats_by_months: "Statistics by months"
@@ -132,4 +133,5 @@ en:
       email: "email"
       password: "Password"
 
+  arrow: "→"
 

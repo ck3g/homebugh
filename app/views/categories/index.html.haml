@@ -1,7 +1,7 @@
-%h1= t( 'parts.categories.categories_list' )
+%h1= t('parts.categories.categories_list')
 .spacer
 
-= link_to t( 'parts.categories.new_category' ), new_category_path, class: 'btn'
+= link_to t('parts.categories.new_category'), new_category_path, class: 'btn btn-success'
 .spacer
 
 - if @categories.present?
@@ -14,7 +14,7 @@
     %tbody
       - @categories.each do |category|
         %tr{class: category_type(category)}
-          %td.span3= I18n.translate('parts.categories.' + category.category_type_name)
+          %td.span3= t("parts.categories.#{category.category_type_name}")
           %td= category.name
           %td.span2
             = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-mini" do
@@ -23,4 +23,4 @@
               %i.icon-trash.icon-white
 - else
   %p.empty-data
-    = t( 'parts.categories.you_have_no_categories' )
+    = t('parts.categories.you_have_no_categories')

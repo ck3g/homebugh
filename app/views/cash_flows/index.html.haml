@@ -1,7 +1,7 @@
-%h1= t( 'parts.cash_flows.flows_list' )
+%h1= t('parts.cash_flows.flows_list')
 .spacer
 
-= link_to t( 'parts.cash_flows.new_cash_flows' ), new_cash_flow_path, class: 'btn'
+= link_to t('parts.cash_flows.new_cash_flows'), new_cash_flow_path, class: 'btn btn-success'
 .spacer
 
 %table.table
@@ -9,8 +9,7 @@
     %tr
       %th.span2= t('common.date')
       %th
-        = t('parts.cash_flows.from')
-        → #{t('parts.cash_flows.to')}
+        = t('parts.cash_flows.from_to')
       %th.span2.number= t('parts.cash_flows.amount')
       %th.span2.actions
   %tbody
@@ -19,7 +18,8 @@
         %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
         %td
           = cash_flow.from_account_name
-          → #{cash_flow.to_account_name}
+          = t(:arrow)
+          = cash_flow.to_account_name
         %td.span2.number= get_number_to_currency(cash_flow.amount)
         %td.span2.actions
           = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini" do
