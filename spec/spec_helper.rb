@@ -22,6 +22,8 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   Dir[Rails.root.join("spec/shared_behaviors/**/*.rb")].each {|f| require f}
 
+  I18n.locale = :en
+
   RSpec.configure do |config|
     # == Mock Framework
     #

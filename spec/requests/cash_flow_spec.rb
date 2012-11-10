@@ -8,8 +8,8 @@ describe "Cash Flows" do
     @user = create(:user)
     login @user
 
-    @from_account = create(:from_account, user: @user)
-    @to_account = create(:to_account, user: @user)
+    @from_account = create(:from_account, user: @user, name: "From Account")
+    @to_account = create(:to_account, user: @user, name: "To Account")
   end
 
   describe "cash_flows_path" do

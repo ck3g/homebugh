@@ -1,16 +1,16 @@
 
 FactoryGirl.define do
   factory :account do
-    name "Account"
+    sequence(:name) { |n| "Account ##{n}" }
     association :user
 
     factory :from_account do
-      name "From Account"
+      sequence(:name) { |n| "From Account ##{n}" }
       funds 100
     end
 
     factory :to_account do
-      name "To Account"
+      sequence(:name) { |n| "To Account ##{n}" }
     end
 
     factory :invalid_account do
