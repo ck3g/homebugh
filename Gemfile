@@ -31,6 +31,7 @@ group :development do
   gem "erb2haml"
   gem "rails_best_practices"
   gem "pry-rails"
+  gem "thin"
 end
 
 group :development, :test do
