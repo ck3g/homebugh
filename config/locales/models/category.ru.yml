@@ -1,0 +1,9 @@
+
+ru:
+  activerecord:
+    attributes:
+      category:
+        name: Название
+        category_type: Тип
+        inactive: Неактивна
+

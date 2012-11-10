@@ -1,0 +1,10 @@
+
+en:
+  activerecord:
+    attributes:
+      transaction:
+        account: Account
+        category: Category
+        summ: Amount
+        comment: Comment
+

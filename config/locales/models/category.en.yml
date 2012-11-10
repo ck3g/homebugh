@@ -1,0 +1,8 @@
+
+en:
+  activerecord:
+    attributes:
+      category:
+        name: Name
+        category_type: Category's type
+        inactive: Inactive

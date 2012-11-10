@@ -14,6 +14,7 @@ gem "psych", "~> 1.3.3"
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :git => 'git://github.com/anjlab/bootstrap-rails.git'
+gem "simple_form", "~> 2.0.4"
 
 group :assets do
   gem "sass-rails", "~> 3.2.5"

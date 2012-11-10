@@ -56,17 +56,4 @@ describe "Transaction" do
     it { current_path.should == transactions_path }
   end
 
-  it "should raise validation on create" do
-    visit new_transaction_path
-    click_button "transaction_submit"
-    page.should have_content("Sum Cannot be less than 0.01")
-  end
-
-  it "should raise validation on update" do
-    visit new_transaction_path
-    fill_in "transaction_summ", with: 0
-    click_button "transaction_submit"
-    page.should have_content("Sum Cannot be less than 0.01")
-  end
-
 end

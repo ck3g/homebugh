@@ -1,32 +1,8 @@
-= form_for(transaction) do |f|
-  - if transaction.errors.any?
-    #error_explanation
-      %h2
-        = t( 'activerecord.errors.template.header', count: transaction.errors.count )
-        \:
-      %ul
-        - transaction.errors.full_messages.each do |msg|
-          %li= msg
-  - if categories.present?
-    - if accounts.present?
-      .field
-        = f.label :account_id
-        = f.collection_select :account_id, accounts, :id, :name
-      .field
-        = f.label :category_id
-        = f.collection_select :category_id, categories, :id, :name
-      .field
-        = f.label :summ
-        = f.text_field :summ
-      .field
-        = f.label :comment
-        = f.text_area :comment, rows: 3
-      .form-actions
-        = f.submit nil, class: "btn btn-primary", id: :transaction_submit
-        = link_to t( 'common.back' ), transactions_path, class: "btn"
-    - else
-      = t( 'parts.accounts.you_have_no_accounts' )
-      = link_to t( 'parts.accounts.add_account' ), new_account_path, class: "btn"
-  - else
-    = t('parts.categories.you_have_no_categories')
-    = link_to t( 'parts.categories.add_category' ), new_category_path, class: "btn"
+= simple_form_for transaction, html: { class: "form-horizontal" } do |f|
+  = f.association :account, collection: current_user.accounts
+  = f.association :category, collection: current_user.categories.active
+  = f.input :summ
+  = f.input :comment, input_html: { rows: 3, class: "input-xxlarge" }
+  .form-actions
+    = f.button :submit, class: "btn btn-primary", id: :transaction_submit
+    = link_to t("common.back"), transactions_path, class: "btn"

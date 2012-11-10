@@ -1,0 +1,7 @@
+
+en:
+  activerecord:
+    attributes:
+      category_type:
+        income: Income
+        spending: Spending

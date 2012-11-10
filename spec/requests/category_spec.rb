@@ -49,7 +49,7 @@ describe "Categories" do
       create_and_move_to_edit_category
 
       fill_in "category_name", :with => "New category name"
-      select "Income", :from => "category_type_id"
+      select "Income", :from => "category_category_type_id"
       click_button "category_submit"
 
       page.should have_content("Category was successfully updated.")
@@ -71,7 +71,7 @@ describe "Categories" do
     def create_category
       visit new_category_path
       fill_in "category_name", :with => "Food"
-      select "Spending", :from => "category_type_id"
+      select "Spending", :from => "category_category_type_id"
       click_button "category_submit"
     end
 

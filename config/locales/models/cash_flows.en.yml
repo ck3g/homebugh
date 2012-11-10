@@ -1,0 +1,8 @@
+
+en:
+  activerecord:
+    attributes:
+      cash_flow:
+        from_account: From account
+        to_account: To account
+        amount: Amount

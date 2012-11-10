@@ -1,0 +1,8 @@
+
+ru:
+  activerecord:
+    attributes:
+      cash_flow:
+        from_account: Со счета
+        to_account: На счет
+        amount: Сумма

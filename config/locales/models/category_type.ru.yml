@@ -1,0 +1,7 @@
+
+ru:
+  activerecord:
+    attributes:
+      category_type:
+        income: "Приход"
+        spending: "Расход"
