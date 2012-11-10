@@ -1,102 +1,103 @@
 require "spec_helper"
 
 describe TransactionsController do
-  login_user
+  describe "user signed in" do
+    login_user
 
-  let(:user) { subject.current_user }
-  let(:account) { create(:account, user: user) }
-  let(:category) { create(:category, user: user) }
-  let(:transaction) { create(:transaction, user: user, account: account, category: category) }
+    let(:user) { subject.current_user }
+    let(:account) { create(:account, user: user) }
+    let(:category) { create(:category, user: user) }
+    let!(:transaction) { create(:transaction, user: user, account: account, category: category) }
 
-  it "have a current_user" do
-    user.should_not be_nil
-  end
+    it_behaves_like "user is signed in"
 
-  it "user equals to current_user" do
-    user.should == subject.current_user
-  end
-
-  describe "GET #index" do
-    before { get :index }
-
-    it "populates an array of transactions" do
-      assigns(:transactions).should == [transaction]
+    describe "GET #index" do
+      before { get :index }
+      it { should assign_to(:transactions).with [transaction] }
+      it { should render_template :index }
     end
 
-    it "renders the :index view" do
-      response.should render_template :index
-    end
-  end
-
-  describe "GET #new" do
-    before { get :new }
-
-    it "assigns a new transaction to @transaction" do
-      assigns(:transaction).should be_a_new(Transaction)
+    describe "GET #new" do
+      before { get :new }
+      it { should assign_to(:transaction).with_kind_of Transaction }
+      it { should render_template :new }
     end
 
-    it "renders the :new template" do
-      response.should render_template :new
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid attributes" do
-      before do
-        @attributes = {
-          summ: 12,
-          account_id: account.id,
-          category_id: category.id,
-          user_id: user.id
-        }
-      end
-
-      it "saves the new transaction in the database" do
-        expect {
+    describe "POST #create" do
+      context "with valid attributes" do
+        before do
+          @attributes = {
+            summ: 12,
+            account_id: account.id,
+            category_id: category.id,
+            user_id: user.id
+          }
           post :create, transaction: @attributes
-        }.to change(Transaction, :count).by(1)
+        end
+
+        it { should redirect_to transactions_path }
+
+        it "saves the new transaction in the database" do
+          expect {
+            post :create, transaction: @attributes
+          }.to change(Transaction, :count).by(1)
+        end
       end
 
-      it "redirects to the transactions page" do
-        post :create, transaction: @attributes
-        response.should redirect_to transactions_path
+      context "with invalid attributes" do
+        before do
+          @attributes = {
+            summ: 0,
+            category_id: category.id,
+            user_id: user.id
+          }
+          post :create, transaction: @attributes
+        end
+
+        it { should render_template :new }
+
+        it "does not save the new transaction in the database" do
+          expect {
+            post :create, transaction: @attributes
+          }.to_not change(Transaction, :count).by(1)
+        end
       end
     end
 
-    context "with invalid attributes" do
-      before do
-        @attributes = {
-          summ: 0,
-          category_id: category.id,
-          user_id: user.id
-        }
-      end
+    describe "DELETE #destroy" do
+    let!(:transaction2) { create(:transaction, user: user, account: account, category: category) }
+      before { delete :destroy, id: transaction }
+      it { should redirect_to transactions_path }
 
-      it "does not save the new transaction in the database" do
+      it "deletes the transaction" do
         expect {
-          post :create, transaction: @attributes
-        }.to_not change(Transaction, :count).by(1)
-      end
-
-      it "re-renders the :new template" do
-        post :create, transaction: @attributes
-        response.should render_template :new
+          delete :destroy, id: transaction2
+        }.to change(Transaction, :count).by(-1)
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    before { transaction }
+  describe "user not signed in" do
+    let(:transaction) { create :transaction }
 
-    it "deletes the transaction" do
-      expect {
-        delete :destroy, id: transaction
-      }.to change(Transaction, :count).by(-1)
+    describe "GET #index" do
+      before { get :index }
+      it_behaves_like "has no rights"
     end
 
-    it "redirects to transactions page" do
-      delete :destroy, id: transaction
-      response.should redirect_to transactions_path
+    describe "GET #new" do
+      before { get :index }
+      it_behaves_like "has no rights"
+    end
+
+    describe "POST #create" do
+      before { post :create, transaction: attributes_for(:transaction) }
+      it_behaves_like "has no rights"
+    end
+
+    describe "DELETE #destroy" do
+      before { delete :destroy, id: transaction }
+      it_behaves_like "has no rights"
     end
   end
 end
