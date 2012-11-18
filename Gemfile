@@ -2,18 +2,13 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.9'
 
-gem 'mysql2'
-gem 'devise'
-gem "bcrypt-ruby", :require => "bcrypt"
-gem "devise-encryptable"
-
-gem 'haml'
-gem 'has_scope'
+gem 'mysql2', "~> 0.3.11"
+gem 'devise', "~> 2.1.2"
+gem "devise-encryptable", "~> 0.1.1"
+gem 'haml', "~> 3.1.7"
+gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 1.3.4"
-
-
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-                              :git => 'git://github.com/anjlab/bootstrap-rails.git'
+gem 'anjlab-bootstrap-rails', "> 2.2", require: 'bootstrap-rails'
 gem "simple_form", "~> 2.0.4"
 
 group :assets do
@@ -26,9 +21,9 @@ end
 gem 'jquery-rails'
 
 group :development do
-  gem "capistrano", :require => false
-  gem 'capistrano-recipes', :require => false
-  gem 'capistrano_colors', :require => false
+  gem "capistrano", require: false
+  gem 'capistrano-recipes', require: false
+  gem 'capistrano_colors', require: false
   gem "erb2haml"
   gem "rails_best_practices"
   gem "pry-rails"
@@ -53,10 +48,10 @@ group :test do
   gem "email_spec"
   gem "simplecov", require: false
 
-  gem 'rb-fsevent', '>= 0.4.3', :require => false
-  gem 'growl',      '~> 1.0.3', :require => false
-  gem 'rb-inotify', '>= 0.8.6', :require => false
-  gem 'libnotify',  '~> 0.5.7', :require => false
+  gem 'rb-fsevent', '>= 0.4.3', require: false
+  gem 'growl',      '~> 1.0.3', require: false
+  gem 'rb-inotify', '>= 0.8.6', require: false
+  gem 'libnotify',  '~> 0.5.7', require: false
 end
 
 group :production do
