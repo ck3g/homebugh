@@ -11,6 +11,7 @@ gem "psych", "~> 1.3.4"
 gem 'anjlab-bootstrap-rails', "> 2.2", require: 'bootstrap-rails'
 gem "simple_form", "~> 2.0.4"
 gem "kaminari", "~> 0.14.1"
+gem "meta-tags", "~> 1.2.6", require: "meta_tags"
 
 group :assets do
   gem "sass-rails", "~> 3.2.5"

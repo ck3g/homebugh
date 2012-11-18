@@ -134,4 +134,7 @@ en:
       password: "Password"
 
   arrow: "→"
+  sign_in: Sign in
+  sign_up: Sign up
+  reset_passoword: Reset password
 

@@ -173,5 +173,8 @@ ru:
       password: "Пароль"
 
   arrow: "→"
+  sign_in: Вход
+  sign_up: Регистрация
+  reset_password: Сброс пароля
 
 
