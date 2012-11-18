@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_filter :find_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = current_user.categories.includes(:category_type)
+    @categories = current_user.categories.includes(:category_type).page(params[:page])
   end
 
   def show

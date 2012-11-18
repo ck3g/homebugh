@@ -10,6 +10,7 @@ gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 1.3.4"
 gem 'anjlab-bootstrap-rails', "> 2.2", require: 'bootstrap-rails'
 gem "simple_form", "~> 2.0.4"
+gem "kaminari", "~> 0.14.1"
 
 group :assets do
   gem "sass-rails", "~> 3.2.5"

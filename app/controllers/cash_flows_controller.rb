@@ -4,7 +4,7 @@ class CashFlowsController < ApplicationController
   before_filter :find_accounts, only: [:new, :create, :destroy]
 
   def index
-    @cash_flows = current_user.cash_flows.includes(:from_account, :to_account).order('created_at desc').limit(50)
+    @cash_flows = current_user.cash_flows.includes(:from_account, :to_account).order('created_at desc').page(params[:page])
   end
 
   def new

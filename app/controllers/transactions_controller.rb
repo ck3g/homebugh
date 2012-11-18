@@ -6,7 +6,7 @@ class TransactionsController < ApplicationController
   after_filter :expire_statistics_cache, only: [:create, :destroy]
 
   def index
-    @transactions = current_user.transactions.includes(:category, :account).order('created_at desc').limit(50)
+    @transactions = current_user.transactions.includes(:category, :account).order('created_at desc').page(params[:page])
   end
 
   def new
