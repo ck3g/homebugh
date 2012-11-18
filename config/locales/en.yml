@@ -137,4 +137,11 @@ en:
   sign_in: Sign in
   sign_up: Sign up
   reset_passoword: Reset password
+  do_sign_in: Sign in
+  do_sign_up: Sign up
+  email: Email
+  password: Password
+  password_confirmation: Password confirmation
+  forgot_your_password: Forgot your password?
+  send_me_reset_password_instructions: Send me reset password instructions
 

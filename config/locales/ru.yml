@@ -176,5 +176,10 @@ ru:
   sign_in: Вход
   sign_up: Регистрация
   reset_password: Сброс пароля
-
-
+  do_sign_in: Войти
+  do_sign_up: Зарегистрироваться
+  email: Email
+  password: Пароль
+  password_confirmation: Подтверждение
+  forgot_your_password: Забыли пароль?
+  send_me_reset_password_instructions: Отправить мне инструкции по сбросу пароля

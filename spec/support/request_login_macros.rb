@@ -4,7 +4,7 @@ module RequestLoginMacros
     visit new_user_session_path
     fill_in "user_email", with: email
     fill_in "user_password", with: password
-    click_button "user_submit"
+    click_button I18n.t(:do_sign_in)
   end
 
   def sign_up_user(email, password, password_confirmation = nil)
@@ -13,6 +13,6 @@ module RequestLoginMacros
     fill_in 'user_email', with: email
     fill_in 'user_password', with: password
     fill_in 'user_password_confirmation', with: password_confirmation
-    click_button 'user_submit'
+    click_button I18n.t(:do_sign_up)
   end
 end

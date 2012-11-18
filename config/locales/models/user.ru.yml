@@ -1,0 +1,6 @@
+
+ru:
+  activerecord:
+    attributes:
+      user:
+        remember_me: Запомнить меня
