@@ -1,0 +1,4 @@
+$("#statistics").append('<%= j render("statistics", statistics: @statistics) %>');
+$(".pagination").replaceWith('<%= j paginate @statistics %>');
+$(".pagination").hide();
+$(".preloader").hide();
