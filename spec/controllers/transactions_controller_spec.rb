@@ -21,6 +21,22 @@ describe TransactionsController do
       before { get :new }
       it { should assign_to(:transaction).with_kind_of Transaction }
       it { should render_template :new }
+
+      context "when account_id and category_id in session" do
+        before do
+          session[:account_id] = account.id
+          session[:category_id] = category.id
+          get :new
+        end
+
+        it "assigns correct category" do
+          assigns[:transaction].category_id.should == category.id
+        end
+
+        it "assigns correct account" do
+          assigns[:transaction].account_id.should == account.id
+        end
+      end
     end
 
     describe "POST #create" do
@@ -36,6 +52,13 @@ describe TransactionsController do
         end
 
         it { should redirect_to transactions_path }
+        it "sets the session[:account_id]" do
+          session[:account_id].should == account.id
+        end
+
+        it "sets the session[:category_id]" do
+          session[:category_id].should == category.id
+        end
 
         it "saves the new transaction in the database" do
           expect {

@@ -8,13 +8,15 @@ class CashFlowsController < ApplicationController
   end
 
   def new
-    @cash_flow = current_user.cash_flows.new
+    @cash_flow = current_user.cash_flows.new from_account_id: session[:from_account_id], to_account_id: session[:to_account_id]
   end
 
   def create
     @cash_flow = current_user.cash_flows.new(params[:cash_flow])
 
     if @cash_flow.save
+      session[:from_account_id] = @cash_flow.from_account_id
+      session[:to_account_id] = @cash_flow.to_account_id
       redirect_to cash_flows_path, notice: t('parts.cash_flows.successfully_updated')
     else
       render "new"

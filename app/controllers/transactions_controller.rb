@@ -10,12 +10,14 @@ class TransactionsController < ApplicationController
   end
 
   def new
-    @transaction = current_user.transactions.new
+    @transaction = current_user.transactions.new account_id: session[:account_id], category_id: session[:category_id]
   end
 
   def create
     @transaction = current_user.transactions.new(params[:transaction])
     if @transaction.save
+      session[:account_id] = @transaction.account_id
+      session[:category_id] = @transaction.category_id
       redirect_to transactions_path, notice: t('parts.transactions.successfully_created')
     else
       render "new"
