@@ -9,7 +9,7 @@ gem "devise-encryptable"
 
 gem 'haml'
 gem 'has_scope'
-gem "psych", "~> 1.3.3"
+gem "psych", "1.3.3"
 
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
