@@ -1,6 +1,6 @@
 /*
 *= require_self
-*= require bootstrap
-*= require responsive
+*= require twitter/bootstrap
+*= require twitter/bootstrap-responsive
 *= require_tree .
 */

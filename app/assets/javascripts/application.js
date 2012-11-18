@@ -2,12 +2,6 @@
 // This file is automatically included by javascript_include_tag :defaults
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require twitter/bootstrap
 //= require_self
 //= require_tree .
-
-// $(function() {
-//   $("#notify-container").click(function() {
-//     $(this).fadeOut("slow");
-//   });
-// });
