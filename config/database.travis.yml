@@ -1,0 +1,10 @@
+common: &common
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password:
+
+test: &test
+  <<: *common
+  database: homebugh_test
+
