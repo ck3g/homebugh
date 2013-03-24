@@ -16,6 +16,8 @@ class Transaction < ActiveRecord::Base
   after_create :affect_on_account_after_create
   before_destroy :affect_on_account_before_destroy
 
+  scope :category, ->(category_id) { where(category_id: category_id) }
+
   def income?
     category_type_id == CategoryType.income
   end

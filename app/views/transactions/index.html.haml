@@ -20,7 +20,7 @@
           %td.span2
             = I18n.l(transaction.created_at.to_date, format: :long)
           %td
-            .category= transaction.category ? transaction.category_name : t('parts.transactions.no_category')
+            .category= link_to category_name(transaction), transactions_path(category: transaction.category_id)
             .comment= transaction.comment
           %td.span2.number= get_number_to_currency(transaction.income? ? transaction.summ : -transaction.summ)
           %td.span2= transaction.account_name

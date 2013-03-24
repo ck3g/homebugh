@@ -5,8 +5,10 @@ class TransactionsController < ApplicationController
   before_filter :find_accounts, only: [:new, :create]
   after_filter :expire_statistics_cache, only: [:create, :destroy]
 
+  has_scope :category
+
   def index
-    @transactions = current_user.transactions.includes(:category, :account).order('created_at desc').page(params[:page])
+    @transactions = apply_scopes(current_user.transactions.includes(:category, :account)).order('created_at desc').page(params[:page])
   end
 
   def new

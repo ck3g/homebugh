@@ -139,4 +139,16 @@ describe Transaction do
     build(:transaction, summ: 0).should_not be_valid
   end
 
+  describe ".scopes" do
+    describe ".category" do
+      before do
+        spending_transaction
+        income_transaction
+      end
+      it "returns transactions for same category only" do
+        expect(Transaction.category(category.id)).to eq [spending_transaction]
+      end
+    end
+  end
+
 end
