@@ -31,22 +31,19 @@ group :development do
   gem 'capistrano_colors', require: false
   gem "erb2haml"
   gem "rails_best_practices"
-  gem "pry-rails"
   gem "thin"
+  gem "zeus"
 end
 
 group :development, :test do
   gem 'rspec-rails',        '~> 2.11.0'
   gem 'factory_girl_rails', '~> 3.5.0'
-  gem 'guard-rspec',        '~> 1.2.0'
+  gem "pry-rails"
 end
 
 group :test do
   gem "faker", "~> 1.0.1"
   gem "launchy"
-  gem 'spork',              '>= 0.9.0.rc9'
-  gem 'guard-spork',        '~> 1.1.0'
-  gem 'guard-bundler',      '~> 1.0.0'
   gem "capybara",           "~> 1.1.2"
   gem "database_cleaner"
   gem "shoulda"
