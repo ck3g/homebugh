@@ -1,10 +1,10 @@
-require 'capistrano_colors'
-require 'bundler/capistrano'
-
 set :application, "homebugh"
 set :repository,  "git@github.com:ck3g/homebugh.git"
 set :branch, "master"
-set :domain, "homebugh.info"
+set :shared_host, "194.165.39.125"
+set :domain, shared_host
+set :unicorn_env, "production"
+set :rails_env, "production"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -26,7 +26,17 @@ after "deploy", "deploy:cleanup" # keep only the last 5 releases
 after "deploy:update_code", "deploy:migrate"
 after "deploy:finalize_update", "deploy:symlink_config"
 
+CONFIG_FILES = %w(database mail)
 namespace :deploy do
+  task :setup_config, :roles => :app do
+    run "mkdir -p #{shared_path}/config"
+    CONFIG_FILES.each do |file|
+      put File.read("config/#{file}.yml.example"), "#{shared_path}/config/#{file}.yml"
+    end
+    puts "Now edit the config files in #{shared_path}"
+  end
+  after "deploy:setup", "deploy:setup_config"
+
   task :symlink_config do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/mail.yml #{release_path}/config/mail.yml"
@@ -46,3 +56,7 @@ task :tail_logs, :roles => :app do
     break if stream == :err
   end
 end
+
+require 'capistrano_colors'
+require 'bundler/capistrano'
+require "capistrano-unicorn"
