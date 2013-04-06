@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
@@ -60,6 +60,6 @@ end
 group :production do
   gem "exception_notification"
   gem "unicorn", "~> 4.6.0"
-  gem "puma"
 end
 
+gem "puma"
