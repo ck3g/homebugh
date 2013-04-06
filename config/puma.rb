@@ -6,7 +6,7 @@ deploy_to = "/home/kalastiuz/apps/homebugh"
 app_path = "#{deploy_to}/current"
 shared_path = "#{deploy_to}/shared"
 
-bind "unix://#{shared_path}/sockets/unicorn.sock"
+bind "unix://#{shared_path}/sockets/puma.sock"
 pidfile "#{app_path}/tmp/puma/pid"
 state_path "#{app_path}/tmp/puma/state"
 

@@ -7,8 +7,8 @@ set :repository,  "git@github.com:ck3g/homebugh.git"
 set :branch, "master"
 set :shared_host, "194.165.39.126"
 set :domain, shared_host
-set :unicorn_env, "production"
 set :rails_env, "production"
+set :puma_env, "production"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -61,6 +61,32 @@ task :tail_logs, :roles => :app do
   end
 end
 
+after 'deploy:stop', 'puma:stop'
+after 'deploy:start', 'puma:start'
+after 'deploy:restart', 'puma:restart'
+
+_cset(:puma_cmd) { "#{fetch(:bundle_cmd, 'bundle')} exec puma" }
+_cset(:pumactl_cmd) { "#{fetch(:bundle_cmd, 'bundle')} exec pumactl" }
+_cset(:puma_state) { "#{shared_path}/sockets/puma.state" }
+_cset(:puma_role) { :app }
+
+namespace :puma do
+  desc 'Start puma'
+  task :start, :roles => lambda { fetch(:puma_role) }, :on_no_matching_servers => :continue do
+    puma_env = fetch(:rack_env, fetch(:rails_env, 'production'))
+    run "cd #{current_path} && #{fetch(:puma_cmd)} -t 4:4 -q -e #{puma_env} -b 'unix://#{shared_path}/sockets/puma.sock' -S #{fetch(:puma_state)} --control 'unix://#{shared_path}/sockets/pumactl.sock' >> #{shared_path}/log/puma-#{puma_env}.log 2>&1 &", :pty => false
+  end
+
+  desc 'Stop puma'
+  task :stop, :roles => lambda { fetch(:puma_role) }, :on_no_matching_servers => :continue do
+    run "cd #{current_path} && #{fetch(:pumactl_cmd)} -S #{fetch(:puma_state)} stop"
+  end
+
+  desc 'Restart puma'
+  task :restart, :roles => lambda { fetch(:puma_role) }, :on_no_matching_servers => :continue do
+    run "cd #{current_path} && #{fetch(:pumactl_cmd)} -S #{fetch(:puma_state)} restart"
+  end
+end
+
 require 'capistrano_colors'
 require 'bundler/capistrano'
-require "capistrano-unicorn"

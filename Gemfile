@@ -29,7 +29,6 @@ group :development do
   gem "capistrano", require: false
   gem 'capistrano-recipes', require: false
   gem 'capistrano_colors', require: false
-  gem 'capistrano-unicorn', '~> 0.1.6', require: false
   gem "erb2haml"
   gem "rails_best_practices"
   gem "thin"
@@ -59,7 +58,6 @@ end
 
 group :production do
   gem "exception_notification"
-  gem "unicorn", "~> 4.6.0"
+  gem "puma"
 end
 
-gem "puma"
