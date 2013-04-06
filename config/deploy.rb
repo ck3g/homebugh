@@ -1,7 +1,11 @@
+set :default_environment, {
+  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+}
+
 set :application, "homebugh"
 set :repository,  "git@github.com:ck3g/homebugh.git"
 set :branch, "master"
-set :shared_host, "194.165.39.125"
+set :shared_host, "194.165.39.126"
 set :domain, shared_host
 set :unicorn_env, "production"
 set :rails_env, "production"
@@ -11,7 +15,7 @@ set :scm, :git
 
 set :user, "kalastiuz"
 
-set :deploy_to, "/home/kalastiuz/rails/#{application}"
+set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :export
 
 set :use_sudo, false
@@ -38,8 +42,8 @@ namespace :deploy do
   after "deploy:setup", "deploy:setup_config"
 
   task :symlink_config do
-    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/mail.yml #{release_path}/config/mail.yml"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/mail.yml #{release_path}/config/mail.yml"
   end
 
   task :restart, :roles => :app, :except => { :no_release => true } do
