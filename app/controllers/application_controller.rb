@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   before_filter :instantiate_controller_and_action_names
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.locale || I18n.default_locale
+    session[:locale] = params[:locale] if params[:locale].present?
+    session[:locale] ||= I18n.default_locale
+    I18n.locale = session[:locale]
   end
 
   protected
