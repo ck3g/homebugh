@@ -87,6 +87,19 @@ describe TransactionsController do
       end
     end
 
+    describe "PUT #update" do
+      let!(:transaction) { mock_model Transaction, id: 1 }
+
+      it 'updates transaction comment only' do
+        user.should_receive(:transactions).and_return Transaction
+        Transaction.should_receive(:find).with("1").and_return transaction
+        transaction.should_receive(:update_attributes).with(
+          {"comment" => "New comment"}).and_return true
+
+        put :update, id: 1, transaction: { comment: "New comment", summ: "503" }
+      end
+    end
+
     describe "DELETE #destroy" do
     let!(:transaction2) { create(:transaction, user: user, account: account, category: category) }
       before { delete :destroy, id: transaction }

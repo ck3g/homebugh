@@ -1,6 +1,8 @@
 class TransactionsController < ApplicationController
+  respond_to :html, :json
+
   before_filter :authenticate_user!
-  before_filter :find_transaction, only: [:destroy]
+  before_filter :find_transaction, only: [:destroy, :update]
   before_filter :find_categories, only: [:new, :create]
   before_filter :find_accounts, only: [:new, :create]
   after_filter :expire_statistics_cache, only: [:create, :destroy]
@@ -26,6 +28,11 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def update
+    @transaction.update_attributes permitted_params(params[:transaction])
+    respond_with @transaction
+  end
+
   def destroy
     @transaction.destroy
     redirect_to transactions_path
@@ -42,5 +49,9 @@ class TransactionsController < ApplicationController
 
   def find_accounts
     @accounts = current_user.accounts
+  end
+
+  def permitted_params(params)
+    params.slice(:comment)
   end
 end
