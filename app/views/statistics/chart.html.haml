@@ -1,0 +1,7 @@
+= render 'stats_menu'
+
+%canvas#canvas{:height => "450", :width => "1000"}
+- @stats.each do |stat|
+  = hidden_field_tag 'chart_label', stat[:title],
+    id: nil, class: 'chart-label',
+    data: { income: stat[:income], spending: stat[:spending] }

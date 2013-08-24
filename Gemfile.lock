@@ -65,6 +65,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    chart-js-rails (0.0.4)
+      railties (~> 3.1)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     code_analyzer (0.3.1)
@@ -305,6 +307,7 @@ DEPENDENCIES
   capistrano-unicorn (~> 0.1.10)
   capistrano_colors
   capybara (~> 1.1.2)
+  chart-js-rails (~> 0.0.4)
   coffee-rails (~> 3.2.2)
   database_cleaner
   devise (~> 2.2.3)
