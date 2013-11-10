@@ -7,5 +7,12 @@
 //= require jquery.purr
 //= require best_in_place
 //= require chart
+//= require select2
+//= require select2_locale_ru
 //= require_self
 //= require_tree .
+
+
+jQuery(function() {
+  $("[data-select-2]").select2()
+})
