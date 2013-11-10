@@ -1,6 +1,6 @@
 = simple_form_for cash_flow, html: { class: "form-horizontal" } do |f|
-  = f.association :from_account, collection: current_user.accounts
-  = f.association :to_account, collection: current_user.accounts
+  = f.association :from_account, collection: current_user.accounts, input_html: { data: { select_2: true } }
+  = f.association :to_account, collection: current_user.accounts, input_html: { data: { select_2: true } }
   = f.input :amount
   .form-actions
     = f.button :submit, t("parts.cash_flows.submit"), class: "btn btn-primary", id: :cash_flow_submit

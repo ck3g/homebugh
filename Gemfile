@@ -17,6 +17,7 @@ gem "meta-tags", "~> 1.3.0", require: "meta_tags"
 gem "newrelic_rpm"
 gem 'best_in_place', '~> 2.1.0'
 gem 'chart-js-rails', '~> 0.0.4'
+gem "select2-rails", '~> 3.5.1'
 
 group :assets do
   gem "sass-rails", "~> 3.2.5"
