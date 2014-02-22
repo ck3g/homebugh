@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def flash_class(name)
     css_classes = ["alert"]
-    css_classes << " alert-error" if name == :alert
+    css_classes << " alert-danger" if name == :alert
     css_classes << " alert-success" if name == :notice
     css_classes.join(" ")
   end

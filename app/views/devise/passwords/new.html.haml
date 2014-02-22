@@ -1,10 +1,11 @@
-- title t(:forgot_your_password)
-
-%h2= t(:forgot_your_password)
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, label: false, placeholder: t(:email)
-  .form-actions
-    = f.button :submit, t(:send_me_reset_password_instructions), class: "btn btn-primary"
-= render "devise/shared/links"
+.col-md-3.col-md-offset-4
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    %h2= title t(:forgot_your_password)
+    .form-group{class: ('has-error has-feedback' if resource.errors[:email].present?)}
+      .col-lg-12
+        = f.input_field :email, required: true, placeholder: t(:email)
+        = f.error :email
+        - if resource.errors[:email].present?
+          %span.glyphicon.glyphicon-remove.form-control-feedback
+    = f.button :submit, t(:send_me_reset_password_instructions), class: "btn btn-primary btn-block"
+  = render "devise/shared/links"

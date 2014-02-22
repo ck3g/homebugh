@@ -10,7 +10,6 @@ gem "devise-encryptable", "~> 0.1.1"
 gem 'haml-rails'
 gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 1.3.4"
-gem 'anjlab-bootstrap-rails', "2.3.1.2", require: 'bootstrap-rails'
 gem "simple_form", "~> 3.0.1"
 gem "kaminari", "~> 0.14.1"
 gem "meta-tags", "~> 1.3.0", require: "meta_tags"
@@ -20,6 +19,7 @@ gem 'chart-js-rails', '~> 0.0.4'
 gem "select2-rails", '~> 3.5.1'
 
 gem "sass-rails", "~> 4.0.1"
+gem 'bootstrap-sass', '~> 3.1.1'
 gem "coffee-rails", "~> 4.0.1"
 gem "uglifier", ">= 1.3.0"
 gem "therubyracer"

@@ -23,6 +23,6 @@
         %td.span2.number= get_number_to_currency(cash_flow.amount)
         %td.span2.actions
           = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini" do
-            %i.icon-share-alt.icon-white
+            %i.glyphicon.glyphicon-share-alt
 
 = paginate @cash_flows
