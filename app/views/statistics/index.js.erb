@@ -1,4 +1,4 @@
 $("#statistics").append('<%= j render("statistics", statistics: @statistics) %>');
-$(".pagination").replaceWith('<%= j paginate @statistics %>');
-$(".pagination").hide();
+$(".endless .pagination").replaceWith('<%= j paginate @statistics %>');
+$(".endless .pagination").hide();
 $(".preloader").hide();
