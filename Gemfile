@@ -46,7 +46,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails',        '~> 2.11.0'
+  gem 'rspec-rails', '2.14.1'
   gem 'factory_girl_rails', '~> 3.5.0'
   gem "pry-rails"
 end
@@ -54,7 +54,7 @@ end
 group :test do
   gem "faker", "~> 1.0.1"
   gem "launchy"
-  gem "capybara",           "~> 1.1.2"
+  gem "capybara", "~> 2.2.1"
   gem "database_cleaner"
   gem "shoulda"
   gem "email_spec"

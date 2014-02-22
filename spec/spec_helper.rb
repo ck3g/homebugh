@@ -30,7 +30,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.extend LoginMacros, type: :controller
 
-  config.include RequestMacros, type: :request
+  config.include RequestMacros, type: :feature
 
   # Include Factory Girl syntax to simplify calls to factories
   config.include FactoryGirl::Syntax::Methods
@@ -41,6 +41,10 @@ RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
+
+  config.before(:all) do
+    I18n.locale = :en
+  end
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
