@@ -1,13 +1,19 @@
 - if user_signed_in?
-  #page_header
-    - current_user.accounts.each do |account|
-      %div
-        %span.account-total
+  .panel.panel-default
+    .panel-body
+      - current_user.accounts.each do |account|
+        .col-sm-3
           = succeed ":" do
             = account.name
-        %strong= get_number_to_currency account.funds
-    %hr.account-total
-      %span.account-total
+          .pull-right
+            %strong= get_number_to_currency account.funds
+        .col-sm-1
+      .clearfix
+
+    .panel-footer
+      .col-sm-3
         = succeed ":" do
           = t("common.total_funds")
-      %strong= get_number_to_currency TotalAmount.of(current_user)
+        .pull-right
+          %strong= get_number_to_currency TotalAmount.of(current_user)
+      .clearfix

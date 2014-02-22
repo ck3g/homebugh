@@ -15,9 +15,7 @@
         #notify-container
           = content_tag :div, message, class: flash_class(name)
 
-      - if user_signed_in?
-        .well
-          = render 'layouts/total_funds'
+      = render 'layouts/total_funds'
 
       .row
         = yield
