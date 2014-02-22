@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.3'
 
 gem "json", "~> 1.7.7"
 
@@ -26,7 +26,6 @@ gem "therubyracer"
 gem 'quiet_assets', '~> 1.0.2'
 
 gem 'protected_attributes'
-gem 'rails-observers'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'activerecord-deprecated_finders'
