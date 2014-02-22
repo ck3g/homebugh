@@ -1,9 +1,7 @@
 require "spec_helper"
 
-describe "Categories" do
-  before(:each) do
-    I18n.locale = :en
-
+feature "Categories" do
+  background do
     @current_user = FactoryGirl.create(:user)
     login @current_user
 
@@ -11,14 +9,14 @@ describe "Categories" do
     CategoryType.create!(:name => 'spending')
   end
 
-  describe "GET /categories" do
+  context "GET /categories" do
 
-    it "should get list of categories" do
+    scenario "should get list of categories" do
       visit categories_path
       page.should have_content "List of categories"
     end
 
-    it "move to create category by pressing button" do
+    scenario "move to create category by pressing button" do
       visit categories_path
       click_link "New category"
 
@@ -29,15 +27,15 @@ describe "Categories" do
     end
   end
 
-  describe "POST /categories" do
-    it "create category" do
+  context "POST /categories" do
+    scenario "create category" do
       create_category
-      #save_and_open_page
+
       page.should have_content("Category was successfully created.")
       page.should have_content("Food")
     end
 
-    it "move to edit category" do
+    scenario "move to edit category" do
       create_and_move_to_edit_category
 
       page.should have_content("Edit category")
@@ -45,7 +43,7 @@ describe "Categories" do
       find_field("category_name").value.should == 'Food'
     end
 
-    it "edit category" do
+    scenario "edit category" do
       create_and_move_to_edit_category
 
       fill_in "category_name", :with => "New category name"
@@ -56,7 +54,7 @@ describe "Categories" do
       page.should have_content("New category name")
     end
 
-    it "destroy category" do
+    scenario "destroy category" do
       create_category
       page.should have_content("Food")
 
@@ -81,6 +79,5 @@ describe "Categories" do
       visit categories_path
       click_link "Edit"
     end
-
   end
 end
