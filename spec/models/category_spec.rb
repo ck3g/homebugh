@@ -60,12 +60,6 @@ describe Category do
     build(:category, name: "Food").should be_valid
   end
 
-  it "should have two categories" do
-    food = create(:category, name: "Food")
-    job_salary = create(:category, name: "Job Salary", category_type_id: CategoryType.income)
-    Category.all.should == [food, job_salary]
-  end
-
   it "has active category by default" do
     create(:category).inactive?.should be_false
   end

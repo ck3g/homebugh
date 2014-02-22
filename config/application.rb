@@ -2,20 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+Bundler.require(:default, Rails.env)
 
 module Homebugh
   class Application < Rails::Application
-    # Enable the assets pipeline
-    config.assets.enabled = true
-
-    # Version of your assets
-    config.assets.version = '1.0'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -36,14 +26,12 @@ module Homebugh
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+    config.i18n.enforce_available_locales = false
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', "**", '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-
-    # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
@@ -59,5 +47,9 @@ module Homebugh
 
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    config.secret_key_base = 'homebugh'
+
+    config.active_record.whitelist_attributes = false
   end
 end
