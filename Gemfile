@@ -43,7 +43,8 @@ group :development do
   gem "erb2haml"
   gem "rails_best_practices"
   gem "thin"
-  gem "zeus"
+  gem 'spring'
+  gem "spring-commands-rspec"
 end
 
 group :development, :test do
