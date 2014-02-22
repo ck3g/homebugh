@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = current_user.accounts.new(params[:account])
+    @account = current_user.accounts.new safe_params
 
     if @account.save
       redirect_to accounts_path, notice: t('parts.accounts.successfully_created')
@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if @account.update_attributes(params[:account])
+    if @account.update_attributes safe_params
       redirect_to accounts_path, notice: t('parts.accounts.successfully_updated')
     else
       render "edit"
@@ -36,5 +36,9 @@ class AccountsController < ApplicationController
   private
   def find_account
     @account = current_user.accounts.find(params[:id])
+  end
+
+  def safe_params
+    params.require(:account).permit(:name)
   end
 end

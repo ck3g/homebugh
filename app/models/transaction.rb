@@ -1,6 +1,4 @@
 class Transaction < ActiveRecord::Base
-  attr_accessible :category_id, :account_id, :summ, :comment, :user_id
-
   belongs_to :category
   belongs_to :user
   belongs_to :account

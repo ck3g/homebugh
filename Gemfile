@@ -25,7 +25,6 @@ gem "uglifier", ">= 1.3.0"
 gem "therubyracer"
 gem 'quiet_assets', '~> 1.0.2'
 
-gem 'protected_attributes'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'activerecord-deprecated_finders'

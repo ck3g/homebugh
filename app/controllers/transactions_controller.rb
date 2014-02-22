@@ -18,7 +18,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = current_user.transactions.new(params[:transaction])
+    @transaction = current_user.transactions.new create_params
     if @transaction.save
       session[:account_id] = @transaction.account_id
       session[:category_id] = @transaction.category_id
@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction.update_attributes permitted_params(params[:transaction])
+    @transaction.update_attributes update_params
     respond_with @transaction
   end
 
@@ -51,7 +51,11 @@ class TransactionsController < ApplicationController
     @accounts = current_user.accounts
   end
 
-  def permitted_params(params)
-    params.slice(:comment)
+  def create_params
+    params.require(:transaction).permit(:account_id, :category_id, :summ, :comment)
+  end
+
+  def update_params
+    params.require(:transaction).permit(:comment)
   end
 end

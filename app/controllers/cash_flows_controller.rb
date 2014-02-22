@@ -12,7 +12,7 @@ class CashFlowsController < ApplicationController
   end
 
   def create
-    @cash_flow = current_user.cash_flows.new(params[:cash_flow])
+    @cash_flow = current_user.cash_flows.new safe_params
 
     if @cash_flow.save
       session[:from_account_id] = @cash_flow.from_account_id
@@ -35,5 +35,9 @@ class CashFlowsController < ApplicationController
 
   def find_accounts
     @accounts = current_user.accounts
+  end
+
+  def safe_params
+    params.require(:cash_flow).permit(:from_account_id, :to_account_id, :amount)
   end
 end

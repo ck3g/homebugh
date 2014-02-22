@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = current_user.categories.new(params[:category])
+    @category = current_user.categories.new safe_params
 
     if @category.save
       redirect_to categories_path, notice: t('parts.categories.successfully_created')
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update_attributes(params[:category])
+    if @category.update_attributes safe_params
       redirect_to categories_path, notice: t('parts.categories.successfully_updated')
     else
       render "edit"
@@ -42,5 +42,9 @@ class CategoriesController < ApplicationController
   private
   def find_category
     @category = current_user.categories.find(params[:id])
+  end
+
+  def safe_params
+    params.require(:category).permit(:name, :category_type_id, :inactive)
   end
 end

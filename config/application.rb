@@ -49,7 +49,5 @@ module Homebugh
     end
 
     config.secret_key_base = 'homebugh'
-
-    config.active_record.whitelist_attributes = false
   end
 end
