@@ -10,4 +10,4 @@
       %span.account-total
         = succeed ":" do
           = t("common.total_funds")
-      %strong= get_number_to_currency get_total_funds
+      %strong= get_number_to_currency TotalAmount.of(current_user)
