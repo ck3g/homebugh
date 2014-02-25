@@ -22,7 +22,7 @@
           = cash_flow.to_account_name
         %td.span2.number= get_number_to_currency(cash_flow.amount)
         %td.span2.actions
-          = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini" do
+          = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
             %i.glyphicon.glyphicon-share-alt
 
 = paginate @cash_flows
