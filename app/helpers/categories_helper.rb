@@ -1,11 +1,11 @@
 module CategoriesHelper
-
   def category_type(category)
     if category.inactive?
-      "type_inactive"
+      "bg-warning"
+    elsif category.income?
+      "bg-success"
     else
-      "type_#{category.category_type_id}"
+      "bg-danger"
     end
   end
-
 end
