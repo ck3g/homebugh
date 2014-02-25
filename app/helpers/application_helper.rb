@@ -14,6 +14,10 @@ module ApplicationHelper
     css_classes.join(" ")
   end
 
+  def copyright
+    "copyright @2011 - #{Date.current.year}"
+  end
+
   private
   def is_ru?
     I18n.locale == :ru
