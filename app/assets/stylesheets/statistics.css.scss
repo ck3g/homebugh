@@ -1,18 +1,22 @@
 fieldset.statistics {
   margin-top: 10px;
   margin-bottom: 30px;
+  legend {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  tr.total {
+    vertical-align: top;
+    font-weight: bold;
+    height: 30px;
+  }
+
+  .progress {
+    height: 10px;
+  }
 }
 
-fieldset.statistics legend {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-fieldset.statistics tr.total {
-  vertical-align: top;
-  font-weight: bold;
-  height: 30px;
-}
 
 .preloader {
   margin: auto;
