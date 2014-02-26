@@ -5,24 +5,24 @@
       - stats[:income_categories].each do |category|
         - percent = percent_of category[:sum], stats[:income]
         %tr
-          %td.span3= category[:name]
+          %td.col-sm-3= category[:name]
           %td
-            .progressbar
-              .active-income{:style => "width: #{percent}%;"}
-          %td.span2.number= "#{percent}%"
-          %td.span2.number= get_number_to_currency category[:sum]
+            .progress
+              .progress-bar.progress-bar-success{role: 'progressbar', :'aria-valuenow' => percent, :'aria-valuemin' => 0, :'aria-valuemax' => 100, style: "width: #{percent}%;"}
+          %td.col-sm-2.number= "#{percent}%"
+          %td.col-sm-2.number= get_number_to_currency category[:sum]
       %tr.total
         %td{:colspan => "3"}= t("parts.statistics.income_total")
         %td.span2.number= get_number_to_currency stats[:income]
       - stats[:spending_categories].each do |category|
         - percent = percent_of category[:sum], stats[:spending]
         %tr
-          %td.span3= category[:name]
+          %td.col-sm-3= category[:name]
           %td
-            .progressbar
-              .active-spending{:style => "width: #{percent}%;"}
-          %td.span2.number= "#{percent}%"
-          %td.span2.number= get_number_to_currency category[:sum]
+            .progress
+              .progress-bar.progress-bar-danger{role: 'progressbar', :'aria-valuenow' => percent, :'aria-valuemin' => 0, :'aria-valuemax' => 100, style: "width: #{percent}%;"}
+          %td.col-sm-2.number= "#{percent}%"
+          %td.col-sm-2.number= get_number_to_currency category[:sum]
       %tr.total
         %td{:colspan => "3"}= t("parts.statistics.spending_total")
-        %td.span2.number= get_number_to_currency stats[:spending]
+        %td.col-sm-2.number= get_number_to_currency stats[:spending]
