@@ -1,12 +1,10 @@
 require "spec_helper"
 
 feature "Application" do
-  background do
-    @current_user = FactoryGirl.create(:user)
-    login @current_user
-  end
+  given!(:user) { create :user_example_com }
 
   scenario "should display main menu" do
+    sign_in_as 'user@example.com', 'password'
     visit root_path
 
     expect(page).to have_selector 'a', text: "Transactions"

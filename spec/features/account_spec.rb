@@ -1,9 +1,10 @@
 require "spec_helper"
 
 feature "Accounts" do
+  given!(:user) { create :user_example_com }
+
   background do
-    @current_user = FactoryGirl.create(:user)
-    login @current_user
+    sign_in_as 'user@example.com', 'password'
   end
 
   scenario "should get list of accounts" do

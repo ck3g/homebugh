@@ -1,12 +1,13 @@
 require "spec_helper"
 
 feature "Cash Flows" do
-  background do
-    @user = create(:user)
-    login @user
+  given!(:user) { create :user_example_com }
 
-    @from_account = create(:from_account, user: @user, name: "From Account")
-    @to_account = create(:to_account, user: @user, name: "To Account")
+  background do
+    sign_in_as 'user@example.com', 'password'
+
+    @from_account = create(:from_account, user: user, name: "From Account")
+    @to_account = create(:to_account, user: user, name: "To Account")
   end
 
   context "cash_flows_path" do

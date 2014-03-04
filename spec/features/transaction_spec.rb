@@ -1,13 +1,13 @@
 require "spec_helper"
 
 feature "Transaction" do
-  given!(:user) { create(:user) }
+  given!(:user) { create :user_example_com }
   given!(:account) { create(:account, user: user, name: "Cash") }
   given!(:category) { create(:income_category, user: user, name: "Salary") }
   given!(:transaction) { create(:transaction, user: user, category: category, summ: 100, comment: "My first salary") }
 
   background do
-    login user
+    sign_in_as 'user@example.com', 'password'
   end
 
   scenario "should visit transactions page" do

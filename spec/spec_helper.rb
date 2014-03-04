@@ -27,14 +27,10 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
+  config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   config.extend LoginMacros, type: :controller
-
-  config.include RequestMacros, type: :feature
-
-  # Include Factory Girl syntax to simplify calls to factories
-  config.include FactoryGirl::Syntax::Methods
-  config.include RequestLoginMacros
+  config.include Features::AuthMacros, type: :feature
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
 
