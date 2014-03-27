@@ -9,7 +9,7 @@ set :deploy_to,   "/home/#{user}/apps/#{application}/"
 set :branch, "master"
 set :unicorn_env, "production"
 set :rails_env, "production"
-set :rbenv_ruby_version, "2.0.0-p0"
+set :rbenv_ruby_version, "2.1.1"
 
 default_run_options[:pty] = true
 
