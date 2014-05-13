@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.5'
 
 gem "json", "~> 1.7.7"
 
@@ -18,7 +18,7 @@ gem 'best_in_place', github: 'bernat/best_in_place', branch: 'rails-4'
 gem 'chart-js-rails', '~> 0.0.4'
 gem "select2-rails", '~> 3.5.1'
 
-gem "sass-rails", "~> 4.0.1"
+gem "sass-rails", "~> 4.0.3"
 gem 'bootstrap-sass', '~> 3.1.1'
 gem "coffee-rails", "~> 4.0.1"
 gem "uglifier", ">= 1.3.0"
