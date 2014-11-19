@@ -3,7 +3,7 @@ namespace :aggregate do
   task all: :environment do
     months = []
     date = 6.years.ago
-    while date < 2.months.ago do
+    while date < 1.month.ago do
       months << date
       date += 1.month
     end
