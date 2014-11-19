@@ -1,0 +1,12 @@
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
+FactoryGirl.define do
+  factory :aggregated_transaction do
+    user
+    category
+    category_type_id CategoryType.spending
+    amount 503
+    period_started_at { 1.month.ago.beginning_of_month }
+    period_ended_at { 1.month.ago.end_of_month }
+  end
+end

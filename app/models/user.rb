@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :accounts
-  has_many :categories
-  has_many :transactions
-  has_many :cash_flows
+  has_many :aggregated_transactions, dependent: :destroy
+  has_many :accounts, dependent: :destroy
+  has_many :categories, dependent: :destroy
+  has_many :transactions, dependent: :destroy
+  has_many :cash_flows, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

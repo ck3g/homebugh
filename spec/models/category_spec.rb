@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Category do
-
   it "has a valid factory" do
     create(:category).should be_valid
   end
@@ -17,7 +16,8 @@ describe Category do
   describe ".asscociations" do
     it { should belong_to(:user) }
     it { should belong_to(:category_type) }
-    it { should have_many(:transactions) }
+    it { should have_many(:transactions).dependent :destroy }
+    it { should have_many(:aggregated_transactions).dependent :destroy }
   end
 
   describe ".validations" do
