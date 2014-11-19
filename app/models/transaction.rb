@@ -8,7 +8,7 @@ class Transaction < ActiveRecord::Base
   validate :cannot_be_less_than_0_01
 
   delegate :name, to: :category, prefix: true
-  delegate :category_type_id, to: :category, prefix: false
+  delegate :category_type_id, to: :category, prefix: false, allow_nil: true
   delegate :name, to: :account, prefix: true
 
   after_create :affect_on_account_after_create
