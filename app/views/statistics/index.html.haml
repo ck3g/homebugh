@@ -5,8 +5,4 @@
 #statistics
   = render 'statistics', statistics: @statistics
 
-.endless
-  = paginate @statistics
-
-.preloader
-  = image_tag "preloader.gif"
+= paginate @statistics
