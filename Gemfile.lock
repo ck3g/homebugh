@@ -343,6 +343,7 @@ DEPENDENCIES
   rb-fsevent (>= 0.4.3)
   rb-inotify (>= 0.8.6)
   rspec-rails (= 2.14.1)
+  ruby-progressbar
   sass-rails (~> 4.0.3)
   select2-rails (~> 3.5.1)
   shoulda

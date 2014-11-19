@@ -32,6 +32,8 @@ gem 'activerecord-deprecated_finders'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+gem 'ruby-progressbar'
+
 group :development do
   gem "capistrano", require: false
   gem 'capistrano-recipes', require: false
