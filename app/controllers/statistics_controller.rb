@@ -6,6 +6,6 @@ class StatisticsController < ApplicationController
   end
 
   def archived
-    @stats = Stats.new(current_user.aggregated_transactions).all
+    @stats = Stats.new(current_user.aggregated_transactions).all.lazy.first(12)
   end
 end
