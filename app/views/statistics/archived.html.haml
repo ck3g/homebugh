@@ -1,0 +1,23 @@
+%h2= title t("parts.statistics.stats_by_months")
+
+= render 'stats_menu'
+
+#statistics
+  - @stats.each do |months|
+    - months.each do |month, monthly_data|
+      %fieldset.statistics
+        %legend= l(month.to_date, format: :month_year)
+        %table.table.table-condensed
+          - monthly_data.each do |category_type, entities|
+            - entities.each do |t|
+              - percent = percent_of t.amount, entities.pluck(:amount).inject(:+)
+              %tr
+                %td.col-sm-3= t.category.name
+                %td
+                  .progress
+                    .progress-bar{role: 'progressbar', :'aria-valuenow' => percent, :'aria-valuemin' => 0, :'aria-valuemax' => 100, style: "width: #{percent}%;", class: "progress-bar-#{category_type == :income ? "success" : "danger"}"}
+                %td.col-sm-2.number= "#{percent}%"
+                %td.col-sm-2.number= get_number_to_currency t.amount
+            %tr.total
+              %td{:colspan => "3"}= t("parts.statistics.#{category_type}_total")
+              %td.span2.number= get_number_to_currency entities.pluck(:amount).inject(:+)

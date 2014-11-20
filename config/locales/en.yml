@@ -144,7 +144,7 @@ en:
   password_confirmation: Password confirmation
   forgot_your_password: Forgot your password?
   send_me_reset_password_instructions: Send me reset password instructions
-  general_stats: General stats
-  line_graph: Line graph
-  bar_graph: Bar graph
+  current_month: Current month
+  past_months: Past months
+
 

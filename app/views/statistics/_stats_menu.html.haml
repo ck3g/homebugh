@@ -1,6 +1,4 @@
 .graph-menu
-  = link_to t(:general_stats), statistics_path
+  = link_to t(:current_month), statistics_path
   &bull;
-  = link_to t(:line_graph), chart_statistics_path(anchor: 'line'), class: 'js-line-chart'
-  &bull;
-  = link_to t(:bar_graph), chart_statistics_path(anchor: 'bar'), class: 'js-bar-chart'
+  = link_to t(:past_months), archived_statistics_path

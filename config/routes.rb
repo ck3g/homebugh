@@ -2,7 +2,7 @@ Homebugh::Application.routes.draw do
   resources :transactions, :cash_flows, only: [:index, :new, :create, :update, :destroy]
   resources :categories, :accounts, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :statistics, only: [:index] do
-    get :chart, on: :collection
+    get :archived, on: :collection
   end
 
   devise_for :users
