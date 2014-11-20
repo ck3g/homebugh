@@ -20,6 +20,6 @@ class Stats
 
   private
   def months
-    relation.pluck(:period_started_at).uniq
+    relation.order(period_started_at: :desc).pluck(:period_started_at).uniq
   end
 end
