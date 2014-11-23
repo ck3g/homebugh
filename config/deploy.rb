@@ -70,9 +70,9 @@ task :tail_logs, :roles => :app do
 end
 
 set :whenever_command, "bundle exec whenever"
-require 'whenever/capistrano'
 require 'bundler/capistrano'
 require 'capistrano_colors'
 require 'capistrano-rbenv'
 require "capistrano-unicorn"
+require 'whenever/capistrano'
 
