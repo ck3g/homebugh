@@ -16,4 +16,11 @@ namespace :aggregate do
       pg.increment
     end
   end
+
+  desc "Aggregate Transactions for last month"
+  task past: :environment do
+    User.find_each do |user|
+      ArchiveTransactionsService.new(user, 1.month.ago).archive
+    end
+  end
 end

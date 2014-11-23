@@ -34,6 +34,8 @@ gem 'jquery-ui-rails'
 
 gem 'ruby-progressbar'
 
+gem 'whenever', '~> 0.9.4', require: false
+
 group :development do
   gem "capistrano", require: false
   gem 'capistrano-recipes', require: false

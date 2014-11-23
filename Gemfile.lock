@@ -74,6 +74,7 @@ GEM
       xpath (~> 2.0)
     chart-js-rails (0.0.6)
       railties (> 3.1)
+    chronic (0.10.2)
     code_analyzer (0.4.4)
       sexp_processor
     coderay (1.1.0)
@@ -295,6 +296,8 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -355,3 +358,4 @@ DEPENDENCIES
   thin
   uglifier (>= 1.3.0)
   unicorn
+  whenever (~> 0.9.4)
