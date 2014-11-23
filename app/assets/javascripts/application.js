@@ -6,7 +6,6 @@
 //= require bootstrap
 //= require jquery.purr
 //= require best_in_place
-//= require Chart
 //= require select2
 //= require select2_locale_ru
 //= require_self

@@ -5,7 +5,7 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
     = stylesheet_link_tag :application
-    = javascript_include_tag :application
+    = javascript_include_tag "//www.google.com/jsapi", "chartkick"
     = csrf_meta_tag
   %body
     = render 'shared/top_navbar'
@@ -24,3 +24,4 @@
       %footer
         = render 'shared/footer'
 
+    = javascript_include_tag :application

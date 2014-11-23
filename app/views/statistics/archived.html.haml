@@ -5,19 +5,17 @@
 #statistics
   - @stats.each do |months|
     - months.each do |month, monthly_data|
-      %fieldset.statistics
-        %legend= l(month.to_date, format: :month_year)
-        %table.table.table-condensed
-          - monthly_data.each do |category_type, entities|
-            - entities.each do |t|
-              - percent = percent_of t.amount, entities.pluck(:amount).inject(:+)
-              %tr
-                %td.col-sm-3= t.category.name
-                %td
-                  .progress
-                    .progress-bar{role: 'progressbar', :'aria-valuenow' => percent, :'aria-valuemin' => 0, :'aria-valuemax' => 100, style: "width: #{percent}%;", class: "progress-bar-#{category_type == :income ? "success" : "danger"}"}
-                %td.col-sm-2.number= "#{percent}%"
-                %td.col-sm-2.number= get_number_to_currency t.amount
-            %tr.total
-              %td{:colspan => "3"}= t("parts.statistics.#{category_type}_total")
-              %td.span2.number= get_number_to_currency entities.pluck(:amount).inject(:+)
+      - income_chart_data = {}
+      - monthly_data[:income].each do |data|
+        - income_chart_data[data.category.name] = data.amount
+
+      - spending_chart_data = {}
+      - monthly_data[:spending].each do |data|
+        - spending_chart_data[data.category.name] = data.amount
+
+      = render 'charts',
+        title: l(month.to_date, format: :month_year),
+        total_income: monthly_data[:income].pluck(:amount).inject(:+),
+        total_spending: monthly_data[:spending].pluck(:amount).inject(:+),
+        income_chart_data: income_chart_data,
+        spending_chart_data: spending_chart_data

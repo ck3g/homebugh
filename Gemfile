@@ -15,8 +15,8 @@ gem "kaminari", "~> 0.14.1"
 gem "meta-tags", "~> 1.3.0", require: "meta_tags"
 gem "newrelic_rpm"
 gem 'best_in_place', github: 'bernat/best_in_place', branch: 'rails-4'
-gem 'chart-js-rails', '~> 0.0.4'
 gem "select2-rails", '~> 3.5.1'
+gem 'chartkick'
 
 gem "sass-rails", "~> 4.0.3"
 gem 'bootstrap-sass', '~> 3.1.1'
