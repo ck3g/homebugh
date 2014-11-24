@@ -10,11 +10,11 @@
     .navbar-collapse.collapse
       - if user_signed_in?
         %ul.nav.navbar-nav
-          %li{class: ("active" if current_page?(transactions_path))}= link_to t("main_menu.transactions"), transactions_path
-          %li{class: ("active" if current_page?(categories_path))}= link_to t("main_menu.categories"), categories_path
-          %li{class: ("active" if current_page?(accounts_path))}= link_to t("main_menu.accounts"), accounts_path
-          %li{class: ("active" if current_page?(cash_flows_path))}= link_to t("main_menu.cash_flows"), cash_flows_path
-          %li{class: ("active" if current_page?(statistics_path))}= link_to t("main_menu.statistics"), statistics_path
+          %li{class: ("active" if controller_name == 'transactions')}= link_to t("main_menu.transactions"), transactions_path
+          %li{class: ("active" if controller_name == 'categories')}= link_to t("main_menu.categories"), categories_path
+          %li{class: ("active" if controller_name == 'accounts')}= link_to t("main_menu.accounts"), accounts_path
+          %li{class: ("active" if controller_name == 'cash_flows')}= link_to t("main_menu.cash_flows"), cash_flows_path
+          %li{class: ("active" if controller_name == 'statistics')}= link_to t("main_menu.statistics"), statistics_path
         %ul.nav.navbar-nav.pull-right
           %li= link_to t("parts.auth.sign_out"), destroy_user_session_path
           %li.divider-vertical
