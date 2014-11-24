@@ -21,7 +21,7 @@
             = I18n.l(transaction.created_at.to_date, format: :long)
           %td
             %span.category= link_to category_name(transaction), transactions_path(category: transaction.category_id)
-            %span.comment= best_in_place transaction, :comment, type: :textarea, nil: '&nbsp;'.html_safe
+            %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
           %td.span2.number= get_number_to_currency(transaction.income? ? transaction.summ : -transaction.summ)
           %td.span2= transaction.account_name
           %td.span2.actions
