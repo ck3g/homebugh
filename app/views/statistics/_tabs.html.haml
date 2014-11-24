@@ -1,0 +1,5 @@
+%ul.nav.nav-tabs{tole: 'tablist'}
+  %li{class: ('active' if current_page? statistics_path)}
+    = link_to t(:current_month), statistics_path
+  %li{class: ('active' if current_page? archived_statistics_path)}
+    = link_to t(:past_months), archived_statistics_path

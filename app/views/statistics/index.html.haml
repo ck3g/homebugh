@@ -1,14 +1,17 @@
 %h2= title t("parts.statistics.stats_by_months")
 
 
-= render 'stats_menu'
+%div{role: 'tabpanel'}
+  = render 'tabs'
 
-#statistics
-  - @statistics.each do |stats|
-    = render 'charts',
-      title: stats[:title],
-      total_income: stats[:income],
-      total_spending: stats[:spending],
-      income_chart_data: stats[:income_chart_data],
-      spending_chart_data: stats[:spending_chart_data]
+  .tab-content
+    .tab-pane.active
+      #stats
+        - @statistics.each do |stats|
+          = render 'charts',
+            title: stats[:title],
+            total_income: stats[:income],
+            total_spending: stats[:spending],
+            income_chart_data: stats[:income_chart_data],
+            spending_chart_data: stats[:spending_chart_data]
 

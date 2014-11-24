@@ -1,28 +1,3 @@
-fieldset.statistics {
-  margin-top: 10px;
-  margin-bottom: 30px;
-  legend {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  tr.total {
-    vertical-align: top;
-    font-weight: bold;
-    height: 30px;
-  }
-
-  .progress {
-    height: 10px;
-  }
-}
-
-
-.preloader {
-  margin: auto;
-  width: 33px;
-}
-
-.graph-menu {
-  text-align: center;
+#stats {
+  padding-top: 60px;
 }
