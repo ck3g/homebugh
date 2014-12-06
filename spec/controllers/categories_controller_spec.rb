@@ -12,19 +12,19 @@ describe CategoriesController do
 
     describe "GET #index" do
       before { get :index }
-      it { is_expected.to assign_to(:categories).with [category] }
+      it { expect(assigns[:categories]).to eq [category] }
       it { is_expected.to render_template :index }
     end
 
     describe "GET #new" do
       before { get :new }
-      it { is_expected.to assign_to(:category).with_kind_of Category }
+      it { expect(assigns[:category]).to be_kind_of Category }
       it { is_expected.to render_template :new }
     end
 
     describe "GET #edit" do
       before { get :edit, id: category }
-      it { is_expected.to assign_to(:category).with category }
+      it { expect(assigns[:category]).to eq category }
       it { is_expected.to render_template :edit }
     end
 
@@ -58,7 +58,7 @@ describe CategoriesController do
     describe "PUT #update" do
       context "valid attributes" do
         before { put :update, id: salary, category: attributes_for(:category) }
-        it { is_expected.to assign_to(:category).with salary }
+        it { expect(assigns[:category]).to eq salary }
         it { is_expected.to redirect_to categories_path }
 
         it "changes @category's attributes" do

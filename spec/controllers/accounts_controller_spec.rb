@@ -14,19 +14,19 @@ describe AccountsController do
 
     describe "GET #index" do
       before { get :index }
-      it { is_expected.to assign_to(:accounts).with [account] }
+      it { expect(assigns[:accounts]).to eq [account] }
       it { is_expected.to render_template :index }
     end
 
     describe "GET #new" do
       before { get :new }
-      it { is_expected.to assign_to(:account).with_kind_of Account }
+      it { expect(assigns[:account]).to be_kind_of Account }
       it { is_expected.to render_template :new }
     end
 
     describe "GET #edit" do
       before { get :edit, id: account }
-      it { is_expected.to assign_to(:account).with account }
+      it { expect(assigns[:account]).to eq account }
       it { is_expected.to render_template :edit }
     end
 
@@ -59,7 +59,7 @@ describe AccountsController do
 
       context "with valid attributes" do
         before { put :update, id: cash, account: attributes_for(:account) }
-        it { is_expected.to assign_to(:account).with cash }
+        it { expect(assigns[:account]).to eq cash }
         it { is_expected.to redirect_to accounts_path }
 
         it "changes @account's attributes" do

@@ -13,13 +13,13 @@ describe TransactionsController do
 
     describe "GET #index" do
       before { get :index }
-      it { is_expected.to assign_to(:transactions).with [transaction] }
+      it { expect(assigns[:transactions]).to eq [transaction] }
       it { is_expected.to render_template :index }
     end
 
     describe "GET #new" do
       before { get :new }
-      it { is_expected.to assign_to(:transaction).with_kind_of Transaction }
+      it { expect(assigns[:transaction]).to be_kind_of Transaction }
       it { is_expected.to render_template :new }
 
       context "when account_id and category_id in session" do

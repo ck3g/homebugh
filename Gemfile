@@ -50,7 +50,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.99'
+  gem 'rspec-rails', '~> 3.1.0'
   gem 'factory_girl_rails', '~> 3.5.0'
   gem "pry-rails"
 end
@@ -59,7 +59,7 @@ group :test do
   gem 'rspec-activemodel-mocks'
   gem "faker", "~> 1.0.1"
   gem "launchy"
-  gem "capybara", "~> 2.2.1"
+  gem "capybara"
   gem "database_cleaner"
   gem "shoulda"
   gem "email_spec"
