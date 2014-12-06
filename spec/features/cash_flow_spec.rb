@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "Cash Flows" do
   given!(:user) { create :user_example_com }

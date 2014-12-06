@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ArchiveTransactionsService, type: :model do
   describe '#archive' do
