@@ -8,6 +8,8 @@ class Account < ActiveRecord::Base
   validates :name, uniqueness: {
     scope: [:user_id, :currency_id], case_sensitive: false }
 
+  delegate :name, to: :currency, prefix: true
+
   def deposit(amount)
     amount ||= 0.0
     update_attribute :funds, funds + amount

@@ -28,6 +28,7 @@ en:
       account:
         name: "Name"
         funds: "Funds"
+        currency: Currency
 
     errors:
       template:

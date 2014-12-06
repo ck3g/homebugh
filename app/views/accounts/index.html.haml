@@ -10,12 +10,14 @@
       %thead
         %tr
           %th= t('activerecord.attributes.account.name')
+          %th= Account.human_attribute_name :currency
           %th.span2.number= t('activerecord.attributes.account.funds')
           %th.span2.actions
       %tbody
         - @accounts.each do |account|
           %tr
             %td= account.name
+            %td= account.currency_name
             %td.span2.number= get_number_to_currency(account.funds)
             %td.span2.actions
               = link_to edit_account_path(account), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do

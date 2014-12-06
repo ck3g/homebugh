@@ -54,6 +54,7 @@ ru:
       account:
         name: "Название"
         funds: "Доступные средства"
+        currency: Валюта
 
     errors:
       template:
