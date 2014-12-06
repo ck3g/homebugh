@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119022822) do
+ActiveRecord::Schema.define(version: 20141206092112) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",       limit: 50,                                        null: false
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 20141119022822) do
   create_table "category_types", force: true do |t|
     t.string "name"
   end
+
+  create_table "currencies", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "currencies", ["name"], name: "index_currencies_on_name", unique: true, using: :btree
 
   create_table "transactions", force: true do |t|
     t.integer  "category_id"
