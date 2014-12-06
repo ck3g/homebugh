@@ -12,20 +12,20 @@ describe CategoriesController do
 
     describe "GET #index" do
       before { get :index }
-      it { should assign_to(:categories).with [category] }
-      it { should render_template :index }
+      it { is_expected.to assign_to(:categories).with [category] }
+      it { is_expected.to render_template :index }
     end
 
     describe "GET #new" do
       before { get :new }
-      it { should assign_to(:category).with_kind_of Category }
-      it { should render_template :new }
+      it { is_expected.to assign_to(:category).with_kind_of Category }
+      it { is_expected.to render_template :new }
     end
 
     describe "GET #edit" do
       before { get :edit, id: category }
-      it { should assign_to(:category).with category }
-      it { should render_template :edit }
+      it { is_expected.to assign_to(:category).with category }
+      it { is_expected.to render_template :edit }
     end
 
     describe "POST #create" do
@@ -34,7 +34,7 @@ describe CategoriesController do
           post :create, category: attributes_for(:category, name: "Salary 1")
         end
 
-        it { should redirect_to categories_path }
+        it { is_expected.to redirect_to categories_path }
 
         it "saves the new category in the database" do
           expect {
@@ -45,7 +45,7 @@ describe CategoriesController do
 
       context "with invalid attributes" do
         before { post :create, category: attributes_for(:invalid_category) }
-        it { should render_template :new }
+        it { is_expected.to render_template :new }
 
         it "does not save the new category in the database" do
           expect {
@@ -58,8 +58,8 @@ describe CategoriesController do
     describe "PUT #update" do
       context "valid attributes" do
         before { put :update, id: salary, category: attributes_for(:category) }
-        it { should assign_to(:category).with salary }
-        it { should redirect_to categories_path }
+        it { is_expected.to assign_to(:category).with salary }
+        it { is_expected.to redirect_to categories_path }
 
         it "changes @category's attributes" do
           expect {
@@ -81,7 +81,7 @@ describe CategoriesController do
           }.to_not change(salary, :name)
         end
 
-        it { should render_template :edit }
+        it { is_expected.to render_template :edit }
       end
     end
 
@@ -96,7 +96,7 @@ describe CategoriesController do
 
       it "redirects to categories page" do
         delete :destroy, id: salary
-        should redirect_to categories_path
+        is_expected.to redirect_to categories_path
       end
     end
   end

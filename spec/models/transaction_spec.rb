@@ -10,44 +10,44 @@ describe Transaction do
   let(:income_transaction) { create(:transaction, summ: 12, account: account, user: user, category: income_category) }
 
   it "have a valid factory" do
-    create(:transaction).should be_valid
+    expect(create(:transaction)).to be_valid
   end
 
   it "have a invalid factory" do
-    build(:invalid_transaction).should_not be_valid
+    expect(build(:invalid_transaction)).not_to be_valid
   end
 
   it "have a valid spending transaction factory" do
-    spending_transaction.should be_valid
+    expect(spending_transaction).to be_valid
   end
 
   it "have a valid income transaction factory" do
-    income_transaction.should be_valid
+    expect(income_transaction).to be_valid
   end
 
   describe ".association" do
-    it { should belong_to :category }
-    it { should belong_to :user }
-    it { should belong_to :account }
+    it { is_expected.to belong_to :category }
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :account }
   end
 
   describe ".validations" do
     context "valid" do
       subject { create(:transaction) }
-      it { should validate_presence_of(:account_id) }
-      it { should validate_presence_of(:category_id) }
-      it { should validate_presence_of(:summ) }
-      it { should validate_numericality_of(:summ) }
-      it { should allow_value(0.01).for(:summ) }
+      it { is_expected.to validate_presence_of(:account_id) }
+      it { is_expected.to validate_presence_of(:category_id) }
+      it { is_expected.to validate_presence_of(:summ) }
+      it { is_expected.to validate_numericality_of(:summ) }
+      it { is_expected.to allow_value(0.01).for(:summ) }
     end
 
     context "invalid" do
       subject { create(:transaction) }
-      it { should_not allow_value(nil).for(:account_id) }
-      it { should_not allow_value(nil).for(:category_id) }
-      it { should_not allow_value(nil).for(:summ) }
-      it { should_not allow_value(0).for(:summ) }
-      it { should_not allow_value("string").for(:summ) }
+      it { is_expected.not_to allow_value(nil).for(:account_id) }
+      it { is_expected.not_to allow_value(nil).for(:category_id) }
+      it { is_expected.not_to allow_value(nil).for(:summ) }
+      it { is_expected.not_to allow_value(0).for(:summ) }
+      it { is_expected.not_to allow_value("string").for(:summ) }
     end
   end
 
@@ -55,13 +55,13 @@ describe Transaction do
     context "when spend" do
       it "should not be income" do
         spending_transaction
-        spending_transaction.income?.should be_falsey
+        expect(spending_transaction.income?).to be_falsey
       end
 
       it "should affect on account balace" do
         spending_transaction
         account.reload
-        account.funds.should == 39
+        expect(account.funds).to eq(39)
       end
 
       it "should create transaction" do
@@ -74,13 +74,13 @@ describe Transaction do
     context "when income" do
       it "should be income" do
         income_transaction
-        income_transaction.income?.should be_truthy
+        expect(income_transaction.income?).to be_truthy
       end
 
       it "should affect on account balance" do
         income_transaction
         account.reload
-        account.funds.should == 62
+        expect(account.funds).to eq(62)
       end
 
       it "should create transaction" do
@@ -100,7 +100,7 @@ describe Transaction do
       it "refund cash back to account" do
         spending_transaction.destroy
         account.reload
-        account.funds.should == 50
+        expect(account.funds).to eq(50)
       end
 
       it "transaction deleted" do
@@ -118,7 +118,7 @@ describe Transaction do
       it "refund cash back to account" do
         income_transaction.destroy
         account.reload
-        account.funds.should == 50
+        expect(account.funds).to eq(50)
       end
 
       it "transaction deleted" do
@@ -136,7 +136,7 @@ describe Transaction do
   end
 
   it "is not valid if summ less than 0.01" do
-    build(:transaction, summ: 0).should_not be_valid
+    expect(build(:transaction, summ: 0)).not_to be_valid
   end
 
   describe ".scopes" do

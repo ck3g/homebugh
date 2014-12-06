@@ -6,10 +6,10 @@ describe User, type: :model do
   end
 
   describe '.associations' do
-    it { should have_many(:aggregated_transactions).dependent :destroy }
-    it { should have_many(:accounts).dependent :destroy }
-    it { should have_many(:categories).dependent :destroy }
-    it { should have_many(:transactions).dependent :destroy }
-    it { should have_many(:cash_flows).dependent :destroy }
+    it { is_expected.to have_many(:aggregated_transactions).dependent :destroy }
+    it { is_expected.to have_many(:accounts).dependent :destroy }
+    it { is_expected.to have_many(:categories).dependent :destroy }
+    it { is_expected.to have_many(:transactions).dependent :destroy }
+    it { is_expected.to have_many(:cash_flows).dependent :destroy }
   end
 end

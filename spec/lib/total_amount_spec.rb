@@ -7,6 +7,6 @@ describe TotalAmount do
     let(:user) { double 'User', accounts: [account1, account2] }
 
     subject { TotalAmount.of user }
-    it { should eq 503.0 }
+    it { is_expected.to eq 503.0 }
   end
 end

@@ -6,21 +6,21 @@ describe AggregatedTransaction do
   end
 
   describe '.associations' do
-    it { should belong_to :user }
-    it { should belong_to :category }
-    it { should belong_to :category_type }
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :category }
+    it { is_expected.to belong_to :category_type }
   end
 
   describe '.validations' do
     context 'when valid' do
       subject { create :aggregated_transaction }
-      it { should validate_presence_of :user }
-      it { should validate_presence_of :category }
-      it { should validate_presence_of :category_type_id }
-      it { should validate_presence_of :amount }
-      it { should validate_numericality_of :amount }
-      it { should validate_presence_of :period_started_at }
-      it { should validate_presence_of :period_ended_at }
+      it { is_expected.to validate_presence_of :user }
+      it { is_expected.to validate_presence_of :category }
+      it { is_expected.to validate_presence_of :category_type_id }
+      it { is_expected.to validate_presence_of :amount }
+      it { is_expected.to validate_numericality_of :amount }
+      it { is_expected.to validate_presence_of :period_started_at }
+      it { is_expected.to validate_presence_of :period_ended_at }
     end
   end
 end

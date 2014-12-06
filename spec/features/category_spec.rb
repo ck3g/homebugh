@@ -14,17 +14,17 @@ feature "Categories" do
 
     scenario "should get list of categories" do
       visit categories_path
-      page.should have_content "List of categories"
+      expect(page).to have_content "List of categories"
     end
 
     scenario "move to create category by pressing button" do
       visit categories_path
       click_link "New category"
 
-      page.should have_content("New category")
-      page.has_button?("Create Category").should == true
-      page.has_field?("category_name").should == true
-      page.has_unchecked_field?("category_inactive").should == true
+      expect(page).to have_content("New category")
+      expect(page.has_button?("Create Category")).to eq(true)
+      expect(page.has_field?("category_name")).to eq(true)
+      expect(page.has_unchecked_field?("category_inactive")).to eq(true)
     end
   end
 
@@ -32,16 +32,16 @@ feature "Categories" do
     scenario "create category" do
       create_category
 
-      page.should have_content("Category was successfully created.")
-      page.should have_content("Food")
+      expect(page).to have_content("Category was successfully created.")
+      expect(page).to have_content("Food")
     end
 
     scenario "move to edit category" do
       create_and_move_to_edit_category
 
-      page.should have_content("Edit category")
-      page.has_button?("Update Category").should == true
-      find_field("category_name").value.should == 'Food'
+      expect(page).to have_content("Edit category")
+      expect(page.has_button?("Update Category")).to eq(true)
+      expect(find_field("category_name").value).to eq('Food')
     end
 
     scenario "edit category" do
@@ -51,18 +51,18 @@ feature "Categories" do
       select "Income", :from => "category_category_type_id"
       click_button "category_submit"
 
-      page.should have_content("Category was successfully updated.")
-      page.should have_content("New category name")
+      expect(page).to have_content("Category was successfully updated.")
+      expect(page).to have_content("New category name")
     end
 
     scenario "destroy category" do
       create_category
-      page.should have_content("Food")
+      expect(page).to have_content("Food")
 
       click_link "Destroy"
 
-      page.should_not have_content("Food")
-      page.should have_content("You have no categories.")
+      expect(page).not_to have_content("Food")
+      expect(page).to have_content("You have no categories.")
     end
 
     private

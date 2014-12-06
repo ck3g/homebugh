@@ -14,11 +14,11 @@ feature "Cash Flows" do
     background { visit cash_flows_path }
 
     scenario "get list of cash flows" do
-      page.should have_content("List of cash flows")
+      expect(page).to have_content("List of cash flows")
     end
 
     scenario "have link to Move funds" do
-      page.has_link?("Move funds").should be_truthy
+      expect(page.has_link?("Move funds")).to be_truthy
     end
   end
 
@@ -35,11 +35,11 @@ feature "Cash Flows" do
   scenario "should destroy(rollback) flow" do
     create_flow
 
-    page.should have_content("From Account → To Account")
-    page.should have_content("15.00")
+    expect(page).to have_content("From Account → To Account")
+    expect(page).to have_content("15.00")
     click_link "Rollback"
-    page.should_not have_content("From Account → To Account")
-    page.should_not have_content("15.00")
+    expect(page).not_to have_content("From Account → To Account")
+    expect(page).not_to have_content("15.00")
   end
 
   scenario "should raise validation on create" do
@@ -49,8 +49,8 @@ feature "Cash Flows" do
     fill_in "cash_flow_amount", with: "0"
 
     click_button "cash_flow_submit"
-    page.should have_content("You cannot move funds to same account")
-    page.should have_content("Cannot be less than 0.01")
+    expect(page).to have_content("You cannot move funds to same account")
+    expect(page).to have_content("Cannot be less than 0.01")
   end
 end
 

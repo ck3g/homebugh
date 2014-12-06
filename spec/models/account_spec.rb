@@ -2,76 +2,76 @@ require "spec_helper"
 
 describe Account do
   it "has a valid factory" do
-    create(:account).should be_valid
+    expect(create(:account)).to be_valid
   end
 
   describe ".associations" do
-    it { should belong_to :user }
-    it { should have_many(:cash_flows) }
+    it { is_expected.to belong_to :user }
+    it { is_expected.to have_many(:cash_flows) }
   end
 
   describe ".validation" do
     context "valid" do
       subject { create(:account) }
-      it { should validate_presence_of(:name) }
-      it { should validate_presence_of(:user_id) }
-      it { should validate_uniqueness_of(:name).scoped_to(:user_id) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_presence_of(:user_id) }
+      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:user_id) }
     end
   end
 
   it "invalid without name" do
-    build(:account, name: nil).should_not be_valid
+    expect(build(:account, name: nil)).not_to be_valid
   end
 
   it "invalid without user" do
-    build(:account, user: nil).should_not be_valid
+    expect(build(:account, user: nil)).not_to be_valid
   end
 
   it "is invalid with a duplicate name" do
     user = create(:user)
     create(:account, name: "Account", user: user)
-    build(:account, name: "ACCOUNT", user: user).should_not be_valid
+    expect(build(:account, name: "ACCOUNT", user: user)).not_to be_valid
   end
 
   it "allows two users have account with same name" do
     create(:account, name: "Account")
-    build(:account, name: "Account").should be_valid
+    expect(build(:account, name: "Account")).to be_valid
   end
 
   it "has 0.0 funds" do
-    create(:account).funds.should == 0.0
+    expect(create(:account).funds).to eq(0.0)
   end
 
   describe "change amount" do
     let(:account) { create(:account) }
 
     it "have an empty account" do
-      account.funds.should == 0
+      expect(account.funds).to eq(0)
     end
 
     it "increased amount by 100" do
       account.deposit 100
-      account.funds.should == 100.0
+      expect(account.funds).to eq(100.0)
     end
 
     it "increased amount by 100 2" do
       account.deposit 100
-      account.reload.funds.should == 100.0
+      expect(account.reload.funds).to eq(100.0)
     end
 
     it "decreased amount by 100" do
       account.withdrawal 100
-      account.funds.should == -100.00
+      expect(account.funds).to eq(-100.00)
     end
 
     it "not increased amount" do
       account.deposit nil
-      account.funds.should == 0.0
+      expect(account.funds).to eq(0.0)
     end
 
     it "not decreased amount" do
       account.withdrawal nil
-      account.funds.should == 0.0
+      expect(account.funds).to eq(0.0)
     end
   end
 end

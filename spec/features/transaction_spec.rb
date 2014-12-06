@@ -12,12 +12,12 @@ feature "Transaction" do
 
   scenario "should visit transactions page" do
     visit transactions_path
-    page.should have_content("List of transactions")
+    expect(page).to have_content("List of transactions")
   end
 
   scenario "visit new transaction page" do
     visit new_transaction_path
-    page.should have_content("New transaction")
+    expect(page).to have_content("New transaction")
   end
 
   scenario "when create transaction" do
