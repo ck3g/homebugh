@@ -55,7 +55,7 @@ describe Transaction do
     context "when spend" do
       it "should not be income" do
         spending_transaction
-        spending_transaction.income?.should be_false
+        spending_transaction.income?.should be_falsey
       end
 
       it "should affect on account balace" do
@@ -74,7 +74,7 @@ describe Transaction do
     context "when income" do
       it "should be income" do
         income_transaction
-        income_transaction.income?.should be_true
+        income_transaction.income?.should be_truthy
       end
 
       it "should affect on account balance" do

@@ -50,12 +50,13 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.14.1'
+  gem 'rspec-rails', '2.99'
   gem 'factory_girl_rails', '~> 3.5.0'
   gem "pry-rails"
 end
 
 group :test do
+  gem 'rspec-activemodel-mocks'
   gem "faker", "~> 1.0.1"
   gem "launchy"
   gem "capybara", "~> 2.2.1"

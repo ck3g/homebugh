@@ -82,7 +82,7 @@ describe TransactionsController do
         it "does not save the new transaction in the database" do
           expect {
             post :create, transaction: @attributes
-          }.to_not change(Transaction, :count).by(1)
+          }.to_not change(Transaction, :count)
         end
       end
     end

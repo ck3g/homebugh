@@ -47,7 +47,7 @@ describe AccountsController do
         it "does not save the new account in the database" do
           expect {
             post :create, account: attributes_for(:invalid_account)
-          }.to_not change(Account, :count).by(1)
+          }.to_not change(Account, :count)
         end
       end
     end
@@ -80,7 +80,7 @@ describe AccountsController do
           expect {
             put :update, id: cash, account: attributes_for(:account, name: "")
             cash.reload
-          }.to_not change(cash, :name).to("")
+          }.to_not change(cash, :name)
         end
       end
     end
@@ -113,7 +113,7 @@ describe AccountsController do
         it "does not deletes the account" do
           expect {
             delete :destroy, id: account
-          }.to_not change(Account, :count).by(-1)
+          }.to_not change(Account, :count)
         end
       end
     end

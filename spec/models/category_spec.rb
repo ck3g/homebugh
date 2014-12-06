@@ -6,11 +6,11 @@ describe Category do
   end
 
   it "be an income category" do
-    create(:category, category_type_id: CategoryType.income).income?.should be_true
+    create(:category, category_type_id: CategoryType.income).income?.should be_truthy
   end
 
   it "be a spending category" do
-    create(:category, category_type_id: CategoryType.spending).income?.should be_false
+    create(:category, category_type_id: CategoryType.spending).income?.should be_falsey
   end
 
   describe ".asscociations" do
@@ -61,6 +61,6 @@ describe Category do
   end
 
   it "has active category by default" do
-    create(:category).inactive?.should be_false
+    create(:category).inactive?.should be_falsey
   end
 end

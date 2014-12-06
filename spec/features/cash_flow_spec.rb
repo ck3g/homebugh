@@ -18,7 +18,7 @@ feature "Cash Flows" do
     end
 
     scenario "have link to Move funds" do
-      page.has_link?("Move funds").should be_true
+      page.has_link?("Move funds").should be_truthy
     end
   end
 

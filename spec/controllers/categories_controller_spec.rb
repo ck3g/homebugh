@@ -50,7 +50,7 @@ describe CategoriesController do
         it "does not save the new category in the database" do
           expect {
             post :create, category: attributes_for(:invalid_category)
-          }.to_not change(Category, :count).by(1)
+          }.to_not change(Category, :count)
         end
       end
     end
@@ -78,7 +78,7 @@ describe CategoriesController do
           expect {
             put :update, id: salary, category: attributes_for(:category, name: "Cash", category_type_id: nil)
             salary.reload
-          }.to_not change(salary, :name).to("Cash")
+          }.to_not change(salary, :name)
         end
 
         it { should render_template :edit }
