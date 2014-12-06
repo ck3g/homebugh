@@ -5,28 +5,29 @@
 
 .spacer
 - if @transactions.present?
-  %table.table
-    %thead
-      %tr
-        %th.span2= t('common.date')
-        %th
-          = "#{t('common.category')} / #{t('parts.transactions.comment')}"
-        %th.span2= t('parts.transactions.sum')
-        %th.span2= t('common.account')
-        %th.span2
-    %tbody
-      - @transactions.each do |transaction|
+  .table-responsive
+    %table.table
+      %thead
         %tr
-          %td.span2
-            = I18n.l(transaction.created_at.to_date, format: :long)
-          %td
-            %span.category= link_to category_name(transaction), transactions_path(category: transaction.category_id)
-            %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
-          %td.span2.number= get_number_to_currency(transaction.income? ? transaction.summ : -transaction.summ)
-          %td.span2= transaction.account_name
-          %td.span2.actions
-            = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
-              %span.glyphicon.glyphicon-share-alt
+          %th.span2= t('common.date')
+          %th
+            = "#{t('common.category')} / #{t('parts.transactions.comment')}"
+          %th.span2= t('parts.transactions.sum')
+          %th.span2= t('common.account')
+          %th.span2
+      %tbody
+        - @transactions.each do |transaction|
+          %tr
+            %td.span2
+              = I18n.l(transaction.created_at.to_date, format: :long)
+            %td
+              %span.category= link_to category_name(transaction), transactions_path(category: transaction.category_id)
+              %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
+            %td.span2.number= get_number_to_currency(transaction.income? ? transaction.summ : -transaction.summ)
+            %td.span2= transaction.account_name
+            %td.span2.actions
+              = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
+                %span.glyphicon.glyphicon-share-alt
 - else
   %p.empty-data= t( 'parts.transactions.you_have_no_transactions' )
 
