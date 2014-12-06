@@ -1,10 +1,12 @@
 class Account < ActiveRecord::Base
   belongs_to :user
+  belongs_to :currency
   has_many :cash_flows, as: :from_account
   has_many :cash_flows, as: :to_account
 
-  validates :name, :user_id, presence: true
-  validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
+  validates :name, :user_id, :currency, presence: true
+  validates :name, uniqueness: {
+    scope: [:user_id, :currency_id], case_sensitive: false }
 
   def deposit(amount)
     amount ||= 0.0

@@ -5,6 +5,10 @@ RSpec.describe Currency, type: :model do
     expect(create :currency).to be_valid
   end
 
+  describe '.associations' do
+    it { is_expected.to have_many :accounts }
+  end
+
   describe '.validations' do
     context 'when valid' do
       subject { create :currency }

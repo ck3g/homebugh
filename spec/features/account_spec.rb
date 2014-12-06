@@ -4,6 +4,7 @@ feature "Accounts" do
   given!(:user) { create :user_example_com }
 
   background do
+    create :currency, name: 'EUR'
     sign_in_as 'user@example.com', 'password'
   end
 
@@ -57,6 +58,7 @@ feature "Accounts" do
   def create_account
     visit new_account_path
     fill_in "account_name", :with => "New Account Name"
+    select 'EUR', from: 'account_currency_id'
     click_button "Create Account"
   end
 

@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206092112) do
+ActiveRecord::Schema.define(version: 20141206092752) do
 
   create_table "accounts", force: true do |t|
-    t.string   "name",       limit: 50,                                        null: false
-    t.integer  "user_id",                                                      null: false
-    t.decimal  "funds",                 precision: 10, scale: 2, default: 0.0
+    t.string   "name",        limit: 50,                                        null: false
+    t.integer  "user_id",                                                       null: false
+    t.decimal  "funds",                  precision: 10, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "currency_id"
   end
 
+  add_index "accounts", ["currency_id"], name: "index_accounts_on_currency_id", using: :btree
   add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
 
   create_table "aggregated_transactions", force: true do |t|

@@ -31,12 +31,17 @@ describe AccountsController do
     end
 
     describe "POST #create" do
+      let!(:currency) { create :currency }
       context "with valid attributes" do
-        before { post :create, account: attributes_for(:account) }
+        def do_request
+          post :create, account: attributes_for(:account).
+            merge({ currency_id: currency.id })
+        end
+        before { do_request }
         it { is_expected.to redirect_to accounts_path }
         it "saves the new account in the database" do
           expect {
-            post :create, account: attributes_for(:account)
+            do_request
           }.to change(Account, :count).by(1)
         end
       end
