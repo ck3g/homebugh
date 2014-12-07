@@ -21,7 +21,9 @@
             %td
               %span.category= link_to category_name(transaction), transactions_path(category: transaction.category_id)
               %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
-            %td.span2.number= transaction.decorate.amount
+            %td.span2.number
+              = transaction.decorate.amount
+              = transaction.decorate.type_icon
             %td.span2= transaction.account_name
             %td.span2.actions
               = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do

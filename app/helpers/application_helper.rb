@@ -18,6 +18,14 @@ module ApplicationHelper
     "copyright @2011 - #{Date.current.year}"
   end
 
+  def up_arrow
+    content_tag :span, fa_icon('arrow-up'), class: 'text-success'
+  end
+
+  def down_arrow
+    content_tag :span, fa_icon('arrow-down'), class: 'text-danger'
+  end
+
   private
   def is_ru?
     I18n.locale == :ru

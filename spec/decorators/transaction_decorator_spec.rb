@@ -7,23 +7,8 @@ RSpec.describe TransactionDecorator do
     subject { decorator.amount }
 
     let(:account) { double decorate: double(unit: '$') }
+    let(:transaction) { mock_model Transaction, account: account, summ: 503 }
 
-    context 'when type is income' do
-      let(:transaction) do
-        mock_model Transaction, account: account, income?: true,
-          summ: 503
-      end
-
-      it { is_expected.to eq "503.00 $" }
-    end
-
-    context 'when type is spending' do
-      let(:transaction) do
-        mock_model Transaction, account: account, income?: false,
-          summ: 503
-      end
-
-      it { is_expected.to eq "-503.00 $" }
-    end
+    it { is_expected.to eq "503.00 $" }
   end
 end
