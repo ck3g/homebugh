@@ -2,9 +2,10 @@ require "rails_helper"
 
 feature "Transaction" do
   given!(:user) { create :user_example_com }
-  given!(:account) { create(:account, user: user, name: "Cash") }
-  given!(:category) { create(:income_category, user: user, name: "Salary") }
-  given!(:transaction) { create(:transaction, user: user, category: category, summ: 100, comment: "My first salary") }
+  given!(:currency) { create :currency, name: 'USD', unit: '$' }
+  given!(:account) { create :account, user: user, name: "Cash", currency: currency }
+  given!(:category) { create :income_category, user: user, name: "Salary" }
+  given!(:transaction) { create :transaction, user: user, category: category, summ: 100, comment: "My first salary" }
 
   background do
     sign_in_as 'user@example.com', 'password'
@@ -23,7 +24,7 @@ feature "Transaction" do
   scenario "when create transaction" do
     visit new_transaction_path
 
-    select "Cash", from: "transaction_account_id"
+    select "Cash [$]", from: "transaction_account_id"
     select "Salary", from: "transaction_category_id"
     fill_in "transaction_summ", with: 1000
     fill_in "transaction_comment", with: "My first salary"

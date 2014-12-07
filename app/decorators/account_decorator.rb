@@ -1,4 +1,6 @@
 class AccountDecorator < Draper::Decorator
+  delegate_all
+
   def amount
     h.get_number_to_currency object.funds, unit
   end

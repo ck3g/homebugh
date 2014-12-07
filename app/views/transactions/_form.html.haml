@@ -1,5 +1,7 @@
 = simple_form_for transaction, html: { class: "form-horizontal", role: 'form' } do |f|
-  = f.association :account, collection: current_user.accounts, input_html: { data: { select_2: true } }
+  = f.association :account,
+    collection: AccountDecorator.decorate_collection(current_user.accounts),
+    include_blank: false, input_html: { data: { select_2: true } }
   = f.association :category, collection: current_user.categories.active, input_html: { data: { select_2: true } }
   = f.input :summ
   = f.input :comment, input_html: { rows: 3, class: "input-xxlarge" }
