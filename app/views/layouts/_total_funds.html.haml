@@ -11,9 +11,9 @@
       .clearfix
 
     .panel-footer
-      .col-sm-3
-        = succeed ":" do
-          = t("common.total_funds")
-        .pull-right
-          %strong= get_number_to_currency TotalAmount.of(current_user)
+      - TotalAmount.of(current_user).each do |unit, amount|
+        .col-sm-3
+          .pull-right
+            %strong= get_number_to_currency amount, unit
+        .col-sm-1
       .clearfix
