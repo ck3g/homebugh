@@ -25,6 +25,7 @@ gem "coffee-rails", "~> 4.0.1"
 gem "uglifier", ">= 1.3.0"
 gem "therubyracer"
 gem 'quiet_assets', '~> 1.0.2'
+gem 'font-awesome-rails'
 
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'

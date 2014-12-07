@@ -120,6 +120,8 @@ GEM
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
     ffi (1.9.3)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     growl (1.0.3)
     haml (3.1.7)
     haml-rails (0.5.1)
@@ -334,6 +336,7 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails (~> 3.5.0)
   faker (~> 1.0.1)
+  font-awesome-rails
   growl (~> 1.0.3)
   haml-rails
   has_scope (~> 0.5.1)
