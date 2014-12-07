@@ -6,7 +6,7 @@
           = succeed ":" do
             = account.name
           .pull-right
-            %strong= get_number_to_currency account.funds
+            %strong= account.decorate.amount
         .col-sm-1
       .clearfix
 

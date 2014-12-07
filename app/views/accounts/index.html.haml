@@ -10,15 +10,13 @@
       %thead
         %tr
           %th= t('activerecord.attributes.account.name')
-          %th= Account.human_attribute_name :currency
           %th.span2.number= t('activerecord.attributes.account.funds')
           %th.span2.actions
       %tbody
         - @accounts.each do |account|
           %tr
-            %td= account.name
-            %td= account.currency_name
-            %td.span2.number= get_number_to_currency(account.funds)
+            %td= account.decorate.name
+            %td.span2.number= account.decorate.amount
             %td.span2.actions
               = link_to edit_account_path(account), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
                 %i.glyphicon.glyphicon-pencil
@@ -26,8 +24,9 @@
                 = link_to account, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
                   %i.glyphicon.glyphicon-trash
               - else
-                - alt_text = t('parts.accounts.account_not_empty') + ' ' + t('parts.cash_flows.new_cash_flows')
-                = link_to new_cash_flow_path, title: alt_text, class: "btn btn-mini btn-default btn-xs" do
+                = link_to new_cash_flow_path,
+                  title: "#{t('parts.accounts.account_not_empty')} #{t('parts.cash_flows.new_cash_flows')}",
+                  class: "btn btn-mini btn-default btn-xs" do
                   %i.glyphicon.glyphicon-retweet
 - else
   %p.empty-data

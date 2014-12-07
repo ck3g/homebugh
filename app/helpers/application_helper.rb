@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def get_number_to_currency number
-    number_to_currency number, unit: 'лей', format: '%n %u'
+  def get_number_to_currency(number, unit = 'лей')
+    number_to_currency number, unit: unit, format: '%n %u'
   end
 
   def inverse_locale
