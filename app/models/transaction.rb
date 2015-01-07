@@ -3,9 +3,10 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :account
 
-  validates :account_id, :category_id, :summ, presence: true
-  validates :summ, numericality: true
-  validate :cannot_be_less_than_0_01
+  validates :account_id, :category_id, presence: true
+  validates :summ, presence: true, numericality: {
+    greater_than_or_equal_to: 0.01
+  }
 
   delegate :name, to: :category, prefix: true
   delegate :category_type_id, to: :category, prefix: false, allow_nil: true
@@ -33,9 +34,5 @@ class Transaction < ActiveRecord::Base
       account.withdrawal(summ) if income?
       account.deposit(summ) unless income?
     end
-  end
-
-  def cannot_be_less_than_0_01
-    errors.add(:summ, I18n.t('common.cannot_be_less_than', value: 0.01)) if summ.to_f < 0.01
   end
 end

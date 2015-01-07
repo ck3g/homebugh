@@ -74,6 +74,7 @@ ru:
             summ:
               not_a_number: "должна быть числом"
               blank: "не может быть пустой"
+              greater_than_or_equal_to: "не может быть меньше чем %{count}"
         cash_flow:
           attributes:
             amount:

@@ -37,15 +37,14 @@ describe Transaction do
       it { is_expected.to validate_presence_of(:account_id) }
       it { is_expected.to validate_presence_of(:category_id) }
       it { is_expected.to validate_presence_of(:summ) }
-      it { is_expected.to validate_numericality_of(:summ) }
-      it { is_expected.to allow_value(0.01).for(:summ) }
+      it do
+        is_expected.to validate_numericality_of(:summ).
+          is_greater_than_or_equal_to(0.01)
+      end
     end
 
     context "invalid" do
       subject { create(:transaction) }
-      it { is_expected.not_to allow_value(nil).for(:account_id) }
-      it { is_expected.not_to allow_value(nil).for(:category_id) }
-      it { is_expected.not_to allow_value(nil).for(:summ) }
       it { is_expected.not_to allow_value(0).for(:summ) }
       it { is_expected.not_to allow_value("string").for(:summ) }
     end
