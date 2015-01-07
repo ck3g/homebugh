@@ -6,8 +6,8 @@ feature "Cash Flows" do
   background do
     sign_in_as 'user@example.com', 'password'
 
-    @from_account = create(:from_account, user: user, name: "From Account")
-    @to_account = create(:to_account, user: user, name: "To Account")
+    create(:from_account, user: user, name: "From Account")
+    create(:to_account, user: user, name: "To Account")
   end
 
   context "cash_flows_path" do

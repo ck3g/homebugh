@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206092752) do
+ActiveRecord::Schema.define(version: 20150107101007) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",        limit: 50,                                        null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20141206092752) do
     t.decimal  "amount",          precision: 10, scale: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "initial_amount",  precision: 10, scale: 2
   end
 
   add_index "cash_flows", ["from_account_id"], name: "index_cash_flows_on_from_account_id", using: :btree

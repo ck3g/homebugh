@@ -3,8 +3,8 @@ class CashFlow < ActiveRecord::Base
   belongs_to :from_account, class_name: 'Account'
   belongs_to :to_account, class_name: 'Account'
 
-  validates :amount, :user_id, :from_account_id, :to_account_id, presence: true
-  validates :amount, numericality: true
+  validates :user_id, :from_account_id, :to_account_id, presence: true
+  validates :amount, presence: true, numericality: true
   validate :cannot_be_less_than_0_01, unless: 'amount.nil?'
   validate :accounts_cannot_be_equal
 
