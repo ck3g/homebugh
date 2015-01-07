@@ -16,7 +16,9 @@ class CashFlow < ActiveRecord::Base
   before_destroy :affect_on_accounts_before_destroy
 
   def accounts_cannot_be_equal
-    errors.add(:to_account_id, I18n.t('parts.cash_flows.accounts_cannot_be_equal')) if from_account_id == to_account_id
+    if from_account_id == to_account_id
+      errors.add(:to_account_id, I18n.t('parts.cash_flows.accounts_cannot_be_equal'))
+    end
   end
 
   def from_account_id=(account)
