@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :currency do
-    sequence(:name) { |n| "Curerncy##{n}" }
+    sequence(:name) { |n| "Currency##{n}" }
     unit ""
   end
 end

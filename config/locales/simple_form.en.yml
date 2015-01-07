@@ -23,4 +23,7 @@ en:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
+    hints:
+      cash_flow:
+        initial_amount: "Leave it blank if amount will not change during transfer"
 

@@ -5,4 +5,5 @@ ru:
       cash_flow:
         from_account: Со счета
         to_account: На счет
-        amount: Сумма
+        initial_amount: Начальная сумма
+        amount: Итоговая сумма
