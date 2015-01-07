@@ -74,6 +74,10 @@ ru:
             summ:
               not_a_number: "должна быть числом"
               blank: "не может быть пустой"
+        cash_flow:
+          attributes:
+            amount:
+              greater_than_or_equal_to: "не может быть меньше чем %{count}"
 
   main_menu:
     transactions: "Транзакции"

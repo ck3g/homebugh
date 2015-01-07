@@ -4,8 +4,9 @@ class CashFlow < ActiveRecord::Base
   belongs_to :to_account, class_name: 'Account'
 
   validates :user_id, :from_account_id, :to_account_id, presence: true
-  validates :amount, presence: true, numericality: true
-  validate :cannot_be_less_than_0_01, unless: 'amount.nil?'
+  validates :amount, presence: true, numericality: {
+    greater_than_or_equal_to: 0.01
+  }
   validate :accounts_cannot_be_equal
 
   delegate :name, to: :from_account, prefix: true
@@ -13,10 +14,6 @@ class CashFlow < ActiveRecord::Base
 
   after_create :affect_on_accounts_after_create
   before_destroy :affect_on_accounts_before_destroy
-
-  def cannot_be_less_than_0_01
-    errors.add(:amount, I18n.t('common.cannot_be_less_than', value: 0.01)) if amount < 0.01
-  end
 
   def accounts_cannot_be_equal
     errors.add(:to_account_id, I18n.t('parts.cash_flows.accounts_cannot_be_equal')) if from_account_id == to_account_id

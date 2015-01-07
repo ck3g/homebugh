@@ -41,17 +41,6 @@ feature "Cash Flows" do
     expect(page).not_to have_content("From Account → To Account")
     expect(page).not_to have_content("15.00")
   end
-
-  scenario "should raise validation on create" do
-    visit new_cash_flow_path
-    select "From Account", from: "cash_flow_from_account_id"
-    select "From Account", from: "cash_flow_to_account_id"
-    fill_in "cash_flow_amount", with: "0"
-
-    click_button "cash_flow_submit"
-    expect(page).to have_content("You cannot move funds to same account")
-    expect(page).to have_content("Cannot be less than 0.01")
-  end
 end
 
 def create_flow
