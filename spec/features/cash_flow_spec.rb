@@ -2,29 +2,19 @@ require "rails_helper"
 
 feature "Cash Flows" do
   given!(:user) { create :user_example_com }
+  given!(:source) { create :from_account, user: user, name: "From Account" }
+  given!(:destination) { create :to_account, user: user, name: "To Account" }
 
-  background do
-    sign_in_as 'user@example.com', 'password'
+  background { sign_in_as 'user@example.com', 'password' }
 
-    create(:from_account, user: user, name: "From Account")
-    create(:to_account, user: user, name: "To Account")
-  end
+  context "when successfull create" do
+    scenario "creates a new cash flow" do
+      visit new_cash_flow_path
+      select "From Account", from: "cash_flow_from_account_id"
+      select "To Account", from: "cash_flow_to_account_id"
+      fill_in "cash_flow_amount", with: 15
+      click_button "cash_flow_submit"
 
-  context "cash_flows_path" do
-    background { visit cash_flows_path }
-
-    scenario "get list of cash flows" do
-      expect(page).to have_content("List of cash flows")
-    end
-
-    scenario "have link to Move funds" do
-      expect(page.has_link?("Move funds")).to be_truthy
-    end
-  end
-
-  context "create" do
-    scenario "when successul create" do
-      create_flow
       expect(page).to have_content "Funds was successfully moved."
       expect(page).to have_content "From Account → To Account"
       expect(page).to have_content "15.00"
@@ -32,8 +22,10 @@ feature "Cash Flows" do
     end
   end
 
-  scenario "should destroy(rollback) flow" do
-    create_flow
+  scenario "rollbacks a flow" do
+    create :cash_flow, from_account: source, to_account: destination, amount: 15, user: user
+
+    visit cash_flows_path
 
     expect(page).to have_content("From Account → To Account")
     expect(page).to have_content("15.00")
@@ -41,12 +33,4 @@ feature "Cash Flows" do
     expect(page).not_to have_content("From Account → To Account")
     expect(page).not_to have_content("15.00")
   end
-end
-
-def create_flow
-  visit new_cash_flow_path
-  select "From Account", from: "cash_flow_from_account_id"
-  select "To Account", from: "cash_flow_to_account_id"
-  fill_in "cash_flow_amount", with: 15
-  click_button "cash_flow_submit"
 end
