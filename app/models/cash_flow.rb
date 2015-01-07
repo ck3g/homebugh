@@ -29,16 +29,16 @@ class CashFlow < ActiveRecord::Base
 
   private
   def affect_on_accounts_after_create
-    CashFlow.transaction do
-      from_account.withdrawal(amount)
-      to_account.deposit(amount)
-    end
+    FundsTransferService.new(from_account, to_account).
+      transfer _initial_amount, amount
   end
 
   def affect_on_accounts_before_destroy
-    CashFlow.transaction do
-      from_account.deposit(amount)
-      to_account.withdrawal(amount)
-    end
+    FundsTransferService.new(to_account, from_account).
+      transfer amount, _initial_amount
+  end
+
+  def _initial_amount
+    initial_amount.presence || amount
   end
 end
