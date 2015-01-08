@@ -9,9 +9,9 @@
     %thead
       %tr
         %th.span2= t('common.date')
-        %th
-          = t('parts.cash_flows.from_to')
-        %th.span2.number= t('parts.cash_flows.amount')
+        %th= t('parts.cash_flows.from_to')
+        %th.span2.number= CashFlow.human_attribute_name :initial_amount
+        %th.span2.number= CashFlow.human_attribute_name :amount
         %th.span2.actions
     %tbody
       - @cash_flows.each do |cash_flow|
@@ -21,7 +21,8 @@
             = cash_flow.from_account_name
             = t(:arrow)
             = cash_flow.to_account_name
-          %td.span2.number= get_number_to_currency(cash_flow.amount)
+          %td.span2.number= cash_flow.decorate.initial_amount
+          %td.span2.number= cash_flow.decorate.amount
           %td.span2.actions
             = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
               %i.glyphicon.glyphicon-share-alt

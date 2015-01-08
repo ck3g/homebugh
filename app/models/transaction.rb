@@ -3,18 +3,28 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :account
 
-  validates :account_id, :category_id, :summ, presence: true
-  validates :summ, numericality: true
-  validate :cannot_be_less_than_0_01
+  validates :account_id, :category_id, presence: true
+  validates :summ, presence: true, numericality: {
+    greater_than_or_equal_to: 0.01
+  }
 
   delegate :name, to: :category, prefix: true
   delegate :category_type_id, to: :category, prefix: false, allow_nil: true
-  delegate :name, to: :account, prefix: true
+  delegate :name, :currency_id, to: :account, prefix: true
 
   after_create :affect_on_account_after_create
   before_destroy :affect_on_account_before_destroy
 
   scope :category, ->(category_id) { where(category_id: category_id) }
+  scope :category_type, -> category_type_id {
+    joins(:category).where(:'categories.category_type_id' => category_type_id)
+  }
+  scope :currency, -> currency_id {
+    joins(:account).where(:'accounts.currency_id' => currency_id)
+  }
+  scope :created_between, -> date_from, date_to {
+    where(created_at: date_from..date_to)
+  }
 
   def income?
     category_type_id == CategoryType.income
@@ -33,9 +43,5 @@ class Transaction < ActiveRecord::Base
       account.withdrawal(summ) if income?
       account.deposit(summ) unless income?
     end
-  end
-
-  def cannot_be_less_than_0_01
-    errors.add(:summ, I18n.t('common.cannot_be_less_than', value: 0.01)) if summ.to_f < 0.01
   end
 end

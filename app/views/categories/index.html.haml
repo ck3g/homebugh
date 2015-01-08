@@ -9,15 +9,18 @@
     %table.table
       %thead
         %tr
-          %th.span3= t('activerecord.attributes.category.category_type_id')
-          %th= t('activerecord.attributes.category.name')
+          %th
+            .col-sm-12
+              .col-sm-11.col-sm-offset-1= t('activerecord.attributes.category.name')
           %th.span2
       %tbody
         - @categories.each do |category|
           %tr{class: category_type(category)}
-            %td.span3= t("parts.categories.#{category.category_type_name}")
-            %td= link_to category.name, transactions_path(category: category.id)
-            %td.span2
+            %td
+              .col-sm-12
+                .col-sm-1= category.decorate.type_icon
+                .col-sm-11= link_to category.name, transactions_path(category: category.id)
+            %td.span2.actions
               = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
                 %span.glyphicon.glyphicon-pencil
               = link_to category, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do

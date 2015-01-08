@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 shared_examples "has no rights" do
   it { is_expected.to redirect_to new_user_session_path }

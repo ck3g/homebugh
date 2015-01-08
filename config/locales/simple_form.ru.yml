@@ -24,4 +24,7 @@ ru:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
+    hints:
+      cash_flow:
+        initial_amount: "Оставьте пустым если итоговая сумма не меняется при переводе средств"
 

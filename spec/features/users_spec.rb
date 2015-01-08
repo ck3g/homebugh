@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "user registration" do
   scenario "sign up with valid credentials" do

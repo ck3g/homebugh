@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AggregatedTransaction do
   it 'has a valid factory' do
@@ -9,6 +9,7 @@ describe AggregatedTransaction do
     it { is_expected.to belong_to :user }
     it { is_expected.to belong_to :category }
     it { is_expected.to belong_to :category_type }
+    it { is_expected.to belong_to :currency }
   end
 
   describe '.validations' do

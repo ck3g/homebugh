@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe CashFlow do
   let(:user) { create(:user) }
@@ -7,8 +7,8 @@ describe CashFlow do
   let(:account) { create(:account, user: user, funds: 150) }
   let(:cash_flow) { create(:cash_flow, user: user, from_account: from_account, to_account: to_account) }
 
-  it "should have valid factory" do
-    expect(create(:cash_flow)).to be_valid
+  it "has valid factory" do
+    expect(create :cash_flow).to be_valid
   end
 
   describe ".association" do
@@ -20,20 +20,14 @@ describe CashFlow do
   describe ".validation" do
     context "valid" do
       subject { create(:cash_flow) }
-      it { is_expected.to validate_presence_of(:amount) }
       it { is_expected.to validate_presence_of(:user_id) }
       it { is_expected.to validate_presence_of(:from_account_id) }
       it { is_expected.to validate_presence_of(:to_account_id) }
-      it { is_expected.to allow_value(1).for(:amount) }
-    end
-
-    context "invalid" do
-      subject { create(:cash_flow) }
-      it { is_expected.not_to allow_value(nil).for(:amount) }
-      it { is_expected.not_to allow_value(0).for(:amount) }
-      it { is_expected.not_to allow_value(nil).for(:user_id) }
-      it { is_expected.not_to allow_value(nil).for(:from_account_id) }
-      it { is_expected.not_to allow_value(nil).for(:to_account_id) }
+      it { is_expected.to validate_presence_of(:amount) }
+      it do
+        is_expected.to validate_numericality_of(:amount).
+          is_greater_than_or_equal_to(0.01)
+      end
     end
   end
 

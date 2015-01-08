@@ -38,6 +38,8 @@ class CashFlowsController < ApplicationController
   end
 
   def safe_params
-    params.require(:cash_flow).permit(:from_account_id, :to_account_id, :amount)
+    params.require(:cash_flow).permit(
+      :from_account_id, :to_account_id, :initial_amount, :amount
+    )
   end
 end

@@ -1,8 +1,8 @@
 class Stats
-  attr_reader :relation
+  attr_reader :relation, :currency
 
-  def initialize(relation = AggregatedTransaction)
-    @relation = relation
+  def initialize(currency, relation = AggregatedTransaction)
+    @relation = relation.currency(currency.id)
   end
 
   def all

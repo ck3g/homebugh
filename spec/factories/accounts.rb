@@ -3,6 +3,7 @@ FactoryGirl.define do
   factory :account do
     sequence(:name) { |n| "Account ##{n}" }
     association :user
+    currency
 
     factory :from_account do
       sequence(:name) { |n| "From Account ##{n}" }

@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119022822) do
+ActiveRecord::Schema.define(version: 20150108093405) do
 
   create_table "accounts", force: true do |t|
-    t.string   "name",       limit: 50,                                        null: false
-    t.integer  "user_id",                                                      null: false
-    t.decimal  "funds",                 precision: 10, scale: 2, default: 0.0
+    t.string   "name",        limit: 50,                                        null: false
+    t.integer  "user_id",                                                       null: false
+    t.decimal  "funds",                  precision: 10, scale: 2, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "currency_id"
   end
 
+  add_index "accounts", ["currency_id"], name: "index_accounts_on_currency_id", using: :btree
   add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
 
   create_table "aggregated_transactions", force: true do |t|
@@ -32,10 +34,12 @@ ActiveRecord::Schema.define(version: 20141119022822) do
     t.datetime "period_ended_at",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "currency_id"
   end
 
   add_index "aggregated_transactions", ["category_id"], name: "index_aggregated_transactions_on_category_id", using: :btree
   add_index "aggregated_transactions", ["category_type_id"], name: "index_aggregated_transactions_on_category_type_id", using: :btree
+  add_index "aggregated_transactions", ["currency_id"], name: "index_aggregated_transactions_on_currency_id", using: :btree
   add_index "aggregated_transactions", ["user_id"], name: "index_aggregated_transactions_on_user_id", using: :btree
 
   create_table "cash_flows", force: true do |t|
@@ -45,6 +49,7 @@ ActiveRecord::Schema.define(version: 20141119022822) do
     t.decimal  "amount",          precision: 10, scale: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "initial_amount",  precision: 10, scale: 2
   end
 
   add_index "cash_flows", ["from_account_id"], name: "index_cash_flows_on_from_account_id", using: :btree
@@ -64,6 +69,15 @@ ActiveRecord::Schema.define(version: 20141119022822) do
   create_table "category_types", force: true do |t|
     t.string "name"
   end
+
+  create_table "currencies", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "currencies", ["name"], name: "index_currencies_on_name", unique: true, using: :btree
 
   create_table "transactions", force: true do |t|
     t.integer  "category_id"

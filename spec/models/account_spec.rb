@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe Account do
   it "has a valid factory" do
@@ -8,34 +8,20 @@ describe Account do
   describe ".associations" do
     it { is_expected.to belong_to :user }
     it { is_expected.to have_many(:cash_flows) }
+    it { is_expected.to belong_to :currency }
   end
 
   describe ".validation" do
-    context "valid" do
+    context "when valid" do
       subject { create(:account) }
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_presence_of(:user_id) }
-      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:user_id) }
+      it do
+        is_expected.to validate_uniqueness_of(:name).
+          scoped_to([:user_id, :currency_id])
+      end
+      it { is_expected.to validate_presence_of :currency }
     end
-  end
-
-  it "invalid without name" do
-    expect(build(:account, name: nil)).not_to be_valid
-  end
-
-  it "invalid without user" do
-    expect(build(:account, user: nil)).not_to be_valid
-  end
-
-  it "is invalid with a duplicate name" do
-    user = create(:user)
-    create(:account, name: "Account", user: user)
-    expect(build(:account, name: "ACCOUNT", user: user)).not_to be_valid
-  end
-
-  it "allows two users have account with same name" do
-    create(:account, name: "Account")
-    expect(build(:account, name: "Account")).to be_valid
   end
 
   it "has 0.0 funds" do
