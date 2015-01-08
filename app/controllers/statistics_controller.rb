@@ -6,6 +6,16 @@ class StatisticsController < ApplicationController
   end
 
   def archived
-    @stats = Stats.new(current_user.aggregated_transactions).all.lazy.first(12)
+    @stats = Stats.new(
+      current_currency,
+      current_user.aggregated_transactions
+    ).all.lazy.first(12)
+  end
+
+  private
+  def current_currency
+    name = params[:currency].presence ||
+      current_user.currencies.first.try(:name)
+    @currency ||= Currency.find_by!(name: name)
   end
 end

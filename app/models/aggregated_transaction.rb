@@ -2,6 +2,7 @@ class AggregatedTransaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :category_type
+  belongs_to :currency
 
   validates :user, :category, :category_type_id, :period_started_at,
     :period_ended_at, presence: true
@@ -12,4 +13,5 @@ class AggregatedTransaction < ActiveRecord::Base
   scope :month, -> month {
     where period_started_at: month, period_ended_at: month.end_of_month
   }
+  scope :currency, -> currency_id { where currency_id: currency_id }
 end

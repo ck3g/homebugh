@@ -7,6 +7,10 @@ RSpec.describe Currency, type: :model do
 
   describe '.associations' do
     it { is_expected.to have_many :accounts }
+    it do
+      is_expected.to have_many(:aggregated_transactions).
+        dependent :destroy
+    end
   end
 
   describe '.validations' do

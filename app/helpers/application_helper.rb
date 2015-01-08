@@ -26,6 +26,11 @@ module ApplicationHelper
     content_tag :span, fa_icon('arrow-down'), class: 'text-danger'
   end
 
+  def active_currency?(currency, path_name, can_be_empty)
+    is_active = current_page?(send(path_name, currency: currency.name))
+    can_be_empty ? params[:currency].nil? || is_active : is_active
+  end
+
   private
   def is_ru?
     I18n.locale == :ru
