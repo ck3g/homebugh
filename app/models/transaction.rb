@@ -10,7 +10,7 @@ class Transaction < ActiveRecord::Base
 
   delegate :name, to: :category, prefix: true
   delegate :category_type_id, to: :category, prefix: false, allow_nil: true
-  delegate :name, to: :account, prefix: true
+  delegate :name, :currency_id, to: :account, prefix: true
 
   after_create :affect_on_account_after_create
   before_destroy :affect_on_account_before_destroy

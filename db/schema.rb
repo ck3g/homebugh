@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107101007) do
+ActiveRecord::Schema.define(version: 20150108093405) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",        limit: 50,                                        null: false
@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 20150107101007) do
     t.datetime "period_ended_at",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "currency_id"
   end
 
   add_index "aggregated_transactions", ["category_id"], name: "index_aggregated_transactions_on_category_id", using: :btree
   add_index "aggregated_transactions", ["category_type_id"], name: "index_aggregated_transactions_on_category_type_id", using: :btree
+  add_index "aggregated_transactions", ["currency_id"], name: "index_aggregated_transactions_on_currency_id", using: :btree
   add_index "aggregated_transactions", ["user_id"], name: "index_aggregated_transactions_on_user_id", using: :btree
 
   create_table "cash_flows", force: true do |t|
