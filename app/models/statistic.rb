@@ -1,9 +1,8 @@
 class Statistic
-
-  def self.current_month_stats(user_id)
+  def self.current_month_stats(currency_id, user_id)
     current_date = DateTime.current.beginning_of_month.to_date
 
-    month_stats = Statistics.new(user_id, current_date.beginning_of_month, current_date.end_of_month)
+    month_stats = Statistics.new(currency_id, user_id, current_date.beginning_of_month, current_date.end_of_month)
     income_chart_data = {}
     month_stats.get_income_categories.each do |category|
       income_chart_data[category[:name]] = category[:sum]
@@ -22,5 +21,4 @@ class Statistic
       spending_chart_data: spending_chart_data
     }]
   end
-
 end

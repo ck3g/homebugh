@@ -2,7 +2,10 @@ class StatisticsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @statistics = Statistic.current_month_stats(current_user.id)
+    @statistics = Statistic.current_month_stats(
+      current_currency.id,
+      current_user.id
+    )
   end
 
   def archived
