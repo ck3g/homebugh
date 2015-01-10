@@ -91,36 +91,16 @@ describe AccountsController do
     end
 
     describe "DELETE #destroy" do
-      let!(:account) { create :account, user: user }
-      let!(:account2) { create :account, user: user }
-      before :each do
-        @account = create(:account, user: @user)
+      before do
+        allow(controller).to receive(:current_user).and_return @user
+        allow(@user).to receive(:accounts).and_return Account
+        allow(Account).to receive(:find).and_return account
+        allow(account).to receive :destroy
+        delete :destroy, id: account
       end
 
-      context "when account is empty" do
-        before { delete :destroy, id: account2 }
-        it { is_expected.to redirect_to accounts_path }
-        it "deletes the account" do
-          expect {
-            delete :destroy, id: account
-          }.to change(Account, :count).by(-1)
-        end
-      end
-
-      context "when account is not empty" do
-        let!(:account) { create :account, user: user }
-        before do
-          account.deposit 100
-          delete :destroy, id: account
-        end
-        it { is_expected.to redirect_to accounts_path }
-
-        it "does not deletes the account" do
-          expect {
-            delete :destroy, id: account
-          }.to_not change(Account, :count)
-        end
-      end
+      it { expect(account).to have_received :destroy }
+      it { is_expected.to redirect_to accounts_url }
     end
   end
 

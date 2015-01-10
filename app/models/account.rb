@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
   belongs_to :user
   belongs_to :currency
+  has_many :transactions, dependent: :nullify
   has_many :cash_flows, as: :from_account
   has_many :cash_flows, as: :to_account
 
@@ -18,5 +19,11 @@ class Account < ActiveRecord::Base
   def withdrawal(amount)
     amount ||= 0.0
     update_attribute :funds, funds - amount
+  end
+
+  def destroy
+    if funds.zero? && !transactions.exists?
+      super
+    end
   end
 end

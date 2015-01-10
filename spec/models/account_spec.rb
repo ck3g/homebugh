@@ -9,6 +9,7 @@ describe Account do
     it { is_expected.to belong_to :user }
     it { is_expected.to have_many(:cash_flows) }
     it { is_expected.to belong_to :currency }
+    it { is_expected.to have_many(:transactions).dependent :nullify }
   end
 
   describe ".validation" do
@@ -58,6 +59,34 @@ describe Account do
     it "not decreased amount" do
       account.withdrawal nil
       expect(account.funds).to eq(0.0)
+    end
+  end
+
+  describe '#destroy' do
+    let!(:account) { create :account }
+
+    context 'when account has no transactions' do
+      context 'when account has no funds' do
+        it "removes account" do
+          expect { account.destroy }.to change(Account, :count).by -1
+        end
+      end
+
+      context 'when account has funds'  do
+        let!(:account) { create :account, funds: 503 }
+        it "do not removes the account" do
+          expect { account.destroy }.not_to change(Account, :count)
+        end
+      end
+    end
+
+    context 'when account has transactions' do
+      let!(:transaction) { create :transaction, account: account }
+
+      it "do not removes account" do
+        allow(account).to receive(:funds).and_return 0.0
+        expect { account.destroy }.not_to change(Account, :count)
+      end
     end
   end
 end
