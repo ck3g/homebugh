@@ -83,9 +83,19 @@ describe Account do
     context 'when account has transactions' do
       let!(:transaction) { create :transaction, account: account }
 
-      it "do not removes account" do
+      before do
         allow(account).to receive(:funds).and_return 0.0
-        expect { account.destroy }.not_to change(Account, :count)
+      end
+
+      it "do not removes account" do
+        expect { account.destroy }.not_to change(Account.unscoped, :count)
+      end
+
+      it "changes account status to 'deleted'" do
+        expect {
+          account.destroy
+          account.reload
+        }.to change { account.status }.to 'deleted'
       end
     end
   end

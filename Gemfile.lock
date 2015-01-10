@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.0.8)
     actionmailer (4.0.12)
       actionpack (= 4.0.12)
       mail (~> 2.5, >= 2.5.4)
@@ -314,6 +315,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   actionpack-action_caching
   actionpack-page_caching
   activerecord-deprecated_finders

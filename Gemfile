@@ -18,6 +18,7 @@ gem 'best_in_place'
 gem "select2-rails", '~> 3.5.1'
 gem 'chartkick'
 gem 'draper'
+gem 'aasm'
 
 gem "sass-rails", "~> 4.0.3"
 gem 'bootstrap-sass', '~> 3.1.1'

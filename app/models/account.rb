@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  include AASM
+
   belongs_to :user
   belongs_to :currency
   has_many :transactions, dependent: :nullify
@@ -11,6 +13,17 @@ class Account < ActiveRecord::Base
 
   delegate :name, :unit, to: :currency, prefix: true
 
+  default_scope { active }
+
+  aasm column: :status do
+    state :active, initial: true
+    state :deleted
+
+    event :mark_as_deleted do
+      transitions to: :deleted
+    end
+  end
+
   def deposit(amount)
     amount ||= 0.0
     update_attribute :funds, funds + amount
@@ -22,8 +35,7 @@ class Account < ActiveRecord::Base
   end
 
   def destroy
-    if funds.zero? && !transactions.exists?
-      super
-    end
+    return unless funds.zero?
+    transactions.exists? ? mark_as_deleted! : super
   end
 end
