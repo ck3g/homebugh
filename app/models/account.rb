@@ -13,8 +13,6 @@ class Account < ActiveRecord::Base
 
   delegate :name, :unit, to: :currency, prefix: true
 
-  default_scope { active }
-
   aasm column: :status do
     state :active, initial: true
     state :deleted

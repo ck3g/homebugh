@@ -34,7 +34,7 @@ class CashFlowsController < ApplicationController
   end
 
   def find_accounts
-    @accounts = current_user.accounts
+    @accounts = current_user.accounts.active
   end
 
   def safe_params
