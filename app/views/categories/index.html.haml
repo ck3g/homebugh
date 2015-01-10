@@ -15,7 +15,7 @@
           %th.span2
       %tbody
         - @categories.each do |category|
-          %tr{class: category_type(category)}
+          %tr{class: category.decorate.category_type}
             %td
               .col-sm-12
                 .col-sm-1= category.decorate.type_icon
