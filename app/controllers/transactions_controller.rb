@@ -5,7 +5,6 @@ class TransactionsController < ApplicationController
   before_filter :find_transaction, only: [:destroy, :update]
   before_filter :find_categories, only: [:new, :create]
   before_filter :find_accounts, only: [:new, :create]
-  after_filter :expire_statistics_cache, only: [:create, :destroy]
 
   has_scope :category
 

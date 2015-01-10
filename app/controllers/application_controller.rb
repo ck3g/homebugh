@@ -16,8 +16,4 @@ class ApplicationController < ActionController::Base
     @controller_name = controller_name
     @action_name = action_name
   end
-
-  def expire_statistics_cache
-    expire_action controller: :statistics, action: :index
-  end
 end
