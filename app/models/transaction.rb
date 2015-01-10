@@ -33,15 +33,13 @@ class Transaction < ActiveRecord::Base
   private
   def affect_on_account_after_create
     Transaction.transaction do
-      account.deposit(summ) if income?
-      account.withdrawal(summ) unless income?
+      income? ? account.deposit(summ) : account.withdrawal(summ)
     end
   end
 
   def affect_on_account_before_destroy
     Transaction.transaction do
-      account.withdrawal(summ) if income?
-      account.deposit(summ) unless income?
+      income? ? account.withdrawal(summ) : account.deposit(summ)
     end
   end
 end
