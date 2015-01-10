@@ -19,7 +19,7 @@
           %tr
             %td.span2= transaction.decorate.created_on
             %td
-              %span.category= link_to category_name(transaction), transactions_path(category: transaction.category_id)
+              %span.category= link_to transaction.decorate.category_name, transactions_path(category: transaction.category_id)
               %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
             %td.span2.number
               = transaction.decorate.amount

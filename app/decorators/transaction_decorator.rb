@@ -16,4 +16,12 @@ class TransactionDecorator < Draper::Decorator
   def unit
     object.account.decorate.unit
   end
+
+  def category_name
+    if object.category
+      object.category_name
+    else
+      t('parts.transactions.no_category')
+    end
+  end
 end
