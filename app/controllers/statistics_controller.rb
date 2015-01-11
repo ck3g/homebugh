@@ -1,7 +1,7 @@
 class StatisticsController < ApplicationController
-  authorize_resource class: false
 
   def index
+    authorize! :index, :statistics
     @statistics = Statistic.current_month_stats(
       current_currency.id,
       current_user.id
@@ -9,6 +9,7 @@ class StatisticsController < ApplicationController
   end
 
   def archived
+    authorize! :archived, :statistics
     @stats = Stats.new(
       current_currency,
       current_user.aggregated_transactions
