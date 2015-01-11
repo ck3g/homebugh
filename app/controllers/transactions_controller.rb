@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   respond_to :html, :json
 
-  before_filter :authenticate_user!
+  authorize_resource
   before_filter :find_transaction, only: [:destroy, :update]
   before_filter :find_categories, only: [:new, :create]
   before_filter :find_accounts, only: [:new, :create]

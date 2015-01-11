@@ -1,5 +1,5 @@
 class CashFlowsController < ApplicationController
-  before_filter :authenticate_user!
+  authorize_resource
   before_filter :find_cash_flow, only: [:destroy]
   before_filter :find_accounts, only: [:new, :create, :destroy]
 

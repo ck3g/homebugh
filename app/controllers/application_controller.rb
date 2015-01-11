@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    path = user_signed_in? ? root_path : new_user_session_path
+    redirect_to path, alert: exception.message
+  end
+
   before_filter :set_locale
   before_filter :instantiate_controller_and_action_names
 

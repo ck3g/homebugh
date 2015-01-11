@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_filter :authenticate_user!
+  authorize_resource
   before_filter :find_account, only: [:show, :edit, :update, :destroy]
 
   def index

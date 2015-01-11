@@ -1,5 +1,5 @@
 class StatisticsController < ApplicationController
-  before_filter :authenticate_user!
+  authorize_resource class: false
 
   def index
     @statistics = Statistic.current_month_stats(
