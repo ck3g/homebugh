@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.9'
+gem 'rails', '4.2.0'
 
 gem "json", "~> 1.7.7"
 
 gem 'mysql2', "~> 0.3.17"
-gem 'devise', "~> 3.2.3"
+gem 'devise', "~> 3.4.1"
 gem "devise-encryptable", "~> 0.1.1"
 gem 'haml'
 gem 'has_scope', "~> 0.5.1"
