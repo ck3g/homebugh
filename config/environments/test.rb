@@ -17,7 +17,7 @@ Homebugh::Application.configure do
   config.action_controller.perform_caching = false
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
+  config.serve_static_files  = true
   config.static_cache_control = "public, max-age=3600"
 
   # Raise exceptions instead of rendering exception templates
@@ -40,8 +40,4 @@ Homebugh::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { :host => "www.homebugh.info" }
-
-  # Configure static asset server for tests with Cache-Control for perfomance
-  config.serve_static_assets = true
-  config.static_cache_control = "public, max-age=3600"
 end

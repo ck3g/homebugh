@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.12'
+gem 'rails', '4.2.0'
 
 gem "json", "~> 1.7.7"
 
-gem 'mysql2', "~> 0.3.11"
-gem 'devise', "~> 3.2.3"
+gem 'mysql2', "~> 0.3.17"
+gem 'devise', "~> 3.4.1"
 gem "devise-encryptable", "~> 0.1.1"
-gem 'haml-rails'
+gem 'haml'
 gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 1.3.4"
-gem "simple_form", "~> 3.0.1"
+gem "simple_form", "~> 3.1.0"
 gem "kaminari", "~> 0.14.1"
 gem "meta-tags", "~> 1.3.0", require: "meta_tags"
 gem "newrelic_rpm"

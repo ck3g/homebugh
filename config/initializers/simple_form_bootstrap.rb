@@ -67,5 +67,5 @@ SimpleForm.setup do |config|
   # buttons and other elements.
   config.default_wrapper = :bootstrap
   config.label_class = 'col-lg-2 control-label'
-  config.form_class = 'simple_form form-horizontal'
+  config.default_form_class = 'simple_form form-horizontal'
 end
