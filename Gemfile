@@ -38,6 +38,7 @@ gem 'jquery-ui-rails'
 
 gem 'ruby-progressbar'
 
+gem 'skylight'
 gem 'whenever', '~> 0.9.4', require: false
 
 group :development do
