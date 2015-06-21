@@ -2,7 +2,11 @@ class Stats
   attr_reader :relation, :currency
 
   def initialize(currency, relation = AggregatedTransaction)
-    @relation = relation.currency(currency.id)
+    if currency.is_a? Currency
+      @relation = relation.currency(currency.id)
+    else
+      @relation = relation.none
+    end
   end
 
   def all

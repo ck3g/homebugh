@@ -3,7 +3,7 @@ class StatisticsController < ApplicationController
   def index
     authorize! :index, :statistics
     @statistics = Statistic.current_month_stats(
-      current_currency.id,
+      current_currency.try(:id),
       current_user.id
     )
   end
@@ -20,6 +20,6 @@ class StatisticsController < ApplicationController
   def current_currency
     name = params[:currency].presence ||
       current_user.currencies.first.try(:name)
-    @currency ||= Currency.find_by!(name: name)
+    @currency ||= Currency.find_by(name: name)
   end
 end
