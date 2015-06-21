@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if user_signed_in? && current_user.accounts.any?
   .panel.panel-default
     .panel-body
       - current_user.accounts.each do |account|
