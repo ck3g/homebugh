@@ -42,12 +42,12 @@ feature "Accounts" do
     expect(page).to have_content("New Account Name")
   end
 
-  scenario "remove account if it is empty" do
+  scenario "archive account if it is empty" do
     create_account
     visit accounts_path
     expect(page).to have_content("New Account Name")
     expect(page).to have_content("0.00")
-    click_link "Destroy"
+    click_link "Archive"
 
     expect(page).not_to have_content("New Account Name")
     expect(page).to have_content("You have no accounts.")

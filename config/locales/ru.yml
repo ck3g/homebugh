@@ -95,6 +95,7 @@ ru:
   common:
     edit: "Ред."
     destroy: "Удал."
+    archive: "в Архив"
     rollback: "Возврат"
     back: "Назад"
     show: "Просмотр"

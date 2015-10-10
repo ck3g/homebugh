@@ -21,7 +21,7 @@
               = link_to edit_account_path(account), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
                 %i.glyphicon.glyphicon-pencil
               - if account.funds.to_f.zero?
-                = link_to account, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
+                = link_to account, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.archive'), class: "btn btn-danger btn-mini btn-xs" do
                   %i.glyphicon.glyphicon-trash
               - else
                 = link_to new_cash_flow_path,

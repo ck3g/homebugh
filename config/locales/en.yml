@@ -54,6 +54,7 @@ en:
   common:
     edit: "Edit"
     destroy: "Destroy"
+    archive: "Archive"
     rollback: "Rollback"
     back: "Back"
     show: "Show"
