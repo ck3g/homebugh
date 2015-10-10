@@ -17,5 +17,9 @@ FactoryGirl.define do
     factory :invalid_account do
       name nil
     end
+
+    trait :deleted do
+      status 'deleted'
+    end
   end
 end
