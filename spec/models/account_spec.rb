@@ -65,21 +65,6 @@ describe Account do
   describe '#destroy' do
     let!(:account) { create :account }
 
-    context 'when account has no transactions' do
-      context 'when account has no funds' do
-        it "removes account" do
-          expect { account.destroy }.to change(Account, :count).by -1
-        end
-      end
-
-      context 'when account has funds'  do
-        let!(:account) { create :account, funds: 503 }
-        it "do not removes the account" do
-          expect { account.destroy }.not_to change(Account, :count)
-        end
-      end
-    end
-
     context 'when account has transactions' do
       let!(:transaction) { create :transaction, account: account }
 

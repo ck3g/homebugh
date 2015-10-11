@@ -33,7 +33,6 @@ class Account < ActiveRecord::Base
   end
 
   def destroy
-    return unless funds.zero?
-    transactions.exists? ? mark_as_deleted! : super
+    mark_as_deleted! if funds.zero?
   end
 end
