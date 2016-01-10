@@ -18,7 +18,7 @@ class Statistic
       spending: month_stats.total_spending,
       spending_categories: month_stats.get_spending_categories,
       income_chart_data: income_chart_data,
-      spending_chart_data: GroupChartData.new(spending_chart_data).group_smallest_categories
+      spending_chart_data: spending_chart_data
     }]
   end
 end

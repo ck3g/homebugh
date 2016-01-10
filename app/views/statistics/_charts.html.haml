@@ -13,4 +13,4 @@
       %fieldset
         %legend= t("parts.categories.spending")
         %div
-          = pie_chart spending_chart_data
+          = pie_chart GroupChartData.new(spending_chart_data).group_smallest_categories

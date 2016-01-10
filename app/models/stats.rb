@@ -15,7 +15,7 @@ class Stats
         yielder << {
           month => {
             income: @relation.income.month(month).load,
-            spending:  @relation.spending.month(month).load
+            spending: @relation.spending.month(month).load
           }
         }
       end
@@ -23,6 +23,7 @@ class Stats
   end
 
   private
+
   def months
     relation.order(period_started_at: :desc).pluck(:period_started_at).uniq
   end
