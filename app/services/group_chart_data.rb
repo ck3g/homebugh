@@ -1,6 +1,7 @@
 class GroupChartData
-  def initialize(chart_data)
+  def initialize(chart_data, nongrouping_categoires_count = 8)
     @chart_data = Hash(chart_data)
+    @nongrouping_categoires_count = nongrouping_categoires_count
   end
 
   def group_smallest_categories
@@ -14,16 +15,14 @@ class GroupChartData
 
   private
 
-  attr_reader :chart_data
-
-  NONGROUPING_CATEGORIES_COUNT = 5
+  attr_reader :chart_data, :nongrouping_categoires_count
 
   def sorted_values
     @sorted_values ||= chart_data.sort_by { |_, value| value }.reverse
   end
 
   def categories!
-    sorted_values.shift(NONGROUPING_CATEGORIES_COUNT)
+    sorted_values.shift(nongrouping_categoires_count)
   end
 
   def rest

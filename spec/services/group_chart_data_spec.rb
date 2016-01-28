@@ -2,7 +2,7 @@ require_relative '../../app/services/group_chart_data'
 
 RSpec.describe GroupChartData, type: :service do
   describe "#group_smallest_categories" do
-    subject { described_class.new(chart_data).group_smallest_categories }
+    subject { described_class.new(chart_data, 5).group_smallest_categories }
 
     context "when there is no groups at all" do
       let(:chart_data) { nil }
