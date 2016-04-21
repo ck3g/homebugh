@@ -121,6 +121,7 @@ ru:
       you_have_no_categories: "Список категорий пуст."
       income: "Приход"
       spending: "Расход"
+      total: "Всего"
 
     transactions:
       transactions_list: "Транзакции"

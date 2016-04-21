@@ -1,12 +1,18 @@
 .row
   .col-md-12
-    .col-md-2
+    .col-md-6
+      %fieldset
+        %legend= title
+        %div
+          = pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending })
+    .col-md-6
       %fieldset
         %legend= t("parts.categories.income")
         %div
-          = column_chart income_chart_data, colors: %w(green)
-    .col-md-10
-      %fieldset
-        %legend= t("parts.categories.spending")
-        %div
-          = column_chart spending_chart_data, colors: %w(red)
+          = pie_chart income_chart_data
+.row
+  .col-md-12
+    %fieldset
+      %legend= t("parts.categories.spending")
+      %div
+        = bar_chart spending_chart_data, colors: %w(red), height: 50
