@@ -1,7 +1,6 @@
 .bundle
 config/database.yml
 config/mail.yml
-config/skylight.yml
 db/*.sqlite3
 log/*.log
 tmp/**/*

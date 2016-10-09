@@ -286,8 +286,6 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    skylight (0.6.0)
-      activesupport (>= 3.0.0)
     slop (3.4.7)
     spring (1.1.1)
     spring-commands-rspec (1.0.1)
@@ -397,7 +395,6 @@ DEPENDENCIES
   shoulda
   simple_form (~> 3.1.0)
   simplecov
-  skylight
   spring
   spring-commands-rspec
   therubyracer
