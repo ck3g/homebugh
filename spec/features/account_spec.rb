@@ -49,8 +49,7 @@ feature "Accounts" do
     expect(page).to have_content("0.00")
     click_link "Archive"
 
-    expect(page).not_to have_content("New Account Name")
-    expect(page).to have_content("You have no accounts.")
+    expect(page).to have_selector "s", text: "New Account Name"
   end
 
   private

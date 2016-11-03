@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   before_filter :find_account, only: [:show, :edit, :update, :destroy]
 
   def index
-    @accounts = current_user.accounts.active.page(params[:page])
+    @accounts = current_user.accounts.page(params[:page])
   end
 
   def new

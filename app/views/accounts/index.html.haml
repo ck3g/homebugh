@@ -14,20 +14,10 @@
           %th.span2.actions
       %tbody
         - @accounts.each do |account|
-          %tr
-            %td= account.decorate.name
-            %td.span2.number= account.decorate.amount
-            %td.span2.actions
-              = link_to edit_account_path(account), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
-                %i.glyphicon.glyphicon-pencil
-              - if account.funds.to_f.zero?
-                = link_to account, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.archive'), class: "btn btn-danger btn-mini btn-xs" do
-                  %i.glyphicon.glyphicon-trash
-              - else
-                = link_to new_cash_flow_path,
-                  title: "#{t('parts.accounts.account_not_empty')} #{t('parts.cash_flows.new_cash_flows')}",
-                  class: "btn btn-mini btn-default btn-xs" do
-                  %i.glyphicon.glyphicon-retweet
+          - if account.active?
+            = render "account", account: account
+          - else
+            = render "inactive_account", account: account
 - else
   %p.empty-data
     = t('parts.accounts.you_have_no_accounts')
