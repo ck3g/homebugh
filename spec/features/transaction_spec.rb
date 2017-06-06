@@ -46,4 +46,20 @@ feature "Transaction" do
     expect(page).to have_content "You have no transactions."
     expect(current_path).to eq transactions_path
   end
+
+  scenario "can filter transactions by account" do
+    cash_account = create :account, user: user, name: "Cash"
+    bank_account = create :account, user: user, name: "Bank"
+    cash_transaction = create :transaction, user: user, account: cash_account
+    bank_transaction = create :transaction, user: user, account: bank_account
+
+    visit transactions_path
+
+    within "#transaction_#{bank_transaction.id}" do
+      click_link "Bank"
+    end
+
+    expect(page).to have_selector "#transaction_#{bank_transaction.id}"
+    expect(page).not_to have_selector "#transaction_#{cash_transaction.id}"
+  end
 end

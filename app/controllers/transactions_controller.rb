@@ -7,6 +7,7 @@ class TransactionsController < ApplicationController
   before_filter :find_accounts, only: [:new, :create]
 
   has_scope :category
+  has_scope :account
 
   def index
     @transactions = apply_scopes(current_user.transactions.includes(:category, :account)).order('created_at desc').page(params[:page])

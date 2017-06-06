@@ -15,6 +15,7 @@ class Transaction < ActiveRecord::Base
   after_create :affect_on_account_after_create
   before_destroy :affect_on_account_before_destroy
 
+  scope :account, ->(account_id) { where(account_id: account_id) }
   scope :category, ->(category_id) { where(category_id: category_id) }
   scope :category_type, -> category_type_id {
     joins(:category).where(:'categories.category_type_id' => category_type_id)

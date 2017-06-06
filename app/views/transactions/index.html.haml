@@ -16,7 +16,7 @@
           %th.span2
       %tbody
         - @transactions.each do |transaction|
-          %tr
+          %tr{ id: dom_id(transaction) }
             %td.span2= transaction.decorate.created_on
             %td
               %span.category= link_to transaction.decorate.category_name, transactions_path(category: transaction.category_id)
@@ -24,7 +24,7 @@
             %td.span2.number
               = transaction.decorate.amount
               = transaction.decorate.type_icon
-            %td.span2= transaction.account_name
+            %td.span2= link_to transaction.account_name, transactions_path(account: transaction.account_id)
             %td.span2.actions
               = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
                 %span.glyphicon.glyphicon-share-alt
