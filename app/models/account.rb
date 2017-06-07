@@ -22,6 +22,8 @@ class Account < ActiveRecord::Base
     end
   end
 
+  scope :by_recently_used, -> { order(updated_at: :desc) }
+
   def deposit(amount)
     amount ||= 0.0
     update_attribute :funds, funds + amount

@@ -1,7 +1,7 @@
 class Transaction < ActiveRecord::Base
   belongs_to :category, touch: true
   belongs_to :user
-  belongs_to :account
+  belongs_to :account, touch: true
 
   validates :account_id, :category_id, presence: true
   validates :summ, presence: true, numericality: {
