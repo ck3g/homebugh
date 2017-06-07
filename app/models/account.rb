@@ -2,7 +2,7 @@ class Account < ActiveRecord::Base
   include AASM
 
   belongs_to :user
-  belongs_to :currency
+  belongs_to :currency, touch: true
   has_many :transactions, dependent: :nullify
   has_many :cash_flows, as: :from_account
   has_many :cash_flows, as: :to_account
