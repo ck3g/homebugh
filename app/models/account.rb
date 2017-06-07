@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   include AASM
+  include Orderable
 
   belongs_to :user
   belongs_to :currency, touch: true
@@ -21,8 +22,6 @@ class Account < ActiveRecord::Base
       transitions to: :deleted
     end
   end
-
-  scope :by_recently_used, -> { order(updated_at: :desc) }
 
   def deposit(amount)
     amount ||= 0.0

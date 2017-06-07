@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+  include Orderable
+
   belongs_to :category_type
   belongs_to :user
   has_many :transactions, dependent: :destroy
@@ -10,7 +12,6 @@ class Category < ActiveRecord::Base
   delegate :name, to: :category_type, prefix: true
 
   scope :active, -> { where(inactive: false) }
-  scope :by_recently_used, -> { order(updated_at: :desc) }
 
   def income?
     category_type_id == CategoryType.income
