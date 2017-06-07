@@ -7,7 +7,7 @@
   .tab-pane.active
     .currencies{role: 'tabpanel'}
       %ul.nav.nav-tabs{tole: 'tablist'}
-        - current_user.currencies.each_with_index do |currency, index|
+        - current_user.currencies.by_recently_used.each_with_index do |currency, index|
           %li{class: ('active' if active_currency?(currency, :archived_statistics_path, index.zero?))}
             = link_to currency.name, archived_statistics_path(currency: currency.name)
 
