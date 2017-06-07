@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   def index
     @categories = current_user
       .categories
+      .search(params[:term])
       .includes(:category_type)
       .by_recently_used
       .page(params[:page])

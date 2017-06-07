@@ -11,7 +11,6 @@ feature "Categories" do
   end
 
   context "GET /categories" do
-
     scenario "should get list of categories" do
       visit categories_path
       expect(page).to have_content "List of categories"
@@ -25,6 +24,23 @@ feature "Categories" do
       expect(page.has_button?("Create Category")).to eq(true)
       expect(page.has_field?("category_name")).to eq(true)
       expect(page.has_unchecked_field?("category_inactive")).to eq(true)
+    end
+
+    context "when term is present" do
+      given!(:food_category) { create :category, name: "Food", user: user }
+      given!(:wood_category) { create :category, name: "WooD", user: user }
+      given!(:commute_category) { create :category, name: "Commute", user: user }
+
+      scenario "filters categories by term" do
+        visit categories_path
+
+        fill_in "term", with: "ood"
+        click_button "Search"
+
+        expect(page).to have_selector "tr", text: "Food"
+        expect(page).to have_selector "tr", text: "WooD"
+        expect(page).not_to have_selector "tr", text: "Commute"
+      end
     end
   end
 

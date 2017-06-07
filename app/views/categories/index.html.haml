@@ -1,6 +1,13 @@
 %h2= title t('parts.categories.categories_list')
 .spacer
 
+= form_tag categories_path, method: :get, class: 'form-horizontal col-xs-12 col-sm-12' do
+  .form-group.input-group
+    = text_field_tag :term, params[:term], class: 'form-control', placeholder: t(:search_categories)
+    %span.input-group-btn
+      = submit_tag t(:search), class: "btn btn-primary"
+.spacer
+
 = link_to t('parts.categories.new_category'), new_category_path, class: 'btn btn-success'
 .spacer
 

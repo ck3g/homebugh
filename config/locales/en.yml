@@ -149,5 +149,7 @@ en:
   send_me_reset_password_instructions: Send me reset password instructions
   current_month: Current month
   past_months: Past months
+  search_categories: Search categories
+  search: Search
 
 

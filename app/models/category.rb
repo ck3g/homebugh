@@ -12,6 +12,7 @@ class Category < ActiveRecord::Base
   delegate :name, to: :category_type, prefix: true
 
   scope :active, -> { where(inactive: false) }
+  scope :search, ->(term) { where("categories.name LIKE ?", "%#{term}%") if term.present? }
 
   def income?
     category_type_id == CategoryType.income
