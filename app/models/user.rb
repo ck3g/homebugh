@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def currencies
-    Currency.where(id: accounts.pluck(:currency_id)).uniq
+    Currency.where(id: accounts.pluck(:currency_id)).by_recently_used.uniq
   end
 end
