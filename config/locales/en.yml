@@ -47,6 +47,7 @@ en:
     accounts: "Accounts"
     cash_flows: "Cash Flows"
     statistics: "Statistics"
+    budgets: Budgets
   helpers:
     submit:
       create: "Create %{model}"
@@ -67,6 +68,11 @@ en:
     total_funds: "Total"
     date: "Date"
   parts:
+    budgets:
+      index: Budgets
+      no_budgets_yet: No active budgets
+      no_budgets_yet_desc: With budgets you can monitor your current expenses and see when you need to slow a little bit down.
+      start_budget_planning: Start budget planning
     categories:
       categories_list: "List of categories"
       new_category: "New category"

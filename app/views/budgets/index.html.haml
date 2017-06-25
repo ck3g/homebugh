@@ -1,0 +1,13 @@
+.row
+  .col-xs-12
+    %h2= title t('parts.budgets.index')
+
+
+.row
+  .col-xs-6.col-xs-offset-3
+    %div
+      = t('parts.budgets.no_budgets_yet')
+    %div
+      = link_to t('parts.budgets.start_budget_planning'), '#', class: 'btn btn-success btn-lg'
+    %div
+      = t('parts.budgets.no_budgets_yet_desc')

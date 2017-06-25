@@ -4,6 +4,7 @@ Homebugh::Application.routes.draw do
   resources :statistics, only: [:index] do
     get :archived, on: :collection
   end
+  resources :budgets
 
   devise_for :users
 
