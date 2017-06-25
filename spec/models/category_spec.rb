@@ -16,6 +16,7 @@ describe Category do
   describe ".asscociations" do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:category_type) }
+    it { is_expected.to have_many(:budgets).dependent :destroy }
     it { is_expected.to have_many(:transactions).dependent :destroy }
     it { is_expected.to have_many(:aggregated_transactions).dependent :destroy }
   end

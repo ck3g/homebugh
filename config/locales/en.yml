@@ -52,6 +52,9 @@ en:
     submit:
       create: "Create %{model}"
       update: "Update %{model}"
+      budget:
+        create: Add
+        update: Update
   common:
     edit: "Edit"
     destroy: "Destroy"
@@ -73,6 +76,7 @@ en:
       no_budgets_yet: No active budgets
       no_budgets_yet_desc: With budgets you can monitor your current expenses and see when you need to slow a little bit down.
       start_budget_planning: Start budget planning
+      new: Add new budget
     categories:
       categories_list: "List of categories"
       new_category: "New category"

@@ -92,6 +92,9 @@ ru:
     submit:
       create: "Добавить %{model}"
       update: "Сохранить %{model}"
+      budget:
+        create: Добавить
+        update: Сохранить
 
   common:
     edit: "Ред."
@@ -115,6 +118,7 @@ ru:
       no_budgets_yet: Бюджет еще не запланирован
       no_budgets_yet_desc: Планирование бюджета позволит Вам отслеживать ваши расходы и знать, когда нужно немного остепениться
       start_budget_planning: Начать планирование
+      new: Запланировать бюджет
     categories:
       categories_list: "Категории"
       new_category: "Новая категория"

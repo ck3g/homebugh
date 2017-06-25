@@ -11,6 +11,7 @@ RSpec.describe Currency, type: :model do
       is_expected.to have_many(:aggregated_transactions).
         dependent :destroy
     end
+    it { is_expected.to have_many(:budgets).dependent :destroy }
   end
 
   describe '.validations' do

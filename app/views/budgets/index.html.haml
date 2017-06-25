@@ -4,10 +4,23 @@
 
 
 .row
-  .col-xs-6.col-xs-offset-3
-    %div
-      = t('parts.budgets.no_budgets_yet')
-    %div
-      = link_to t('parts.budgets.start_budget_planning'), '#', class: 'btn btn-success btn-lg'
-    %div
-      = t('parts.budgets.no_budgets_yet_desc')
+  - if @budgets.present?
+    .col-xs-12.col-lg-12
+      .table-responsive
+        %table
+          %tbody
+            - @budgets.each do |budget|
+              %tr
+                %td= link_to budget.category.name, transactions_path(category: budget.category_id)
+                %td
+                  0 of
+                  - unit = budget.currency.unit.presence || budget.currency.name
+                  = get_number_to_currency budget.limit, unit
+  - else
+    .col-xs-6.col-xs-offset-3
+      %div
+        = t('parts.budgets.no_budgets_yet')
+      %div
+        = link_to t('parts.budgets.start_budget_planning'), new_budget_path, class: 'btn btn-success btn-lg'
+      %div
+        = t('parts.budgets.no_budgets_yet_desc')
