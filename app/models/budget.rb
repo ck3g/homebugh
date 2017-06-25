@@ -5,4 +5,8 @@ class Budget < ActiveRecord::Base
 
   validates :user, :category, :currency, presence: true
   validates :limit, presence: true, numericality: { greater_than: 0 }
+
+  def expenses
+    0
+  end
 end

@@ -16,9 +16,7 @@
                 %td= link_to budget.category.name, transactions_path(category: budget.category_id)
                 %td
                   .pull-right
-                    0 of
-                    - unit = budget.currency.unit.presence || budget.currency.name
-                    = get_number_to_currency budget.limit, unit
+                    = budget.decorate.current_expenses
                 %td
                   .pull-right
                     = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit) do
