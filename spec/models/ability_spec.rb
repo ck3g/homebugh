@@ -18,6 +18,8 @@ RSpec.describe Ability, type: :model do
     let!(:other_account) { create :account }
     let!(:user_cash_flow) { create :cash_flow, user: user }
     let!(:other_cash_flow) { create :cash_flow }
+    let!(:user_budget) { create :budget, user: user }
+    let!(:other_budget) { create :budget }
 
     subject { Ability.new user }
 
@@ -47,5 +49,11 @@ RSpec.describe Ability, type: :model do
     it { is_expected.to be_able_to :manage, user_cash_flow }
     it { is_expected.not_to be_able_to :manage, other_cash_flow }
     it { is_expected.not_to be_able_to :read, other_cash_flow }
+
+    it { is_expected.to be_able_to :create, Budget }
+    it { is_expected.to be_able_to :read, user_budget }
+    it { is_expected.to be_able_to :manage, user_budget }
+    it { is_expected.not_to be_able_to :manage, other_budget }
+    it { is_expected.not_to be_able_to :read, other_budget }
   end
 end

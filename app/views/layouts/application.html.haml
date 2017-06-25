@@ -11,11 +11,15 @@
     = render 'shared/top_navbar'
 
     .container
-      - flash.each do |name, message|
-        #notify-container
-          = content_tag :div, message, class: flash_class(name)
+      .row
+        .col-lg-12
+          - flash.each do |name, message|
+            #notify-container
+              = content_tag :div, message, class: flash_class(name)
 
-      = render 'layouts/total_funds'
+      .row
+        .col-lg-12
+          = render 'layouts/total_funds'
 
       .row
         = yield

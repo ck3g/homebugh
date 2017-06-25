@@ -1,21 +1,31 @@
 .row
   .col-xs-12
-    %h2= title t('parts.budgets.index')
-
+    %h2
+      = title t('parts.budgets.index')
+      .pull-right
+        = link_to t('parts.budgets.new'), new_budget_path, class: 'btn btn-success'
 
 .row
   - if @budgets.present?
     .col-xs-12.col-lg-12
       .table-responsive
-        %table
+        %table.table
           %tbody
             - @budgets.each do |budget|
               %tr
                 %td= link_to budget.category.name, transactions_path(category: budget.category_id)
                 %td
-                  0 of
-                  - unit = budget.currency.unit.presence || budget.currency.name
-                  = get_number_to_currency budget.limit, unit
+                  .pull-right
+                    0 of
+                    - unit = budget.currency.unit.presence || budget.currency.name
+                    = get_number_to_currency budget.limit, unit
+                %td
+                  .pull-right
+                    = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit) do
+                      %span.glyphicon.glyphicon-pencil
+                    = link_to budget, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
+                      %span.glyphicon.glyphicon-trash
+
   - else
     .col-xs-6.col-xs-offset-3
       %div
