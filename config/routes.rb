@@ -8,5 +8,9 @@ Homebugh::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "transactions#index"
+  authenticated :user do
+    root to: "transactions#index", as: :auth_root
+  end
+
+  root to: "welcome#index"
 end

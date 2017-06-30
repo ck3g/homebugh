@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def copyright
-    "copyright @2011 - #{Date.current.year}"
+    "Copyright @ HomeBugh.info 2011 - #{Date.current.year}. All Rights Reserved"
   end
 
   def up_arrow
