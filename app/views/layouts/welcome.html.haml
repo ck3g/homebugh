@@ -1,7 +1,11 @@
 !!!
 %html{ lang: I18n.locale }
   %head
-    = display_meta_tags site: "HomeBugh", reverse: true
+    %title Your finance manager
+    %meta{name: "keywords", content: welcome_meta_keywords}
+    %meta{name: "description", content: welcome_meta_description}
+    %meta{name: "og:title", content: "HomeBugh - Your finance manager"}
+    %meta{name: "og:description", content: "Online finance manager for personal use. Supports budgeting and montly reports"}
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
     = stylesheet_link_tag :welcome

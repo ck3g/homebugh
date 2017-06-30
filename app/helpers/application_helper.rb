@@ -32,6 +32,7 @@ module ApplicationHelper
   end
 
   private
+
   def is_ru?
     I18n.locale == :ru
   end
