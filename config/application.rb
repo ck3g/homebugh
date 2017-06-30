@@ -49,5 +49,7 @@ module Homebugh
     end
 
     config.secret_key_base = 'homebugh'
+
+    config.assets.precompile += %w(welcome.css welcome.js)
   end
 end
