@@ -11,4 +11,28 @@ RSpec.describe BudgetDecorator do
 
     it { is_expected.to eq "200.00 / 400.00 EUR" }
   end
+
+  describe "#expenses_color_class" do
+    subject { decorator.expenses_color_class }
+
+    let(:currency) { double unit: "", name: "EUR" }
+
+    context "when current expenses less than 75% of the budget" do
+      let(:budget) { double limit: 100, expenses: 20 }
+
+      it { is_expected.to eq "success" }
+    end
+
+    context "when current expenses 100% or more" do
+      let(:budget) { double limit: 100, expenses: 120 }
+
+      it { is_expected.to eq "danger" }
+    end
+
+    context "when current expenses between 75% and 100%" do
+      let(:budget) { double limit: 100, expenses: 80 }
+
+      it { is_expected.to eq "warning" }
+    end
+  end
 end

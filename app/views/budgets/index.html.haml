@@ -12,18 +12,18 @@
         %table.table
           %tbody
             - @budgets.each do |budget|
-              %tr
+              %tr{class: "bg-#{budget.decorate.expenses_color_class}"}
                 %td= link_to budget.category.name, transactions_path(category: budget.category_id)
                 %td
                   .pull-right
-                    = budget.decorate.current_expenses
+                    %span{class: "text-#{budget.decorate.expenses_color_class}"}
+                      = budget.decorate.current_expenses
                 %td
                   .pull-right
                     = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit) do
                       %span.glyphicon.glyphicon-pencil
                     = link_to budget, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
                       %span.glyphicon.glyphicon-trash
-
   - else
     .col-xs-6.col-xs-offset-3
       %div
