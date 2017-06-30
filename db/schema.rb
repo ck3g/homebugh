@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607161227) do
+ActiveRecord::Schema.define(version: 20170625150708) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name",        limit: 50,                                              null: false
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 20170607161227) do
   add_index "aggregated_transactions", ["category_type_id"], name: "index_aggregated_transactions_on_category_type_id", using: :btree
   add_index "aggregated_transactions", ["currency_id"], name: "index_aggregated_transactions_on_currency_id", using: :btree
   add_index "aggregated_transactions", ["user_id"], name: "index_aggregated_transactions_on_user_id", using: :btree
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4,                          null: false
+    t.integer  "category_id", limit: 4,                          null: false
+    t.integer  "currency_id", limit: 4,                          null: false
+    t.decimal  "limit",                 precision: 10, scale: 2, null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "budgets", ["category_id"], name: "index_budgets_on_category_id", using: :btree
+  add_index "budgets", ["currency_id"], name: "index_budgets_on_currency_id", using: :btree
+  add_index "budgets", ["user_id"], name: "index_budgets_on_user_id", using: :btree
 
   create_table "cash_flows", force: :cascade do |t|
     t.integer  "user_id",         limit: 4,                          null: false
@@ -116,4 +129,7 @@ ActiveRecord::Schema.define(version: 20170607161227) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "budgets", "categories"
+  add_foreign_key "budgets", "currencies"
+  add_foreign_key "budgets", "users"
 end

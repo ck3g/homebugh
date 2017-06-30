@@ -1,0 +1,10 @@
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
+FactoryGirl.define do
+  factory :budget do
+    user
+    category { create(:category, user: user) }
+    currency
+    limit 100.99
+  end
+end

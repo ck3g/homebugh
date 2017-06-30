@@ -3,6 +3,7 @@ class Category < ActiveRecord::Base
 
   belongs_to :category_type
   belongs_to :user
+  has_many :budgets, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :aggregated_transactions, dependent: :destroy
 
