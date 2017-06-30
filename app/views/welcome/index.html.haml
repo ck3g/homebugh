@@ -1,0 +1,135 @@
+%nav.navbar.navbar-default.navbar-fixed-top.topnav{:role => "navigation"}
+  .container.topnav
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand.topnav{:href => "#"} HomeBugh
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "#about"} About
+        %li
+          %a{:href => "#services"} Services
+        %li
+          %a{:href => "#contact"} Contact
+    / /.navbar-collapse
+  / /.container
+/ Header
+%a{:name => "about"}
+.intro-header
+  .container
+    .row
+      .col-lg-12
+        .intro-message
+          %h1 HomeBugh
+          %h3 Manage your finances with ease
+          %hr.intro-divider/
+          %ul.list-inline.intro-social-buttons
+            %li
+              = link_to new_user_registration_path, class: "btn btn-default btn-lg" do
+                %span.network-name Create an account
+  / /.container
+/ /.intro-header
+/ Page Content
+%a{:name => "services"}
+.content-section-a
+  .container
+    .row
+      .col-lg-5.col-sm-6
+        %hr.section-heading-spacer/
+        .clearfix
+        %h2.section-heading
+          Control your expenses by keeping track of them
+        %p.lead
+          Fill in the expenses and see where your money goes
+      .col-lg-5.col-lg-offset-2.col-sm-6
+        %img.img-responsive.img-shadow{:alt => "", :src => image_url("welcome/transactions.jpg")}/
+  / /.container
+/ /.content-section-a
+.content-section-b
+  .container
+    .row
+      .col-lg-5.col-lg-offset-1.col-sm-push-6.col-sm-6
+        %hr.section-heading-spacer/
+        .clearfix
+        %h2.section-heading
+          Accounts management
+        %p.lead
+          Manage one or several of your accounts such as cash or bank account. You can have accounts with several different currencies and ability to move funds between them.
+      .col-lg-5.col-sm-pull-6.col-sm-6
+        %img.img-responsive.img-shadow{:alt => "", :src => image_url("welcome/accounts.jpg")}/
+  / /.container
+/ /.content-section-b
+.content-section-a
+  .container
+    .row
+      .col-lg-5.col-sm-6
+        %hr.section-heading-spacer/
+        .clearfix
+        %h2.section-heading
+          Monthly Reports
+        %p.lead
+          Track all your income and expenses with montly reports
+      .col-lg-5.col-lg-offset-2.col-sm-6
+        %img.img-responsive.img-shadow{:alt => "", :src => asset_url("welcome/reports.jpg")}/
+  / /.container
+/ /.content-section-b
+.content-section-b
+  .container
+    .row
+      .col-lg-5.col-lg-offset-1.col-sm-push-6.col-sm-6
+        %hr.section-heading-spacer/
+        .clearfix
+        %h2.section-heading
+          Finance budgeting
+        %p.lead
+          Establish budgeting limit for every expense category and keep an eye on them.
+      .col-lg-5.col-sm-pull-6.col-sm-6
+        %img.img-responsive.img-shadow{:alt => "", :src => image_url("welcome/budgeting.jpg")}/
+
+
+%a{:name => "contact"}
+.banner
+  .container
+    .row
+      -# .col-lg-6
+      -#   %h2 Connect to Start Bootstrap:
+      -# .col-lg-6
+      -#   %ul.list-inline.banner-social-buttons
+      -#     %li
+      -#       %a.btn.btn-default.btn-lg{:href => "https://twitter.com/SBootstrap"}
+      -#         %i.fa.fa-twitter.fa-fw
+      -#         %span.network-name Twitter
+      -#     %li
+      -#       %a.btn.btn-default.btn-lg{:href => "https://github.com/IronSummitMedia/startbootstrap"}
+      -#         %i.fa.fa-github.fa-fw
+      -#         %span.network-name Github
+      -#     %li
+      -#       %a.btn.btn-default.btn-lg{:href => "#"}
+      -#         %i.fa.fa-linkedin.fa-fw
+      -#         %span.network-name Linkedin
+
+%footer
+  .container
+    .row
+      .col-lg-12
+        %ul.list-inline
+          %li.footer-menu-divider ⋅
+          %li= link_to t("parts.auth.sign_up"), new_user_registration_path
+          %li.footer-menu-divider ⋅
+          %li= link_to t("parts.auth.sign_in"), new_user_session_path
+          %li.footer-menu-divider ⋅
+          %li
+            %a{:href => "#about"} About
+          %li.footer-menu-divider ⋅
+          %li
+            %a{:href => "#services"} Services
+          %li.footer-menu-divider ⋅
+          %li
+            %a{:href => "#contact"} Contact
+        %p.copyright.text-muted.small= copyright

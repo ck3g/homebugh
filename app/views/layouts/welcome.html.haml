@@ -1,0 +1,13 @@
+!!!
+%html{ lang: I18n.locale }
+  %head
+    = display_meta_tags site: "HomeBugh", reverse: true
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
+    = stylesheet_link_tag :welcome
+    = csrf_meta_tag
+  %body
+    = yield
+
+    = javascript_include_tag :welcome
+    = render 'shared/analytics'
