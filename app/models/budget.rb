@@ -7,6 +7,11 @@ class Budget < ActiveRecord::Base
   validates :limit, presence: true, numericality: { greater_than: 0 }
 
   def expenses
-    0
+    user.transactions
+      .joins(:account)
+      .where(created_at: DateTime.current.beginning_of_month..DateTime.current.end_of_month)
+      .where(category_id: category.id)
+      .where(:'accounts.currency_id' => currency.id)
+      .pluck(:summ).sum
   end
 end
