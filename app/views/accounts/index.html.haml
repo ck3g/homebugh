@@ -1,25 +1,29 @@
-%h2= title t('parts.accounts.accounts_list')
-.spacer
+.row
+  .col-xs-12.col-lg-12
+    %h2
+      = title t('parts.accounts.accounts_list')
+      .pull-right
+        = link_to t('parts.accounts.new_account'), new_account_path, class: 'btn btn-success'
 
-= link_to t('parts.accounts.new_account'), new_account_path, class: 'btn btn-success'
-.spacer
-
-- if @accounts.present?
-  .table-responsive
-    %table.table
-      %thead
-        %tr
-          %th= t('activerecord.attributes.account.name')
-          %th.span2.number= t('activerecord.attributes.account.funds')
-          %th.span2.actions
-      %tbody
-        - @accounts.each do |account|
-          - if account.active?
-            = render "account", account: account
-          - else
-            = render "inactive_account", account: account
-- else
-  %p.empty-data
-    = t('parts.accounts.you_have_no_accounts')
+.row
+  - if @accounts.present?
+    .col-xs-12.col-lg-12
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th= t('activerecord.attributes.account.name')
+              %th.span2.number= t('activerecord.attributes.account.funds')
+              %th.span2.actions
+          %tbody
+            - @accounts.each do |account|
+              - if account.active?
+                = render "account", account: account
+              - else
+                = render "inactive_account", account: account
+  - else
+    .col-xs-12.col-lg-12
+      %p.empty-data
+        = t('parts.accounts.you_have_no_accounts')
 
 = paginate @accounts

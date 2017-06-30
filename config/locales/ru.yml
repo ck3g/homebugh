@@ -168,6 +168,7 @@ ru:
       to: "На"
       from_to: "C → На"
       accounts_cannot_be_equal: "Вы не можете переводить средства на тот же счет"
+      you_have_no_cash_flows_yet: "Вы пока не производили перевод средств"
     statistics:
       stats_by_months: "Статистика по месяцам"
       income_total: "Приход всего"

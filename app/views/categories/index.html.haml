@@ -1,39 +1,44 @@
-%h2= title t('parts.categories.categories_list')
-.spacer
+.row
+  .col-xs-12.col-lg-12
+    = form_tag categories_path, method: :get, class: 'form-horizontal col-xs-12 col-sm-12' do
+      .form-group.input-group
+        = text_field_tag :term, params[:term], class: 'form-control', placeholder: t(:search_categories)
+        %span.input-group-btn
+          = submit_tag t(:search), class: "btn btn-primary"
 
-= form_tag categories_path, method: :get, class: 'form-horizontal col-xs-12 col-sm-12' do
-  .form-group.input-group
-    = text_field_tag :term, params[:term], class: 'form-control', placeholder: t(:search_categories)
-    %span.input-group-btn
-      = submit_tag t(:search), class: "btn btn-primary"
-.spacer
+.row
+  .col-xs-12.col-lg-12
+    %h2
+      = title t('parts.categories.categories_list')
+      .pull-right
+        = link_to t('parts.categories.new_category'), new_category_path, class: 'btn btn-success'
 
-= link_to t('parts.categories.new_category'), new_category_path, class: 'btn btn-success'
-.spacer
-
-- if @categories.present?
-  .table-responsive
-    %table.table
-      %thead
-        %tr
-          %th
-            .col-sm-12
-              .col-sm-11.col-sm-offset-1= t('activerecord.attributes.category.name')
-          %th.span2
-      %tbody
-        - @categories.each do |category|
-          %tr{class: category.decorate.category_type}
-            %td
-              .col-sm-12
-                .col-sm-1= category.decorate.type_icon
-                .col-sm-11= link_to category.name, transactions_path(category: category.id)
-            %td.span2.actions
-              = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
-                %span.glyphicon.glyphicon-pencil
-              = link_to category, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
-                %span.glyphicon.glyphicon-trash
-- else
-  %p.empty-data
-    = t('parts.categories.you_have_no_categories')
+.row
+  - if @categories.present?
+    .col-xs-12.col-lg-12
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th
+                .col-sm-12
+                  .col-sm-11.col-sm-offset-1= t('activerecord.attributes.category.name')
+              %th.span2
+          %tbody
+            - @categories.each do |category|
+              %tr{class: category.decorate.category_type}
+                %td
+                  .col-sm-12
+                    .col-sm-1= category.decorate.type_icon
+                    .col-sm-11= link_to category.name, transactions_path(category: category.id)
+                %td.span2.actions
+                  = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
+                    %span.glyphicon.glyphicon-pencil
+                  = link_to category, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
+                    %span.glyphicon.glyphicon-trash
+  - else
+    .col-xs-12.col-lg-12
+      %p.empty-data
+        = t('parts.categories.you_have_no_categories')
 
 = paginate @categories

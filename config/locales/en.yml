@@ -125,6 +125,7 @@ en:
       to: "To"
       from_to: "From → To"
       accounts_cannot_be_equal: "You cannot move funds to same account"
+      you_have_no_cash_flows_yet: "You did not move any funds yet."
     statistics:
       stats_by_months: "Statistics by months"
       income_total: "Income total"

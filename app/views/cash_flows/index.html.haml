@@ -1,30 +1,39 @@
-%h2= title t('parts.cash_flows.flows_list')
-.spacer
+.row
+  .col-xs-12.col-lg-12
+    %h2
+      = title t('parts.cash_flows.flows_list')
+      .pull-right
+        = link_to t('parts.cash_flows.new_cash_flows'), new_cash_flow_path, class: 'btn btn-success'
 
-= link_to t('parts.cash_flows.new_cash_flows'), new_cash_flow_path, class: 'btn btn-success'
-.spacer
+.row
+  - if @cash_flows.present?
+    .col-xs-12.col-lg-12
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th.span2= t('common.date')
+              %th= t('parts.cash_flows.from_to')
+              %th.span2.number= CashFlow.human_attribute_name :initial_amount
+              %th.span2.number= CashFlow.human_attribute_name :amount
+              %th.span2.actions
+          %tbody
+            - @cash_flows.each do |cash_flow|
+              %tr
+                %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
+                %td
+                  = cash_flow.from_account_name
+                  = t(:arrow)
+                  = cash_flow.to_account_name
+                %td.span2.number= cash_flow.decorate.initial_amount
+                %td.span2.number= cash_flow.decorate.amount
+                %td.span2.actions
+                  = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
+                    %i.glyphicon.glyphicon-share-alt
 
-.table-responsive
-  %table.table
-    %thead
-      %tr
-        %th.span2= t('common.date')
-        %th= t('parts.cash_flows.from_to')
-        %th.span2.number= CashFlow.human_attribute_name :initial_amount
-        %th.span2.number= CashFlow.human_attribute_name :amount
-        %th.span2.actions
-    %tbody
-      - @cash_flows.each do |cash_flow|
-        %tr
-          %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
-          %td
-            = cash_flow.from_account_name
-            = t(:arrow)
-            = cash_flow.to_account_name
-          %td.span2.number= cash_flow.decorate.initial_amount
-          %td.span2.number= cash_flow.decorate.amount
-          %td.span2.actions
-            = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
-              %i.glyphicon.glyphicon-share-alt
+  - else
+    .col-xs-12.col-lg-12
+      %p.empty-data
+        = t('parts.cash_flows.you_have_no_cash_flows_yet')
 
 = paginate @cash_flows
