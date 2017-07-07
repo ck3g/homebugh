@@ -15,7 +15,7 @@ feature "Accounts" do
 
   scenario "should visit create account page by pressing button" do
     visit accounts_path
-    click_link "New account"
+    click_link "New account", match: :first
     expect(page).to have_content("New account")
     expect(page.has_button?("Create Account")).to be_truthy
   end

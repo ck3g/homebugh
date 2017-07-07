@@ -1,9 +1,7 @@
-.row
-  .col-xs-12.col-lg-12
-    %h2
-      = title t('parts.accounts.accounts_list')
-      .pull-right
-        = link_to t('parts.accounts.new_account'), new_account_path, class: 'btn btn-success'
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.accounts.accounts_list'),
+  add_link_title: t('parts.accounts.new_account'),
+  add_link_url: new_account_path
 
 .row
   - if @accounts.present?

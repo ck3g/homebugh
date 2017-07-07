@@ -18,7 +18,7 @@ feature "Categories" do
 
     scenario "move to create category by pressing button" do
       visit categories_path
-      click_link "New category"
+      click_link "New category", match: :first
 
       expect(page).to have_content("New category")
       expect(page.has_button?("Create Category")).to eq(true)

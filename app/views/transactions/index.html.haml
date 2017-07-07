@@ -1,9 +1,7 @@
-.row
-  .col-xs-12
-    %h2
-      = title t('parts.transactions.transactions_list')
-      .pull-right
-        = link_to t('parts.transactions.new_transaction'), new_transaction_path, class: 'btn btn-success'
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.transactions.transactions_list'),
+  add_link_title: t('parts.transactions.new_transaction'),
+  add_link_url: new_transaction_path
 
 .row
   - if @transactions.present?

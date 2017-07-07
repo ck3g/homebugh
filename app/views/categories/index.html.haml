@@ -6,12 +6,10 @@
         %span.input-group-btn
           = submit_tag t(:search), class: "btn btn-primary"
 
-.row
-  .col-xs-12.col-lg-12
-    %h2
-      = title t('parts.categories.categories_list')
-      .pull-right
-        = link_to t('parts.categories.new_category'), new_category_path, class: 'btn btn-success'
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.categories.categories_list'),
+  add_link_title: t('parts.categories.new_category'),
+  add_link_url: new_category_path
 
 .row
   - if @categories.present?

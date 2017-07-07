@@ -1,9 +1,7 @@
-.row
-  .col-xs-12.col-lg-12
-    %h2
-      = title t('parts.cash_flows.flows_list')
-      .pull-right
-        = link_to t('parts.cash_flows.new_cash_flows'), new_cash_flow_path, class: 'btn btn-success'
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.cash_flows.flows_list'),
+  add_link_title: t('parts.cash_flows.new_cash_flows'),
+  add_link_url: new_cash_flow_path
 
 .row
   - if @cash_flows.present?
