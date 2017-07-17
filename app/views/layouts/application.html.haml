@@ -21,6 +21,11 @@
         .col-lg-12
           = render 'layouts/total_funds'
 
+      - if current_user.present?
+        .row
+          .col-lg-12
+            = render 'shared/todo_list'
+
       .row
         = yield
 

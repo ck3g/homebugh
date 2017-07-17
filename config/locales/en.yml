@@ -164,4 +164,19 @@ en:
   search_categories: Search categories
   search: Search
 
+  check_list:
+    title: "First steps"
+    account:
+      todo: "At first you need to create an account to track your finances. It can be either cash account (think wallet) or bank account."
+      done: "Account created"
+    income_category:
+      todo: "Next you need to have an income category to deposit money to your account. Like \"Salary\" for example."
+      done: "Income category created"
+    spending_category:
+      todo: "You also need a spending category. That's how you can fill in expenses. It could be \"Groceries\", \"Clother\" etc."
+      done: "Spending category created"
+    transaction:
+      todo: "Use created account and category to create your first transaction of your recent expenses."
+      done: "Transaction created"
+
 

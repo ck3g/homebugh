@@ -14,6 +14,8 @@ class Category < ActiveRecord::Base
 
   scope :active, -> { where(inactive: false) }
   scope :search, ->(term) { where("categories.name LIKE ?", "%#{term}%") if term.present? }
+  scope :income, -> { where(category_type_id: CategoryType.income) }
+  scope :spending, -> { where(category_type_id: CategoryType.spending) }
 
   def income?
     category_type_id == CategoryType.income
