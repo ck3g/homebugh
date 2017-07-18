@@ -179,4 +179,26 @@ en:
       todo: "Use created account and category to create your first transaction of your recent expenses."
       done: "Transaction created"
 
+  welcome_page:
+    nav:
+      about: About
+      services: Services
+      contact: Contact
+    slogan: Manage your finances with ease
+    create_account_button: Create an account
+    sign_in_button: Sign in using existing one
+    or: or
+    expenses:
+      heading: "Control your expenses by keeping track of them"
+      description: "Fill in the expenses and see where your money goes"
+    accounts:
+      heading: "Accounts management"
+      description: "Manage one or several of your accounts such as cash or bank account. You can have accounts with several different currencies and ability to move funds between them."
+    reports:
+      heading: "Monthly Reports"
+      description: "Track all your income and expenses with montly reports"
+    budget:
+      heading: "Finance budgeting"
+      description: "Establish budgeting limit for every expense category and keep an eye on them."
+
 

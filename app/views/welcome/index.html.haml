@@ -11,12 +11,10 @@
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => "#about"} About
-        %li
-          %a{:href => "#services"} Services
-        %li
-          %a{:href => "#contact"} Contact
+        %li= link_to t("welcome_page.nav.about"), "#about"
+        %li= link_to t("welcome_page.nav.services"), "#services"
+        %li= link_to t("welcome_page.nav.contact"), "#contact"
+        %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
     / /.navbar-collapse
   / /.container
 / Header
@@ -27,21 +25,21 @@
       .col-lg-12
         .intro-message
           %h1 HomeBugh
-          %h3 Manage your finances with ease
+          %h3= t("welcome_page.slogan")
           %hr.intro-divider/
           %ul.list-inline.intro-social-buttons
             %li
               = link_to new_user_registration_path, class: "btn btn-default btn-lg" do
-                %span.network-name Create an account
+                %span.network-name= t("welcome_page.create_account_button")
             %li
-              %h5 or
+              %h5= t("welcome_page.or")
             %li
               = link_to new_user_session_path, class: "btn btn-default btn-lg" do
-                %span.network-name Sign in using existing one
+                %span.network-name= t("welcome_page.sign_in_button")
   / /.container
 / /.intro-header
 / Page Content
-%a{:name => "services"}
+%a{name: "services"}
 .content-section-a
   .container
     .row
@@ -49,11 +47,11 @@
         %hr.section-heading-spacer/
         .clearfix
         %h2.section-heading
-          Control your expenses by keeping track of them
+          = t("welcome_page.expenses.heading")
         %p.lead
-          Fill in the expenses and see where your money goes
+          = t("welcome_page.expenses.description")
       .col-lg-5.col-lg-offset-2.col-sm-6
-        %img.img-responsive.img-shadow{:alt => "", :src => image_url("welcome/transactions.jpg")}/
+        %img.img-responsive.img-shadow{alt: "", src: image_url("welcome/transactions.jpg")}/
   / /.container
 / /.content-section-a
 .content-section-b
@@ -63,11 +61,11 @@
         %hr.section-heading-spacer/
         .clearfix
         %h2.section-heading
-          Accounts management
+          = t("welcome_page.accounts.heading")
         %p.lead
-          Manage one or several of your accounts such as cash or bank account. You can have accounts with several different currencies and ability to move funds between them.
+          = t("welcome_page.accounts.description")
       .col-lg-5.col-sm-pull-6.col-sm-6
-        %img.img-responsive.img-shadow{:alt => "", :src => image_url("welcome/accounts.jpg")}/
+        %img.img-responsive.img-shadow{alt: "", src: image_url("welcome/accounts.jpg")}/
   / /.container
 / /.content-section-b
 .content-section-a
@@ -77,11 +75,11 @@
         %hr.section-heading-spacer/
         .clearfix
         %h2.section-heading
-          Monthly Reports
+          = t("welcome_page.reports.heading")
         %p.lead
-          Track all your income and expenses with montly reports
+          = t("welcome_page.reports.description")
       .col-lg-5.col-lg-offset-2.col-sm-6
-        %img.img-responsive.img-shadow{:alt => "", :src => asset_url("welcome/reports.jpg")}/
+        %img.img-responsive.img-shadow{alt: "", src: asset_url("welcome/reports.jpg")}/
   / /.container
 / /.content-section-b
 .content-section-b
@@ -91,11 +89,11 @@
         %hr.section-heading-spacer/
         .clearfix
         %h2.section-heading
-          Finance budgeting
+          = t("welcome_page.budget.heading")
         %p.lead
-          Establish budgeting limit for every expense category and keep an eye on them.
+          = t("welcome_page.budget.description")
       .col-lg-5.col-sm-pull-6.col-sm-6
-        %img.img-responsive.img-shadow{:alt => "", :src => image_url("welcome/budgeting.jpg")}/
+        %img.img-responsive.img-shadow{alt: "", src: image_url("welcome/budgeting.jpg")}/
 
 
 %a{:name => "contact"}
@@ -129,12 +127,9 @@
           %li.footer-menu-divider ⋅
           %li= link_to t("parts.auth.sign_in"), new_user_session_path
           %li.footer-menu-divider ⋅
-          %li
-            %a{:href => "#about"} About
+          %li= link_to t("welcome_page.nav.about"), "#about"
           %li.footer-menu-divider ⋅
-          %li
-            %a{:href => "#services"} Services
+          %li= link_to t("welcome_page.nav.services"), "#services"
           %li.footer-menu-divider ⋅
-          %li
-            %a{:href => "#contact"} Contact
+          %li= link_to t("welcome_page.nav.contact"), "#contact"
         %p.copyright.text-muted.small= copyright
