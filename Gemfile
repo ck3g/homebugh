@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.2'
 
+gem 'bootsnap', require: false
+
 gem "json", "~> 1.7.7"
 
 gem 'mysql2', "~> 0.3.17"
