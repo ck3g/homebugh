@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += ['google-jsapi.js']
+Rails.application.config.assets.precompile += []
