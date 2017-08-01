@@ -1,9 +1,9 @@
 class BudgetDecorator < Draper::Decorator
   delegate_all
 
-  def current_expenses
+  def current_expenses(date: Date.current)
     [
-      h.get_number_to_currency(object.expenses, "").strip,
+      h.get_number_to_currency(object.expenses(date: date), "").strip,
       "/",
       h.get_number_to_currency(object.limit, currency_unit)
     ].join(" ")
@@ -13,10 +13,10 @@ class BudgetDecorator < Draper::Decorator
     object.currency.unit.presence || object.currency.name
   end
 
-  def expenses_color_class
-    if expenses_percentage < 75
+  def expenses_color_class(date: Date.current)
+    if expenses_percentage(date: date) < 75
       "success"
-    elsif expenses_percentage >= 100
+    elsif expenses_percentage(date: date) >= 100
       "danger"
     else
       "warning"
@@ -25,7 +25,7 @@ class BudgetDecorator < Draper::Decorator
 
   private
 
-  def expenses_percentage
-    @pecentage ||= object.expenses / (object.limit / 100)
+  def expenses_percentage(date: Date.current)
+    @pecentage ||= object.expenses(date: date) / (object.limit / 100)
   end
 end

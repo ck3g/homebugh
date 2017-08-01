@@ -4,18 +4,25 @@
   add_link_url: new_budget_path
 
 .row
+  .col-xs-12.col-lg-12
+    - date = Date.parse("#{params[:year]}-#{params[:month]}-1") rescue Date.current
+    = link_to t("parts.budgets.current_month"), url_for, class: "btn btn-default", disabled: params[:month].blank?
+    = link_to t("parts.budgets.last_month"), url_for(month: 1.month.ago.month, year: 1.month.ago.year), class: "btn btn-default", disabled: params[:month].present?
+.spacer
+
+.row
   - if @budgets.present?
     .col-xs-12.col-lg-12
       .table-responsive
         %table.table
           %tbody
             - @budgets.each do |budget|
-              %tr{class: "bg-#{budget.decorate.expenses_color_class}"}
+              %tr{class: "bg-#{budget.decorate.expenses_color_class(date: date)}"}
                 %td= link_to budget.category.name, transactions_path(category: budget.category_id)
                 %td
                   .pull-right
-                    %span{class: "text-#{budget.decorate.expenses_color_class}"}
-                      = budget.decorate.current_expenses
+                    %span{class: "text-#{budget.decorate.expenses_color_class(date: date)}"}
+                      = budget.decorate.current_expenses(date: date)
                 %td
                   .pull-right
                     = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit) do

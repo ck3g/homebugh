@@ -120,6 +120,8 @@ ru:
       start_budget_planning: Начать планирование
       new: Запланировать бюджет
       edit: Обновить бюджет
+      current_month: За текущий месяц
+      last_month: За предыдущий месяц
     categories:
       categories_list: "Категории"
       new_category: "Новая категория"

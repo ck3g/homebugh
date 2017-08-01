@@ -78,6 +78,8 @@ en:
       start_budget_planning: Start budget planning
       new: Add new budget
       edit: Edit the budget
+      current_month: Current month
+      last_month: Last month
     categories:
       categories_list: "List of categories"
       new_category: "New category"
