@@ -2,7 +2,7 @@
   #accounts_summary.panel.panel-default
     .panel-body
       - current_user.accounts.active.each do |account|
-        .col-sm-3
+        .col-xs-12.col-sm-3
           = succeed ":" do
             = account.name
           .pull-right
@@ -12,7 +12,7 @@
 
     .panel-footer
       - TotalAmount.of(current_user).each do |unit, amount|
-        .col-sm-3
+        .col-xs-12.col-sm-3
           .pull-right
             %strong= get_number_to_currency amount, unit
         .col-sm-1

@@ -16,13 +16,13 @@
           %li{class: ("active" if controller_name == 'cash_flows')}= link_to t("main_menu.cash_flows"), cash_flows_path
           %li{class: ("active" if controller_name == 'statistics')}= link_to t("main_menu.statistics"), statistics_path
           %li{class: ("active" if controller_name == 'budgets')}= link_to t("main_menu.budgets"), budgets_path
-        %ul.nav.navbar-nav.pull-right
-          %li= link_to t("parts.auth.sign_out"), destroy_user_session_path
-          %li.divider-vertical
+        %ul.nav.navbar-nav.navbar-right
           %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
+          %li.divider-vertical
+          %li= link_to t("parts.auth.sign_out"), destroy_user_session_path
       - else
-        %ul.nav.navbar-nav.pull-right
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
+          %li.divider-vertical
           %li= link_to t("parts.auth.sign_in"), new_user_session_path
           %li= link_to t("parts.auth.sign_up"), new_user_registration_path
-          %li.divider-vertical
-          %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
