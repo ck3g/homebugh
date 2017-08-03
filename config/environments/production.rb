@@ -40,17 +40,10 @@ Homebugh::Application.configure do
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: "homebugh.info" }
   config.action_mailer.delivery_method = :smtp
-  mail_user = Psych.load(File.open("#{Rails.root}/config/mail.yml"))
   config.action_mailer.smtp_settings = {
-    ssl: false,
-    address: "smtp.mail.ru",
-    port: 587,
-    domain: "mail.ru",
-    authentication: "plain",
-    user_name: mail_user["user_name"],
-    password: mail_user["password"]
+    enable_starttls_auto: false
   }
 
   # Disable delivery errors, bad email addresses will be ignored
