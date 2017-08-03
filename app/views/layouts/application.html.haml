@@ -11,11 +11,7 @@
     = render 'shared/top_navbar'
 
     .container
-      .row
-        .col-lg-12
-          - flash.each do |name, message|
-            #notify-container
-              = content_tag :div, message, class: flash_class(name)
+      = render 'shared/flash_messages'
 
       .row
         .col-lg-12
@@ -28,9 +24,11 @@
 
       = yield
 
-      %hr/
-      %footer
-        = render 'shared/footer'
+      .row
+        .col-xs-12.col-lg-12
+          %hr/
+          %footer
+            = render 'shared/footer'
 
     = javascript_include_tag :application
     = render 'shared/analytics'

@@ -40,6 +40,7 @@ en:
       messages:
         blank: "cannot be blank"
         not_a_number: "is not a number"
+        not_saved: "not found"
 
   main_menu:
     transactions: "Transactions"
@@ -161,6 +162,8 @@ en:
   password_confirmation: Password confirmation
   forgot_your_password: Forgot your password?
   send_me_reset_password_instructions: Send me reset password instructions
+  didnt_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+  resend_confirmation_instructions: "Resend confirmation instructions"
   current_month: Current month
   past_months: Past months
   search_categories: Search categories

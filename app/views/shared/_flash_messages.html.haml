@@ -1,0 +1,5 @@
+.row
+  .col-lg-12
+    - flash.each do |name, message|
+      #notify-container
+        = content_tag :div, message, class: flash_class(name)

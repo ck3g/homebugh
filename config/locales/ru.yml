@@ -67,6 +67,7 @@ ru:
         blank: "не может быть пустым"
         not_a_number: "должна быть числом"
         valid_email: Должен быть валидный email адрес
+        not_saved: "не найден"
 
       models:
         transaction:
@@ -205,6 +206,8 @@ ru:
   password_confirmation: Подтверждение
   forgot_your_password: Забыли пароль?
   send_me_reset_password_instructions: Отправить мне инструкции по сбросу пароля
+  didnt_receive_confirmation_instructions: "Не получили инструкции по подтверждению Email?"
+  resend_confirmation_instructions: "Отправить инструкции по подтверждению Email"
   current_month: Текущий месяц
   past_months: Предущие месяцы
   search_categories: Поиск категорий

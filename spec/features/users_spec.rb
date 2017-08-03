@@ -4,7 +4,7 @@ feature "user registration" do
   scenario "sign up with valid credentials" do
     sign_up_as "email@homebugh.info", "secret"
 
-    expect(page).to have_content "You have signed up successfully."
+    expect(page).to have_content "A message with a confirmation link has been sent to your email address"
   end
 
   scenario "sign in with valid credentials" do

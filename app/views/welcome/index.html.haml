@@ -18,9 +18,11 @@
     / /.navbar-collapse
   / /.container
 / Header
+
 %a{:name => "about"}
 .intro-header
   .container
+    = render 'shared/flash_messages'
     .row
       .col-lg-12
         .intro-message
@@ -38,6 +40,7 @@
                 %span.network-name= t("welcome_page.sign_in_button")
   / /.container
 / /.intro-header
+
 / Page Content
 %a{name: "services"}
 .content-section-a
