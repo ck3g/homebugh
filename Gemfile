@@ -41,6 +41,7 @@ gem 'jquery-ui-rails'
 gem 'ruby-progressbar'
 
 gem 'whenever', '~> 0.9.4', require: false
+gem 'mailgun-ruby'
 
 group :development do
   gem "capistrano", require: false
