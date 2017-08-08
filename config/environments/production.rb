@@ -41,14 +41,15 @@ Homebugh::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   config.action_mailer.default_url_options = { host: "homebugh.info" }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: false
   }
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAILGUN_API_KEY'],
-    domain: 'homebugh.info',
-  }
+  # config.action_mailer.delivery_method = :mailgun
+  # config.action_mailer.mailgun_settings = {
+  #   api_key: ENV['MAILGUN_API_KEY'],
+  #   domain: 'homebugh.info',
+  # }
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
