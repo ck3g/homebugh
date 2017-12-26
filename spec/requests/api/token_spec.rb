@@ -22,7 +22,7 @@ RSpec.describe 'API token', type: :request do
 
       it "respond with the generated token" do
         expect(JSON.parse(response.body)).to eq(
-          "token" => "123",
+          "token" => user.reload.access_token,
           "result" => "OK"
         )
       end

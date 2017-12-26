@@ -3,7 +3,8 @@ module Api
     def create
       user = User.find_by(email: safe_params[:email])
       if user && user.valid_password?(safe_params[:password])
-        render json: { token: "123", result: "OK" },
+        user.update_column :access_token, access_token
+        render json: { token: access_token, result: "OK" },
           status: :created
       else
         render json: { result: "Error", message: "Invalid E-Mail or Password" },
@@ -15,6 +16,16 @@ module Api
 
     def safe_params
       params.fetch(:user, {})
+    end
+
+    def access_token
+      @access_token ||= generate_access_token
+    end
+
+    def generate_access_token
+      begin
+        token = SecureRandom.hex
+      end while User.where(access_token: token).exists?
     end
   end
 end
