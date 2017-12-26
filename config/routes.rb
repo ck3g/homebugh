@@ -12,5 +12,7 @@ Homebugh::Application.routes.draw do
     root to: "transactions#index", as: :auth_root
   end
 
+  post "/api/token" => "api/token#create"
+
   root to: "welcome#index"
 end
