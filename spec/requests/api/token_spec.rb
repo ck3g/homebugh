@@ -9,19 +9,40 @@ RSpec.describe 'API token', type: :request do
       }
     end
 
-    before do
-      post "/api/token.json", user: user_data
+    context "when user credentials are valid" do
+      let!(:user) { create :user, email: "user@example.com", password: "password" }
+
+      before do
+        post "/api/token.json", user: user_data
+      end
+
+      it "responds with created" do
+        expect(response.status).to eq 201
+      end
+
+      it "respond with the generated token" do
+        expect(JSON.parse(response.body)).to eq(
+          "token" => "123",
+          "result" => "OK"
+        )
+      end
     end
 
-    it "generates a new token" do
-      expect(response.status).to eq 201
-    end
+    context "when user credentials are not valid" do
+      before do
+        post "/api/token.json", user: user_data
+      end
 
-    it "respond with the generated token" do
-      expect(JSON.parse(response.body)).to eq(
-        "token" => "123",
-        "result" => "OK"
-      )
+      it "responds with unauthorized" do
+        expect(response.status).to eq 401
+      end
+
+      it "does not generates any token" do
+        expect(JSON.parse(response.body)).to eq(
+          "result" => "Error",
+          "message" => "Invalid E-Mail or Password"
+        )
+      end
     end
   end
 end
