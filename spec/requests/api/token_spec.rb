@@ -26,6 +26,10 @@ RSpec.describe 'API token', type: :request do
           "result" => "OK"
         )
       end
+
+      it "populates the user token" do
+        expect(user.reload.access_token).to be_present
+      end
     end
 
     context "when user credentials are not valid" do

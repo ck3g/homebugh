@@ -26,6 +26,8 @@ module Api
       begin
         token = SecureRandom.hex
       end while User.where(access_token: token).exists?
+
+      token
     end
   end
 end
