@@ -171,7 +171,8 @@ GEM
     kgio (2.8.0)
     launchy (2.1.2)
       addressable (~> 2.3)
-    libnotify (0.5.9)
+    libnotify (0.9.4)
+      ffi (>= 1.0.11)
     libv8 (3.16.14.19)
     loofah (2.1.1)
       crass (~> 1.0.2)
@@ -190,7 +191,7 @@ GEM
     msgpack (1.1.0)
     multi_json (1.13.1)
     multipart-post (1.1.5)
-    mysql2 (0.3.21)
+    mysql2 (0.4.10)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -200,7 +201,7 @@ GEM
       net-ssh (>= 1.99.1)
     netrc (0.11.0)
     newrelic_rpm (3.5.7.59)
-    nokogiri (1.8.2)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pry (0.11.3)
@@ -403,10 +404,10 @@ DEPENDENCIES
   json (~> 1.7.7)
   kaminari (~> 0.14.1)
   launchy
-  libnotify (~> 0.5.7)
+  libnotify (~> 0.9.4)
   mailgun-ruby
   meta-tags (~> 1.3.0)
-  mysql2 (~> 0.3.17)
+  mysql2 (= 0.4.10)
   newrelic_rpm
   pry-rails
   psych (~> 2.0.13)
@@ -430,3 +431,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   whenever (~> 0.9.4)
+
+BUNDLED WITH
+   1.16.6

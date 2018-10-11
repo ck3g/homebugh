@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://rubygems.org/'
 
 gem 'rails', '4.2.10'
 
@@ -6,7 +6,7 @@ gem 'bootsnap', require: false
 
 gem "json", "~> 1.7.7"
 
-gem 'mysql2', "~> 0.3.17"
+gem 'mysql2', "0.4.10"
 gem 'devise', "~> 3.4.1"
 gem "devise-encryptable", "~> 0.1.1"
 gem 'haml'
@@ -76,7 +76,7 @@ group :test do
   gem 'rb-fsevent', '>= 0.4.3', require: false
   gem 'growl',      '~> 1.0.3', require: false
   gem 'rb-inotify', '>= 0.8.6', require: false
-  gem 'libnotify',  '~> 0.5.7', require: false
+  gem 'libnotify',  '~> 0.9.4', require: false
 end
 
 group :production do

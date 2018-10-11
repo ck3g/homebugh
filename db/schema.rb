@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20171226125341) do
     t.string   "name",             limit: 255
     t.integer  "category_type_id", limit: 4
     t.integer  "user_id",          limit: 4
-    t.boolean  "inactive",         limit: 1,   default: false
+    t.boolean  "inactive",                     default: false
     t.datetime "updated_at"
   end
 
