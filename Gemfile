@@ -46,7 +46,7 @@ gem 'mailgun-ruby'
 gem 'eventmachine', '~> 1.0.9', require: false
 
 group :development do
-  gem "capistrano", require: false
+  gem "capistrano", "~> 2.15.9", require: false
   gem 'capistrano-recipes', require: false
   gem 'capistrano_colors', require: false
   gem 'capistrano-unicorn', '~> 0.1.10', require: false
@@ -56,6 +56,8 @@ group :development do
   gem "thin"
   gem 'spring'
   gem "spring-commands-rspec"
+  gem 'ed25519', '~> 1.2', '>= 1.2.4'
+  gem 'bcrypt_pbkdf', '~> 1.0', '>= 1.0.1'
 end
 
 group :development, :test do
