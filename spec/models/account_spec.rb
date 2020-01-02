@@ -19,7 +19,7 @@ describe Account do
       it { is_expected.to validate_presence_of(:user_id) }
       it do
         is_expected.to validate_uniqueness_of(:name).
-          scoped_to([:user_id, :currency_id])
+          scoped_to([:user_id, :currency_id]).ignoring_case_sensitivity
       end
       it { is_expected.to validate_presence_of :currency }
     end

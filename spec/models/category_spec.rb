@@ -27,7 +27,7 @@ describe Category do
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_presence_of(:category_type_id) }
       it { is_expected.to validate_presence_of(:user_id) }
-      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:user_id) }
+      it { is_expected.to validate_uniqueness_of(:name).scoped_to(:user_id).ignoring_case_sensitivity }
     end
 
     context "invalid" do

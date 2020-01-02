@@ -72,7 +72,7 @@ group :test do
   gem "launchy"
   gem "capybara"
   gem "database_cleaner"
-  gem "shoulda"
+  gem "shoulda-matchers", '~> 4.1.2'
   gem "email_spec"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
