@@ -68,7 +68,7 @@ end
 
 group :test do
   gem 'rspec-activemodel-mocks'
-  gem "faker", "~> 1.0.1"
+  gem "faker", "~> 1.9.6"
   gem "launchy"
   gem "capybara"
   gem "database_cleaner"
