@@ -4,7 +4,7 @@ gem 'rails', '4.2.10'
 
 gem 'bootsnap', require: false
 
-gem "json", "~> 1.7.7"
+gem "json", "~> 1.8.6"
 
 gem 'mysql2', "0.4.10"
 gem 'devise', "~> 3.4.1"
@@ -42,6 +42,8 @@ gem 'ruby-progressbar'
 
 gem 'whenever', '~> 0.9.4', require: false
 gem 'mailgun-ruby'
+
+gem 'eventmachine', '~> 1.0.9', require: false
 
 group :development do
   gem "capistrano", require: false
@@ -81,6 +83,6 @@ end
 
 group :production do
   gem "exception_notification"
-  gem 'unicorn'
+  gem 'unicorn', '~> 4.9.0'
 end
 
