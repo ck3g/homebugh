@@ -144,7 +144,9 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     growl (1.0.3)
-    haml (3.1.7)
+    haml (5.0.0)
+      temple (>= 0.8.0)
+      tilt
     has_scope (0.5.1)
     highline (2.0.3)
     hike (1.2.3)
@@ -313,6 +315,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    temple (0.8.2)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
