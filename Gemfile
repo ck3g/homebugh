@@ -84,7 +84,7 @@ group :test do
 end
 
 group :production do
-  gem "exception_notification"
+  # gem "exception_notification"
   gem 'unicorn', '~> 4.9.0'
 end
 
