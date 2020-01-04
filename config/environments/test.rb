@@ -17,7 +17,7 @@ Homebugh::Application.configure do
   config.action_controller.perform_caching = false
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_files  = true
+  config.public_file_server.enabled = false
   config.static_cache_control = "public, max-age=3600"
 
   # Raise exceptions instead of rendering exception templates
