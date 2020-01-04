@@ -10,12 +10,14 @@ describe TransactionsController do
 
   describe "GET #index" do
     before { get :index }
+
     it { expect(assigns[:transactions]).to eq [transaction] }
     it { is_expected.to render_template :index }
   end
 
   describe "GET #new" do
     before { get :new }
+
     it { expect(assigns[:transaction]).to be_kind_of Transaction }
     it { is_expected.to render_template :new }
 
@@ -38,14 +40,17 @@ describe TransactionsController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      before do
-        @attributes = {
+      let(:attributes) do
+        {
           summ: 12,
           account_id: account.id,
           category_id: category.id,
           user_id: user.id
         }
-        post :create, transaction: @attributes
+      end
+
+      before do
+        post :create, params: { transaction: attributes }
       end
 
       it { is_expected.to redirect_to transactions_path }
@@ -59,26 +64,29 @@ describe TransactionsController do
 
       it "saves the new transaction in the database" do
         expect {
-          post :create, transaction: @attributes
+          post :create, params: { transaction: attributes }
         }.to change(Transaction, :count).by(1)
       end
     end
 
     context "with invalid attributes" do
-      before do
-        @attributes = {
+      let(:attributes) do
+        {
           summ: 0,
           category_id: category.id,
           user_id: user.id
         }
-        post :create, transaction: @attributes
+      end
+
+      before do
+        post :create, params: { transaction: attributes }
       end
 
       it { is_expected.to render_template :new }
 
       it "does not save the new transaction in the database" do
         expect {
-          post :create, transaction: @attributes
+          post :create, params: { transaction: attributes }
         }.to_not change(Transaction, :count)
       end
     end
@@ -93,18 +101,20 @@ describe TransactionsController do
       expect(transaction).to receive(:update_attributes).with(
         {"comment" => "New comment"}).and_return true
 
-      put :update, id: 1, transaction: { comment: "New comment", summ: "503" }
+      put :update, params: { id: 1, transaction: { comment: "New comment", summ: "503" } }
     end
   end
 
   describe "DELETE #destroy" do
-  let!(:transaction2) { create(:transaction, user: user, account: account, category: category) }
-    before { delete :destroy, id: transaction }
+    let!(:transaction2) { create(:transaction, user: user, account: account, category: category) }
+
+    before { delete :destroy, params: { id: transaction } }
+
     it { is_expected.to redirect_to transactions_path }
 
     it "deletes the transaction" do
       expect {
-        delete :destroy, id: transaction2
+        delete :destroy, params: { id: transaction2 }
       }.to change(Transaction, :count).by(-1)
     end
   end
