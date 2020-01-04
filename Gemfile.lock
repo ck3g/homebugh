@@ -47,7 +47,7 @@ GEM
     awesome_print (1.2.0)
     bcrypt (3.1.9)
     bcrypt_pbkdf (1.0.1)
-    best_in_place (3.0.0)
+    best_in_place (3.1.1)
       actionpack (>= 3.2)
       railties (>= 3.2)
     bootsnap (1.4.5)
