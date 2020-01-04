@@ -51,12 +51,11 @@ class Statistics
   def get_categories(type_id)
     categories_data = get_data(type_id).group("transactions.category_id")
     sum_by_category = categories_data.sum(:summ)
-    categories = Array.new
-    categories_data.each do |data|
-      categories << { name: data.category.name, sum: sum_by_category[data.category_id] }
-    end
+    category_ids = categories_data.pluck(:category_id)
 
-    categories
+    Category.where(id: category_ids).all.map do |category|
+      { name: category.name, sum: sum_by_category[category.id] }
+    end
   end
 
   private
