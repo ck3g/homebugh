@@ -21,7 +21,10 @@ feature "Create new budget" do
         click_button "Add"
       end
 
-      expect(page).to have_content "Food 0.00 / 503.00 EUR"
+      within "tr" do
+        expect(page).to have_content "Food"
+        expect(page).to have_content "0.00 / 503.00 EUR"
+      end
     end
   end
 end
