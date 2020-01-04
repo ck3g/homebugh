@@ -12,7 +12,7 @@ gem "devise-encryptable", "~> 0.1.1"
 gem 'haml'
 gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 2.0.13"
-gem "simple_form", "~> 3.5.1"
+gem "simple_form", "~> 5.0.0"
 gem "kaminari", "~> 1.1.1"
 gem "meta-tags", "~> 2.13.0", require: "meta_tags"
 gem "newrelic_rpm"
