@@ -1,6 +1,6 @@
 source 'https://rubygems.org/'
 
-gem 'rails', '5.2.4.1'
+gem 'rails', '6.0.2.1'
 
 gem 'bootsnap', require: false
 
@@ -23,9 +23,9 @@ gem 'draper'
 gem 'aasm'
 gem 'cancancan'
 
-gem "sass-rails", "~> 5.0.7"
+gem "sass-rails", "~> 6.0.0"
 gem 'bootstrap-sass', '~> 3.4.1'
-gem "coffee-rails", "~> 4.2.2"
+gem "coffee-rails", "~> 5.0.0"
 gem "uglifier", ">= 4.2.0"
 gem "therubyracer", "~> 0.12.3"
 gem 'font-awesome-rails'
@@ -45,6 +45,8 @@ gem 'mailgun-ruby'
 
 gem 'eventmachine', '~> 1.0.9', require: false
 
+gem 'sprockets-rails', require: 'sprockets/railtie'
+
 group :development do
   gem "capistrano", "~> 2.15.9", require: false
   gem 'capistrano-recipes', require: false
@@ -61,7 +63,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.9.0'
+  gem 'rspec-rails', '~> 4.0.0.beta3'
   gem 'factory_girl_rails', '~> 3.5.0'
   gem "pry-rails"
 end
