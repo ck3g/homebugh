@@ -23,7 +23,7 @@ gem 'draper'
 gem 'aasm'
 gem 'cancancan'
 
-gem "sass-rails", "~> 4.0.3"
+gem "sass-rails", "~> 5.0.7"
 gem 'bootstrap-sass', '~> 3.1.1'
 gem "coffee-rails", "~> 4.2.2"
 gem "uglifier", ">= 1.3.0"
