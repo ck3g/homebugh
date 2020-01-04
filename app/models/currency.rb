@@ -5,5 +5,5 @@ class Currency < ActiveRecord::Base
   has_many :aggregated_transactions, dependent: :destroy
   has_many :budgets, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: true }
 end
