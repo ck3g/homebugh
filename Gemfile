@@ -28,7 +28,6 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem "coffee-rails", "~> 4.0.1"
 gem "uglifier", ">= 1.3.0"
 gem "therubyracer", "~> 0.12.3"
-gem 'quiet_assets', '~> 1.0.2'
 gem 'font-awesome-rails'
 
 gem 'actionpack-page_caching'
