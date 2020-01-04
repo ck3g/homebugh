@@ -24,7 +24,7 @@ gem 'aasm'
 gem 'cancancan'
 
 gem "sass-rails", "~> 5.0.7"
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem "coffee-rails", "~> 4.2.2"
 gem "uglifier", ">= 4.2.0"
 gem "therubyracer", "~> 0.12.3"
