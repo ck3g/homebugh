@@ -14,7 +14,7 @@ gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 2.0.13"
 gem "simple_form", "~> 3.5.1"
 gem "kaminari", "~> 0.14.1"
-gem "meta-tags", "~> 1.3.0", require: "meta_tags"
+gem "meta-tags", "~> 2.13.0", require: "meta_tags"
 gem "newrelic_rpm"
 gem 'best_in_place'
 gem "select2-rails", '~> 3.5.1'
