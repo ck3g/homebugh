@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if @account.update_attributes safe_params
+    if @account.update(safe_params)
       redirect_to accounts_path, notice: t('parts.accounts.successfully_updated')
     else
       render "edit"

@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction.update_attributes update_params
+    @transaction.update(update_params)
     respond_with @transaction
   end
 

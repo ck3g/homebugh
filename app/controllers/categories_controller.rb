@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update_attributes safe_params
+    if @category.update(safe_params)
       redirect_to categories_path, notice: t('parts.categories.successfully_updated')
     else
       render "edit"

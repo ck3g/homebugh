@@ -98,8 +98,7 @@ describe TransactionsController do
     it 'updates transaction comment only' do
       expect(user).to receive(:transactions).and_return Transaction
       expect(Transaction).to receive(:find).with("1").and_return transaction
-      expect(transaction).to receive(:update_attributes).with(
-        {"comment" => "New comment"}).and_return true
+      expect(transaction).to receive(:update).with("comment" => "New comment").and_return true
 
       put :update, params: { id: 1, transaction: { comment: "New comment", summ: "503" } }
     end

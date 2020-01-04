@@ -24,7 +24,7 @@ class BudgetsController < ApplicationController
   end
 
   def update
-    if @budget.update_attributes safe_params
+    if @budget.update(safe_params)
       redirect_to budgets_path
     else
       render :edit
