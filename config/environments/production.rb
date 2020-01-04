@@ -75,8 +75,10 @@ Homebugh::Application.configure do
   config.assets.digest = true
 
   # Notify exceptions
-  # config.middleware.use ::ExceptionNotifier,
-  #   email_prefix: "[HomeBugh Exceptions]: ",
-  #   sender_address: "rakeroutes@mail.ru",
-  #   exception_recipients: %w{kalastiuz@gmail.com}
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: "[HomeBugh Exceptions]: ",
+      sender_address: "rakeroutes@mail.ru",
+      exception_recipients: %w{kalastiuz@gmail.com}
+    }
 end
