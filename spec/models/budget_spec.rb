@@ -61,7 +61,7 @@ RSpec.describe Budget, type: :model do
 
 
     it "returns sum of transactions of the same currency and same category made in the current month" do
-      is_expected.to eq BigDecimal.new(80.46.to_s)
+      is_expected.to eq BigDecimal(80.46.to_s)
     end
 
   end
