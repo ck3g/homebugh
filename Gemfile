@@ -1,6 +1,6 @@
 source 'https://rubygems.org/'
 
-gem 'rails', '4.2.10'
+gem 'rails', '5.0.7'
 
 gem 'bootsnap', require: false
 
@@ -30,6 +30,7 @@ gem "uglifier", ">= 1.3.0"
 gem "therubyracer", "~> 0.12.3"
 gem 'font-awesome-rails'
 
+gem 'activemodel-serializers-xml'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'activerecord-deprecated_finders'
@@ -67,6 +68,7 @@ end
 
 group :test do
   gem 'rspec-activemodel-mocks'
+  gem 'rails-controller-testing'
   gem "faker", "~> 1.9.6"
   gem "launchy"
   gem "capybara"
