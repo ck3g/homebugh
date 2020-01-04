@@ -26,9 +26,9 @@
                 %td
                   .pull-right
                     = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit) do
-                      %span.glyphicon.glyphicon-pencil
+                      = fa_icon "edit"
                     = link_to budget, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
-                      %span.glyphicon.glyphicon-trash
+                      = fa_icon "trash"
   - else
     .col-xs-6.col-xs-offset-3
       %div

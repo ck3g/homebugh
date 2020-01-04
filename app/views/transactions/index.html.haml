@@ -28,7 +28,7 @@
                 %td.span2= link_to transaction.account_name, transactions_path(account: transaction.account_id)
                 %td.span2.actions
                   = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
-                    %span.glyphicon.glyphicon-share-alt
+                    = fa_icon "share"
   - else
     .col-xs-12.col-lg-12
       %p.empty-data= t( 'parts.transactions.you_have_no_transactions' )

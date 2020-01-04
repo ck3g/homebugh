@@ -27,7 +27,7 @@
                 %td.span2.number= cash_flow.decorate.amount
                 %td.span2.actions
                   = link_to cash_flow, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
-                    %i.glyphicon.glyphicon-share-alt
+                    = fa_icon "trash"
 
   - else
     .col-xs-12.col-lg-12

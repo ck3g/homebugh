@@ -31,9 +31,9 @@
                     .col-sm-11= link_to category.name, transactions_path(category: category.id)
                 %td.span2.actions
                   = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
-                    %span.glyphicon.glyphicon-pencil
+                    = fa_icon "pencil"
                   = link_to category, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
-                    %span.glyphicon.glyphicon-trash
+                    = fa_icon "trash"
   - else
     .col-xs-12.col-lg-12
       %p.empty-data
