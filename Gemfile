@@ -18,7 +18,7 @@ gem "meta-tags", "~> 2.13.0", require: "meta_tags"
 gem "newrelic_rpm"
 gem 'best_in_place'
 gem "select2-rails", '~> 3.5.1'
-gem 'chartkick', '~> 2.2.4'
+gem 'chartkick', '~> 2.3.5'
 gem 'draper'
 gem 'aasm'
 gem 'cancancan'
