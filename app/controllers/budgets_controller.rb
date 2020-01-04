@@ -1,7 +1,7 @@
 class BudgetsController < ApplicationController
   authorize_resource
 
-  before_filter :find_budget, only: [:edit, :update, :destroy]
+  before_action :find_budget, only: [:edit, :update, :destroy]
 
   def index
     @budgets = current_user.budgets

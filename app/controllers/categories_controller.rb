@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   authorize_resource
-  before_filter :find_category, only: [:show, :edit, :update, :destroy]
+  before_action :find_category, only: [:show, :edit, :update, :destroy]
 
   def index
     @categories = current_user
@@ -45,6 +45,7 @@ class CategoriesController < ApplicationController
   end
 
   private
+
   def find_category
     @category = current_user.categories.find(params[:id])
   end

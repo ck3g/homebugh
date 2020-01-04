@@ -1,7 +1,7 @@
 class CashFlowsController < ApplicationController
   authorize_resource
-  before_filter :find_cash_flow, only: [:destroy]
-  before_filter :find_accounts, only: [:new, :create, :destroy]
+  before_action :find_cash_flow, only: [:destroy]
+  before_action :find_accounts, only: [:new, :create, :destroy]
 
   def index
     @cash_flows = current_user.cash_flows.includes(:from_account, :to_account).order('created_at desc').page(params[:page])

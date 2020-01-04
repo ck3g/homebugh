@@ -2,9 +2,9 @@ class TransactionsController < ApplicationController
   respond_to :html, :json
 
   authorize_resource
-  before_filter :find_transaction, only: [:destroy, :update]
-  before_filter :find_categories, only: [:new, :create]
-  before_filter :find_accounts, only: [:new, :create]
+  before_action :find_transaction, only: [:destroy, :update]
+  before_action :find_categories, only: [:new, :create]
+  before_action :find_accounts, only: [:new, :create]
 
   has_scope :category
   has_scope :account

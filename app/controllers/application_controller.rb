@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     redirect_to path, alert: exception.message
   end
 
-  before_filter :set_locale
-  before_filter :instantiate_controller_and_action_names
+  before_action :set_locale
+  before_action :instantiate_controller_and_action_names
 
   def set_locale
     session[:locale] = params[:locale] if params[:locale].present?
@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
   def instantiate_controller_and_action_names
     @controller_name = controller_name
     @action_name = action_name

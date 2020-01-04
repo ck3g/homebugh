@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   authorize_resource
-  before_filter :find_account, only: [:show, :edit, :update, :destroy]
+  before_action :find_account, only: [:show, :edit, :update, :destroy]
 
   def index
     @accounts = current_user.accounts.by_recently_used.page(params[:page])
