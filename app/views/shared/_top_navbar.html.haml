@@ -19,7 +19,7 @@
         %ul.nav.navbar-nav.navbar-right
           %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
           %li.divider-vertical
-          %li= link_to t("parts.auth.sign_out"), destroy_user_session_path
+          %li= link_to t("parts.auth.sign_out"), destroy_user_session_path, method: :delete
       - else
         %ul.nav.navbar-nav.navbar-right
           %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
