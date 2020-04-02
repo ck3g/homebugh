@@ -173,6 +173,10 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.11)
+      railties
+      sprockets-rails
+    graphql (1.9.19)
     growl (1.0.3)
     haml (5.1.2)
       temple (>= 0.8.0)
@@ -432,6 +436,8 @@ DEPENDENCIES
   factory_girl_rails (~> 3.5.0)
   faker (~> 1.9.6)
   font-awesome-rails
+  graphiql-rails (~> 1.4.11)
+  graphql (~> 1.9.2)
   growl (~> 1.0.3)
   haml
   has_scope (~> 0.5.1)

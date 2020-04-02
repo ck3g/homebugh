@@ -66,7 +66,9 @@ Homebugh::Application.configure do
   config.active_support.deprecation = :notify
 
   # Compress JavaScripts and CSS
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
+  # Fixes GraphiQL https://github.com/rmosolgo/graphiql-rails/issues/58#issuecomment-507881871
+  config.assets.js_compressor = Uglifier.new(harmony: true, mangle: false)
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false

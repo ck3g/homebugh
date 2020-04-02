@@ -1,4 +1,7 @@
 Homebugh::Application.routes.draw do
+  mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/api/graphql"
+  post "/api/graphql", to: "graphql#execute"
+
   resources :transactions, :cash_flows, only: [:index, :new, :create, :update, :destroy]
   resources :categories, :accounts, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :statistics, only: [:index] do

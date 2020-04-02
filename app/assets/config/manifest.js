@@ -1,5 +1,7 @@
 //= link application.js
 //= link application.css
+//= link graphiql/rails/application.js
+//= link graphiql/rails/application.css
 //= link flags/ru.png
 //= link flags/en.png
 //= link icons/delete.png
