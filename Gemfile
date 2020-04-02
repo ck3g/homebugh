@@ -47,11 +47,8 @@ gem 'eventmachine', '~> 1.0.9', require: false
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
 
-gem 'graphql', '~> 1.9.2'
-# Newer versions does not work in production
-# https://github.com/rmosolgo/graphiql-rails/issues/58
-# Similar problem in GitLab https://gitlab.com/gitlab-org/gitlab/-/issues/31771
-gem 'graphiql-rails', '~> 1.4.11'
+gem 'graphql'
+gem 'graphiql-rails'
 
 group :development do
   gem "capistrano", "~> 2.15.9", require: false
