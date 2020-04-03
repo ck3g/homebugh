@@ -51,5 +51,12 @@ module Homebugh
     config.secret_key_base = 'homebugh'
 
     config.assets.precompile += %w(welcome.css welcome.js)
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '/api/graphql', headers: :any, methods: [:post, :options]
+      end
+    end
   end
 end

@@ -49,6 +49,7 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 
 gem 'graphql'
 gem 'graphiql-rails'
+gem 'rack-cors'
 
 group :development do
   gem "capistrano", "~> 2.15.9", require: false
