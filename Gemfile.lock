@@ -109,7 +109,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    chartkick (2.3.5)
+    chartkick (3.4.0)
     chronic (0.10.2)
     code_analyzer (0.5.1)
       sexp_processor
@@ -423,7 +423,7 @@ DEPENDENCIES
   capistrano-unicorn (~> 0.1.10)
   capistrano_colors
   capybara
-  chartkick (~> 2.3.5)
+  chartkick (~> 3.4.0)
   codeclimate-test-reporter
   coffee-rails (~> 5.0.0)
   database_cleaner
