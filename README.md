@@ -5,3 +5,7 @@
 [![Test Coverage](https://codeclimate.com/github/ck3g/homebugh/badges/coverage.svg)](https://codeclimate.com/github/ck3g/homebugh)
 
 The control system on household finances
+
+### License
+
+[MIT](./LICENSE.md)
