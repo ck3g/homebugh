@@ -8,4 +8,4 @@ The control system on household finances
 
 ### License
 
-[MIT](./LICENSE.md)
+HomeBugh app is released under the [MIT License](./LICENSE.md).
