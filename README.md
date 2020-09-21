@@ -6,6 +6,10 @@
 
 The control system on household finances
 
+### Contributing
+
+Any contributions to the project are always welcome. Please check out the [Contributing guide](./CONTRIBUTING.md).
+
 ### License
 
 HomeBugh app is released under the [MIT License](./LICENSE.md).
