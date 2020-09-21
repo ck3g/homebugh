@@ -3,7 +3,7 @@
 Any contributions to the project are always welcome.
 Feel free to report a bug, create an issue, or submit a pull request.
 
-### Sumbit a pull request
+### Submit a pull request
 
 Pull requests are the best way to propose changes to the codebase.
 
