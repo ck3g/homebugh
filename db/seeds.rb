@@ -6,5 +6,10 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-CategoryType.create(:name => 'income')
-CategoryType.create(:name => 'spending')
+CategoryType.create(name: 'income')
+CategoryType.create(name: 'spending')
+
+Currency.create(name: "USD", unit: "$")
+Currency.create(name: "EUR", unit: "€")
+
+User.create(email: "user@example.com", password: "password", confirmed_at: Time.current)
