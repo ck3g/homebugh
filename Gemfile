@@ -67,7 +67,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'rspec-rails', '~> 4.0.1'
   gem 'factory_girl_rails', '~> 3.5.0'
   gem "pry-rails"
 end
@@ -75,11 +75,11 @@ end
 group :test do
   gem 'rspec-activemodel-mocks'
   gem 'rails-controller-testing'
-  gem "faker", "~> 1.9.6"
+  gem "faker", "~> 2.14.0"
   gem "launchy"
   gem "capybara"
   gem "database_cleaner"
-  gem "shoulda-matchers", '~> 4.1.2'
+  gem "shoulda-matchers", '~> 4.4.1'
   gem "email_spec"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
