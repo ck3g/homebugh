@@ -25,6 +25,7 @@ en:
         email: "email"
         password: "Password"
         password_confirmation: "Confirmation"
+        current_password: "Current Password"
       account:
         name: "Name"
         funds: "Funds"
