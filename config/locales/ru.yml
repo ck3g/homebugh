@@ -51,6 +51,7 @@ ru:
         email: "email"
         password: "Пароль"
         password_confirmation: "Подтверждение"
+        current_password: "Текущий пароль"
       account:
         name: "Название"
         funds: "Доступные средства"
@@ -112,6 +113,7 @@ ru:
     or: "или"
     total_funds: "Всего"
     date: "Дата"
+    update: "Обновить"
 
   parts:
     budgets:
