@@ -1,5 +1,5 @@
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :transaction do
     summ 10.0
     comment "Comment"
