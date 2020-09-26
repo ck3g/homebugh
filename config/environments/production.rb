@@ -43,8 +43,8 @@ Homebugh::Application.configure do
   config.action_mailer.default_url_options = { host: "homebugh.info" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    enable_starttls_auto: false,
-    # port: 587,
+      port: 587,
+      enable_starttls_auto: true,
     # address: "smtp.mailgun.org",
     # domain: 'mg.homebugh.info',
     # user_name: ENV['MAILGUN_USER'],
