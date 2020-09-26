@@ -1,6 +1,6 @@
 source 'https://rubygems.org/'
 
-gem 'rails', '6.0.2.1'
+gem 'rails', '6.0.3.3'
 
 gem 'bootsnap', require: false
 
@@ -13,7 +13,7 @@ gem 'haml'
 gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 2.0.13"
 gem "simple_form", "~> 5.0.0"
-gem "kaminari", "~> 1.1.1"
+gem "kaminari", "~> 1.2.1"
 gem "meta-tags", "~> 2.13.0", require: "meta_tags"
 gem "newrelic_rpm"
 gem 'best_in_place'
@@ -67,19 +67,19 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 4.0.0.beta3'
   gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'rspec-rails', '~> 4.0.1'
   gem "pry-rails"
 end
 
 group :test do
   gem 'rspec-activemodel-mocks'
   gem 'rails-controller-testing'
-  gem "faker", "~> 1.9.6"
+  gem "faker", "~> 2.14.0"
   gem "launchy"
   gem "capybara"
   gem "database_cleaner"
-  gem "shoulda-matchers", '~> 4.1.2'
+  gem "shoulda-matchers", '~> 4.4.1'
   gem "email_spec"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
