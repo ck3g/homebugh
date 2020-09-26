@@ -25,7 +25,6 @@ gem 'cancancan'
 
 gem "sass-rails", "~> 6.0.0"
 gem 'bootstrap-sass', '~> 3.4.1'
-gem "coffee-rails", "~> 5.0.0"
 gem "uglifier", ">= 4.2.0"
 gem "therubyracer", "~> 0.12.3"
 gem 'font-awesome-rails'
