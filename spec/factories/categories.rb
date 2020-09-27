@@ -1,5 +1,5 @@
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :category do
     sequence(:name) { |n| "category ##{n}" }
     category_type_id CategoryType.spending

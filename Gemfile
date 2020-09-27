@@ -68,7 +68,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
-  gem 'factory_girl_rails', '~> 3.5.0'
+  gem 'factory_bot_rails'
   gem "pry-rails"
 end
 
@@ -94,5 +94,3 @@ group :production do
   gem "exception_notification"
   gem 'unicorn', '~> 4.9.0'
 end
-
-
