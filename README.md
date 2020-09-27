@@ -4,7 +4,65 @@
 [![Code Climate](https://codeclimate.com/github/ck3g/homebugh/badges/gpa.svg)](https://codeclimate.com/github/ck3g/homebugh)
 [![Test Coverage](https://codeclimate.com/github/ck3g/homebugh/badges/coverage.svg)](https://codeclimate.com/github/ck3g/homebugh)
 
-The control system on household finances
+The expense tracking app.
+
+## About the project
+
+HomeBugh app is a web application to track your home finance expenses.
+
+There are a bunch of articles and books describing the benefit of tracking expenses.
+So that's exactly what we do with my family. We track all our expenses.
+
+There are plenty of ways to track your expenses, you can use an Excel spreadsheet, third-party applications.
+I've decided to build a tool for myself.
+That's how the project was born.
+
+It has (almost) all required pieces of functionality I need.
+And I work on some improvements from time to time.
+
+## The project goal
+
+Yet another goal of that project is to practice software development.
+I've started it when I started to learn Ruby and Ruby on Rails.
+
+It helped me to experiment with different code practices, implement the features I needed in the way I wanted and knew.
+
+There are still some parts I'd like to implement.
+I'm thinking to build a mobile application, that will require providing an API.
+
+Another idea is to make the project available for everyone.
+At the moment, I think I'm the only user of that application which is hosted on [HomeBugh.info](https://homebugh.info).
+
+I understand some people don't want to share their personal finances with some service.
+Based on that, I'd like to provide instructions for others to set up the project on their own hosting service.
+
+I'm planning to add a demo user to the project, so everyone can take a look at the project without the need to register.
+
+If the project gets more users, that should bring new ideas on improvements in different areas of the project.
+So, if you want to practice web development that project can be a good place for you.
+
+
+
+## The Hacktoberfest goal
+
+To have fun. To help others to start contributing to the open-source.
+
+
+That's not easy to start contributing to the open-source.
+Especially at the beginning. There is a lot of stuff.
+That's not easy to find an issue to work on or find something to improve by yourself.
+
+I'll try to help here.
+I'll create a bunch if easy to work on issues so everyone can pick up for Hacktoberfest.
+Issues are relatively simple for a person with some basic knowledge of [Ruby on Rails](https://rubyonrails.org)
+Issues have a small scope, so they can be easily implemented.
+And more importantly, despite the narrow scope of issues, they will improve the project.
+
+If you decide to participate, I'll try to help you as much as I can.
+
+Welcome, and have fun!
+
+<hr>
 
 ### Configure development environment
 
