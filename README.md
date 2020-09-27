@@ -22,7 +22,7 @@ Be sure there are required dependencies installed on your computer:
 1. `$ cd homebugh`
 1. Copy and update the database config according to your local MySQL configuration
     ```shell
-    $ cp config/database.yml.example config/database.yml`
+    $ cp config/database.yml.example config/database.yml
     ```
 1. Install all the required gems
     ```shell
