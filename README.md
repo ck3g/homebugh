@@ -43,7 +43,7 @@ So, if you want to practice web development that project can be a good place for
 
 
 
-## The Hacktoberfest goal
+## The [Hacktoberfest](https://hacktoberfest.digitalocean.com) goal
 
 To have fun. To help others to start contributing to the open-source.
 
