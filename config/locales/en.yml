@@ -150,6 +150,9 @@ en:
     session:
       email: "email"
       password: "Password"
+    users:
+      delete: "Delete this user"
+      delete_warning: "Once you delete a user, there is no going back. Please be certain."
 
   arrow: "→"
   sign_in: Sign in

@@ -13,6 +13,8 @@ Homebugh::Application.routes.draw do
 
   authenticated :user do
     root to: "transactions#index", as: :auth_root
+    get 'users/delete'
+    delete 'users/destroy'
   end
 
   post "/api/token" => "api/token#create"
