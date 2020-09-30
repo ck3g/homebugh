@@ -31,4 +31,28 @@ describe User, type: :model do
       is_expected.to contain_exactly(usd, eur)
     end
   end
+
+  describe '#destroy' do
+    subject(:destroy_user) { user.destroy }
+
+    MODELS = [Account, AggregatedTransaction, Budget, CashFlow, Category, Transaction]
+    FACTORIES = MODELS.map { |m| m.to_s.underscore.to_sym }
+
+    context 'deleting a user deletes all the user data' do
+      let!(:user) { create(:user) }
+      let(:user_id) { user.id }
+
+      before do
+        FACTORIES.each do |factory|
+          create(factory, user: user)
+        end
+      end
+
+      MODELS.each do |model|
+        it "deletes #{model}" do
+          expect { destroy_user }.to change { model.where(user_id: user_id).count }.to 0
+        end
+      end
+    end
+  end
 end

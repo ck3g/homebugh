@@ -33,7 +33,9 @@ class Account < ActiveRecord::Base
     update_attribute :funds, funds - amount
   end
 
-  def destroy
+  def destroy(permanent_destroy: false)
+    return super() if permanent_destroy
+
     mark_as_deleted! if funds.zero?
   end
 end
