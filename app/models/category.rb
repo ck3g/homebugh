@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   include Orderable
 
   belongs_to :category_type

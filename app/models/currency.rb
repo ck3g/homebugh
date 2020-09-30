@@ -1,4 +1,4 @@
-class Currency < ActiveRecord::Base
+class Currency < ApplicationRecord
   include Orderable
 
   has_many :accounts
