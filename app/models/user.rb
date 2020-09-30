@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :cash_flows, dependent: :destroy
+  has_many :recurring_payments, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

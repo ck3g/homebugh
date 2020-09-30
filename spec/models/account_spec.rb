@@ -10,6 +10,7 @@ describe Account do
     it { is_expected.to have_many(:cash_flows) }
     it { is_expected.to belong_to :currency }
     it { is_expected.to have_many(:transactions).dependent :nullify }
+    it { is_expected.to have_many(:recurring_payments).dependent :destroy }
   end
 
   describe ".validation" do

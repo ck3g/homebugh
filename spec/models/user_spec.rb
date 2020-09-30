@@ -12,6 +12,7 @@ describe User, type: :model do
     it { is_expected.to have_many(:categories).dependent :destroy }
     it { is_expected.to have_many(:transactions).dependent :destroy }
     it { is_expected.to have_many(:cash_flows).dependent :destroy }
+    it { is_expected.to have_many(:recurring_payments).dependent :destroy }
   end
 
   describe '#currencies' do
