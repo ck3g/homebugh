@@ -36,7 +36,7 @@ describe User, type: :model do
   describe '#destroy' do
     subject(:destroy_user) { user.destroy }
 
-    MODELS = [Account, AggregatedTransaction, Budget, CashFlow, Category, Transaction]
+    MODELS = [Account, AggregatedTransaction, Budget, CashFlow, Category, Transaction, RecurringPayment]
     FACTORIES = MODELS.map { |m| m.to_s.underscore.to_sym }
 
     context 'deleting a user deletes all the user data' do
