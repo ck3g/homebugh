@@ -1,4 +1,4 @@
-class Transaction < ActiveRecord::Base
+class Transaction < ApplicationRecord
   belongs_to :category, touch: true
   belongs_to :user
   belongs_to :account, touch: true

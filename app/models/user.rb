@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :aggregated_transactions, dependent: :destroy
   has_many :accounts, dependent: :destroy
   has_many :budgets, dependent: :destroy

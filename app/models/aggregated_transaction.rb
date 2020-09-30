@@ -1,4 +1,4 @@
-class AggregatedTransaction < ActiveRecord::Base
+class AggregatedTransaction < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :category_type

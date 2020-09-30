@@ -1,4 +1,4 @@
-class CategoryType < ActiveRecord::Base
+class CategoryType < ApplicationRecord
   has_many :categories
 
   class << self
