@@ -11,7 +11,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_destroy :cleanup_accounts
+
   def currencies
     Currency.where(id: accounts.pluck(:currency_id)).by_recently_used.distinct
+  end
+
+  private
+
+  def cleanup_accounts
+    accounts.deleted.each do |account|
+      account.destroy(permanent_destroy: true)
+    end
   end
 end
