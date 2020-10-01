@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_12_26_125341) do
+ActiveRecord::Schema.define(version: 2020_09_30_183153) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -87,6 +87,21 @@ ActiveRecord::Schema.define(version: 2017_12_26_125341) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["name"], name: "index_currencies_on_name", unique: true
+  end
+
+  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "user_id", null: false
+    t.integer "category_id", null: false
+    t.integer "account_id", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.integer "frequency_amount", null: false
+    t.integer "frequency", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_recurring_payments_on_account_id"
+    t.index ["category_id"], name: "index_recurring_payments_on_category_id"
+    t.index ["user_id"], name: "index_recurring_payments_on_user_id"
   end
 
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

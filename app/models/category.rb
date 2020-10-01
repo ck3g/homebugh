@@ -6,6 +6,7 @@ class Category < ApplicationRecord
   has_many :budgets, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :aggregated_transactions, dependent: :destroy
+  has_many :recurring_payments, dependent: :destroy
 
   validates :name, :category_type_id, :user_id, presence: true
   validates :name, uniqueness: { scope: :user_id, case_sensitive: false }

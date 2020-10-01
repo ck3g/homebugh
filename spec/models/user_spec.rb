@@ -12,6 +12,7 @@ describe User, type: :model do
     it { is_expected.to have_many(:categories).dependent :destroy }
     it { is_expected.to have_many(:transactions).dependent :destroy }
     it { is_expected.to have_many(:cash_flows).dependent :destroy }
+    it { is_expected.to have_many(:recurring_payments).dependent :destroy }
   end
 
   describe '#currencies' do
@@ -35,7 +36,7 @@ describe User, type: :model do
   describe '#destroy' do
     subject(:destroy_user) { user.destroy }
 
-    MODELS = [Account, AggregatedTransaction, Budget, CashFlow, Category, Transaction]
+    MODELS = [Account, AggregatedTransaction, Budget, CashFlow, Category, Transaction, RecurringPayment]
     FACTORIES = MODELS.map { |m| m.to_s.underscore.to_sym }
 
     context 'deleting a user deletes all the user data' do

@@ -7,6 +7,7 @@ class Account < ApplicationRecord
   has_many :transactions, dependent: :nullify
   has_many :cash_flows, as: :from_account
   has_many :cash_flows, as: :to_account
+  has_many :recurring_payments, dependent: :destroy
 
   validates :name, :user_id, :currency, presence: true
   validates :name, uniqueness: {

@@ -19,6 +19,7 @@ describe Category do
     it { is_expected.to have_many(:budgets).dependent :destroy }
     it { is_expected.to have_many(:transactions).dependent :destroy }
     it { is_expected.to have_many(:aggregated_transactions).dependent :destroy }
+    it { is_expected.to have_many(:recurring_payments).dependent :destroy }
   end
 
   describe ".validations" do
