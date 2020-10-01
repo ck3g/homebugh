@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_183153) do
+ActiveRecord::Schema.define(version: 2020_10_01_090753) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_183153) do
     t.datetime "updated_at"
     t.integer "currency_id"
     t.string "status", default: "active", null: false
+    t.boolean "show_in_summary", default: true
     t.index ["currency_id"], name: "index_accounts_on_currency_id"
     t.index ["status"], name: "index_accounts_on_status"
     t.index ["user_id"], name: "index_accounts_on_user_id"
@@ -89,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_183153) do
     t.index ["name"], name: "index_currencies_on_name", unique: true
   end
 
-  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "title", null: false
     t.integer "user_id", null: false
     t.integer "category_id", null: false
@@ -137,6 +138,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_183153) do
     t.string "unconfirmed_email"
     t.datetime "reset_password_sent_at"
     t.string "access_token"
+    t.boolean "demo_user", default: false
     t.index ["access_token"], name: "index_users_on_access_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
