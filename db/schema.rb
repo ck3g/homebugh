@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_183153) do
     t.string "unconfirmed_email"
     t.datetime "reset_password_sent_at"
     t.string "access_token"
+    t.boolean "demo_user", default: false
     t.index ["access_token"], name: "index_users_on_access_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
