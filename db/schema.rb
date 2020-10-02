@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_090753) do
     t.index ["name"], name: "index_currencies_on_name", unique: true
   end
 
-  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.integer "user_id", null: false
     t.integer "category_id", null: false
@@ -138,7 +138,6 @@ ActiveRecord::Schema.define(version: 2020_10_01_090753) do
     t.string "unconfirmed_email"
     t.datetime "reset_password_sent_at"
     t.string "access_token"
-    t.boolean "demo_user", default: false
     t.index ["access_token"], name: "index_users_on_access_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
