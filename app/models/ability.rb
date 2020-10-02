@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    entities = [Transaction, Category, Account, CashFlow, Budget]
+    entities = [Transaction, Category, Account, CashFlow, Budget, RecurringPayment]
 
     cannot :all, :all
 

@@ -8,6 +8,7 @@ Homebugh::Application.routes.draw do
     get :archived, on: :collection
   end
   resources :budgets
+  resources :recurring_payments, only: [:index]
 
   devise_for :users
 
