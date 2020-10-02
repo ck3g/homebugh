@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_183153) do
     t.index ["name"], name: "index_currencies_on_name", unique: true
   end
 
-  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.integer "user_id", null: false
     t.integer "category_id", null: false
