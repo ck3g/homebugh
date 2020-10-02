@@ -23,6 +23,7 @@ describe Account do
           scoped_to([:user_id, :currency_id]).ignoring_case_sensitivity
       end
       it { is_expected.to validate_presence_of :currency }
+      it { is_expected.to validate_inclusion_of(:show_in_summary).in_array [true, false] }
     end
   end
 
