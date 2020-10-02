@@ -13,3 +13,4 @@ Currency.create(name: "USD", unit: "$")
 Currency.create(name: "EUR", unit: "€")
 
 User.create(email: "user@example.com", password: "password", confirmed_at: Time.current)
+User.create(email: "demo@homebugh.info", password: "demouser", confirmed_at: Time.current, demo_user: true)
