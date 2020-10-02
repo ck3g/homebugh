@@ -20,6 +20,8 @@ RSpec.describe Ability, type: :model do
     let!(:other_cash_flow) { create :cash_flow }
     let!(:user_budget) { create :budget, user: user }
     let!(:other_budget) { create :budget }
+    let!(:user_recurring_payment) { create(:recurring_payment, user: user) }
+    let!(:other_recurring_payment) { create(:recurring_payment) }
 
     subject { Ability.new user }
 
@@ -55,5 +57,8 @@ RSpec.describe Ability, type: :model do
     it { is_expected.to be_able_to :manage, user_budget }
     it { is_expected.not_to be_able_to :manage, other_budget }
     it { is_expected.not_to be_able_to :read, other_budget }
+
+    it { is_expected.to be_able_to :read, user_recurring_payment }
+    it { is_expected.not_to be_able_to :read, other_recurring_payment }
   end
 end

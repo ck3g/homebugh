@@ -428,8 +428,8 @@ DEPENDENCIES
   erb2haml
   eventmachine (~> 1.0.9)
   exception_notification
-  faker (~> 2.14.0)
   factory_bot_rails (~> 4.8.2)
+  faker (~> 2.14.0)
   font-awesome-rails
   graphiql-rails
   graphql

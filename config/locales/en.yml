@@ -135,6 +135,8 @@ en:
       stats_by_months: "Statistics by months"
       income_total: "Income total"
       spending_total: "Spending total"
+    recurring_payments:
+      you_have_no_recurring_payments: "You have no recurring payments yet."
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"
