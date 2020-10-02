@@ -1,4 +1,28 @@
 
 .row
-  .col-xs-12.col-lg-12
-    %p.empty-data= t('parts.recurring_payments.you_have_no_recurring_payments')
+  - if @recurring_payments.present?
+    .col-xs-12.col-lg-12
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th.span2= t('common.title')
+              %th= t('common.next_payment')
+              %th.span2.number= t('common.amount')
+              %th.span2= t('common.account')
+              %th= t('common.category')
+              %th.span2
+          %tbody
+            - @recurring_payments.each do |recurring_payment|
+              %tr{id: dom_id(recurring_payment)}
+                %td.span2= recurring_payment.title
+                %td= recurring_payment.decorate.created_on
+                %td.span2.number
+                  = recurring_payment.decorate.amount
+                %td.span2= recurring_payment.account_name
+                %td
+                  %span.category= recurring_payment.decorate.category_name
+                %td.span2.actions
+  - else
+    .col-xs-12.col-lg-12
+      %p.empty-data= t('parts.recurring_payments.you_have_no_recurring_payments')

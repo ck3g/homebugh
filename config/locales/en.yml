@@ -73,6 +73,9 @@ en:
     total_funds: "Total"
     date: "Date"
     update: 'Update'
+    amount: "Amount"
+    next_payment: "Next payment"
+    title: "Title"
   parts:
     budgets:
       index: Budgets
