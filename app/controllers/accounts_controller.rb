@@ -39,6 +39,6 @@ class AccountsController < ApplicationController
   end
 
   def safe_params
-    params.require(:account).permit(:name, :currency_id)
+    params.require(:account).permit(:name, :currency_id, :show_in_summary)
   end
 end
