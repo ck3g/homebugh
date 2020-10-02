@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_183153) do
+ActiveRecord::Schema.define(version: 2020_10_01_090753) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_183153) do
     t.datetime "updated_at"
     t.integer "currency_id"
     t.string "status", default: "active", null: false
+    t.boolean "show_in_summary", default: true
     t.index ["currency_id"], name: "index_accounts_on_currency_id"
     t.index ["status"], name: "index_accounts_on_status"
     t.index ["user_id"], name: "index_accounts_on_user_id"
