@@ -13,6 +13,8 @@ class Account < ApplicationRecord
   validates :name, uniqueness: {
     scope: [:user_id, :currency_id], case_sensitive: false }
 
+  validates :show_in_summary, inclusion: { in: [true, false] }
+
   delegate :name, :unit, to: :currency, prefix: true
 
   aasm column: :status do
