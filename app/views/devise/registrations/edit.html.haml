@@ -3,8 +3,8 @@
   = f.error_notification
   .form-inputs
     - if current_user.demo_user?
-      = f.input :email, required: false, autofocus: false, :input_html => { readonly: :true, :value => 'demo@homebugh.info' }
-      = f.input :password, autocomplete: "off", hint: t("devise.registrations.demo_user_account_defaults"), required: false, :input_html => { readonly: :true, :value => 'demo1234' }
+      = f.input :email, required: false, autofocus: false, input_html: { readonly: true, value: current_user.email }
+      = f.input :password, autocomplete: "off", required: false, input_html: { readonly: true, value: 'demouser', type: 'text' }
     - else
       = f.input :email, required: true, autofocus: true
       = f.input :password, autocomplete: "off", hint: t("devise.registrations.leave_it_blank_if_dont_want_to_change"), required: false
