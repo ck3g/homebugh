@@ -25,6 +25,7 @@ en:
         email: "email"
         password: "Password"
         password_confirmation: "Confirmation"
+        current_password: "Current Password"
       account:
         name: "Name"
         funds: "Funds"
@@ -71,6 +72,7 @@ en:
     or: "or"
     total_funds: "Total"
     date: "Date"
+    update: 'Update'
   parts:
     budgets:
       index: Budgets
