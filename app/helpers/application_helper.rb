@@ -31,6 +31,10 @@ module ApplicationHelper
     can_be_empty ? params[:currency].nil? || is_active : is_active
   end
 
+  def recurring_payment_frequencies_collection
+    RecurringPayment.frequencies.map { |key, _| [key.capitalize, key] }
+  end
+
   private
 
   def is_ru?

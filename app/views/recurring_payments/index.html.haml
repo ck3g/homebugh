@@ -1,3 +1,7 @@
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.recurring_payments.recurring_payments_list'),
+  add_link_title: t('parts.recurring_payments.new_recurring_payment'),
+  add_link_url: new_recurring_payment_path
 
 .row
   - if @recurring_payments.present?
