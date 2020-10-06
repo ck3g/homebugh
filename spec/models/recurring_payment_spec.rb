@@ -27,6 +27,24 @@ RSpec.describe RecurringPayment, type: :model do
           .is_greater_than_or_equal_to(1)
           .only_integer
       end
+
+      it { is_expected.to validate_presence_of(:next_payment_on) }
+
+      it 'when next payment on is in the future' do
+        rp = build_stubbed(:recurring_payment, next_payment_on: 1.day.from_now.to_date)
+        expect(rp).to be_valid
+      end
+
+      it 'when next payment on is today' do
+        rp = build_stubbed(:recurring_payment, next_payment_on: Date.today)
+        expect(rp).to be_valid
+      end
+
+      it 'when next payment on is in the past' do
+        rp = build_stubbed(:recurring_payment, next_payment_on: 1.day.ago.to_date)
+        expect(rp).to be_invalid
+        expect(rp.errors.full_messages_for(:next_payment_on)).to eq(["Next payment on cannot be in the past"])
+      end
     end
   end
 

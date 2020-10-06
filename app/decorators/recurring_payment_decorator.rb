@@ -5,6 +5,10 @@ class RecurringPaymentDecorator < Draper::Decorator
     h.get_number_to_currency object.amount, unit
   end
 
+  def next_payment_on
+    I18n.l(object.next_payment_on, format: :long)
+  end
+
   def created_on
     I18n.l(object.created_at.to_date, format: :long)
   end

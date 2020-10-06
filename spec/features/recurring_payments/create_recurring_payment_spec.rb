@@ -26,7 +26,7 @@ feature 'Create Recurring Payment' do
     select 'Cash [$]', from: 'recurring_payment_account_id'
     select 'Services', from: 'recurring_payment_category_id'
     fill_in 'recurring_payment_amount', with: 10
-    # TODO: select next payment
+    select_next_payment_date(20.days.from_now.to_date)
     select 'Weekly', from: 'recurring_payment_frequency'
     fill_in 'recurring_payment_frequency_amount', with: 2
     click_button 'recurring_payment_submit'
@@ -42,5 +42,12 @@ feature 'Create Recurring Payment' do
     expect(rp.amount).to eq(10)
     expect(rp.frequency).to eq('weekly')
     expect(rp.frequency_amount).to eq(2)
+    expect(rp.next_payment_on).to eq(20.days.from_now.to_date)
   end
+end
+
+def select_next_payment_date(date)
+  select date.day, from: 'recurring_payment_next_payment_on_3i'
+  select date.strftime("%B"), from: 'recurring_payment_next_payment_on_2i'
+  select date.year, from: 'recurring_payment_next_payment_on_1i'
 end

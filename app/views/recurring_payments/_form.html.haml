@@ -7,6 +7,7 @@
   = f.input :amount
   = f.input :frequency, collection: recurring_payment_frequencies_collection, as: :select
   = f.input :frequency_amount
+  = f.input :next_payment_on, as: :date, start_year: Date.today.year, order: [:day, :month, :year], input_html: { class: 'date-select' }
   .col-lg-offset-2.col-lg-10
     = f.button :submit, class: "btn btn-primary", id: :recurring_payment_submit
     = link_to t("common.back"), recurring_payments_path, class: "btn"
