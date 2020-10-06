@@ -32,6 +32,6 @@ class RecurringPaymentsController < ApplicationController
   end
 
   def create_params
-    params.require(:recurring_payment).permit(:title, :account_id, :category_id, :amount, :frequency, :frequency_amount)
+    params.require(:recurring_payment).permit(:title, :account_id, :category_id, :amount, :frequency, :frequency_amount, :next_payment_on)
   end
 end
