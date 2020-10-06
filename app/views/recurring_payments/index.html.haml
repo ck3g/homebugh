@@ -20,7 +20,7 @@
             - @recurring_payments.each do |recurring_payment|
               %tr{id: dom_id(recurring_payment)}
                 %td.span2= recurring_payment.title
-                %td= recurring_payment.decorate.created_on
+                %td= recurring_payment.decorate.next_payment_on
                 %td.span2.number
                   = recurring_payment.decorate.amount
                 %td.span2= recurring_payment.account_name
