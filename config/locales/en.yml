@@ -143,6 +143,8 @@ en:
       recurring_payments_list: "Recurring payments"
       new_recurring_payment: 'New recurring payment'
       successfully_created: 'The recurring payment was successfully created.'
+      edit_recurring_payment: 'Edit recurring payment'
+      successfully_updated: 'The recurring payment was successfully updated.'
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"

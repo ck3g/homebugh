@@ -27,6 +27,8 @@
                 %td
                   %span.category= recurring_payment.decorate.category_name
                 %td.span2.actions
+                  = link_to edit_recurring_payment_path(recurring_payment), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs btn-edit" do
+                    = fa_icon "pencil"
                   = link_to recurring_payment, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs delete" do
                     = "Delete"
   - else
