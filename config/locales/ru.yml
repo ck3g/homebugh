@@ -89,6 +89,7 @@ ru:
     cash_flows: "Движение средств"
     statistics: "Статистика"
     budgets: Бюджет
+    recurring_payments: Периодические платежи
 
   helpers:
     submit:

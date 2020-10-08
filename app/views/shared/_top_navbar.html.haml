@@ -15,6 +15,7 @@
           %li{class: ("active" if controller_name == 'accounts')}= link_to t("main_menu.accounts"), accounts_path
           %li{class: ("active" if controller_name == 'cash_flows')}= link_to t("main_menu.cash_flows"), cash_flows_path
           %li{class: ("active" if controller_name == 'statistics')}= link_to t("main_menu.statistics"), statistics_path
+          %li{class: ("active" if controller_name == 'recurring_payments')}= link_to t("main_menu.recurring_payments"), recurring_payments_path
           %li{class: ("active" if controller_name == 'budgets')}= link_to t("main_menu.budgets"), budgets_path
         %ul.nav.navbar-nav.navbar-right
           %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
