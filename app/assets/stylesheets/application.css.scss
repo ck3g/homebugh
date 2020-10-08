@@ -9,3 +9,50 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
+table .actions a {
+  margin-left: 5px;
+}
+
+#s2id_transaction_category_id,
+#s2id_transaction_account_id,
+#s2id_cash_flow_from_account_id,
+#s2id_cash_flow_to_account_id,
+#s2id_budget_category_id,
+#s2id_recurring_payment_category_id,
+#s2id_recurring_payment_account_id {
+  width: 350px;
+}
+
+#recurring_payment_next_payment_on_3i {
+  width: 80px;
+}
+
+#recurring_payment_next_payment_on_2i {
+  width: 150px;
+}
+
+#recurring_payment_next_payment_on_1i {
+  width: 100px;
+}
+
+.date-select {
+  float: left;
+  margin-right: 10px;
+}
+
+.medium-input {
+  width: 350px;
+}
+
+.large-input {
+  width: 500px;
+}
+
+.form-title {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.form-group.action-buttons {
+  margin-top: 20px;
+}

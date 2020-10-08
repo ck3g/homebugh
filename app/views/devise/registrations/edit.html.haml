@@ -1,15 +1,23 @@
-%h2= t(:profile)
+= form_title t(:profile)
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f|
   = f.error_notification
   .form-inputs
     - if current_user.demo_user?
-      = f.input :email, required: false, autofocus: false, input_html: { readonly: true, value: current_user.email }
-      = f.input :password, autocomplete: "off", required: false, input_html: { readonly: true, value: 'demouser', type: 'text' }
+      .form-group
+        = f.label :email
+        .col-lg-10
+          %p.form-control-static= current_user.email
+      .form-group
+        = f.label :password
+        .col-lg-10
+          %p.form-control-static.warning= 'demouser'
+          %span.help-block= t('parts.demo_user.change_password_hint')
     - else
       = f.input :email, required: true, autofocus: true
       = f.input :password, autocomplete: "off", hint: t("devise.registrations.leave_it_blank_if_dont_want_to_change"), required: false
       = f.input :password_confirmation, required: false
       = f.input :current_password, hint: t("devise.registrations.need_current_password_to_confirm"), required: true
-      .form-actions
-        = f.button :submit, t(:update), class: "btn btn-primary"
+      .form-group.action-buttons
+        .col-lg-offset-2.col-lg-10
+          = f.button :submit, t('common.update'), class: "btn btn-primary"
 

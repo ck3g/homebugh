@@ -89,6 +89,7 @@ ru:
     cash_flows: "Движение средств"
     statistics: "Статистика"
     budgets: Бюджет
+    recurring_payments: Периодические платежи
 
   helpers:
     submit:
@@ -196,6 +197,11 @@ ru:
     session:
       email: "email"
       password: "Пароль"
+    users:
+      delete: "Удалить текущего пользователя"
+      delete_warning: "После удаления пользователя его данные нельзя будет восстановить."
+    demo_user:
+      change_password_hint: "Пароль демо пользователя не может быть изменен."
 
   arrow: "→"
   sign_in: Вход

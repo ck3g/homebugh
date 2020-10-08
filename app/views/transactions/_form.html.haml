@@ -3,8 +3,9 @@
     collection: AccountDecorator.decorate_collection(current_user.accounts.active.by_recently_used),
     include_blank: false, input_html: { data: { select_2: true } }
   = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true } }
-  = f.input :summ
-  = f.input :comment, input_html: { rows: 3, class: "input-xxlarge" }
-  .col-lg-offset-2.col-lg-10
-    = f.button :submit, class: "btn btn-primary", id: :transaction_submit
-    = link_to t("common.back"), transactions_path, class: "btn"
+  = f.input :summ, input_html: { class: "medium-input" }
+  = f.input :comment, input_html: { rows: 4, class: "medium-input" }
+  .form-group.action-buttons
+    .col-lg-offset-2.col-lg-10
+      = f.button :submit, class: "btn btn-primary", id: :transaction_submit
+      = link_to t("common.back"), transactions_path, class: "btn"
