@@ -5,8 +5,8 @@
   = f.association :to_account,
     collection: AccountDecorator.decorate_collection(current_user.accounts.active),
     include_blank: false, input_html: { data: { select_2: true } }
-  = f.input :initial_amount
-  = f.input :amount
+  = f.input :initial_amount, input_html: { class: 'medium-input' }
+  = f.input :amount, input_html: { class: 'medium-input' }
   .form-group.action-buttons
     .col-sm-offset-2.col-sm-10
       = f.button :submit, t("parts.cash_flows.submit"), class: "btn btn-primary", id: :cash_flow_submit
