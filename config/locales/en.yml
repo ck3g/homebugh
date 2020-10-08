@@ -165,6 +165,8 @@ en:
     users:
       delete: "Delete this user"
       delete_warning: "Once you delete a user, there is no going back. Please be certain."
+    demo_user:
+      change_password_hint: "You cannot change the password for the demo user."
 
   arrow: "→"
   sign_in: Sign in
