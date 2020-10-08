@@ -1,6 +1,7 @@
 = simple_form_for account, html: { class: "form-horizontal" } do |f|
   = f.input :name
   = f.association :currency, include_blank: false
-  .col-sm-offset-2.col-sm-10
-    = f.button :submit, class: "btn btn-primary", id: :account_submit
-    = link_to t("common.back"), accounts_path, class: "btn"
+  .form-group.action-buttons
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, class: "btn btn-primary", id: :account_submit
+      = link_to t("common.back"), accounts_path, class: "btn"

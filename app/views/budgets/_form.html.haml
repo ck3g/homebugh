@@ -4,6 +4,7 @@
       = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true } }
       = f.input :limit
       = f.association :currency, collection: current_user.currencies
-      .col-lg-offset-2.col-lg-10
-        = f.button :submit, class: "btn btn-primary"
-        = link_to t("common.back"), budgets_path, class: "btn"
+      .form-group.action-buttons
+        .col-lg-offset-2.col-lg-10
+          = f.button :submit, class: "btn btn-primary"
+          = link_to t("common.back"), budgets_path, class: "btn"

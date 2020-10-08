@@ -3,6 +3,7 @@
   = f.association :category_type, collection: collection_of_types
   .col-sm-offset-2.col-sm-10
     = f.input :inactive, label: false, inline_label: true
-  .col-sm-offset-2.col-sm-10
-    = f.button :submit, class: "btn btn-primary", id: :category_submit
-    = link_to t("common.back"), categories_path, class: "btn"
+  .form-group.action-buttons
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, class: "btn btn-primary", id: :category_submit
+      = link_to t("common.back"), categories_path, class: "btn"

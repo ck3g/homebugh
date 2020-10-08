@@ -7,6 +7,7 @@
     include_blank: false, input_html: { data: { select_2: true } }
   = f.input :initial_amount
   = f.input :amount
-  .col-sm-offset-2.col-sm-10
-    = f.button :submit, t("parts.cash_flows.submit"), class: "btn btn-primary", id: :cash_flow_submit
-    = link_to t("common.back"), cash_flows_path, class: "btn"
+  .form-group.action-buttons
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, t("parts.cash_flows.submit"), class: "btn btn-primary", id: :cash_flow_submit
+      = link_to t("common.back"), cash_flows_path, class: "btn"
