@@ -35,6 +35,10 @@ module ApplicationHelper
     RecurringPayment.frequencies.map { |key, _| [key.capitalize, key] }
   end
 
+  def form_title(title)
+    content_tag(:h1, title, class: 'form-title col-lg-offset-2')
+  end
+
   private
 
   def is_ru?
