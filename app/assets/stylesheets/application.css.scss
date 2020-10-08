@@ -9,6 +9,10 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
+table .actions a {
+  margin-left: 5px;
+}
+
 #s2id_transaction_category_id,
 #s2id_transaction_account_id,
 #s2id_cash_flow_from_account_id,
