@@ -168,6 +168,7 @@ en:
       delete: "Delete this user"
       delete_warning: "Once you delete a user, there is no going back. Please be certain."
       profile: "Profile"
+      edit_profile: "Edit profile"
     demo_user:
       change_password_hint: "You cannot change the password for the demo user."
 
