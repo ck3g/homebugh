@@ -10,11 +10,11 @@
         %table.table
           %thead
             %tr
-              %th.span2= t('common.title')
-              %th= t('common.next_payment')
-              %th.span2.number= t('common.amount')
-              %th.span2= t('common.account')
-              %th= t('common.category')
+              %th.span2= t('activerecord.attributes.recurring_payment.title')
+              %th= t('activerecord.attributes.recurring_payment.next_payment_on')
+              %th.span2.number= t('activerecord.attributes.recurring_payment.amount')
+              %th.span2= t('activerecord.attributes.recurring_payment.account')
+              %th= t('activerecord.attributes.recurring_payment.category')
               %th.span2
           %tbody
             - @recurring_payments.each do |recurring_payment|
