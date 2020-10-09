@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def delete; end
 
-  def show;end
+  def show; end
 
   def destroy
     if current_user.valid_password?(user_password)
