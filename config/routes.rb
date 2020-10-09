@@ -15,6 +15,7 @@ Homebugh::Application.routes.draw do
   authenticated :user do
     root to: "transactions#index", as: :auth_root
     get 'users/delete'
+    get 'users/profile', to: 'users#show'
     delete 'users/destroy'
   end
 
