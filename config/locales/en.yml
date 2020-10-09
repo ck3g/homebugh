@@ -51,6 +51,7 @@ en:
     statistics: "Statistics"
     budgets: Budgets
     recurring_payments: Recurring payments
+    profile: Profile
   helpers:
     submit:
       create: "Create %{model}"
@@ -166,6 +167,7 @@ en:
     users:
       delete: "Delete this user"
       delete_warning: "Once you delete a user, there is no going back. Please be certain."
+      profile: "Profile"
     demo_user:
       change_password_hint: "You cannot change the password for the demo user."
 

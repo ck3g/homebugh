@@ -90,6 +90,7 @@ ru:
     statistics: "Статистика"
     budgets: Бюджет
     recurring_payments: Периодические платежи
+    profile: профиль
 
   helpers:
     submit:
@@ -200,6 +201,7 @@ ru:
     users:
       delete: "Удалить текущего пользователя"
       delete_warning: "После удаления пользователя его данные нельзя будет восстановить."
+      profile: "Профиль"
     demo_user:
       change_password_hint: "Пароль демо пользователя не может быть изменен."
 
