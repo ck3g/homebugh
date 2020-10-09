@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def recurring_payment_frequencies_collection
-    RecurringPayment.frequencies.map { |key, _| [key.capitalize, key] }
+    RecurringPayment.frequencies.map { |key, _| [t("parts.recurring_payments.frequencies.#{key}"), key] }
   end
 
   def form_title(title)

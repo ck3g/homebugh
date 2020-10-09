@@ -43,7 +43,7 @@ RSpec.describe RecurringPayment, type: :model do
       it 'when next payment on is in the past' do
         rp = build_stubbed(:recurring_payment, next_payment_on: 1.day.ago.to_date)
         expect(rp).to be_invalid
-        expect(rp.errors.full_messages_for(:next_payment_on)).to eq(["Next payment on cannot be in the past"])
+        expect(rp.errors.full_messages_for(:next_payment_on)).to eq(["Next payment cannot be in the past"])
       end
     end
   end

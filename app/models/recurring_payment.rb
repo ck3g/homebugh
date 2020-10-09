@@ -17,7 +17,7 @@ class RecurringPayment < ApplicationRecord
 
   def ensure_next_payment_on_is_in_the_future
     if next_payment_on.present? && next_payment_on < Date.today
-      errors.add(:next_payment_on, "cannot be in the past")
+      errors.add(:next_payment_on, :cannot_be_in_the_past)
     end
   end
 end
