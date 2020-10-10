@@ -1,6 +1,7 @@
 class RecurringPayment < ApplicationRecord
+  include Categorizable
+
   belongs_to :user
-  belongs_to :category
   belongs_to :account
 
   validates :title, :user, :category, :account, :next_payment_on, presence: true

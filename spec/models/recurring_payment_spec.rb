@@ -51,4 +51,20 @@ RSpec.describe RecurringPayment, type: :model do
   it 'define enum for frequency' do
     is_expected.to define_enum_for(:frequency).with_values(daily: 0, weekly: 1, monthly: 2, yearly: 3)
   end
+
+  describe '#income?' do
+    subject { build_stubbed(:recurring_payment, category: category ) }
+
+    context 'when recurring payment has income category' do
+      let(:category) { build_stubbed(:income_category) }
+
+      it { is_expected.to be_income}
+    end
+
+    context 'when recurring payment has spending category' do
+      let(:category) { build_stubbed(:spending_category) }
+
+      it { is_expected.not_to be_income }
+    end
+  end
 end
