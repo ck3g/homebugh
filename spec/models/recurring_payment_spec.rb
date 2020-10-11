@@ -52,6 +52,18 @@ RSpec.describe RecurringPayment, type: :model do
     is_expected.to define_enum_for(:frequency).with_values(daily: 0, weekly: 1, monthly: 2, yearly: 3)
   end
 
+  describe '.upcoming' do
+    subject { described_class.upcoming }
+
+    let!(:due_today) { create(:recurring_payment, next_payment_on: Date.today) }
+    let!(:due_one_month) { create(:recurring_payment, next_payment_on: 1.month.from_now) }
+    let!(:due_one_week) { create(:recurring_payment, next_payment_on: 1.week.from_now) }
+
+    it 'orders by closest due date' do
+      is_expected.to eq([due_today, due_one_week, due_one_month])
+    end
+  end
+
   describe '#income?' do
     subject { build_stubbed(:recurring_payment, category: category ) }
 

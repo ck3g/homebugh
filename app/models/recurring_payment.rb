@@ -14,6 +14,8 @@ class RecurringPayment < ApplicationRecord
   delegate :name, to: :category, prefix: true
   delegate :name, to: :account, prefix: true
 
+  scope :upcoming, -> { order(:next_payment_on) }
+
   private
 
   def ensure_next_payment_on_is_in_the_future
