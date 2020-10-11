@@ -4,7 +4,7 @@ class RecurringPaymentsController < ApplicationController
   before_action :find_recurring_payment, only: [:edit, :update, :destroy]
 
   def index
-    @recurring_payments = current_user.recurring_payments
+    @recurring_payments = current_user.recurring_payments.upcoming
   end
 
   def new
