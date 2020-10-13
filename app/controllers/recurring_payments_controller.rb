@@ -8,7 +8,14 @@ class RecurringPaymentsController < ApplicationController
   end
 
   def new
-    @recurring_payment = current_user.recurring_payments.new
+    @recurring_payment = current_user.recurring_payments.new(
+      category_id: params[:category_id],
+      account_id: params[:account_id],
+      amount: params[:amount],
+      frequency: params[:frequency],
+      frequency_amount: params[:frequency_amount],
+      next_payment_on: params[:next_payment_on]
+    )
   end
 
   def create

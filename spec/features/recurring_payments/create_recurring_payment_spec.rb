@@ -44,6 +44,41 @@ feature 'Create Recurring Payment' do
     expect(rp.frequency_amount).to eq(2)
     expect(rp.next_payment_on).to eq(20.days.from_now.to_date)
   end
+
+  scenario 'a logged in user can create a recurring payment from a transaction' do
+    t = create(:transaction, user: user, category: category, account: account)
+
+    sign_in_as 'user@example.com', 'password'
+
+    visit transactions_path
+    within "#transaction_#{t.id}" do
+      find('.btn-create-rp').click
+    end
+
+    expect(page).to have_current_path(new_recurring_payment_path(
+      account_id: t.account_id,
+      category_id: t.category_id,
+      amount: t.summ,
+      frequency: 'monthly',
+      frequency_amount: 1,
+      next_payment_on: 1.month.since(t.created_at).to_date
+    ))
+
+    fill_in 'Title', with: 'Created from transaction'
+    click_button 'recurring_payment_submit'
+
+    expect(page).to have_current_path(recurring_payments_path)
+    expect(page).to have_content "The recurring payment was successfully created."
+    expect(page).to have_content "Created from transaction"
+
+    rp = user.recurring_payments.last
+    expect(rp.account).to eq(t.account)
+    expect(rp.category).to eq(t.category)
+    expect(rp.amount).to eq(t.summ)
+    expect(rp.frequency).to eq('monthly')
+    expect(rp.frequency_amount).to eq(1)
+    expect(rp.next_payment_on).to eq(1.month.since(t.created_at).to_date)
+  end
 end
 
 def select_next_payment_date(date)
