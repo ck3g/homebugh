@@ -8,7 +8,7 @@ class RecurringPaymentsController < ApplicationController
   end
 
   def new
-    @recurring_payment = current_user.recurring_payments.new
+    @recurring_payment = current_user.recurring_payments.new(**new_safe_params)
   end
 
   def create
@@ -42,7 +42,15 @@ class RecurringPaymentsController < ApplicationController
     @recurring_payment ||= current_user.recurring_payments.find(params[:id])
   end
 
+  def recurring_payment_params
+    [:title, :account_id, :category_id, :amount, :frequency, :frequency_amount, :next_payment_on]
+  end
+
   def safe_params
-    params.require(:recurring_payment).permit(:title, :account_id, :category_id, :amount, :frequency, :frequency_amount, :next_payment_on)
+    params.require(:recurring_payment).permit(*recurring_payment_params)
+  end
+
+  def new_safe_params
+    params.permit(*recurring_payment_params)
   end
 end
