@@ -31,6 +31,28 @@ module ApplicationHelper
     can_be_empty ? params[:currency].nil? || is_active : is_active
   end
 
+  def recurring_payment_frequencies_collection
+    RecurringPayment.frequencies.map { |key, _| [t("parts.recurring_payments.frequencies.#{key}"), key] }
+  end
+
+  def form_title(title)
+    content_tag(:h1, title, class: 'form-title col-lg-offset-2')
+  end
+
+  def link_to_new_recurring_payment(transaction)
+    query_params = {
+      category_id: transaction.category_id,
+      account_id: transaction.account_id,
+      amount: transaction.summ,
+      frequency: 'monthly',
+      frequency_amount: 1,
+      next_payment_on: 1.month.since(transaction.created_at).to_date
+    }
+    link_to new_recurring_payment_path(**query_params), class: 'btn btn-link btn-create-rp btn-mini btn-xs' do
+      fa_icon 'retweet'
+    end
+  end
+
   private
 
   def is_ru?

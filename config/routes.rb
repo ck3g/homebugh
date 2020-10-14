@@ -8,13 +8,14 @@ Homebugh::Application.routes.draw do
     get :archived, on: :collection
   end
   resources :budgets
-  resources :recurring_payments, only: [:index]
+  resources :recurring_payments
 
   devise_for :users
 
   authenticated :user do
     root to: "transactions#index", as: :auth_root
     get 'users/delete'
+    get 'users/profile', to: 'users#show'
     delete 'users/destroy'
   end
 

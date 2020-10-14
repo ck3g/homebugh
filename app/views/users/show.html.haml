@@ -1,0 +1,10 @@
+= form_title t('parts.users.profile')
+
+= form_for :user do |f|
+  .form-inputs
+    .form-group
+      .col-lg-12
+        = f.label :email
+        = f.text_field :email, class: 'form-control', value: current_user.email
+      .col-lg-12
+        = link_to t("parts.users.edit_profile"), edit_user_registration_path, class: "btn btn-primary edit-profile"

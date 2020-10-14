@@ -58,7 +58,10 @@ RSpec.describe Ability, type: :model do
     it { is_expected.not_to be_able_to :manage, other_budget }
     it { is_expected.not_to be_able_to :read, other_budget }
 
+    it { is_expected.to be_able_to :create, RecurringPayment }
     it { is_expected.to be_able_to :read, user_recurring_payment }
+    it { is_expected.to be_able_to :manage, user_recurring_payment }
     it { is_expected.not_to be_able_to :read, other_recurring_payment }
+    it { is_expected.not_to be_able_to :manage, other_recurring_payment }
   end
 end

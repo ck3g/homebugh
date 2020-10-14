@@ -1,3 +1,7 @@
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.recurring_payments.recurring_payments_list'),
+  add_link_title: t('parts.recurring_payments.new_recurring_payment'),
+  add_link_url: new_recurring_payment_path
 
 .row
   - if @recurring_payments.present?
@@ -6,23 +10,28 @@
         %table.table
           %thead
             %tr
-              %th.span2= t('common.title')
-              %th= t('common.next_payment')
-              %th.span2.number= t('common.amount')
-              %th.span2= t('common.account')
-              %th= t('common.category')
+              %th.span2= t('activerecord.attributes.recurring_payment.title')
+              %th= t('activerecord.attributes.recurring_payment.next_payment_on')
+              %th.span2.number= t('activerecord.attributes.recurring_payment.amount')
+              %th.span2= t('activerecord.attributes.recurring_payment.account')
+              %th= t('activerecord.attributes.recurring_payment.category')
               %th.span2
           %tbody
             - @recurring_payments.each do |recurring_payment|
               %tr{id: dom_id(recurring_payment)}
                 %td.span2= recurring_payment.title
-                %td= recurring_payment.decorate.created_on
+                %td= recurring_payment.decorate.next_payment_on
                 %td.span2.number
                   = recurring_payment.decorate.amount
+                  = recurring_payment.decorate.type_icon
                 %td.span2= recurring_payment.account_name
                 %td
                   %span.category= recurring_payment.decorate.category_name
                 %td.span2.actions
+                  = link_to edit_recurring_payment_path(recurring_payment), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs btn-edit" do
+                    = fa_icon "pencil"
+                  = link_to recurring_payment, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs delete" do
+                    = fa_icon "trash"
   - else
     .col-xs-12.col-lg-12
       %p.empty-data= t('parts.recurring_payments.you_have_no_recurring_payments')

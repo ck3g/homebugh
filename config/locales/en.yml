@@ -10,6 +10,7 @@ en:
       transaction: "Transaction"
       category: "Category"
       account: "Account"
+      recurring_payment: 'Recuring payment'
 
     attributes:
       category:
@@ -30,18 +31,22 @@ en:
         name: "Name"
         funds: "Funds"
         currency: Currency
+      recurring_payment:
+        frequency_amount: "Interval"
+        next_payment_on: "Next payment"
 
     errors:
       template:
         header:
-          one:    "1 error prohibited from being saved"
-          other:  "%{count} errors prohibited from being saved"
+          one:   "1 error prohibited from being saved"
+          other: "%{count} errors prohibited from being saved"
 
         body: "There were problems with the following fields:"
       messages:
         blank: "cannot be blank"
         not_a_number: "is not a number"
         not_saved: "not found"
+        cannot_be_in_the_past: 'cannot be in the past'
 
   main_menu:
     transactions: "Transactions"
@@ -50,6 +55,8 @@ en:
     cash_flows: "Cash Flows"
     statistics: "Statistics"
     budgets: Budgets
+    recurring_payments: Recurring payments
+    profile: Profile
   helpers:
     submit:
       create: "Create %{model}"
@@ -140,6 +147,16 @@ en:
       spending_total: "Spending total"
     recurring_payments:
       you_have_no_recurring_payments: "You have no recurring payments yet."
+      recurring_payments_list: "Recurring payments"
+      new_recurring_payment: 'New recurring payment'
+      successfully_created: 'The recurring payment was successfully created.'
+      edit_recurring_payment: 'Edit recurring payment'
+      successfully_updated: 'The recurring payment was successfully updated.'
+      frequencies:
+        daily: "Daily"
+        weekly: "Weekly"
+        monthly: "Monthly"
+        yearly: "Yearly"
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"
@@ -160,6 +177,10 @@ en:
     users:
       delete: "Delete this user"
       delete_warning: "Once you delete a user, there is no going back. Please be certain."
+      profile: "Profile"
+      edit_profile: "Edit profile"
+    demo_user:
+      change_password_hint: "You cannot change the password for the demo user."
 
   arrow: "→"
   sign_in: Sign in

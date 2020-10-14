@@ -36,6 +36,7 @@ ru:
       transaction: "Транзакцию"
       category: "Категорию"
       account: "Счет"
+      recurring_payment: 'Периодический платеж'
 
     attributes:
       category:
@@ -56,6 +57,14 @@ ru:
         name: "Название"
         funds: "Доступные средства"
         currency: Валюта
+      recurring_payment:
+        title: "Заголовок"
+        account: "Счет"
+        category: "Категория"
+        amount: "Сумма"
+        frequency: "Периодичность"
+        frequency_amount: "Промежуток"
+        next_payment_on: "Следующий платеж"
 
     errors:
       template:
@@ -69,6 +78,7 @@ ru:
         not_a_number: "должна быть числом"
         valid_email: Должен быть валидный email адрес
         not_saved: "не найден"
+        cannot_be_in_the_past: 'не может быть в прошлом'
 
       models:
         transaction:
@@ -89,6 +99,8 @@ ru:
     cash_flows: "Движение средств"
     statistics: "Статистика"
     budgets: Бюджет
+    recurring_payments: Периодические платежи
+    profile: профиль
 
   helpers:
     submit:
@@ -178,6 +190,19 @@ ru:
       stats_by_months: "Статистика по месяцам"
       income_total: "Приход всего"
       spending_total: "Расход всего"
+    recurring_payments:
+      you_have_no_recurring_payments: "Вы еще не завели периодических платежей."
+      recurring_payments_list: "Периодические платежи"
+      new_recurring_payment: 'Новый периодический платеж'
+      successfully_created: 'Периодический платеж создан.'
+      edit_recurring_payment: 'Редактирование периодического платежа'
+      successfully_updated: 'Периодический платеж обновлен.'
+      frequencies:
+        daily: "Ежедневно"
+        weekly: "Еженедельно"
+        monthly: "Ежемесячно"
+        yearly: "Ежегодно"
+
     auth:
       sign_out: "Выход"
       sign_in: "Вход"
@@ -196,6 +221,13 @@ ru:
     session:
       email: "email"
       password: "Пароль"
+    users:
+      delete: "Удалить текущего пользователя"
+      delete_warning: "После удаления пользователя его данные нельзя будет восстановить."
+      profile: "Профиль"
+      edit_profile: "Редактировать профиль"
+    demo_user:
+      change_password_hint: "Пароль демо пользователя не может быть изменен."
 
   arrow: "→"
   sign_in: Вход
