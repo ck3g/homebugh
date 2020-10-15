@@ -112,14 +112,14 @@ Be sure there are required dependencies installed on your computer:
   gem 'pg'
 ```
 
-It's necessary because the Heroku natively uses PostgreSQL
+It's necessary because the Heroku natively uses PostgreSQL.
 
 2. You need to change the `database.yml`. Example:
 ```ruby
 development:
   adapter: postgresql
   encoding: unicode
-  database: doitnow_development
+  database: homebugh_development
 ```
 
 3. First create an account on [Heroku](https://www.heroku.com/).
