@@ -52,7 +52,7 @@ feature "Accounts" do
     expect(page).to have_selector "s", text: "New Account Name"
   end
 
-  scenario 'can toggle Show in Summary checkbox' do
+  scenario 'can toggle Show in Summary checkbox on create account page' do
     visit new_account_path
     fill_in 'account_name', with: 'New Account Name'
     select 'EUR', from: 'account_currency_id'
@@ -63,6 +63,15 @@ feature "Accounts" do
     expect(account.name).to eq('New Account Name')
     expect(account.currency_name).to eq('EUR')
     expect(account.show_in_summary?).to be_falsey
+  end
+
+  scenario 'can toggle Show in Summary checkbox on edit account page' do
+    create_and_move_to_edit_account
+
+    uncheck 'account_show_in_summary'
+    click_button 'Update Account'
+
+    expect(Account.last!.show_in_summary?).to be_falsey
   end
 
   private
