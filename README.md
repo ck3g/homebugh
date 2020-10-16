@@ -41,8 +41,6 @@ I'm planning to add a demo user to the project, so everyone can take a look at t
 If the project gets more users, that should bring new ideas on improvements in different areas of the project.
 So, if you want to practice web development that project can be a good place for you.
 
-
-
 ## The [Hacktoberfest](https://hacktoberfest.digitalocean.com) goal
 
 To have fun. To help others to start contributing to the open-source.
@@ -71,7 +69,6 @@ Be sure there are required dependencies installed on your computer:
 
 * Ruby version 2.7
 * MySQL
-
 
 #### Configuration steps
 
