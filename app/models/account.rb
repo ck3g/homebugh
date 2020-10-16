@@ -24,6 +24,8 @@ class Account < ApplicationRecord
     end
   end
 
+  scope :show_in_summary, -> { where(show_in_summary: true) }
+
   def deposit(amount)
     amount ||= 0.0
     update_attribute :funds, funds + amount
