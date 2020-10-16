@@ -47,7 +47,6 @@ So, if you want to practice web development that project can be a good place for
 
 To have fun. To help others to start contributing to the open-source.
 
-
 That's not easy to start contributing to the open-source.
 Especially at the beginning. There is a lot of stuff.
 That's not easy to find an issue to work on or find something to improve by yourself.
