@@ -2,13 +2,12 @@
   #accounts_summary.panel.panel-default
     .panel-body
       - current_user.accounts.active.each do |account|
-        - if account.show_in_summary?
-          .col-xs-12.col-sm-3
-            = succeed ":" do
-              = account.name
-            .pull-right
-              %strong= account.decorate.amount
-          .col-sm-1
+        .col-xs-12.col-sm-3
+          = succeed ":" do
+            = account.name
+          .pull-right
+            %strong= account.decorate.amount
+        .col-sm-1
       .clearfix
 
     .panel-footer
