@@ -1,136 +1,146 @@
-[![CircleCI](https://circleci.com/gh/fawry-api/fawry.svg?style=svg)](https://circleci.com/gh/fawry-api/fawry)
+## HomeBugh
 
-# Fawry
+[![Build Status](https://api.travis-ci.org/ck3g/homebugh.png)](https://travis-ci.org/github/ck3g/homebugh)
+[![Code Climate](https://codeclimate.com/github/ck3g/homebugh/badges/gpa.svg)](https://codeclimate.com/github/ck3g/homebugh)
+[![Test Coverage](https://codeclimate.com/github/ck3g/homebugh/badges/coverage.svg)](https://codeclimate.com/github/ck3g/homebugh)
 
-**Disclaimer:** we are _not officially affilated_ with the _Fawry_ company.
+The expense tracking app.
 
-A plug-and-play library that makes interfacing with Fawry's payment gateway API a breeze:
+## About the project
 
-- [Charge customers](https://github.com/fawry-api/fawry#charge-customers)
-- [Refund customers](https://github.com/fawry-api/fawry#refund-customers)
-- [Get payment status](https://github.com/fawry-api/fawry#get-payment-status)
-- [Parse Fawry's service callback V2](https://github.com/fawry-api/fawry#parse-fawry-service-callback-v2)
-- [Configuration keys as environment variables](https://github.com/fawry-api/fawry#configuration-keys-as-environment-variables)
+HomeBugh app is a web application to track your home finance expenses.
 
-_Fawry's production and sandbox environments are supported._
+There are a bunch of articles and books describing the benefit of tracking expenses.
+So that's exactly what we do with my family. We track all our expenses.
 
-## Installation
+There are plenty of ways to track your expenses, you can use an Excel spreadsheet, third-party applications.
+I've decided to build a tool for myself.
+That's how the project was born.
 
-Add this line to your application's Gemfile:
+It has (almost) all required pieces of functionality I need.
+And I work on some improvements from time to time.
 
-```ruby
-gem 'fawry'
-```
+## The project goal
 
-And then execute:
+Yet another goal of that project is to practice software development.
+I've started it when I started to learn Ruby and Ruby on Rails.
 
+It helped me to experiment with different code practices, implement the features I needed in the way I wanted and knew.
+
+There are still some parts I'd like to implement.
+I'm thinking to build a mobile application, that will require providing an API.
+
+Another idea is to make the project available for everyone.
+At the moment, I think I'm the only user of that application which is hosted on [HomeBugh.info](https://homebugh.info).
+
+I understand some people don't want to share their personal finances with some service.
+Based on that, I'd like to provide instructions for others to set up the project on their own hosting service.
+
+I'm planning to add a demo user to the project, so everyone can take a look at the project without the need to register.
+
+If the project gets more users, that should bring new ideas on improvements in different areas of the project.
+So, if you want to practice web development that project can be a good place for you.
+
+
+
+## The [Hacktoberfest](https://hacktoberfest.digitalocean.com) goal
+
+To have fun. To help others to start contributing to the open-source.
+
+
+That's not easy to start contributing to the open-source.
+Especially at the beginning. There is a lot of stuff.
+That's not easy to find an issue to work on or find something to improve by yourself.
+
+I'll try to help here.
+I'll create a bunch if easy to work on issues so everyone can pick up for Hacktoberfest.
+Issues are relatively simple for a person with some basic knowledge of [Ruby on Rails](https://rubyonrails.org)
+Issues have a small scope, so they can be easily implemented.
+And more importantly, despite the narrow scope of issues, they will improve the project.
+
+If you decide to participate, I'll try to help you as much as I can.
+
+Welcome, and have fun!
+
+<hr>
+
+### Configure development environment
+
+#### Prerequisites
+
+Be sure there are required dependencies installed on your computer:
+
+* Ruby version 2.7
+* MySQL
+
+
+#### Configuration steps
+
+1. Fork and clone the repo `$ git clone git@github.com:ck3g/homebugh.git`
+1. `$ cd homebugh`
+1. Copy and update the database config according to your local MySQL configuration
+    ```shell
+    $ cp config/database.yml.example config/database.yml
+    ```
+1. Install all the required gems
+    ```shell
     $ bundle
+    ```
+1. Migrate the database:
+    ```shell
+    $ bundle exec rails db:environment:set RAILS_ENV=development
+    $ bundle exec rails db:create db:schema:load db:migrate db:test:prepare
+    ```
+1. Seed the database with required data
+    ```shell
+    $ bundle exec rails db:seed
+    ```
+1. Run the test suite to ensure everything is in working state
+    ```shell
+    bundle exec rspec spec/
+    ```
+1. Start the Rails server
+    ```shell
+    bundle exec rails s
+    ```
+1. Open http://localhost:3000 in your browser
+1. Use `user@example.com` with the `password` to sign in.
 
-Or install it yourself as:
+#### How to deploy on Heroku
 
-    $ gem install fawry
+ℹ️ _That is an experimental approach, at the moment it requires some tweaks in the codebase to make it work. But we're working on improving that process._
 
-## Usage
-
-### Charge customers
-
+1. You need to add to the `Gemfile` the gem `pg`. Example:
 ```ruby
-params = { "merchant_code": 'merchant_code',
-           "merchant_ref_num": 'io5jxf3jp27kfh8m719arcqgw7izo7db',
-           "customer_profile_id": 'ocvsydvbu2gcp528wvl64i9z5srdalg5',
-           "customer_mobile": '012345678901',
-           "payment_method": 'PAYATFAWRY',
-           "currency_code": 'EGP',
-           "amount": 20,
-           "fawry_secure_key": 'fawry_secure_key',
-           "description": 'the charge request description',
-           "charge_items": [{ "item_id": 'fk3fn9flk8et9a5t9w3c5h3oc684ivho',
-                              "description": 'desc', "price": 20, "quantity": 1 }] }
-
-# use sandbox option to call Fawry's sandbox env
-res = Fawry.charge(params, sandbox: true)
-#  => #<Fawry::FawryResponse:0x0000564257d0ea90 @type="ChargeResponse", @reference_number="931600239",
-#                                               @merchant_ref_number="io5jxf3jp27kfh8m719arcqgw7izo7db",
-#                                               @expiration_time=1573153206979, @status_code=200,
-#                                               @status_description="Operation done successfully">
-
-res.success? # => true
-res.reference_number # => 931600239
+  gem 'pg'
 ```
 
-###  Refund Customers
+It's necessary because the Heroku natively uses PostgreSQL.
 
+2. You need to change the `database.yml`. Example:
 ```ruby
-params = { "merchant_code": 'merchant_code',
-           "reference_number": '931337410',
-           "refund_amount": 20,
-           "fawry_secure_key": 'fawry_secure_key' }
-
-res = Fawry.refund(params, sandbox: true)
-#  => #<Fawry::FawryResponse:0x0000564257d0ea90 @type="ResponseDataModel", @status_code=200,
-#                                               @status_description="Operation done successfully">
-
-res.success? # => true
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: homebugh_development
 ```
 
-###  Get Payment Status
+3. First create an account on [Heroku](https://www.heroku.com/).
+4. In the [dashboard](https://dashboard.heroku.com/apps) click in "New" and next "Create new app".
+5. Fill in field "App name" with the name project. Example: `homebugh-development`.
+6. Choose a region in this field. Available: United States or Europe and click in the button "Create app".
+7. You'll redirected to dashboard again, now you need to make deploy, try to make deploy connected with your account in "GitHub".
+8. In the field "Deployment method", choose the "GitHub", and downward ("App connected to GitHub") you need search your project and set they. For this, use the field "repo-name" to search your project.
+9. After searched your project, click in button "Connect" and wait a couple of seconds.
+10. Next, the field "Automatic deploys", you need to choose the branch, for example "master".
+11. For the last, in the field "Manual deploy", click on the button "Deploy Branch" and wait a few minutes.
+12. Enjoy! Your deploy already finished, you'll receive the message "Your app was successfully deployed." and the click in button "View", you'll redirected to your application with the name what you did set in the fifth pass (https://homebugh-development.herokuapp.com/).
+13. If you've an another doubt, try to read the [documentation](https://devcenter.heroku.com/categories/reference) in Heroku.
 
-```ruby
-params = { "merchant_code": 'merchant_code',
-           "merchant_ref_number": 'ssshxb98phmyvm434es62kage3nsm2cj',
-           "fawry_secure_key": 'fawry_secure_key' }
+### Contributing
 
-res = Fawry.payment_status(params, sandbox: true)
- # => #<Fawry::FawryResponse:0x0000559974056898 @type="PaymentStatusResponse", @reference_number="931922417",
- #                                              @merchant_ref_number="ssshxb98phmyvm434es62kage3nsm2cj",
- #                                              @expiration_time=1573297736167, @status_code=200,
- #                                              @status_description="Operation done successfully", @payment_amount=20,
- #                                              @payment_method="PAYATFAWRY", @payment_status="UNPAID">
+Any contributions to the project are always welcome. Please check out the [Contributing guide](./CONTRIBUTING.md).
 
-res.success? # => true
-res.payment_status # => UNPAID
-```
+### License
 
-###  Parse Fawry service callback v2
-
-```ruby
-# params sent from fawry server
-callback_params = { "requestId": 'c72827d084ea4b88949d91dd2db4996e', "fawryRefNumber": '970177',
-                    "merchantRefNumber": '9708f1cea8b5426cb57922df51b7f790',
-                    "customerMobile": '01004545545', "customerMail": 'fawry@fawry.com',
-                    "paymentAmount": 152.00, "orderAmount": 150.00, "fawryFees": 2.00,
-                    "shippingFees": '', "orderStatus": 'NEW', "paymentMethod": 'PAYATFAWRY',
-                    "messageSignature": 'b0175565323e464b01dc9407160368af5568196997fb6e379374a4f4fbbcf587',
-                    "orderExpiryDate": 1_533_554_719_314,
-                    "orderItems": [{ "itemCode": 'e6aacbd5a498487ab1a10ae71061535d', "price": 150.0, "quantity": 1 }] }
-
-# FAWRY_SECURE_KEY env var must be set
-fawry_callback = Fawry.parse_callback(callback_params, {})
-# <Fawry::FawryCallback:0x000056339ac43730 @request_id="c72827d084ea4b88949d91dd2db4996e", @fawry_ref_number="970177",
-#                                          @merchant_ref_number="9708f1cea8b5426cb57922df51b7f790", @customer_mobile="01004545545",
-#                                          @customer_mail="fawry@fawry.com", @order_status="NEW", @order_amount=150.0, @fawry_fees=2.0, ...>
-
-fawry_callback.fawry_ref_number # => 970177
-fawry_callback.order_status # => NEW
-```
-
-### Configuration keys as environment variables
-
-Fawry configuration keys such as merchant code and secure key can be sent with the params (`merchant_code`, `fawry_secure_key` ) to the **charge**, **refund**, **payment_status** methods, _or_ they can be set as environment variables: (`FAWRY_MERCHANT_CODE`, `FAWRY_SECURE_KEY`).
-
-To **parse** fawry callback, you _must_ set the env var `FAWRY_SECURE_KEY`.
-
-## TODO:
-- Translate README to Arabic
-- Add public API documentation to README
-- Add option to raise exception on request failure
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/amrrbakry/fawry. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+HomeBugh app is released under the [MIT License](./LICENSE.md).
