@@ -1,17 +1,22 @@
-require 'total_amount'
+require 'rails_helper'
 
 RSpec.describe TotalAmount do
   describe '#of' do
-    let(:decorator1) { double unit: '$' }
-    let(:decorator2) { double unit: 'MDL' }
-    let(:account1) { double 'Account', funds: 200.0, decorate: decorator1 }
-    let(:account2) { double 'Account', funds: 303.0, decorate: decorator1 }
-    let(:account3) { double 'Account', funds: 403.0, decorate: decorator2 }
-    let(:user) { double 'User', accounts: [account1, account2, account3] }
+    subject { TotalAmount.of(user).transform_values(&:to_f) }
 
-    subject { TotalAmount.of user }
-    it "calculates amount grouped by currency" do
-      is_expected.to eq({ '$' => 503.0, 'MDL' => 403.0 })
+    let(:user) { create(:user) }
+    let(:usd) { create(:currency, name: 'USD') }
+    let(:eur) { create(:currency, name: 'EUR') }
+    let(:mdl) { create(:currency, name: 'MDL') }
+    let!(:eur_account1) { create(:account, user: user, currency: eur, funds: 200.0) }
+    let!(:eur_account2) { create(:account, user: user, currency: eur, funds: 303.0) }
+    let!(:mdl_account) { create(:account, user: user, currency: mdl, funds: 403.0) }
+    let!(:inactive_account) { create(:account, :deleted, user: user, currency: eur, funds: 100.0) }
+    let!(:hidden__account) { create(:account, :hidden, user: user, currency: usd, funds: 200.0) }
+    let!(:other_user_account) { create(:account, currency: eur, funds: 1000) }
+
+    it "calculates total amount grouped by currency" do
+      is_expected.to eq('EUR' => 503.0, 'MDL' => 403.0)
     end
   end
 end
