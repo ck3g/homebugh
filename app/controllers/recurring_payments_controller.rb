@@ -1,7 +1,7 @@
 class RecurringPaymentsController < ApplicationController
   authorize_resource
 
-  before_action :find_recurring_payment, only: [:edit, :update, :destroy]
+  before_action :find_recurring_payment, only: [:edit, :update, :destroy, :move_to_next_payment]
 
   def index
     @recurring_payments = current_user.recurring_payments.upcoming
@@ -33,6 +33,11 @@ class RecurringPaymentsController < ApplicationController
 
   def destroy
     @recurring_payment.destroy
+    redirect_to recurring_payments_path
+  end
+
+  def move_to_next_payment
+    @recurring_payment.move_to_next_payment
     redirect_to recurring_payments_path
   end
 

@@ -16,6 +16,19 @@ class RecurringPayment < ApplicationRecord
 
   scope :upcoming, -> { order(:next_payment_on) }
 
+  def move_to_next_payment
+    duration_method = {
+      'daily' => :days,
+      'weekly' => :weeks,
+      'monthly' => :months,
+      'yearly' => :years
+    }.fetch(frequency)
+
+    new_next_payment_on = frequency_amount.public_send(duration_method).since(next_payment_on)
+
+    update(next_payment_on: new_next_payment_on)
+  end
+
   private
 
   def ensure_next_payment_on_is_in_the_future
