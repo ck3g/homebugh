@@ -48,7 +48,7 @@ module ApplicationHelper
       frequency_amount: 1,
       next_payment_on: 1.month.since(transaction.created_at).to_date
     }
-    link_to new_recurring_payment_path(**query_params), class: 'btn btn-link btn-create-rp btn-mini btn-xs' do
+    link_to new_recurring_payment_path(**query_params), class: 'btn btn-default btn-mini btn-xs btn-create-rp' do
       fa_icon 'retweet'
     end
   end
