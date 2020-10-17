@@ -157,6 +157,7 @@ en:
         weekly: "Weekly"
         monthly: "Monthly"
         yearly: "Yearly"
+      move_to_next_payment: "Move to the next payment date"
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"
