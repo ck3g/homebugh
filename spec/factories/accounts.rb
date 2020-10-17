@@ -21,5 +21,9 @@ FactoryBot.define do
     trait :deleted do
       status 'deleted'
     end
+
+    trait :hidden do
+      show_in_summary false
+    end
   end
 end
