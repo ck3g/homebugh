@@ -202,6 +202,7 @@ ru:
         weekly: "Еженедельно"
         monthly: "Ежемесячно"
         yearly: "Ежегодно"
+      move_to_next_payment: "Перейти к следующей дате платежа"
 
     auth:
       sign_out: "Выход"

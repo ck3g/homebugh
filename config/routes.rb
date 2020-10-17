@@ -8,7 +8,11 @@ Homebugh::Application.routes.draw do
     get :archived, on: :collection
   end
   resources :budgets
-  resources :recurring_payments
+  resources :recurring_payments do
+    member do
+      put :move_to_next_payment
+    end
+  end
 
   devise_for :users
 

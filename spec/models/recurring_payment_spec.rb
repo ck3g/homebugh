@@ -79,4 +79,42 @@ RSpec.describe RecurringPayment, type: :model do
       it { is_expected.not_to be_income }
     end
   end
+
+  describe '#move_to_next_payment' do
+    subject(:move_to_next_payment) { rp.move_to_next_payment }
+
+    let(:initial_payment_on) { Date.current }
+
+    context 'when a frequency is every 5th day' do
+      let(:rp) { create(:recurring_payment, frequency_amount: 5, frequency: :daily, next_payment_on: initial_payment_on) }
+
+      it 'moves next_payment_on 5 days ahead' do
+        expect { move_to_next_payment }.to change { rp.next_payment_on }.to(5.days.since(initial_payment_on))
+      end
+    end
+
+    context 'when a frequency is every 2 weeks' do
+      let(:rp) { create(:recurring_payment, frequency_amount: 2, frequency: :weekly, next_payment_on: initial_payment_on) }
+
+      it 'moves next_payment_on 2 weeks ahead' do
+        expect { move_to_next_payment }.to change { rp.next_payment_on }.to(2.weeks.since(initial_payment_on))
+      end
+    end
+
+    context 'when a frequency is every month' do
+      let(:rp) { create(:recurring_payment, frequency_amount: 1, frequency: :monthly, next_payment_on: initial_payment_on) }
+
+      it 'moves next_payment_on 1 month ahead' do
+        expect { move_to_next_payment }.to change { rp.next_payment_on }.to(1.month.since(initial_payment_on))
+      end
+    end
+
+    context 'when a frequency is every year' do
+      let(:rp) { create(:recurring_payment, frequency_amount: 1, frequency: :yearly, next_payment_on: initial_payment_on) }
+
+      it 'moves next_payment_on 1 year ahead' do
+        expect { move_to_next_payment }.to change { rp.next_payment_on }.to(1.year.since(initial_payment_on))
+      end
+    end
+  end
 end
