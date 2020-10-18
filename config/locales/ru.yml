@@ -203,6 +203,8 @@ ru:
         monthly: "Ежемесячно"
         yearly: "Ежегодно"
       move_to_next_payment: "Перейти к следующей дате платежа"
+      create_transaction: "Создать транзакцию"
+      cannot_create_transaction: "Не удается создать транзакцию из данного повторяющегося платежа"
 
     auth:
       sign_out: "Выход"

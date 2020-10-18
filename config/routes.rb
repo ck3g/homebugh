@@ -11,6 +11,7 @@ Homebugh::Application.routes.draw do
   resources :recurring_payments do
     member do
       put :move_to_next_payment
+      post :create_transaction
     end
   end
 
