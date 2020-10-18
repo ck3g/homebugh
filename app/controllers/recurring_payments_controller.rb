@@ -1,7 +1,7 @@
 class RecurringPaymentsController < ApplicationController
   authorize_resource
 
-  before_action :find_recurring_payment, only: [:edit, :update, :destroy, :move_to_next_payment]
+  before_action :find_recurring_payment, only: [:edit, :update, :destroy, :move_to_next_payment, :create_transaction]
 
   def index
     @recurring_payments = current_user.recurring_payments.upcoming
@@ -41,6 +41,15 @@ class RecurringPaymentsController < ApplicationController
     redirect_to recurring_payments_path
   end
 
+  def create_transaction
+    if current_user.transactions.create(**transaction_params_from(@recurring_payment))
+      @recurring_payment.move_to_next_payment
+      redirect_to transactions_path, notice: t('parts.transactions.successfully_created')
+    else
+      redirect_to recurring_payments_path, alert: t('parts.recurring_payments.cannot_create_transaction')
+    end
+  end
+
   private
 
   def find_recurring_payment
@@ -57,5 +66,14 @@ class RecurringPaymentsController < ApplicationController
 
   def new_safe_params
     params.permit(*recurring_payment_params)
+  end
+
+  def transaction_params_from(recurring_payment)
+    {
+      summ: recurring_payment.amount,
+      comment: recurring_payment.title,
+      category: recurring_payment.category,
+      account: recurring_payment.account
+    }
   end
 end
