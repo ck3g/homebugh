@@ -248,6 +248,11 @@ ru:
   search_categories: Поиск категорий
   search: Найти
 
+  cookie_consent:
+    title: 'Согласие на использование файлов cookies'
+    text:  'Мы используем файлы cookies, чтобы сделать сайт более удобным в использовании. Продолжая использовать сайт, вы соглашаетесь с использованием файлов cookies.'
+    button_text: 'OK'
+
   check_list:
     title: "Первые шаги"
     account:

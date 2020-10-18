@@ -8,6 +8,7 @@
 //= require best_in_place
 //= require select2
 //= require select2_locale_ru
+//= require js.cookie
 //= require chartkick
 //= require_self
 //= require_tree .
