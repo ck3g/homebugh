@@ -3,4 +3,5 @@
 //= require jquery
 //= require bootstrap
 //= require_self
-
+//= require js.cookie
+//= require cookie_consent

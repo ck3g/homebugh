@@ -203,6 +203,11 @@ en:
   search_categories: Search categories
   search: Search
 
+  cookie_consent:
+    title: 'Cookie Consent'
+    text:  'We use cookies to give you the best online experience. By using our website, you agree to our use of cookies.'
+    button_text: 'OK'
+
   check_list:
     title: "First steps"
     account:

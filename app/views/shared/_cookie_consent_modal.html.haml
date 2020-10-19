@@ -1,0 +1,14 @@
+.modal.fade#cookie-consent-modal{ tabindex: "-1", role: "dialog" }
+  .modal-dialog{ role: "document" }
+    .modal-content
+      .modal-header
+        %button.close{ type: "button", 'data-dismiss': "modal" }
+          %span
+            &times;
+        %h4.modal-title
+          = t('cookie_consent.title')
+      .modal-body
+        = t('cookie_consent.text')
+      .modal-footer
+        %button.btn.btn-primary{ id: 'cookie-consent-button-ok', type: "button", 'data-dismiss': "modal" }
+          = t('cookie_consent.button_text')
