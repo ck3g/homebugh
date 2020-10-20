@@ -64,6 +64,17 @@ RSpec.describe RecurringPayment, type: :model do
     end
   end
 
+  describe '.due' do
+    subject { described_class.due }
+
+    let!(:due_today) { create(:recurring_payment, next_payment_on: Date.today) }
+    let!(:due_yesterday) { create(:recurring_payment, :due) }
+
+    it 'returns only due payments' do
+      is_expected.to eq([due_yesterday])
+    end
+  end
+
   describe '#income?' do
     subject { build_stubbed(:recurring_payment, category: category ) }
 

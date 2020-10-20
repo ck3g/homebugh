@@ -15,6 +15,7 @@ class RecurringPayment < ApplicationRecord
   delegate :name, to: :account, prefix: true
 
   scope :upcoming, -> { order(:next_payment_on) }
+  scope :due, -> { where('recurring_payments.next_payment_on < ?', Date.today) }
 
   def move_to_next_payment
     duration_method = {

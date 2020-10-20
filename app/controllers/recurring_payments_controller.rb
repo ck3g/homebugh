@@ -38,7 +38,7 @@ class RecurringPaymentsController < ApplicationController
 
   def move_to_next_payment
     @recurring_payment.move_to_next_payment
-    redirect_to recurring_payments_path
+    redirect_back(fallback_location: recurring_payments_path)
   end
 
   def create_transaction
