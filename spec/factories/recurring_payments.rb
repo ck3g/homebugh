@@ -15,5 +15,10 @@ FactoryBot.define do
       frequency_amount 1
       frequency 2
     end
+
+    trait :due do
+      next_payment_on { 1.day.ago.to_date }
+      to_create { |instance| instance.save(validate: false) }
+    end
   end
 end

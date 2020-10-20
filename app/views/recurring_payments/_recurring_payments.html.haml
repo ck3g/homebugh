@@ -1,0 +1,36 @@
+- skip_delete = false unless defined?(:skip_delete)
+- skip_header = false unless defined?(:skip_header)
+
+.col-xs-12.col-lg-12
+  .table-responsive
+    %table.table
+      - unless skip_header
+        %thead
+          %tr
+            %th.span2= t('activerecord.attributes.recurring_payment.title')
+            %th= t('activerecord.attributes.recurring_payment.next_payment_on')
+            %th.span2.number= t('activerecord.attributes.recurring_payment.amount')
+            %th.span2= t('activerecord.attributes.recurring_payment.account')
+            %th= t('activerecord.attributes.recurring_payment.category')
+            %th.span2
+      %tbody
+        - recurring_payments.each do |recurring_payment|
+          %tr{id: dom_id(recurring_payment)}
+            %td.span2= recurring_payment.title
+            %td= recurring_payment.decorate.next_payment_on
+            %td.span2.number
+              = recurring_payment.decorate.amount
+              = recurring_payment.decorate.type_icon
+            %td.span2= recurring_payment.account_name
+            %td
+              %span.category= recurring_payment.decorate.category_name
+            %td.span2.actions
+              = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-mini btn-success btn-xs create-transaction" do
+                = fa_icon "plus"
+              = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-mini btn-default btn-xs move-to-next-payment" do
+                = fa_icon "forward"
+              = link_to edit_recurring_payment_path(recurring_payment), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs btn-edit" do
+                = fa_icon "pencil"
+              - unless skip_delete
+                = link_to recurring_payment, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs delete" do
+                  = fa_icon "trash"

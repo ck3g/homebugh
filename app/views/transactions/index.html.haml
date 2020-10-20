@@ -1,3 +1,10 @@
+- if @recurring_payments.present?
+  .row
+    .col-xs-12.col-lg-12
+      %h3= t('parts.recurring_payments.due')
+  .row#due_recurring_payments
+    = render 'recurring_payments/recurring_payments', recurring_payments: @recurring_payments, skip_delete: true, skip_header: true
+
 = render 'shared/sub_navbar_widget',
   title_content: t('parts.transactions.transactions_list'),
   add_link_title: t('parts.transactions.new_transaction'),
