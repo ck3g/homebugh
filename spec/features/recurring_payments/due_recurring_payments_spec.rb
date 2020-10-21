@@ -22,15 +22,12 @@ feature 'Display due recurring payments on transactions page' do
   scenario 'user can see only the list of due recurring payments' do
     within "#recurring_payment_#{due_rp.id}" do
       expect(page).to have_content 'Services'
+      expect(page).not_to have_selector("a.edit")
+      expect(page).not_to have_selector("a.delete")
     end
 
     expect(page).not_to have_selector("#recurring_payment_#{future_rp.id}")
     expect(page).not_to have_selector("#recurring_payment_#{other_user_due_rp.id}")
-
-    within '#due_recurring_payments' do
-      expect(page).not_to have_selector("a.delete")
-      expect(page).not_to have_selector("thead")
-    end
   end
 
   scenario 'moving a recurring payment to next period redirects back to transactions page' do

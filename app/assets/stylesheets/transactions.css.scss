@@ -7,3 +7,15 @@
     width: 100%;
   }
 }
+
+tr.due-recurring-payments {
+  border-bottom: 2px dotted #eee;
+  background-color: #f9f9f9;
+
+  td {
+    span {
+      filter: alpha(opacity=60);
+      opacity: 0.6;
+    }
+  }
+}
