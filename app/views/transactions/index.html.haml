@@ -1,17 +1,10 @@
-- if @recurring_payments.present?
-  .row
-    .col-xs-12.col-lg-12
-      %h3= t('parts.recurring_payments.due')
-  .row#due_recurring_payments
-    = render 'recurring_payments/recurring_payments', recurring_payments: @recurring_payments, skip_delete: true, skip_header: true
-
 = render 'shared/sub_navbar_widget',
   title_content: t('parts.transactions.transactions_list'),
   add_link_title: t('parts.transactions.new_transaction'),
   add_link_url: new_transaction_path
 
 .row
-  - if @transactions.present?
+  - if @transactions.present? || @recurring_payments.present?
     .col-xs-12.col-lg-12
       .table-responsive
         %table.table
@@ -23,6 +16,27 @@
               %th.span2= t('common.account')
               %th.span2
           %tbody
+            - @recurring_payments.each do |recurring_payment|
+              %tr.due-recurring-payments{ id: dom_id(recurring_payment) }
+                %td.span2
+                  %span= l(Date.today, format: :long)
+                  %button.btn.btn-link.btn-mini.btn-xs{data: { toggle: 'popover', trigger: 'focus', content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
+                    = fa_icon 'question'
+                %td
+                  %span.category= link_to recurring_payment.decorate.category_name, transactions_path(category: recurring_payment.category_id)
+                  %span.comment= recurring_payment.title
+                %td.span2.number
+                  %span
+                    = recurring_payment.decorate.amount
+                    = recurring_payment.decorate.type_icon
+                %td.span2
+                  %span= link_to recurring_payment.account_name, transactions_path(account: recurring_payment.account_id)
+                %td.span2.actions
+                  = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-mini btn-success btn-xs create-transaction" do
+                    = fa_icon "plus"
+                  = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-mini btn-default btn-xs move-to-next-payment" do
+                    = fa_icon "forward"
+
             - @transactions.each do |transaction|
               %tr{ id: dom_id(transaction) }
                 %td.span2= transaction.decorate.created_on
@@ -34,11 +48,12 @@
                   = transaction.decorate.type_icon
                 %td.span2= link_to transaction.account_name, transactions_path(account: transaction.account_id)
                 %td.span2.actions
-                  = link_to_new_recurring_payment(transaction)
+                  = link_to new_recurring_payment_path_from(transaction), class: 'btn btn-default btn-mini btn-xs btn-create-rp' do
+                    = fa_icon 'retweet'
                   = link_to transaction, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
                     = fa_icon "share"
   - else
     .col-xs-12.col-lg-12
-      %p.empty-data= t( 'parts.transactions.you_have_no_transactions' )
+      %p.empty-data= t('parts.transactions.you_have_no_transactions')
 
 = paginate @transactions

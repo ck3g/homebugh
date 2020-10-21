@@ -39,7 +39,7 @@ module ApplicationHelper
     content_tag(:h1, title, class: 'form-title col-lg-offset-2')
   end
 
-  def link_to_new_recurring_payment(transaction)
+  def new_recurring_payment_path_from(transaction)
     query_params = {
       category_id: transaction.category_id,
       account_id: transaction.account_id,
@@ -48,9 +48,8 @@ module ApplicationHelper
       frequency_amount: 1,
       next_payment_on: 1.month.since(transaction.created_at).to_date
     }
-    link_to new_recurring_payment_path(**query_params), class: 'btn btn-default btn-mini btn-xs btn-create-rp' do
-      fa_icon 'retweet'
-    end
+
+    new_recurring_payment_path(**query_params)
   end
 
   private
