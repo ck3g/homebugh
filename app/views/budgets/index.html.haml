@@ -24,9 +24,9 @@
                     %span{class: "text-#{budget.decorate.expenses_color_class(date: date)}"}
                       = budget.decorate.current_expenses(date: date)
                 %td.actions
-                  = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit) do
+                  = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit), data: { toggle: 'tooltip' } do
                     = fa_icon "edit"
-                  = link_to budget, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
+                  = link_to budget, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
                     = fa_icon "trash"
   - else
     .col-xs-6.col-xs-offset-3

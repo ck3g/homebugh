@@ -2,13 +2,14 @@
   %td= account.decorate.name
   %td.span2.number= account.decorate.amount
   %td.span2.actions
-    = link_to edit_account_path(account), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs" do
+    = link_to edit_account_path(account), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", data: { toggle: 'tooltip' } do
       = fa_icon "pencil"
     - if account.funds.to_f.zero?
-      = link_to account, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.archive'), class: "btn btn-danger btn-mini btn-xs" do
+      = link_to account, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.archive'), class: "btn btn-danger btn-mini btn-xs" do
         = fa_icon "trash"
     - else
       = link_to new_cash_flow_path,
         title: "#{t('parts.accounts.account_not_empty')} #{t('parts.cash_flows.new_cash_flows')}",
-        class: "btn btn-mini btn-default btn-xs" do
+        class: "btn btn-mini btn-default btn-xs",
+        data: { toggle: 'tooltip' } do
         = fa_icon "retweet"
