@@ -21,11 +21,11 @@
             %td
               %span.category= recurring_payment.decorate.category_name
             %td.span2.actions
-              = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-mini btn-success btn-xs create-transaction" do
+              = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-mini btn-success btn-xs create-transaction", data: { toggle: 'tooltip' } do
                 = fa_icon "plus"
-              = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-mini btn-default btn-xs move-to-next-payment" do
+              = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-mini btn-default btn-xs move-to-next-payment", data: { toggle: 'tooltip' } do
                 = fa_icon "forward"
-              = link_to edit_recurring_payment_path(recurring_payment), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs btn-edit" do
+              = link_to edit_recurring_payment_path(recurring_payment), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs btn-edit", data: { toggle: 'tooltip' } do
                 = fa_icon "pencil"
-              = link_to recurring_payment, data: { confirm: t('common.are_you_sure') }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs delete" do
+              = link_to recurring_payment, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs delete" do
                 = fa_icon "trash"
