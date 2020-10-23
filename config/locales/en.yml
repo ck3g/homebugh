@@ -162,6 +162,7 @@ en:
       cannot_create_transaction: "Cannot create a transaction from this recurring payment"
       due: 'Due recurring payment'
       due_description: 'You can create a new transaction from this recurring payment by clicking the "plus" button. You can skip this due recurring payment and move it to the next payment period by clicking the "arrows" button.'
+      create_from_transaction: 'Create a recurring payment from the transaction'
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"
