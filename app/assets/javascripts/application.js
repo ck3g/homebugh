@@ -17,4 +17,5 @@
 jQuery(function() {
   $("[data-select-2]").select2();
   $('[data-toggle="popover"]').popover()
+  $('[data-toggle="tooltip"]').tooltip()
 });
