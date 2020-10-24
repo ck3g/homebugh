@@ -1,10 +1,18 @@
 = form_title t('parts.users.profile')
 
-= form_for :user do |f|
+= simple_form_for :user, html: { class: 'form-horizontal' } do |f|
   .form-inputs
     .form-group
-      .col-lg-12
-        = f.label :email
-        = f.text_field :email, class: 'form-control', value: current_user.email
-      .col-lg-12
-        = link_to t("parts.users.edit_profile"), edit_user_registration_path, class: "btn btn-primary edit-profile"
+      = f.label :email, required: false
+      .col-lg-10
+        %p.form-control-static= current_user.email
+    .form-group
+      = f.label t('activerecord.attributes.user.created_at'), required: false
+      .col-lg-10
+        %p.form-control-static= l(current_user.created_at, format: :long)
+    .form-group
+      .col-lg-offset-2.col-lg-10
+        = link_to t("parts.users.edit_profile"), edit_user_registration_path, class: "btn btn-default"
+    .form-group
+      .col-lg-offset-2.col-lg-10
+        = link_to t("parts.users.delete"), users_delete_path, class: "btn btn-default"

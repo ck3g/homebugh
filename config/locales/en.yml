@@ -23,10 +23,11 @@ en:
         account_id: "Account"
         comment: "Commentary"
       user:
-        email: "email"
+        email: "Email"
         password: "Password"
         password_confirmation: "Confirmation"
         current_password: "Current Password"
+        created_at: "Registered"
       account:
         name: "Name"
         funds: "Funds"

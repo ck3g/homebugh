@@ -49,10 +49,11 @@ ru:
         account_id: "Счет"
         comment: "Комментарий"
       user:
-        email: "email"
+        email: "Email"
         password: "Пароль"
         password_confirmation: "Подтверждение"
         current_password: "Текущий пароль"
+        created_at: 'Зарегистрирован'
       account:
         name: "Название"
         funds: "Доступные средства"
@@ -100,7 +101,7 @@ ru:
     statistics: "Статистика"
     budgets: Бюджет
     recurring_payments: Периодические платежи
-    profile: профиль
+    profile: Профиль
 
   helpers:
     submit:
