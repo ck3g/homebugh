@@ -7,11 +7,11 @@
     .form-group
       .col-lg-12
         = f.input_field :password, placeholder: t(:password)
-    .form-group 
-      .col-lg-12
-        .checkbox 
-          - if devise_mapping.rememberable?
-            = f.input :remember_me, as: :boolean, label: false, inline_label: true 
+    - if devise_mapping.rememberable?
+      .form-group
+        .col-lg-12
+          .checkbox
+            = f.input :remember_me, as: :boolean, label: false, inline_label: true
     = f.button :submit, t(:do_sign_in), class: "pull-left btn btn-primary btn-block"
   .clearfix
   = render "devise/shared/links"
