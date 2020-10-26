@@ -1,13 +1,13 @@
 source 'https://rubygems.org/'
 
-gem 'rails', '6.0.3.3'
+gem 'rails', '6.0.3.4'
 
 gem 'bootsnap', require: false
 
 gem "json", "~> 2.3.0"
 
 gem 'mysql2', "0.5.3"
-gem 'devise', "~> 4.7.1"
+gem 'devise', "~> 4.7.3"
 gem "devise-encryptable", "~> 0.1.1"
 gem 'haml'
 gem 'has_scope', "~> 0.5.1"
