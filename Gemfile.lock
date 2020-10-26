@@ -81,7 +81,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.4)
-    cancancan (3.0.1)
+    cancancan (3.1.0)
     capistrano (2.15.9)
       highline
       net-scp (>= 1.0.0)
