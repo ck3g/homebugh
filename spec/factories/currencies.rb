@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :currency do
     sequence(:name) { |n| "Currency##{n}" }
-    unit ""
+    unit { "" }
   end
 end

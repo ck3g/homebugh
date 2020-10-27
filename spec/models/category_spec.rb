@@ -58,8 +58,9 @@ describe Category do
   end
 
   it "allows two users have category with same name" do
+    user = create(:user)
     create(:category, name: "Food")
-    expect(build(:category, name: "Food")).to be_valid
+    expect(build(:category, name: "Food", user: user)).to be_valid
   end
 
   it "has active category by default" do
