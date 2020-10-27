@@ -67,7 +67,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
-  gem 'factory_bot_rails', '~> 5.2.0'
+  gem 'factory_bot_rails', '~> 6.1.0'
   gem "pry-rails"
 end
 
