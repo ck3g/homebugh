@@ -7,7 +7,7 @@ FactoryBot.define do
 
     factory :from_account do
       sequence(:name) { |n| "From Account ##{n}" }
-      funds 100
+      funds { 100 }
     end
 
     factory :to_account do
@@ -15,15 +15,15 @@ FactoryBot.define do
     end
 
     factory :invalid_account do
-      name nil
+      name { nil }
     end
 
     trait :deleted do
-      status 'deleted'
+      status { 'deleted' }
     end
 
     trait :hidden do
-      show_in_summary false
+      show_in_summary { false }
     end
   end
 end

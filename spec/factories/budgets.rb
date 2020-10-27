@@ -5,6 +5,6 @@ FactoryBot.define do
     user
     category { create(:category, user: user) }
     currency
-    limit 100.99
+    limit { 100.99 }
   end
 end

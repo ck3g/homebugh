@@ -2,18 +2,18 @@
 
 FactoryBot.define do
   factory :recurring_payment do
-    title "Rent"
+    title { "Rent" }
     user
     category { create(:category, user: user) }
     account { create(:account, user: user) }
-    amount 503
-    frequency_amount 1
-    frequency 2
+    amount { 503 }
+    frequency_amount { 1 }
+    frequency { 2 }
     next_payment_on { 1.month.from_now.to_date }
 
     trait :monthly do
-      frequency_amount 1
-      frequency 2
+      frequency_amount { 1 }
+      frequency { 2 }
     end
 
     trait :due do
