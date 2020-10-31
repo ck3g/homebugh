@@ -26,5 +26,7 @@ Homebugh::Application.routes.draw do
 
   post "/api/token" => "api/token#create"
 
+  get '/cookiepolicy' => "welcome#cookiepolicy"
+
   root to: "welcome#index"
 end

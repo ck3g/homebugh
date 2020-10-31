@@ -210,6 +210,7 @@ en:
   cookie_consent:
     title: 'Cookie Consent'
     text:  'We use cookies to give you the best online experience. By using our website, you agree to our use of cookies.'
+    learn_more_here: 'Learn more here.'
     button_text: 'OK'
 
   check_list:

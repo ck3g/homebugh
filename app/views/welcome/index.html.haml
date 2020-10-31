@@ -1,24 +1,3 @@
-%nav.navbar.navbar-default.navbar-fixed-top.topnav{:role => "navigation"}
-  .container.topnav
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand.topnav{:href => "#"} HomeBugh
-    / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-right
-        %li= link_to t("welcome_page.nav.about"), "#about"
-        %li= link_to t("welcome_page.nav.services"), "#services"
-        %li= link_to t("welcome_page.nav.contact"), "#contact"
-        %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
-    / /.navbar-collapse
-  / /.container
-/ Header
-
 %a{:name => "about"}
 .intro-header
   .container
@@ -130,9 +109,11 @@
           %li.footer-menu-divider ⋅
           %li= link_to t("parts.auth.sign_in"), new_user_session_path
           %li.footer-menu-divider ⋅
-          %li= link_to t("welcome_page.nav.about"), "#about"
+          %li= link_to "Cookie Policy", cookiepolicy_path
           %li.footer-menu-divider ⋅
-          %li= link_to t("welcome_page.nav.services"), "#services"
+          %li= link_to t("welcome_page.nav.about"), root_path(anchor: "about")
           %li.footer-menu-divider ⋅
-          %li= link_to t("welcome_page.nav.contact"), "#contact"
+          %li= link_to t("welcome_page.nav.services"), root_path(anchor: "services")
+          %li.footer-menu-divider ⋅
+          %li= link_to t("welcome_page.nav.contact"), root_path(anchor: "contact")
         %p.copyright.text-muted.small= copyright
