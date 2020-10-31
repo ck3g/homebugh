@@ -21,6 +21,9 @@
         = f.error :password_confirmation
         - if resource.errors[:password_confirmation].present?
           %span.glyphicon.glyphicon-remove.form-control-feedback
+    .form-group
+      .col-lg-12
+        = recaptcha_tags
     = f.button :submit, t(:do_sign_up), class: "btn btn-primary btn-block"
   = render "devise/shared/links"
 

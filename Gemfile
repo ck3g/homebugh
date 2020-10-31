@@ -50,6 +50,8 @@ gem 'graphql'
 gem 'graphiql-rails'
 gem 'rack-cors'
 
+gem 'recaptcha'
+
 group :development do
   gem "capistrano", "~> 2.15.9", require: false
   gem 'capistrano-recipes', require: false
