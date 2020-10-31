@@ -28,7 +28,7 @@ after "deploy",                 "deploy:cleanup"
 after "deploy:finalize_update", "deploy:config",  "deploy:update_uploads"
 after "deploy:create_symlink",  "deploy:migrate"
 
-CONFIG_FILES = %w[database mail]
+CONFIG_FILES = %w[database mail secrets]
 
 namespace :deploy do
   task :setup_config, :roles => :app do
