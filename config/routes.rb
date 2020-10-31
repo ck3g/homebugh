@@ -15,7 +15,7 @@ Homebugh::Application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   authenticated :user do
     root to: "transactions#index", as: :auth_root
