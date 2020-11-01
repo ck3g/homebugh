@@ -67,11 +67,12 @@ RSpec.describe RecurringPayment, type: :model do
   describe '.due' do
     subject { described_class.due }
 
-    let!(:due_today) { create(:recurring_payment, next_payment_on: Date.today) }
     let!(:due_yesterday) { create(:recurring_payment, :due) }
+    let!(:due_today) { create(:recurring_payment, next_payment_on: Date.today) }
+    let!(:due_tomorrow) { create(:recurring_payment, next_payment_on: 1.day.from_now) }
 
     it 'returns only due payments' do
-      is_expected.to eq([due_yesterday])
+      is_expected.to contain_exactly(due_yesterday, due_today)
     end
   end
 
