@@ -41,24 +41,6 @@ I'm planning to add a demo user to the project, so everyone can take a look at t
 If the project gets more users, that should bring new ideas on improvements in different areas of the project.
 So, if you want to practice web development that project can be a good place for you.
 
-## The [Hacktoberfest](https://hacktoberfest.digitalocean.com) goal
-
-To have fun. To help others to start contributing to the open-source.
-
-That's not easy to start contributing to the open-source.
-Especially at the beginning. There is a lot of stuff.
-That's not easy to find an issue to work on or find something to improve by yourself.
-
-I'll try to help here.
-I'll create a bunch if easy to work on issues so everyone can pick up for Hacktoberfest.
-Issues are relatively simple for a person with some basic knowledge of [Ruby on Rails](https://rubyonrails.org)
-Issues have a small scope, so they can be easily implemented.
-And more importantly, despite the narrow scope of issues, they will improve the project.
-
-If you decide to participate, I'll try to help you as much as I can.
-
-Welcome, and have fun!
-
 <hr>
 
 ### Configure development environment
