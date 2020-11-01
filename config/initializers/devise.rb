@@ -47,8 +47,8 @@ Devise.setup do |config|
   # (then you should set stretches to 10, and copy REST_AUTH_SITE_KEY to pepper)
   config.encryptor = :bcrypt
 
-  # Setup a pepper to generate the encrypted password.
-  config.pepper = "c89393deab8c93c47cca84b07ccb292b65b7b78448be3164ada1afa45fdefeb208a0129a80627f0b3287e749d4296e8d4bb0a5d0428227657d83b5c8d5ca6060"
+  # Set up a pepper to generate the hashed password.
+  # config.pepper = '<%= SecureRandom.hex(64) %>'
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
@@ -71,7 +71,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length
-  # config.password_length = 6..20
+  config.password_length = 6..128
 
   # Regex to use to validate the email address
   # config.email_regexp = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
