@@ -9,5 +9,9 @@ FactoryBot.define do
     factory :user_example_com do
       email { 'user@example.com' }
     end
+
+    trait :demo_user do
+      demo_user { true }
+    end
   end
 end
