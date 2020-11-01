@@ -6,6 +6,11 @@
 
 The expense tracking app.
 
+## Related repositories
+
+* [iOS app](https://github.com/ck3g/homebugh-ios)
+* [API](https://github.com/ck3g/homebugh-api)
+
 ## About the project
 
 HomeBugh app is a web application to track your home finance expenses.
