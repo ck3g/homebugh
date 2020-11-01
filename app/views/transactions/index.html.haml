@@ -20,7 +20,7 @@
               %tr.due-recurring-payments{ id: dom_id(recurring_payment) }
                 %td.span2
                   %span= l(Date.today, format: :long)
-                  %button.btn.btn-link.btn-mini.btn-xs{data: { toggle: 'popover', trigger: 'focus', content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
+                  %a.btn.btn-link.btn-mini.btn-xs{tabindex: 0, role: 'button', data: { toggle: 'popover', trigger: 'focus', content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
                     = fa_icon 'question'
                 %td
                   %span.category= link_to recurring_payment.decorate.category_name, transactions_path(category: recurring_payment.category_id)
