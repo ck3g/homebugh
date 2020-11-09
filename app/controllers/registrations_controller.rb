@@ -1,5 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
+    if params.dig(:user, :name).present?
+      # A hidden field filled in by a bot
+      redirect_to new_user_registration_path, notice: "We're sorry. The registration is now closed."
+      return
+    end
+
     build_resource(sign_up_params)
 
     if verify_recaptcha(model: resource)

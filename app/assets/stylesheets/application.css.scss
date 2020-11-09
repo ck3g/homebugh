@@ -9,6 +9,10 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
+input.registration-name {
+  display: none;
+}
+
 table .actions a {
   margin-left: 5px;
 }
