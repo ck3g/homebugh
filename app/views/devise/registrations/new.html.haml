@@ -3,6 +3,7 @@
     %h2= title t(:sign_up)
     .form-group{class: ('has-error has-feedback' if resource.errors[:email].present?)}
       .col-lg-12
+        = text_field_tag 'user[name]', '', required: false, autofocus: false, placeholder: 'Name', class: 'registration-name', id: 'user_name'
         = f.input_field :email, required: true, autofocus: true, placeholder: t(:email)
         = f.error :email
         - if resource.errors[:email].present?
