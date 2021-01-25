@@ -15,7 +15,6 @@ gem "psych", "~> 2.0.13"
 gem "simple_form", "~> 5.0.0"
 gem "kaminari", "~> 1.2.1"
 gem "meta-tags", "~> 2.13.0", require: "meta_tags"
-gem "newrelic_rpm"
 gem 'best_in_place'
 gem "select2-rails", '~> 3.5.1'
 gem 'chartkick', '~> 3.4.0'
