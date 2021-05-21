@@ -68,6 +68,57 @@
     .error__page_image {
       margin-top: 50px;
     }
+    @media only screen and (max-width: 700px) {
+      div.error__page_wrapper {
+        flex-direction: column-reverse;
+        margin-top: 5vh;
+      }
+      div.error__page_dialog {
+        width: 330px;
+        margin: auto;
+      }
+      .error__page_image {
+        margin: 0;
+        margin-bottom: 25px;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      div.error__page_wrapper {
+        flex-direction: column-reverse;
+        margin-top: 5vh;
+      }
+      .err {
+        display: block;
+        color: #bebebe;
+        font-size: 25px;
+        line-height: 1;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-left: 30px;
+        margin-bottom: -15px;
+      }
+      .err__404 {
+        display: block;
+        color: #bebebe;
+        font-size: 100px;
+        line-height: 1;
+        font-weight: 900;
+        margin: 0;
+        margin-bottom: 25px;
+      }
+      div.error__page_dialog {
+        width: 100%;
+        margin: auto;
+      }
+      .error__page_image {
+        margin: 0;
+        margin-bottom: 25px;
+      }
+      .error__page_image svg {
+        width: 150px;
+        height: 150px;
+      }
+    }
   </style>
 </head>
 

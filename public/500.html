@@ -7,8 +7,9 @@
     div.error__page_wrapper {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       max-width: 700px;
-      width: 100%;
+      width: 90%;
       margin: 0 auto;
       margin-top: 15vh;
     }
@@ -49,7 +50,7 @@
     .err__txt {
       font-size: 16px;
       line-height: 1.5;
-      margin: 0 0 50px 0;
+      margin: 0 0 25px 0;
     }
     .err__goback {
       text-decoration: none;
@@ -60,14 +61,60 @@
       padding: 10px 20px;
       transition: all 0.4s;
     }
-    a, a:visited {
-      color: #52a500;
-    }
-    a:hover {
-      color: #66c904;
-    }
     .error__page_image {
       margin-top: 50px;
+      margin-left: 25px;
+    }
+    @media only screen and (max-width: 700px) {
+      div.error__page_wrapper {
+        flex-direction: column-reverse;
+        margin-top: 5vh;
+      }
+      div.error__page_dialog {
+        width: 330px;
+        margin: auto;
+      }
+      .error__page_image {
+        margin: 0;
+        margin-bottom: 25px;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      div.error__page_wrapper {
+        flex-direction: column-reverse;
+        margin-top: 5vh;
+      }
+      .err {
+        display: block;
+        color: #bebebe;
+        font-size: 25px;
+        line-height: 1;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-left: 30px;
+        margin-bottom: -15px;
+      }
+      .err__404 {
+        display: block;
+        color: #bebebe;
+        font-size: 100px;
+        line-height: 1;
+        font-weight: 900;
+        margin: 0;
+        margin-bottom: 25px;
+      }
+      div.error__page_dialog {
+        width: 100%;
+        margin: auto;
+      }
+      .error__page_image {
+        margin: 0;
+        margin-bottom: 25px;
+      }
+      .error__page_image svg {
+        width: 150px;
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -80,8 +127,8 @@
       <span class="err__404">500</span>
       <span class="err__ohno">Oh no!</span>
       <h1>Internal Server Error</h1>
-      <p class="err__txt">We’re experiencing an internal server problem and we’re working to fix the problem!</p>
-      <p class="err__txt">Please try again later or contact <a href="mailto:support@homebugh.info">support@homebugh.info</a></p>
+      <p class="err__txt">We're experiencing an internal server problem and we're working to fix the problem!</p>
+      <p class="err__txt">Please try again later.</p>
     </div><!-- /.dialog -->
 
     <div class="error__page_image">
