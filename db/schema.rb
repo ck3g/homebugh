@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_11_01_085144) do
 
-  create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.integer "user_id", null: false
     t.decimal "funds", precision: 10, scale: 2, default: "0.0"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
-  create_table "aggregated_transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "aggregated_transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "category_id", null: false
     t.integer "category_type_id", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_aggregated_transactions_on_user_id"
   end
 
-  create_table "auth_sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "auth_sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "token", null: false
     t.datetime "expired_at", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_auth_sessions_on_user_id"
   end
 
-  create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "budgets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "category_id", null: false
     t.integer "currency_id", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_budgets_on_user_id"
   end
 
-  create_table "cash_flows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "cash_flows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "from_account_id", null: false
     t.integer "to_account_id", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_cash_flows_on_user_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name"
     t.integer "category_type_id"
     t.integer "user_id"
@@ -88,11 +88,11 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "category_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "category_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "currencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "currencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "unit"
     t.datetime "created_at"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["name"], name: "index_currencies_on_name", unique: true
   end
 
-  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recurring_payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "title", null: false
     t.integer "user_id", null: false
     t.integer "category_id", null: false
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_recurring_payments_on_user_id"
   end
 
-  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "category_id"
     t.decimal "summ", precision: 10, scale: 2, default: "0.0", null: false
     t.text "comment"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_085144) do
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", limit: 128, default: "", null: false
     t.string "password_salt", default: "", null: false

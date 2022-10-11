@@ -25,7 +25,7 @@ gem 'cancancan'
 gem "sass-rails", "~> 6.0.0"
 gem 'bootstrap-sass', '~> 3.4.1'
 gem "uglifier", ">= 4.2.0"
-gem "therubyracer", "~> 0.12.3"
+# gem "therubyracer", "~> 0.12.3"
 gem 'font-awesome-rails'
 
 gem 'activemodel-serializers-xml'
