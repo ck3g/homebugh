@@ -1,6 +1,6 @@
 source 'https://rubygems.org/'
 
-gem 'rails', '6.0.4.1'
+gem 'rails', '6.0.6.1'
 
 gem 'bootsnap', require: false
 
@@ -14,7 +14,7 @@ gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 2.0.13"
 gem "simple_form", "~> 5.0.0"
 gem "kaminari", "~> 1.2.1"
-gem "meta-tags", "~> 2.13.0", require: "meta_tags"
+gem "meta-tags", "~> 2.19.0", require: "meta_tags"
 gem 'best_in_place'
 gem "select2-rails", '~> 3.5.1'
 gem 'chartkick', '~> 3.4.0'

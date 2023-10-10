@@ -1,6 +1,5 @@
 ## HomeBugh
 
-[![Build Status](https://api.travis-ci.org/ck3g/homebugh.png)](https://travis-ci.org/github/ck3g/homebugh)
 [![Code Climate](https://codeclimate.com/github/ck3g/homebugh/badges/gpa.svg)](https://codeclimate.com/github/ck3g/homebugh)
 [![Test Coverage](https://codeclimate.com/github/ck3g/homebugh/badges/coverage.svg)](https://codeclimate.com/github/ck3g/homebugh)
 
