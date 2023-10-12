@@ -7,16 +7,16 @@ gem 'bootsnap', require: false
 gem "json", "~> 2.3.0"
 
 gem 'mysql2', "0.5.3"
-gem 'devise', "~> 4.7.3"
-gem "devise-encryptable", "~> 0.1.1"
+gem 'devise', "~> 4.9.3"
+gem "devise-encryptable", "~> 0.2.0"
 gem 'haml'
 gem 'has_scope', "~> 0.5.1"
-gem "psych", "~> 2.0.13"
-gem "simple_form", "~> 5.0.0"
-gem "kaminari", "~> 1.2.1"
+gem "psych", "~> 3.3.4"
+gem "simple_form", "~> 5.3.0"
+gem "kaminari", "~> 1.2.2"
 gem "meta-tags", "~> 2.19.0", require: "meta_tags"
 gem 'best_in_place'
-gem "select2-rails", '~> 3.5.1'
+gem "select2-rails", '~> 3.5.11'
 gem 'chartkick', '~> 3.4.0'
 gem 'draper'
 gem 'aasm'
@@ -41,7 +41,7 @@ gem 'ruby-progressbar'
 gem 'whenever', '~> 0.9.4', require: false
 gem 'mailgun-ruby'
 
-gem 'eventmachine', '~> 1.0.9', require: false
+gem 'eventmachine', '~> 1.2.7', require: false
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
 
@@ -67,8 +67,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 4.0.1'
-  gem 'factory_bot_rails', '~> 6.1.0'
+  gem 'rspec-rails', '~> 5.1.2'
+  gem 'factory_bot_rails', '~> 6.2.0'
   gem "pry-rails"
 end
 
@@ -79,7 +79,7 @@ group :test do
   gem "launchy"
   gem "capybara"
   gem "database_cleaner"
-  gem "shoulda-matchers", '~> 4.4.1'
+  gem "shoulda-matchers", '~> 5.3.0'
   gem "email_spec"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
