@@ -1,8 +1,10 @@
-require File.expand_path('../boot', __FILE__)
+require_relative "boot"
 
 require 'rails/all'
 
-Bundler.require(:default, Rails.env)
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
 module Homebugh
   class Application < Rails::Application
@@ -13,6 +15,7 @@ module Homebugh
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoloader = :zeitwerk
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
