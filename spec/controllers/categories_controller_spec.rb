@@ -4,7 +4,8 @@ describe CategoriesController do
   login_user
   let(:user) { subject.current_user }
   let(:category) { create(:category, user: user) }
-  let(:salary) { create :category, name: "Salary", category_type_id: CategoryType.income, user: user }
+  let!(:category_type_income) { create(:category_type_income) }
+  let(:salary) { create :income_category, name: "Salary", category_type: category_type_income, user: user }
 
   describe "GET #index" do
     before { get :index }
@@ -29,15 +30,15 @@ describe CategoriesController do
 
   describe "POST #create" do
     context "with valid attributes" do
-      before do
-        post :create, params: { category: attributes_for(:category, name: "Salary 1") }
+      subject(:create_category) do
+        post :create, params: { category: attributes_for(:income_category, name: "Salary 1", category_type_id: category_type_income.id) }
       end
 
       it { is_expected.to redirect_to categories_path }
 
       it "saves the new category in the database" do
         expect {
-          post :create, params: { category: attributes_for(:category, name: "Salary 2") }
+          create_category
         }.to change(Category, :count).by(1)
       end
     end

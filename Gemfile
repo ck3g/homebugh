@@ -1,6 +1,6 @@
 source 'https://rubygems.org/'
 
-gem 'rails', '7.0.8'
+gem 'rails', '7.1.1'
 
 gem 'bootsnap', require: false
 
@@ -67,7 +67,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.1.2'
+  gem 'rspec-rails', '~> 6.0.3'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem "pry-rails"
 end
