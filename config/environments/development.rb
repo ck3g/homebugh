@@ -1,4 +1,6 @@
-Homebugh::Application.configure do
+require "active_support/core_ext/integer/time"
+
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -51,10 +53,11 @@ Homebugh::Application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # Highlight code that triggered database queries in logs.
+  config.active_record.verbose_query_logs = true
 
-  # Expands the lines which load the assets
-  config.assets.debug = true
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
@@ -65,4 +68,3 @@ Homebugh::Application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
-
