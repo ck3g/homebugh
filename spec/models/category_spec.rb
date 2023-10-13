@@ -6,11 +6,13 @@ describe Category do
   end
 
   it "be an income category" do
-    expect(create(:category, category_type_id: CategoryType.income).income?).to be_truthy
+    category_type = create(:category_type_income)
+    expect(create(:category, category_type: category_type).income?).to be_truthy
   end
 
-  it "be a spending category" do
-    expect(create(:category, category_type_id: CategoryType.spending).income?).to be_falsey
+  it "be an expense category" do
+    category_type = create(:category_type_expense)
+    expect(create(:category, category_type: category_type).income?).to be_falsey
   end
 
   describe ".asscociations" do
