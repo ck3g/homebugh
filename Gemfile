@@ -6,7 +6,7 @@ gem 'bootsnap', require: false
 
 gem "json", "~> 2.3.0"
 
-gem 'mysql2', "0.5.3"
+gem 'mysql2', "0.5.6"
 gem 'devise', "~> 4.9.3"
 gem "devise-encryptable", "~> 0.2.0"
 gem 'haml'
