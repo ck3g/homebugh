@@ -49,6 +49,12 @@ gem 'graphql'
 gem 'graphiql-rails'
 gem 'rack-cors'
 
+# To support new ruby versions
+gem 'ostruct'
+gem 'logger'
+gem 'benchmark'
+gem 'observer'
+
 gem 'recaptcha'
 
 group :development do
