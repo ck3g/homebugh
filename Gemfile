@@ -54,6 +54,7 @@ gem 'ostruct'
 gem 'logger'
 gem 'benchmark'
 gem 'observer'
+gem 'abbrev'
 
 gem 'recaptcha'
 

@@ -11,6 +11,7 @@ GEM
   specs:
     aasm (5.5.0)
       concurrent-ruby (~> 1.0)
+    abbrev (0.1.2)
     actioncable (7.1.1)
       actionpack (= 7.1.1)
       activesupport (= 7.1.1)
@@ -476,6 +477,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  abbrev
   actionpack-action_caching
   actionpack-page_caching
   activemodel-serializers-xml
