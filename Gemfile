@@ -38,7 +38,7 @@ gem 'jquery-ui-rails'
 
 gem 'ruby-progressbar'
 
-gem 'whenever', '~> 0.9.4', require: false
+gem 'whenever', '~> 1.0.0', require: false
 gem 'mailgun-ruby'
 
 gem 'eventmachine', '~> 1.2.7', require: false
