@@ -64,4 +64,15 @@ namespace :deploy do
   end
 end
 
-
+namespace :puma do
+  desc 'Start Puma in background with nohup (Puma 6+ compatible)'
+  task :start do
+    on roles(:app), pty: true do
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :nohup, "bash -c 'cd #{current_path} && bundle exec puma -C config/puma.rb' > #{shared_path}/log/puma.nohup.log 2>&1 &"
+        end
+      end
+    end
+  end
+end

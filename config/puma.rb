@@ -1,9 +1,6 @@
 directory '/home/deploy/apps/homebugh/current'
 environment 'production'
 
-# Daemonize Puma (run in background)
-daemonize true
-
 # Puma process and state files
 pidfile '/home/deploy/apps/homebugh/shared/tmp/pids/puma.pid'
 state_path '/home/deploy/apps/homebugh/shared/tmp/pids/puma.state'
