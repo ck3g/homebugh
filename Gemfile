@@ -89,11 +89,11 @@ group :test do
   gem "database_cleaner"
   gem "shoulda-matchers", '~> 5.3.0'
   gem "email_spec"
-  gem "simplecov", require: false
+  gem 'simplecov', require: false
 
   gem 'rb-fsevent', '>= 0.4.3', require: false
+  gem 'rb-inotify', '~> 0.11.1', require: false
   gem 'growl',      '~> 1.0.3', require: false
-  gem 'rb-inotify', '>= 0.8.6', require: false
   gem 'libnotify',  '~> 0.9.4', require: false
 end
 

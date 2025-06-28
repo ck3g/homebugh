@@ -514,7 +514,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_best_practices
   rb-fsevent (>= 0.4.3)
-  rb-inotify (>= 0.8.6)
+  rb-inotify (~> 0.11.1)
   recaptcha
   rspec-activemodel-mocks
   rspec-rails (~> 8.0.1)

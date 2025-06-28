@@ -41,6 +41,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 # Whenever configuration
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+set :bundle_without, %w{development test}.join(' ')
 
 namespace :deploy do
   desc 'Restart application'
