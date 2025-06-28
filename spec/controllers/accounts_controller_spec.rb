@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe AccountsController do
+describe AccountsController, type: :controller do
   login_user
 
   let(:user) { subject.current_user }
@@ -8,14 +8,21 @@ describe AccountsController do
   let(:cash) { create :account, name: "Cash", user: user }
 
   describe "GET #index" do
-    before { get :index, params: {} }
+    before do
+      # This error is extemely weird. With configure_warden it fixes the test, but breaks all the feature tests.
+      # However, only this single test if failing. All the similar tests from this file or other files are passing.
+      # I've found this issue https://github.com/heartcombo/devise/issues/5771 but it doesn't help.
+      # That's probably a bug in Devise.
+      # It raises only once, then all the other tests are passing.
+      get :index
+    end
 
     it { expect(assigns[:accounts]).to eq [account] }
     it { is_expected.to render_template :index }
   end
 
   describe "GET #new" do
-    before { get :new, params: {} }
+    before { get :new }
 
     it { expect(assigns[:account]).to be_kind_of Account }
     it { is_expected.to render_template :new }

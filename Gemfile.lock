@@ -485,7 +485,7 @@ DEPENDENCIES
   capybara
   chartkick (~> 3.4.0)
   database_cleaner
-  devise (~> 4.9.3)
+  devise (~> 4.9.4)
   devise-encryptable (~> 0.2.0)
   draper
   ed25519 (~> 1.2, >= 1.2.4)
