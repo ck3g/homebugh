@@ -1,4 +1,3 @@
-.bundle
 config/database.yml
 config/mail.yml
 db/*.sqlite3
