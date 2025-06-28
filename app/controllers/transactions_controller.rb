@@ -31,7 +31,10 @@ class TransactionsController < ApplicationController
 
   def update
     @transaction.update(update_params)
-    respond_with @transaction
+    respond_to do |format|
+      format.html { redirect_to transactions_path }
+      format.json { render json: @transaction }
+    end
   end
 
   def destroy
