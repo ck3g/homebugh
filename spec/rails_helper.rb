@@ -1,13 +1,12 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
-
 require 'rubygems'
 #uncomment the following line to use spork with the debugger
 
 ENV["RAILS_ENV"] = 'test'
 require File.expand_path("../../config/environment", __FILE__)
+require 'devise'
 require 'rspec/rails'
 require 'capybara/rspec'
 
@@ -21,9 +20,6 @@ I18n.locale = :en
 RSpec.configure do |config|
   config.mock_with :rspec
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -31,6 +27,7 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.extend LoginMacros, type: :controller
   config.include Features::AuthMacros, type: :feature
   config.include EmailSpec::Helpers
@@ -46,10 +43,16 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
+
+    # Force loading of Devise mappings early
+    Rails.application.reload_routes!
+    Devise.mappings.keys.each { |key| Devise.mappings[key] }
   end
 
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
+
+    Rails.application.routes.default_url_options[:host] = 'localhost'
   end
 
   config.before(:each, js: true) do
@@ -62,6 +65,10 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  config.before(:each, type: :controller) do
+    @request.env["devise.mapping"] = Devise.mappings[:user] if @request
   end
 
   Shoulda::Matchers.configure do |config|

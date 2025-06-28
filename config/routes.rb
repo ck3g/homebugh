@@ -1,6 +1,4 @@
 Homebugh::Application.routes.draw do
-  
-
   resources :transactions, :cash_flows, only: [:index, :new, :create, :update, :destroy]
   resources :categories, :accounts, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :statistics, only: [:index] do

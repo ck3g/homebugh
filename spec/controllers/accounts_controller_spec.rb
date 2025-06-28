@@ -2,13 +2,10 @@ require "rails_helper"
 
 describe AccountsController do
   login_user
+
   let(:user) { subject.current_user }
   let(:account) { create :account, user: user }
   let(:cash) { create :account, name: "Cash", user: user }
-
-  before do
-    @user = subject.current_user
-  end
 
   describe "GET #index" do
     before { get :index }
@@ -64,9 +61,7 @@ describe AccountsController do
   end
 
   describe "PUT #update" do
-    before :each do
-      @account = create(:account, name: "Cash-Old", user: @user)
-    end
+    let!(:account) { create(:account, name: "Cash-Old", user: user) }
 
     context "with valid attributes" do
       before { put :update, params: { id: cash, account: attributes_for(:account) } }
@@ -88,7 +83,7 @@ describe AccountsController do
       end
       it { is_expected.to render_template :edit }
 
-      it "does not change the @account's attributes" do
+      it "does not change the account's attributes" do
         expect {
           put :update, params: { id: cash, account: attributes_for(:account, name: "") }
           cash.reload
@@ -99,8 +94,8 @@ describe AccountsController do
 
   describe "DELETE #destroy" do
     before do
-      allow(controller).to receive(:current_user).and_return @user
-      allow(@user).to receive(:accounts).and_return Account
+      allow(controller).to receive(:current_user).and_return user
+      allow(user).to receive(:accounts).and_return Account
       allow(Account).to receive(:find).and_return account
       allow(account).to receive :destroy
 
