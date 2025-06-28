@@ -24,7 +24,7 @@
           %span.glyphicon.glyphicon-remove.form-control-feedback
     .form-group
       .col-lg-12
-        = recaptcha_tags(site_key: Rails.application.secrets.recaptcha_site_key)
+        = recaptcha_tags(site_key: Rails.application.credentials.recaptcha_site_key)
     = f.button :submit, t(:do_sign_up), class: "btn btn-primary btn-block"
   = render "devise/shared/links"
 
