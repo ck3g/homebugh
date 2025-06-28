@@ -9,7 +9,7 @@ class RecurringPayment < ApplicationRecord
   validates :frequency_amount, presence: true, numericality: { greater_than_or_equal_to: 1, only_integer: true }
   validate :ensure_next_payment_on_is_in_the_future
 
-  enum frequency: { daily: 0, weekly: 1, monthly: 2, yearly: 3 }
+  enum :frequency, { daily: 0, weekly: 1, monthly: 2, yearly: 3 }
 
   delegate :name, to: :category, prefix: true
   delegate :name, to: :account, prefix: true
