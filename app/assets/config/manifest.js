@@ -1,5 +1,6 @@
 //= link application.js
 //= link application.css
+//= link font-awesome.css
 //= link flags/ru.png
 //= link flags/en.png
 //= link icons/delete.png
