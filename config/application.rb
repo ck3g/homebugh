@@ -65,6 +65,6 @@ module Homebugh
 
     config.assets.precompile += %w(welcome.css welcome.js)
 
-    
+    config.action_mailer.preview_paths = ["#{Rails.root}/test/mailers/previews"]
   end
 end
