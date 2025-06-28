@@ -474,6 +474,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-linux
 
 DEPENDENCIES
   aasm
