@@ -21,6 +21,7 @@ gem 'chartkick', '~> 3.4.0'
 gem 'draper'
 gem 'aasm'
 gem 'cancancan'
+gem 'rack-cors'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem "uglifier", ">= 4.2.0"

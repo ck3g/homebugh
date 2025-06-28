@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_13_065240) do
+ActiveRecord::Schema[8.0].define(version: 2023_10_13_065240) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.integer "user_id", null: false
@@ -154,5 +154,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_065240) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end

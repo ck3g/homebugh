@@ -67,5 +67,12 @@ module Homebugh
     config.assets.precompile += %w(welcome.css welcome.js)
 
     config.action_mailer.preview_paths = ["#{Rails.root}/test/mailers/previews"]
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '/api/token', headers: :any, methods: [:post, :options]
+      end
+    end
   end
 end

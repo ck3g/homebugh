@@ -45,7 +45,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
 
     # Force loading of Devise mappings early
-    Rails.application.reload_routes!
+    # Rails.application.reload_routes!
     Devise.mappings.keys.each { |key| Devise.mappings[key] }
   end
 

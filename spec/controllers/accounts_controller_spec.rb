@@ -8,14 +8,14 @@ describe AccountsController do
   let(:cash) { create :account, name: "Cash", user: user }
 
   describe "GET #index" do
-    before { get :index }
+    before { get :index, params: {} }
 
     it { expect(assigns[:accounts]).to eq [account] }
     it { is_expected.to render_template :index }
   end
 
   describe "GET #new" do
-    before { get :new }
+    before { get :new, params: {} }
 
     it { expect(assigns[:account]).to be_kind_of Account }
     it { is_expected.to render_template :new }

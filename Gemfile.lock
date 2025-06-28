@@ -312,6 +312,9 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.16)
+    rack-cors (3.0.0)
+      logger
+      rack (>= 3.0.14)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -512,6 +515,7 @@ DEPENDENCIES
   pry-rails
   psych (~> 3.3.4)
   puma
+  rack-cors
   rails (= 8.0.2)
   rails-controller-testing
   rails_best_practices

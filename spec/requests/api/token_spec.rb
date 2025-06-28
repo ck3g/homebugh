@@ -13,7 +13,7 @@ RSpec.describe 'API token', type: :request do
       let!(:user) { create :user, email: "user@example.com", password: "password" }
 
       before do
-        post "/api/token.json", params: { user: user_data }
+        post "/api/token", params: { user: user_data }
       end
 
       it "responds with created" do
@@ -34,7 +34,7 @@ RSpec.describe 'API token', type: :request do
 
     context "when user credentials are not valid" do
       before do
-        post "/api/token.json", params: { user: user_data }
+        post "/api/token", params: { user: user_data }
       end
 
       it "responds with unauthorized" do
