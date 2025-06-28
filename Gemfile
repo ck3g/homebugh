@@ -22,10 +22,9 @@ gem 'draper'
 gem 'aasm'
 gem 'cancancan'
 
-gem "sass-rails", "~> 6.0.0"
 gem 'bootstrap-sass', '~> 3.4.1'
 gem "uglifier", ">= 4.2.0"
-# gem "therubyracer", "~> 0.12.3"
+gem "sassc-ruby"
 gem 'font-awesome-rails'
 
 gem 'activemodel-serializers-xml'
@@ -38,7 +37,7 @@ gem 'jquery-ui-rails'
 
 gem 'ruby-progressbar'
 
-gem 'whenever', '~> 1.0.0', require: false
+gem 'whenever', '~> 1.0.0'
 gem 'mailgun-ruby'
 
 gem 'eventmachine', '~> 1.2.7', require: false
@@ -61,8 +60,10 @@ gem "puma"
 group :development do
   gem "capistrano", "~> 3.18.0", require: false
   gem 'capistrano-rbenv', require: false
-  gem 'capistrano-puma', require: false
+  gem 'capistrano-puma', '~> 0.2.3', require: false
+  
   gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
   gem "erb2haml"
   gem "rails_best_practices"
   

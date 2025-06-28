@@ -117,7 +117,11 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-bundler (2.1.1)
       capistrano (~> 3.1)
-    capistrano-puma (0.0.1)
+    capistrano-puma (0.2.3)
+      capistrano (>= 3.0)
+    capistrano-rails (1.7.0)
+      capistrano (~> 3.1)
+      capistrano-bundler (>= 1.1, < 3)
     capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
@@ -392,16 +396,9 @@ GEM
     ruby_parser (3.21.1)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
+    sassc-ruby (9001.0)
     securerandom (0.4.1)
     select2-rails (3.5.11)
     sexp_processor (4.17.3)
@@ -477,7 +474,8 @@ DEPENDENCIES
   cancancan
   capistrano (~> 3.18.0)
   capistrano-bundler
-  capistrano-puma
+  capistrano-puma (~> 0.2.3)
+  capistrano-rails
   capistrano-rbenv
   capybara
   chartkick (~> 3.4.0)
@@ -520,7 +518,7 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-rails (~> 8.0.1)
   ruby-progressbar
-  sass-rails (~> 6.0.0)
+  sassc-ruby
   select2-rails (~> 3.5.11)
   shoulda-matchers (~> 5.3.0)
   simple_form (~> 5.3.0)
