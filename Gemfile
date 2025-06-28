@@ -56,16 +56,18 @@ gem 'abbrev'
 
 gem 'recaptcha'
 
+gem "puma"
+
 group :development do
-  gem "puma"
   gem "capistrano", "~> 2.15.9", require: false
   gem 'capistrano-recipes', require: false
   gem 'capistrano_colors', require: false
-  gem 'capistrano-unicorn', '~> 0.1.10', require: false
+  
   gem 'capistrano-rbenv', :require => false
+  gem 'capistrano-puma', require: false
   gem "erb2haml"
   gem "rails_best_practices"
-  gem "thin"
+  
   gem 'spring'
   gem "spring-commands-rspec"
   gem 'ed25519', '~> 1.2', '>= 1.2.4'
@@ -97,7 +99,6 @@ end
 
 group :production do
   gem "exception_notification"
-  gem 'unicorn', '~> 4.9.0'
 end
 
 

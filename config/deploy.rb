@@ -7,7 +7,7 @@ set :shared_host, "198.211.96.190"
 set :application, "homebugh"
 set :deploy_to,   "/home/#{user}/apps/#{application}/"
 set :branch, "master"
-set :unicorn_env, "production"
+
 set :rails_env, "production"
 set :rbenv_ruby_version, "3.4.3"
 
@@ -73,6 +73,6 @@ set :whenever_command, "bundle exec whenever"
 require 'bundler/capistrano'
 require 'capistrano_colors'
 require 'capistrano-rbenv'
-require "capistrano-unicorn"
+require "capistrano/puma"
 require 'whenever/capistrano'
 
