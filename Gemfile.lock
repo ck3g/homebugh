@@ -199,18 +199,10 @@ GEM
     faker (2.14.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.5)
-    fiber-storage (1.0.1)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphiql-rails (1.7.0)
-      railties
-      sprockets-rails
-    graphql (2.5.9)
-      base64
-      fiber-storage
-      logger
     growl (1.0.3)
     haml (6.2.3)
       temple (>= 0.8.2)
@@ -312,8 +304,6 @@ GEM
     public_suffix (5.0.3)
     racc (1.7.1)
     rack (2.2.8)
-    rack-cors (1.1.1)
-      rack (>= 2.0.0)
     rack-session (1.0.1)
       rack (< 3)
     rack-test (2.1.0)
@@ -508,8 +498,6 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   faker (~> 2.14.0)
   font-awesome-rails
-  graphiql-rails
-  graphql
   growl (~> 1.0.3)
   haml
   has_scope (~> 0.5.1)
@@ -527,7 +515,6 @@ DEPENDENCIES
   ostruct
   pry-rails
   psych (~> 3.3.4)
-  rack-cors
   rails (= 7.1.1)
   rails-controller-testing
   rails_best_practices

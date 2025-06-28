@@ -45,9 +45,7 @@ gem 'eventmachine', '~> 1.2.7', require: false
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
 
-gem 'graphql'
-gem 'graphiql-rails'
-gem 'rack-cors'
+
 
 # To support new ruby versions
 gem 'ostruct'
