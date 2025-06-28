@@ -57,6 +57,7 @@ gem 'abbrev'
 gem 'recaptcha'
 
 group :development do
+  gem "puma"
   gem "capistrano", "~> 2.15.9", require: false
   gem 'capistrano-recipes', require: false
   gem 'capistrano_colors', require: false

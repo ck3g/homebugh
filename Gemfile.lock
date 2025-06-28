@@ -304,6 +304,8 @@ GEM
       pry (>= 0.13.0)
     psych (3.3.4)
     public_suffix (6.0.2)
+    puma (6.6.0)
+      nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.16)
     rack-session (2.1.1)
@@ -520,6 +522,7 @@ DEPENDENCIES
   ostruct
   pry-rails
   psych (~> 3.3.4)
+  puma
   rails (= 7.2.0)
   rails-controller-testing
   rails_best_practices
