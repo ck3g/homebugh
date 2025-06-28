@@ -1,8 +1,18 @@
-load 'deploy' if respond_to?(:namespace) # cap2 differentiator
+# Capfile
 
-# Uncomment if you are using Rails' asset pipeline
-load 'deploy/assets'
+# Load DSL and set up stages
+require "capistrano/setup"
 
-Dir['vendor/gems/*/recipes/*.rb','vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
+# Include default deployment tasks
+require "capistrano/deploy"
 
-load 'config/deploy' # remove this line to skip loading any of the default tasks
+# Load Capistrano plugins
+require "capistrano/rbenv"
+require "capistrano/bundler"
+require "capistrano/rails/assets"
+require "capistrano/rails/migrations"
+require "capistrano/puma"
+require "capistrano/whenever"
+
+# Load custom tasks from `lib/capistrano/tasks` if you have any
+Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }

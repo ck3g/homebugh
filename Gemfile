@@ -59,12 +59,10 @@ gem 'recaptcha'
 gem "puma"
 
 group :development do
-  gem "capistrano", "~> 2.15.9", require: false
-  gem 'capistrano-recipes', require: false
-  gem 'capistrano_colors', require: false
-  
-  gem 'capistrano-rbenv', :require => false
+  gem "capistrano", "~> 3.18.0", require: false
+  gem 'capistrano-rbenv', require: false
   gem 'capistrano-puma', require: false
+  gem 'capistrano-bundler', require: false
   gem "erb2haml"
   gem "rails_best_practices"
   
