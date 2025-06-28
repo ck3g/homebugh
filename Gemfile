@@ -87,7 +87,6 @@ group :test do
   gem "shoulda-matchers", '~> 5.3.0'
   gem "email_spec"
   gem "simplecov", require: false
-  gem "codeclimate-test-reporter", require: nil
 
   gem 'rb-fsevent', '>= 0.4.3', require: false
   gem 'growl',      '~> 1.0.3', require: false

@@ -1,8 +1,7 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
+
 
 require 'rubygems'
 #uncomment the following line to use spork with the debugger
