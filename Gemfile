@@ -26,6 +26,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem "uglifier", ">= 4.2.0"
 gem "sassc-ruby"
 gem 'font-awesome-rails'
+gem 'ffi'
 
 gem 'activemodel-serializers-xml'
 gem 'actionpack-page_caching'

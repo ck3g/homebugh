@@ -490,6 +490,7 @@ DEPENDENCIES
   exception_notification
   factory_bot_rails (~> 6.2.0)
   faker (~> 2.14.0)
+  ffi
   font-awesome-rails
   growl (~> 1.0.3)
   haml
