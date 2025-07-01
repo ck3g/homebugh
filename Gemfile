@@ -36,6 +36,7 @@ gem 'activerecord-deprecated_finders'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'react-rails'
 
 gem 'ruby-progressbar'
 

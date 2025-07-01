@@ -98,6 +98,10 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     autoprefixer-rails (10.4.21.0)
       execjs (~> 2)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     base64 (0.3.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
@@ -368,6 +372,12 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     rdoc (6.3.4.1)
+    react-rails (3.2.1)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     recaptcha (5.19.0)
     regexp_parser (2.10.0)
     reline (0.6.1)
@@ -521,6 +531,7 @@ DEPENDENCIES
   rails_best_practices
   rb-fsevent (>= 0.4.3)
   rb-inotify (~> 0.11.1)
+  react-rails
   recaptcha
   rspec-activemodel-mocks
   rspec-rails (~> 8.0.1)
