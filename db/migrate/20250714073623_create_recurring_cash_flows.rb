@@ -12,6 +12,5 @@ class CreateRecurringCashFlows < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
-    add_foreign_key :recurring_cash_flows, :users
   end
 end
