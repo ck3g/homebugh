@@ -148,6 +148,8 @@ en:
       spending_total: "Spending total"
     recurring_payments:
       you_have_no_recurring_payments: "You have no recurring payments yet."
+      ended_recurring_payments_short: "Ended"
+      you_have_no_active_recurring_payments: "You have no active recurring payments yet."
       recurring_payments_list: "Recurring payments"
       new_recurring_payment: 'New recurring payment'
       successfully_created: 'The recurring payment was successfully created.'

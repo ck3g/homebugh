@@ -193,6 +193,8 @@ ru:
       spending_total: "Расход всего"
     recurring_payments:
       you_have_no_recurring_payments: "Вы еще не завели периодических платежей."
+      ended_recurring_payments_short: "Завершенные"
+      you_have_no_active_recurring_payments: "У вас нет активных периодических платежей."
       recurring_payments_list: "Периодические платежи"
       new_recurring_payment: 'Новый периодический платеж'
       successfully_created: 'Периодический платеж создан.'

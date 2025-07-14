@@ -13,6 +13,7 @@ feature 'Display due recurring payments on transactions page' do
     create(:recurring_payment, :due, user: user, account: account, category: rent, next_payment_on: 1.day.from_now.to_date)
   end
   given!(:other_user_due_rp) { create(:recurring_payment, :due) }
+  given!(:ended_rp) { create(:recurring_payment, :due, user: user, account: account, category: services, ends_on: 1.day.ago.to_date) }
 
   background do
     sign_in_as 'user@example.com', 'password'
@@ -28,6 +29,7 @@ feature 'Display due recurring payments on transactions page' do
 
     expect(page).not_to have_selector("#recurring_payment_#{future_rp.id}")
     expect(page).not_to have_selector("#recurring_payment_#{other_user_due_rp.id}")
+    expect(page).not_to have_selector("#recurring_payment_#{ended_rp.id}")
   end
 
   scenario 'moving a recurring payment to next period redirects back to transactions page' do

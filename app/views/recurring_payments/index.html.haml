@@ -3,9 +3,15 @@
   add_link_title: t('parts.recurring_payments.new_recurring_payment'),
   add_link_url: new_recurring_payment_path
 
-.row
-  - if @recurring_payments.present?
-    = render 'recurring_payments', recurring_payments: @recurring_payments
+.row#active_recurring_payments
+  - if @active_recurring_payments.present?
+    = render 'recurring_payments', recurring_payments: @active_recurring_payments
   - else
     .col-xs-12.col-lg-12
-      %p.empty-data= t('parts.recurring_payments.you_have_no_recurring_payments')
+      %p.empty-data= t('parts.recurring_payments.you_have_no_active_recurring_payments')
+
+- if @ended_recurring_payments.present?
+  .row#ended_recurring_payments
+    .col-xs-12.col-lg-12
+      %h3= t('parts.recurring_payments.ended_recurring_payments_short')
+    = render 'recurring_payments', recurring_payments: @ended_recurring_payments

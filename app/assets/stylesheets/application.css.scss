@@ -27,16 +27,19 @@ table .actions a {
   width: 350px;
 }
 
-#recurring_payment_next_payment_on_3i {
-  width: 80px;
+#recurring_payment_next_payment_on_1i,
+#recurring_payment_ends_on_1i {
+  width: 100px;
 }
 
-#recurring_payment_next_payment_on_2i {
+#recurring_payment_next_payment_on_2i,
+#recurring_payment_ends_on_2i {
   width: 150px;
 }
 
-#recurring_payment_next_payment_on_1i {
-  width: 100px;
+#recurring_payment_next_payment_on_3i,
+#recurring_payment_ends_on_3i {
+  width: 80px;
 }
 
 .date-select {

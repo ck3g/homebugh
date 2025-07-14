@@ -4,7 +4,8 @@ class RecurringPaymentsController < ApplicationController
   before_action :find_recurring_payment, only: [:edit, :update, :destroy, :move_to_next_payment, :create_transaction]
 
   def index
-    @recurring_payments = current_user.recurring_payments.upcoming
+    @active_recurring_payments = current_user.recurring_payments.active.upcoming
+    @ended_recurring_payments = current_user.recurring_payments.ended.upcoming
   end
 
   def new
@@ -57,7 +58,7 @@ class RecurringPaymentsController < ApplicationController
   end
 
   def recurring_payment_params
-    [:title, :account_id, :category_id, :amount, :frequency, :frequency_amount, :next_payment_on]
+    [:title, :account_id, :category_id, :amount, :frequency, :frequency_amount, :next_payment_on, :ends_on]
   end
 
   def safe_params

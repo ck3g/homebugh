@@ -45,6 +45,17 @@ RSpec.describe RecurringPayment, type: :model do
         expect(rp).to be_invalid
         expect(rp.errors.full_messages_for(:next_payment_on)).to eq(["Next payment cannot be in the past"])
       end
+
+      it 'when ends on is more than a year in the past' do
+        rp = build_stubbed(:recurring_payment, ends_on: 1.year.ago.to_date - 1.day)
+        expect(rp).to be_invalid
+        expect(rp.errors.full_messages_for(:ends_on)).to eq(["Ends on cannot be more than a year in the past"])
+      end
+
+      it 'when ends on is less than a year in the past' do
+        rp = build_stubbed(:recurring_payment, ends_on: 1.year.ago.to_date + 1.day)
+        expect(rp).to be_valid
+      end
     end
   end
 
@@ -70,9 +81,34 @@ RSpec.describe RecurringPayment, type: :model do
     let!(:due_yesterday) { create(:recurring_payment, :due) }
     let!(:due_today) { create(:recurring_payment, next_payment_on: Date.today) }
     let!(:due_tomorrow) { create(:recurring_payment, next_payment_on: 1.day.from_now) }
+    let!(:ended_yesterday) { create(:recurring_payment, :due, ends_on: 1.day.ago.to_date) }
 
     it 'returns only due payments' do
       is_expected.to contain_exactly(due_yesterday, due_today)
+    end
+  end
+
+  describe '.active' do
+    subject { described_class.active }
+
+    let!(:active_payment) { create(:recurring_payment, ends_on: 1.day.from_now.to_date) }
+    let!(:never_ends_payment) { create(:recurring_payment, ends_on: nil) }
+    let!(:ended_payment) { create(:recurring_payment, ends_on: 1.day.ago.to_date) }
+
+    it 'returns only active payments' do
+      is_expected.to contain_exactly(active_payment, never_ends_payment)
+    end
+  end
+
+  describe '.ended' do
+    subject { described_class.ended }
+
+    let!(:active_payment) { create(:recurring_payment, ends_on: 1.day.from_now.to_date) }
+    let!(:never_ends_payment) { create(:recurring_payment, ends_on: nil) }
+    let!(:ended_payment) { create(:recurring_payment, ends_on: 1.day.ago.to_date) }
+
+    it 'returns only ended payments' do
+      is_expected.to contain_exactly(ended_payment)
     end
   end
 

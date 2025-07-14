@@ -36,6 +36,7 @@ feature 'Edit Recurring Payment' do
     select_next_payment_date(10.days.from_now.to_date)
     select 'Monthly', from: 'recurring_payment_frequency'
     fill_in 'recurring_payment_frequency_amount', with: 1
+    select_ends_on_date(1.month.from_now.to_date)
     click_button 'recurring_payment_submit'
 
     expect(current_path).to eq recurring_payments_path
@@ -50,6 +51,7 @@ feature 'Edit Recurring Payment' do
     expect(rp.frequency).to eq('monthly')
     expect(rp.frequency_amount).to eq(1)
     expect(rp.next_payment_on).to eq(10.days.from_now.to_date)
+    expect(rp.ends_on).to eq(1.month.from_now.to_date)
   end
 end
 
@@ -57,4 +59,10 @@ def select_next_payment_date(date)
   select date.day, from: 'recurring_payment_next_payment_on_3i'
   select date.strftime("%B"), from: 'recurring_payment_next_payment_on_2i'
   select date.year, from: 'recurring_payment_next_payment_on_1i'
+end
+
+def select_ends_on_date(date)
+  select date.day, from: 'recurring_payment_ends_on_3i'
+  select date.strftime("%B"), from: 'recurring_payment_ends_on_2i'
+  select date.year, from: 'recurring_payment_ends_on_1i'
 end
