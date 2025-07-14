@@ -15,8 +15,5 @@ class CreateRecurringCashFlows < ActiveRecord::Migration[8.0]
     add_index :recurring_cash_flows, :user_id
     add_index :recurring_cash_flows, :from_account_id
     add_index :recurring_cash_flows, :to_account_id
-    add_foreign_key :recurring_cash_flows, :users
-    add_foreign_key :recurring_cash_flows, :accounts, column: :from_account_id
-    add_foreign_key :recurring_cash_flows, :accounts, column: :to_account_id
   end
 end
