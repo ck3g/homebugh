@@ -11,6 +11,7 @@ en:
       category: "Category"
       account: "Account"
       recurring_payment: 'Recuring payment'
+      recurring_cash_flow: 'Recurring cash flow'
 
     attributes:
       category:
@@ -35,6 +36,14 @@ en:
       recurring_payment:
         frequency_amount: "Interval"
         next_payment_on: "Next payment"
+      recurring_cash_flow:
+        from_account: "From Account"
+        to_account: "To Account"
+        amount: "Amount"
+        frequency: "Frequency"
+        frequency_amount: "Interval"
+        next_transfer_on: "Next Transfer"
+        ends_on: "Ends On"
 
     errors:
       template:
@@ -57,6 +66,7 @@ en:
     statistics: "Statistics"
     budgets: Budgets
     recurring_payments: Recurring payments
+    recurring_cash_flows: Recurring cash flows
     profile: Profile
   helpers:
     submit:
@@ -83,6 +93,7 @@ en:
     update: 'Update'
     amount: "Amount"
     next_payment: "Next payment"
+    next_transfer: "Next transfer"
     title: "Title"
   parts:
     budgets:
@@ -166,6 +177,17 @@ en:
       due: 'Due recurring payment'
       due_description: 'You can create a new transaction from this recurring payment by clicking the "plus" button. You can skip this due recurring payment and move it to the next payment period by clicking the "arrows" button.'
       create_from_transaction: 'Create a recurring payment from the transaction'
+    recurring_cash_flows:
+      recurring_cash_flows_list: "Recurring cash flows"
+      new_recurring_cash_flow: "New recurring cash flow"
+      successfully_created: "The recurring cash flow was successfully created."
+      edit_recurring_cash_flow: "Edit recurring cash flow"
+      successfully_updated: "The recurring cash flow was successfully updated."
+      perform_transfer: "Perform transfer"
+      move_to_next_transfer: "Move to next transfer date"
+      cannot_perform_transfer: "Cannot perform transfer from this recurring cash flow"
+      you_have_no_active_recurring_cash_flows: "You have no active recurring cash flows yet."
+      ended_recurring_cash_flows_short: "Ended"
     auth:
       sign_in: "Sign in"
       sign_out: "Sign out"

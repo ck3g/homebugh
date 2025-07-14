@@ -23,22 +23,30 @@ table .actions a {
 #s2id_cash_flow_to_account_id,
 #s2id_budget_category_id,
 #s2id_recurring_payment_category_id,
-#s2id_recurring_payment_account_id {
+#s2id_recurring_payment_account_id,
+#s2id_recurring_cash_flow_from_account_id,
+#s2id_recurring_cash_flow_to_account_id {
   width: 350px;
 }
 
 #recurring_payment_next_payment_on_1i,
-#recurring_payment_ends_on_1i {
+#recurring_payment_ends_on_1i,
+#recurring_cash_flow_next_transfer_on_1i,
+#recurring_cash_flow_ends_on_1i {
   width: 100px;
 }
 
 #recurring_payment_next_payment_on_2i,
-#recurring_payment_ends_on_2i {
+#recurring_payment_ends_on_2i,
+#recurring_cash_flow_next_transfer_on_2i,
+#recurring_cash_flow_ends_on_2i {
   width: 150px;
 }
 
 #recurring_payment_next_payment_on_3i,
-#recurring_payment_ends_on_3i {
+#recurring_payment_ends_on_3i,
+#recurring_cash_flow_next_transfer_on_3i,
+#recurring_cash_flow_ends_on_3i {
   width: 80px;
 }
 

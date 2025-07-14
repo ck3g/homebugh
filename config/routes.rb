@@ -12,6 +12,13 @@ Homebugh::Application.routes.draw do
     end
   end
 
+  resources :recurring_cash_flows do
+    member do
+      put :move_to_next_transfer
+      post :perform_transfer
+    end
+  end
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   authenticated :user do

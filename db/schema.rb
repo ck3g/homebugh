@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_14_055835) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_14_073623) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.integer "user_id", null: false
@@ -99,6 +99,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_14_055835) do
     t.index ["name"], name: "index_currencies_on_name", unique: true
   end
 
+  create_table "recurring_cash_flows", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "from_account_id", null: false
+    t.bigint "to_account_id", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.integer "frequency_amount", null: false
+    t.integer "frequency", default: 0, null: false
+    t.date "next_transfer_on", null: false
+    t.date "ends_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_account_id"], name: "index_recurring_cash_flows_on_from_account_id"
+    t.index ["to_account_id"], name: "index_recurring_cash_flows_on_to_account_id"
+    t.index ["user_id"], name: "index_recurring_cash_flows_on_user_id"
+  end
+
   create_table "recurring_payments", charset: "utf8mb3", force: :cascade do |t|
     t.string "title", null: false
     t.integer "user_id", null: false
@@ -155,4 +171,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_14_055835) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "recurring_cash_flows", "accounts", column: "from_account_id"
+  add_foreign_key "recurring_cash_flows", "accounts", column: "to_account_id"
+  add_foreign_key "recurring_cash_flows", "users"
 end

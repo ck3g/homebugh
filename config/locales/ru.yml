@@ -37,6 +37,7 @@ ru:
       category: "Категорию"
       account: "Счет"
       recurring_payment: 'Периодический платеж'
+      recurring_cash_flow: 'Периодическое движение средств'
 
     attributes:
       category:
@@ -66,6 +67,14 @@ ru:
         frequency: "Периодичность"
         frequency_amount: "Промежуток"
         next_payment_on: "Следующий платеж"
+      recurring_cash_flow:
+        from_account: "Со счета"
+        to_account: "На счет"
+        amount: "Сумма"
+        frequency: "Периодичность"
+        frequency_amount: "Промежуток"
+        next_transfer_on: "Следующий перевод"
+        ends_on: "Завершается"
 
     errors:
       template:
@@ -101,6 +110,7 @@ ru:
     statistics: "Статистика"
     budgets: Бюджет
     recurring_payments: Периодические платежи
+    recurring_cash_flows: Периодические движения средств
     profile: Профиль
 
   helpers:
@@ -127,6 +137,9 @@ ru:
     total_funds: "Всего"
     date: "Дата"
     update: "Обновить"
+    amount: "Сумма"
+    next_payment: "Следующий платеж"
+    next_transfer: "Следующий перевод"
 
   parts:
     budgets:
@@ -211,6 +224,17 @@ ru:
       due: 'Текущий повторяющийся платеж'
       due_description: 'Вы можете создать транзакцию из данного повторяющегося платежа нажав на кнопку со знаком плюс. Вы так же можете пропустить текущий платеж и перейти к следующему периоду, нажав кнопку с изображением стрелок.'
       create_from_transaction: 'Завести повторяющийся платеж из текущей транзакции'
+    recurring_cash_flows:
+      recurring_cash_flows_list: "Периодические движения средств"
+      new_recurring_cash_flow: "Новое периодическое движение средств"
+      successfully_created: "Периодическое движение средств успешно создано."
+      edit_recurring_cash_flow: "Редактирование периодического движения средств"
+      successfully_updated: "Периодическое движение средств успешно обновлено."
+      perform_transfer: "Выполнить перевод"
+      move_to_next_transfer: "Перейти к следующей дате перевода"
+      cannot_perform_transfer: "Не удается выполнить перевод из данного периодического движения средств"
+      you_have_no_active_recurring_cash_flows: "У вас нет активных периодических движений средств."
+      ended_recurring_cash_flows_short: "Завершенные"
 
     auth:
       sign_out: "Выход"

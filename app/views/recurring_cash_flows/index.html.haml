@@ -1,0 +1,17 @@
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.recurring_cash_flows.recurring_cash_flows_list'),
+  add_link_title: t('parts.recurring_cash_flows.new_recurring_cash_flow'),
+  add_link_url: new_recurring_cash_flow_path
+
+.row#active_recurring_cash_flows
+  - if @active_recurring_cash_flows.present?
+    = render 'recurring_cash_flows', recurring_cash_flows: @active_recurring_cash_flows
+  - else
+    .col-xs-12.col-lg-12
+      %p.empty-data= t('parts.recurring_cash_flows.you_have_no_active_recurring_cash_flows')
+
+- if @ended_recurring_cash_flows.present?
+  .row#ended_recurring_cash_flows
+    .col-xs-12.col-lg-12
+      %h3= t('parts.recurring_cash_flows.ended_recurring_cash_flows_short')
+    = render 'recurring_cash_flows', recurring_cash_flows: @ended_recurring_cash_flows

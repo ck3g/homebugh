@@ -1,0 +1,31 @@
+.col-xs-12.col-lg-12
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= t('common.date')
+          %th= t('parts.cash_flows.from_to')
+          %th= t('common.amount')
+          %th= t('common.next_transfer')
+          %th= t('common.update')
+          %th
+      %tbody
+        - recurring_cash_flows.each do |rcf|
+          %tr{ id: "recurring_cash_flow_#{rcf.id}" }
+            %td= l(rcf.created_at.to_date, format: :long)
+            %td
+              = rcf.from_account.name
+              = t(:arrow)
+              = rcf.to_account.name
+            %td= rcf.decorate.amount
+            %td= l(rcf.next_transfer_on.to_date, format: :long)
+            %td= rcf.decorate.frequency
+            %td.span2.actions
+              = link_to perform_transfer_recurring_cash_flow_path(rcf), class: 'btn btn-success btn-xs', method: :post, title: t('parts.recurring_cash_flows.perform_transfer') do
+                = fa_icon "plus"
+              = link_to move_to_next_transfer_recurring_cash_flow_path(rcf), class: 'btn btn-default btn-xs', method: :put, title: t('parts.recurring_cash_flows.move_to_next_transfer') do
+                = fa_icon "forward"
+              = link_to edit_recurring_cash_flow_path(rcf), class: 'btn btn-default btn-edit btn-xs', title: t('common.edit') do
+                = fa_icon "pencil"
+              = link_to recurring_cash_flow_path(rcf), class: 'btn btn-danger btn-delete btn-xs', method: :delete, data: { confirm: t('common.are_you_sure') }, title: t('common.destroy') do
+                = fa_icon "trash"
