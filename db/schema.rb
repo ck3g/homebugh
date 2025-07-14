@@ -112,6 +112,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_14_073623) do
     t.datetime "updated_at", null: false
     t.index ["from_account_id"], name: "index_recurring_cash_flows_on_from_account_id"
     t.index ["to_account_id"], name: "index_recurring_cash_flows_on_to_account_id"
+    t.index ["user_id"], name: "index_recurring_cash_flows_on_user_id"
   end
 
   create_table "recurring_payments", charset: "utf8mb3", force: :cascade do |t|
@@ -173,4 +174,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_14_073623) do
 
   add_foreign_key "recurring_cash_flows", "accounts", column: "from_account_id"
   add_foreign_key "recurring_cash_flows", "accounts", column: "to_account_id"
+  add_foreign_key "recurring_cash_flows", "users"
 end
