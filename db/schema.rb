@@ -112,7 +112,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_14_073623) do
     t.datetime "updated_at", null: false
     t.index ["from_account_id"], name: "index_recurring_cash_flows_on_from_account_id"
     t.index ["to_account_id"], name: "index_recurring_cash_flows_on_to_account_id"
-    t.index ["user_id"], name: "index_recurring_cash_flows_on_user_id"
+    t.index ["user_id"], name: "fk_rails_d9e5218d31"
   end
 
   create_table "recurring_payments", charset: "utf8mb3", force: :cascade do |t|
