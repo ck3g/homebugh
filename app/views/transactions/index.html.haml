@@ -17,7 +17,7 @@
               %th.span2
           %tbody
             - @recurring_payments.each do |recurring_payment|
-              %tr.due-recurring-payments{ id: dom_id(recurring_payment) }
+              %tr.due-row{ id: dom_id(recurring_payment) }
                 %td.span2
                   %span= l(Date.today, format: :long)
                   %a.btn.btn-link.btn-mini.btn-xs{tabindex: 0, role: 'button', data: { toggle: 'popover', trigger: 'focus', content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}

@@ -71,3 +71,16 @@ table .actions a {
 .form-group.action-buttons {
   margin-top: 20px;
 }
+
+.due-row {
+  color: gray;
+  border-bottom: 2px dotted #eee;
+  background-color: rgba(92, 184, 92, .1);
+
+  td {
+    span {
+      filter: alpha(opacity=60);
+      opacity: 0.6;
+    }
+  }
+}

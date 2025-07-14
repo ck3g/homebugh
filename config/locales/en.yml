@@ -186,6 +186,8 @@ en:
       perform_transfer: "Perform transfer"
       move_to_next_transfer: "Move to next transfer date"
       cannot_perform_transfer: "Cannot perform transfer from this recurring cash flow"
+      due: 'Due recurring cash flow'
+      due_description: 'You can perform a transfer from this recurring cash flow by clicking the "plus" button. You can skip this due recurring cash flow and move it to the next transfer period by clicking the "forward" button.'
       you_have_no_active_recurring_cash_flows: "You have no active recurring cash flows yet."
       ended_recurring_cash_flows_short: "Ended"
     auth:

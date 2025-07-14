@@ -4,6 +4,7 @@ class CashFlowsController < ApplicationController
   before_action :find_accounts, only: [:new, :create, :destroy]
 
   def index
+    @due_recurring_cash_flows = current_user.recurring_cash_flows.due
     @cash_flows = current_user.cash_flows.includes(:from_account, :to_account).order('created_at desc').page(params[:page])
   end
 

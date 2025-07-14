@@ -5,7 +5,7 @@
   additional_links: [ { title: t('main_menu.recurring_cash_flows'), url: recurring_cash_flows_path } ]
 
 .row
-  - if @cash_flows.present?
+  - if @cash_flows.present? || @due_recurring_cash_flows.present?
     .col-xs-12.col-lg-12
       .table-responsive
         %table.table
@@ -17,6 +17,27 @@
               %th.span2.number= CashFlow.human_attribute_name :amount
               %th.span2.actions
           %tbody
+            - if @due_recurring_cash_flows.present?
+              - @due_recurring_cash_flows.each do |rcf|
+                %tr.due-row{ id: dom_id(rcf) }
+                  %td.span2
+                    %span= l(Date.today, format: :long)
+                    %a.btn.btn-link.btn-mini.btn-xs{tabindex: 0, role: 'button', data: { toggle: 'popover', trigger: 'focus', content: t('parts.recurring_cash_flows.due_description') }, title: t('parts.recurring_cash_flows.due')}
+                      = fa_icon 'question'
+                  %td
+                    %span.category= rcf.from_account.name
+                    = t(:arrow)
+                    %span.comment= rcf.to_account.name
+                  %td.span2.number
+                    %span
+                  %td.span2.number
+                    %span= rcf.decorate.amount
+                  %td.span2.actions
+                    = link_to perform_transfer_recurring_cash_flow_path(rcf), title: t('parts.recurring_cash_flows.perform_transfer'), method: :post, class: "btn btn-mini btn-success btn-xs", data: { toggle: 'tooltip' } do
+                      = fa_icon "plus"
+                    = link_to move_to_next_transfer_recurring_cash_flow_path(rcf), title: t('parts.recurring_cash_flows.move_to_next_transfer'), method: :put, class: "btn btn-mini btn-default btn-xs", data: { toggle: 'tooltip' } do
+                      = fa_icon "forward"
+
             - @cash_flows.each do |cash_flow|
               %tr
                 %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
