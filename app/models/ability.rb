@@ -8,6 +8,7 @@ class Ability
     cannot :all, :all
 
     if user.persisted?
+      can :index, :dashboard
       can [:index, :archived], :statistics
 
       can :create, entities

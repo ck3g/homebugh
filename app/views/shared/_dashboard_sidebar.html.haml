@@ -1,6 +1,11 @@
 %div.dashboard-sidebar
   %nav.sidebar-nav
     %ul.nav.nav-pills.nav-stacked
+      %li{class: ("active" if controller_name == 'dashboard')}
+        = link_to dashboard_path, title: "Dashboard", "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-dashboard
+          %span Dashboard
+
       %li{class: ("active" if controller_name == 'transactions')}
         = link_to transactions_path, title: t("main_menu.transactions"), "data-toggle" => "tooltip", "data-placement" => "right" do
           %i.fa.fa-exchange

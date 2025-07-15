@@ -3,6 +3,7 @@
     %ul.site-links
       %li.first= copyright
       - if user_signed_in?
+        %li= link_to "Dashboard", dashboard_path
         %li= link_to t("main_menu.transactions"), transactions_path
         %li= link_to t("main_menu.recurring_payments"), recurring_payments_path
         %li= link_to t("main_menu.cash_flows"), cash_flows_path

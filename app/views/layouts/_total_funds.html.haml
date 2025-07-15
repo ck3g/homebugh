@@ -1,19 +1,19 @@
 - if user_signed_in? && current_user.accounts.any?
-  #accounts_summary.panel.panel-default
-    .panel-body
+  .accounts-summary
+    .row
       - current_user.accounts.active.show_in_summary.each do |account|
-        .col-xs-12.col-sm-3
-          = succeed ":" do
-            = account.name
-          .pull-right
-            %strong= account.decorate.amount
-        .col-sm-1
-      .clearfix
-
-    .panel-footer
+        .col-xs-12.col-sm-6.col-lg-3
+          .account-card
+            .account-header
+              %h4.account-name= account.name
+            .account-amount
+              %span.amount-value= account.decorate.amount
+    
+    .row.total-summary
       - TotalAmount.of(current_user).each do |unit, amount|
-        .col-xs-12.col-sm-3
-          .pull-right
-            %strong= get_number_to_currency(amount, unit)
-        .col-sm-1
-      .clearfix
+        .col-xs-12.col-sm-6.col-lg-3
+          .total-card
+            .total-header
+              %h4.total-label Total #{unit}
+            .total-amount
+              %span.amount-value= get_number_to_currency(amount, unit)

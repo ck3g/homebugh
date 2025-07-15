@@ -6,6 +6,7 @@ RSpec.describe Ability, type: :model do
     subject { Ability.new nil }
 
     it { is_expected.not_to be_able_to :all, :all }
+    it { is_expected.not_to be_able_to :index, :dashboard }
   end
 
   context 'when user is signed in' do
@@ -27,6 +28,7 @@ RSpec.describe Ability, type: :model do
 
     subject { Ability.new user }
 
+    it { is_expected.to be_able_to :index, :dashboard }
     it { is_expected.to be_able_to :index, :statistics }
     it { is_expected.to be_able_to :archived, :statistics }
 
