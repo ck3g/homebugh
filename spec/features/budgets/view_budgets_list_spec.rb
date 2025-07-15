@@ -10,7 +10,7 @@ feature "View budgets list" do
   context "when user has no budgets yet" do
     scenario "user will see empty list" do
       visit root_path
-      within "div.navbar" do
+      within ".dashboard-sidebar" do
         click_link "Budgets"
       end
 

@@ -10,26 +10,17 @@
     = csrf_meta_tag
     = javascript_include_tag :application
   %body
-    = render 'shared/top_navbar'
-
-    .container
-      = render 'shared/flash_messages'
-
-      .row
-        .col-lg-12
-          = render 'layouts/total_funds'
-
-      - if current_user.present?
+    - if user_signed_in?
+      = render 'shared/dashboard_layout'
+    - else
+      = render 'shared/top_navbar'
+      .container
+        = render 'shared/flash_messages'
+        = yield
         .row
-          .col-lg-12
-            = render 'shared/todo_list'
-
-      = yield
-
-      .row
-        .col-xs-12.col-lg-12
-          %hr/
-          %footer
-            = render 'shared/footer'
+          .col-xs-12.col-lg-12
+            %hr/
+            %footer
+              = render 'shared/footer'
     = render 'shared/analytics'
   = render 'shared/cookie_consent_modal'

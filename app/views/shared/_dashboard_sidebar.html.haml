@@ -1,0 +1,46 @@
+%div.dashboard-sidebar
+  %nav.sidebar-nav
+    %ul.nav.nav-pills.nav-stacked
+      %li{class: ("active" if controller_name == 'transactions')}
+        = link_to transactions_path, title: t("main_menu.transactions"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-exchange
+          %span= t("main_menu.transactions")
+
+      %li{class: ("active" if controller_name == 'recurring_payments')}
+        = link_to recurring_payments_path, title: t("main_menu.recurring_payments"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-repeat
+          %span= t("main_menu.recurring_payments")
+
+      %li{class: ("active" if controller_name == 'cash_flows')}
+        = link_to cash_flows_path, title: t("main_menu.cash_flows"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-money
+          %span= t("main_menu.cash_flows")
+
+      %li{class: ("active" if controller_name == 'recurring_cash_flows')}
+        = link_to recurring_cash_flows_path, title: t("main_menu.recurring_cash_flows"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-calendar
+          %span= t("main_menu.recurring_cash_flows")
+
+      %li{class: ("active" if controller_name == 'accounts')}
+        = link_to accounts_path, title: t("main_menu.accounts"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-university
+          %span= t("main_menu.accounts")
+
+      %li{class: ("active" if controller_name == 'categories')}
+        = link_to categories_path, title: t("main_menu.categories"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-tags
+          %span= t("main_menu.categories")
+
+      %li{class: ("active" if controller_name == 'budgets')}
+        = link_to budgets_path, title: t("main_menu.budgets"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-calculator
+          %span= t("main_menu.budgets")
+
+      %li{class: ("active" if controller_name == 'statistics')}
+        = link_to statistics_path, title: t("main_menu.statistics"), "data-toggle" => "tooltip", "data-placement" => "right" do
+          %i.fa.fa-bar-chart
+          %span= t("main_menu.statistics")
+
+  %div.sidebar-toggle-footer
+    %button.sidebar-collapse-btn{type: "button"}
+      %i.fa.fa-angle-left

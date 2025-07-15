@@ -1,0 +1,27 @@
+%div.dashboard-topbar
+  %div.topbar-left
+    %button.sidebar-toggle{type: "button"}
+      %i.fa.fa-bars
+    = link_to "HomeBugh", root_path, class: "brand-name"
+
+  %div.topbar-right
+    %ul.nav.navbar-nav
+      %li.dropdown
+        = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-haspopup" => "true", "aria-expanded" => "false" do
+          = image_tag("flags/#{inverse_locale}.png", class: "flag-icon")
+          %span.caret
+        %ul.dropdown-menu.dropdown-menu-right
+          %li
+            = link_to url_for(locale: inverse_locale) do
+              = image_tag("flags/#{inverse_locale}.png", class: "flag-icon")
+              = t("locales.#{inverse_locale}")
+      %li.dropdown
+        = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-haspopup" => "true", "aria-expanded" => "false" do
+          %i.fa.fa-user
+          %span.caret
+        %ul.dropdown-menu.dropdown-menu-right
+          %li
+            = link_to t("main_menu.profile"), users_profile_path
+          %li.divider
+          %li
+            = link_to t("parts.auth.sign_out"), destroy_user_session_path, method: :delete

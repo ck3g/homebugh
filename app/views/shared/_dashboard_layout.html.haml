@@ -1,0 +1,16 @@
+%div.dashboard-wrapper
+  = render 'shared/dashboard_topbar'
+  = render 'shared/dashboard_sidebar'
+
+  %div.dashboard-content
+    %div.dashboard-main
+      = render 'shared/flash_messages'
+      = render 'layouts/total_funds'
+
+      - if current_user.present?
+        = render 'shared/todo_list'
+
+      = yield
+
+    %footer.dashboard-footer
+      = render 'shared/footer'

@@ -1,8 +1,7 @@
 = render 'shared/sub_navbar_widget',
   title_content: t('parts.cash_flows.flows_list'),
   add_link_title: t('parts.cash_flows.new_cash_flows'),
-  add_link_url: new_cash_flow_path,
-  additional_links: [ { title: t('main_menu.recurring_cash_flows'), url: recurring_cash_flows_path } ]
+  add_link_url: new_cash_flow_path
 
 .row
   - if @cash_flows.present? || @due_recurring_cash_flows.present?
