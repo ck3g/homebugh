@@ -105,6 +105,21 @@ en:
       edit: Edit the budget
       current_month: Current month
       last_month: Last month
+      empty_state:
+        description_1: "Take control of your finances by setting monthly budgets for different categories."
+        description_2: "Monitor your spending habits and see when you need to slow down a little bit."
+        examples_title: "Common Budget Categories:"
+        examples:
+          food: "Food & Groceries"
+          food_desc: " - Track your dining and grocery expenses"
+          transport: "Transportation"
+          transport_desc: " - Gas, public transport, parking fees"
+          entertainment: "Entertainment"
+          entertainment_desc: " - Movies, concerts, streaming services"
+          shopping: "Shopping"
+          shopping_desc: " - Clothes, electronics, household items"
+          bills: "Bills & Utilities"
+          bills_desc: " - Phone, internet, electricity"
     categories:
       categories_list: "List of categories"
       new_category: "New category"

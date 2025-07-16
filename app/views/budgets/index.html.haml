@@ -1,17 +1,17 @@
-= render 'shared/sub_navbar_widget',
-  title_content: t('parts.budgets.index'),
-  add_link_title: t('parts.budgets.new'),
-  add_link_url: new_budget_path
+- if @budgets.present?
+  = render 'shared/sub_navbar_widget',
+    title_content: t('parts.budgets.index'),
+    add_link_title: t('parts.budgets.new'),
+    add_link_url: new_budget_path
+  
+  .row
+    .col-xs-12.col-lg-12
+      - date = Date.parse("#{params[:year]}-#{params[:month]}-1") rescue Date.current
+      = link_to t("parts.budgets.current_month"), url_for, class: "btn btn-default", disabled: params[:month].blank?
+      = link_to t("parts.budgets.last_month"), url_for(month: 1.month.ago.month, year: 1.month.ago.year), class: "btn btn-default", disabled: params[:month].present?
+  .spacer
 
-.row
-  .col-xs-12.col-lg-12
-    - date = Date.parse("#{params[:year]}-#{params[:month]}-1") rescue Date.current
-    = link_to t("parts.budgets.current_month"), url_for, class: "btn btn-default", disabled: params[:month].blank?
-    = link_to t("parts.budgets.last_month"), url_for(month: 1.month.ago.month, year: 1.month.ago.year), class: "btn btn-default", disabled: params[:month].present?
-.spacer
-
-.row
-  - if @budgets.present?
+  .row
     .col-xs-12.col-lg-12
       .table-responsive
         %table.table
@@ -28,11 +28,34 @@
                     = fa_icon "edit"
                   = link_to budget, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
                     = fa_icon "trash"
-  - else
-    .col-xs-6.col-xs-offset-3
-      %div
-        = t('parts.budgets.no_budgets_yet')
-      %div
-        = link_to t('parts.budgets.start_budget_planning'), new_budget_path, class: 'btn btn-success btn-lg'
-      %div
-        = t('parts.budgets.no_budgets_yet_desc')
+- else
+  .row
+    .col-xs-12
+      .budget-empty-state
+        .empty-state-icon
+          = fa_icon "bar-chart", class: "fa-5x"
+        .empty-state-title
+          %h3= t('parts.budgets.no_budgets_yet')
+        .empty-state-description
+          %p= t('parts.budgets.empty_state.description_1')
+          %p= t('parts.budgets.empty_state.description_2')
+        .empty-state-examples
+          %h4= t('parts.budgets.empty_state.examples_title')
+          %ul
+            %li
+              %strong= t('parts.budgets.empty_state.examples.food')
+              %span.text-muted= t('parts.budgets.empty_state.examples.food_desc')
+            %li
+              %strong= t('parts.budgets.empty_state.examples.transport')
+              %span.text-muted= t('parts.budgets.empty_state.examples.transport_desc')
+            %li
+              %strong= t('parts.budgets.empty_state.examples.entertainment')
+              %span.text-muted= t('parts.budgets.empty_state.examples.entertainment_desc')
+            %li
+              %strong= t('parts.budgets.empty_state.examples.shopping')
+              %span.text-muted= t('parts.budgets.empty_state.examples.shopping_desc')
+            %li
+              %strong= t('parts.budgets.empty_state.examples.bills')
+              %span.text-muted= t('parts.budgets.empty_state.examples.bills_desc')
+        .empty-state-action
+          = link_to t('parts.budgets.start_budget_planning'), new_budget_path, class: 'btn btn-success btn-lg'

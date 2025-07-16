@@ -627,7 +627,151 @@ ul.site-links {
   }
 }
 
+// Budget empty state styling
+.budget-empty-state {
+  text-align: center;
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  
+  .empty-state-icon {
+    margin-bottom: 30px;
+    color: #47a447;
+    opacity: 0.8;
+  }
+  
+  .empty-state-title {
+    margin-bottom: 20px;
+    
+    h3 {
+      color: #333;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+  
+  .empty-state-description {
+    margin-bottom: 30px;
+    
+    p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  .empty-state-examples {
+    margin-bottom: 40px;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    h4 {
+      color: #333;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f3f4;
+        display: flex;
+        align-items: flex-start;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        strong {
+          color: #333;
+          font-weight: 600;
+          min-width: 180px;
+          margin-right: 15px;
+          flex-shrink: 0;
+        }
+        
+        .text-muted {
+          color: #666;
+          font-size: 14px;
+          line-height: 1.4;
+          flex: 1;
+        }
+      }
+    }
+  }
+  
+  .empty-state-action {
+    .btn {
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}
+
 // Responsive adjustments
+@media (max-width: 768px) {
+  .budget-empty-state {
+    margin: 30px auto;
+    padding: 30px 15px;
+    
+    .empty-state-icon {
+      margin-bottom: 20px;
+      
+      .fa {
+        font-size: 3em !important;
+      }
+    }
+    
+    .empty-state-examples {
+      max-width: 100%;
+      
+      ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        
+        strong {
+          min-width: auto;
+          margin-right: 0;
+          margin-bottom: 5px;
+        }
+      }
+    }
+    
+    .empty-state-action {
+      .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .accounts-summary {
     .account-card, .total-card {
