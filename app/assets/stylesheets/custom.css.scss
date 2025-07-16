@@ -450,6 +450,27 @@ ul.site-links {
   }
 }
 
+// Separator between current month and past months
+.past-months-separator {
+  margin: 40px 0;
+  border: 0;
+  border-top: 2px solid #e9ecef;
+  position: relative;
+  
+  &::after {
+    content: "Past Months";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 0 20px;
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .accounts-summary {

@@ -1,22 +1,37 @@
 = react_component('PageTitle', { title: t('parts.statistics.stats_by_months') })
 
+.currencies{role: 'tabpanel'}
+  %ul.nav.nav-tabs{tole: 'tablist'}
+    - current_user.currencies.each_with_index do |currency, index|
+      %li{class: ('active' if active_currency?(currency, :statistics_path, index.zero?))}
+        = link_to currency.name, statistics_path(currency: currency.name)
 
-%div{role: 'tabpanel'}
-  = render 'tabs'
+#stats
+  - @current_month_stats.each do |stats|
+    = render 'charts',
+      title: stats[:title],
+      total_income: stats[:income],
+      total_spending: stats[:spending],
+      income_chart_data: stats[:income_chart_data],
+      spending_chart_data: stats[:spending_chart_data]
 
-  .tab-content
-    .tab-pane.active
-    .currencies{role: 'tabpanel'}
-      %ul.nav.nav-tabs{tole: 'tablist'}
-        - current_user.currencies.each_with_index do |currency, index|
-          %li{class: ('active' if active_currency?(currency, :statistics_path, index.zero?))}
-            = link_to currency.name, statistics_path(currency: currency.name)
-      #stats
-        - @statistics.each do |stats|
-          = render 'charts',
-            title: stats[:title],
-            total_income: stats[:income],
-            total_spending: stats[:spending],
-            income_chart_data: stats[:income_chart_data],
-            spending_chart_data: stats[:spending_chart_data]
+  - if @past_months_stats.any?
+    %hr.past-months-separator
+
+  - @past_months_stats.each do |months|
+    - months.each do |month, monthly_data|
+      - income_chart_data = {}
+      - monthly_data[:income].each do |data|
+        - income_chart_data[data.category.name] = data.amount
+
+      - spending_chart_data = {}
+      - monthly_data[:spending].each do |data|
+        - spending_chart_data[data.category.name] = data.amount
+
+      = render 'charts',
+        title: l(month.to_date, format: :month_year),
+        total_income: monthly_data[:income].pluck(:amount).inject(:+) || 0,
+        total_spending: monthly_data[:spending].pluck(:amount).inject(:+) || 0,
+        income_chart_data: income_chart_data,
+        spending_chart_data: spending_chart_data
 
