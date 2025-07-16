@@ -1,2 +1,11 @@
-= form_title t("parts.budgets.new")
-= render 'form', budget: @budget
+.card-panels
+  .row
+    .col-md-8.col-md-offset-2
+      %fieldset
+        %legend= t("parts.budgets.new")
+        
+        .budget-form-intro
+          %p= t("parts.budgets.new_budget_intro")
+          %p.text-muted= t("parts.budgets.new_budget_tips")
+        
+        = render 'form', budget: @budget

@@ -1,8 +1,8 @@
 = simple_form_for budget, html: { class: "form-horizontal" } do |f|
-  = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true } }
-  = f.input :limit, input_html: { class: 'medium-input' }
-  = f.association :currency, collection: current_user.currencies, input_html: { class: 'medium-input' }
+  = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true } }, hint: t("parts.budgets.category_hint")
+  = f.input :limit, input_html: { class: 'medium-input', placeholder: t("parts.budgets.limit_placeholder") }, hint: t("parts.budgets.limit_hint")
+  = f.association :currency, collection: current_user.currencies, input_html: { class: 'medium-input' }, hint: t("parts.budgets.currency_hint")
   .form-group.action-buttons
     .col-lg-offset-2.col-lg-10
-      = f.button :submit, class: "btn btn-primary"
+      = f.button :submit, class: "btn btn-success"
       = link_to t("common.back"), budgets_path, class: "btn"

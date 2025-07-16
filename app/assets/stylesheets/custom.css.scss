@@ -734,8 +734,36 @@ ul.site-links {
   }
 }
 
+// Budget form styling
+.budget-form-intro {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #47a447;
+  
+  p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    &.text-muted {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
+  .budget-form-intro {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
   .budget-empty-state {
     margin: 30px auto;
     padding: 30px 15px;
