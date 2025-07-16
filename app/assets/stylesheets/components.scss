@@ -1,0 +1,70 @@
+// Card-based panel layout used throughout the app
+.card-panels {
+  .row {
+    margin-bottom: 30px;
+  }
+  
+  fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    
+    legend {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px 15px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+}
+
+// Chart.js styling
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  
+  canvas {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+// Specific styling for stacked bar charts
+.stacked-chart-container {
+  position: relative;
+  height: 120px !important;
+  width: 100%;
+  
+  canvas {
+    max-width: 100%;
+    max-height: 120px !important;
+  }
+}
+
+// Separator between current month and past months
+.past-months-separator {
+  margin: 40px 0;
+  border: 0;
+  border-top: 2px solid #e9ecef;
+  position: relative;
+  
+  &::after {
+    content: "Past Months";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 0 20px;
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

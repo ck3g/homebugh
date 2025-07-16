@@ -1,0 +1,85 @@
+// Account Summary Cards
+.accounts-summary {
+  margin-bottom: 30px;
+  
+  .account-card, .total-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+  }
+  
+  .account-header, .total-header {
+    margin-bottom: 15px;
+    
+    .account-name, .total-label {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #495057;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  
+  .account-amount, .total-amount {
+    .amount-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #212529;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .total-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #e9ecef;
+    
+    .total-card {
+      border-left: 4px solid #47a447;
+      
+      .total-label {
+        color: #47a447;
+      }
+      
+      .amount-value {
+        color: #47a447;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .accounts-summary {
+    .account-card, .total-card {
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .account-header, .total-header {
+      margin-bottom: 12px;
+    }
+    
+    .account-amount, .total-amount {
+      .amount-value {
+        font-size: 20px;
+      }
+    }
+  }
+}
