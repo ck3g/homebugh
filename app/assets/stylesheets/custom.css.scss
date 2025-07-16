@@ -400,6 +400,44 @@ ul.site-links {
   }
 }
 
+// Chart.js styling
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  
+  canvas {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+// Statistics page improvements
+.statistics-charts {
+  .row {
+    margin-bottom: 30px;
+  }
+  
+  fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    
+    legend {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px 15px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .accounts-summary {

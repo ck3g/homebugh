@@ -1,18 +1,19 @@
-.row
-  .col-md-12
-    .col-md-6
+.statistics-charts
+  .row
+    .col-md-12
+      .col-md-6
+        %fieldset
+          %legend= title
+          %div
+            = chartjs_pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending }, { height: 250, colors: ['#47a447', '#d9534f'] })
+      .col-md-6
+        %fieldset
+          %legend= t("parts.categories.income")
+          %div
+            = chartjs_pie_chart income_chart_data, { height: 250, colors: ['#47a447', '#5cb85c', '#5bc0de', '#f0ad4e', '#9b59b6'] }
+  .row
+    .col-md-12
       %fieldset
-        %legend= title
+        %legend= t("parts.categories.spending")
         %div
-          = pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending })
-    .col-md-6
-      %fieldset
-        %legend= t("parts.categories.income")
-        %div
-          = pie_chart income_chart_data
-.row
-  .col-md-12
-    %fieldset
-      %legend= t("parts.categories.spending")
-      %div
-        = bar_chart spending_chart_data, colors: %w(red), height: 50
+          = chartjs_bar_chart spending_chart_data, { height: 200, colors: ['#d9534f'] }

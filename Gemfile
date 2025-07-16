@@ -17,7 +17,7 @@ gem "kaminari", "~> 1.2.2"
 gem "meta-tags", "~> 2.22.0", require: "meta_tags"
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 gem "select2-rails", '~> 3.5.11'
-gem 'chartkick', '~> 3.4.0'
+# gem 'chartkick', '~> 3.4.0' # Replaced with Chart.js
 gem 'draper'
 gem 'aasm'
 gem 'cancancan'

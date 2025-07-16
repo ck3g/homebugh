@@ -9,7 +9,7 @@
 //= require select2
 //= require select2_locale_ru
 //= require js.cookie
-//= require chartkick
+// Chart.js loaded via CDN in layout
 //= require_self
 //= require react
 //= require react_ujs
