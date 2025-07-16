@@ -2,14 +2,45 @@
 var Charts = {
   // Default colors for HomeBugh theme
   colors: {
-    primary: '#47a447',
+    primary: '#5cb85c',
     success: '#5cb85c',
     info: '#5bc0de',
     warning: '#f0ad4e',
     danger: '#d9534f',
-    income: '#47a447',
-    spending: '#d9534f',
-    palette: ['#47a447', '#5cb85c', '#5bc0de', '#f0ad4e', '#d9534f', '#9b59b6', '#e67e22', '#1abc9c', '#34495e', '#95a5a6']
+    income: '#28a745',
+    spending: '#dc3545',
+    palette: [
+      '#5cb85c',   // Light green
+      '#5bc0de',   // Light blue
+      '#f0ad4e',   // Orange
+      '#d9534f',   // Red
+      '#9b59b6',   // Purple
+      '#e67e22',   // Dark orange
+      '#1abc9c',   // Teal
+      '#34495e',   // Dark blue-gray
+      '#95a5a6',   // Gray
+      '#3498db',   // Blue
+      '#e74c3c',   // Bright red
+      '#f39c12',   // Yellow-orange
+      '#ff1744',   // Pink red
+      '#8e44ad',   // Dark purple
+      '#16a085',   // Dark teal
+      '#795548',   // Brown
+      '#c0392b',   // Dark red
+      '#d35400',   // Dark orange-red
+      '#7f8c8d',   // Blue-gray
+      '#2c3e50',   // Very dark blue
+      '#e91e63',   // Pink
+      '#ff9800',   // Amber
+      '#607d8b',   // Blue-gray
+      '#ffeb3b',   // Yellow
+      '#ff5722',   // Deep orange
+      '#673ab7',   // Deep purple
+      '#2196f3',   // Material blue
+      '#ff6f00',   // Material orange
+      '#9c27b0',   // Material purple
+      '#00bcd4'    // Material cyan
+    ]
   },
 
   // Create a pie chart
@@ -61,6 +92,10 @@ var Charts = {
               return value.toLocaleString();
             }
           }
+        },
+        x: {
+          categoryPercentage: 0.8,
+          barPercentage: options && options.barWidth ? Math.min(options.barWidth / 100, 1) : 0.6
         }
       }
     };
@@ -101,6 +136,75 @@ var Charts = {
     
     return new Chart(ctx, {
       type: 'line',
+      data: data,
+      options: chartOptions
+    });
+  },
+
+  // Create a stacked bar chart
+  createStackedBarChart: function(canvasId, data, options) {
+    var ctx = document.getElementById(canvasId).getContext('2d');
+    var defaultOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      indexAxis: 'y',
+      scales: {
+        x: {
+          stacked: true,
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return value.toLocaleString();
+            }
+          }
+        },
+        y: {
+          stacked: true,
+          categoryPercentage: 0.4,
+          barPercentage: 0.8
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'center',
+          labels: {
+            boxWidth: 12,
+            font: {
+              size: 12
+            }
+          }
+        },
+        tooltip: {
+          mode: 'point',
+          intersect: true,
+          position: 'average',
+          yAlign: 'bottom',
+          callbacks: {
+            label: function(context) {
+              var label = context.dataset.label || '';
+              if (label) {
+                label += ': ';
+              }
+              label += context.parsed.x.toLocaleString();
+              return label;
+            },
+            title: function(context) {
+              return '';
+            }
+          }
+        }
+      },
+      interaction: {
+        mode: 'point',
+        intersect: true
+      }
+    };
+
+    var chartOptions = Object.assign({}, defaultOptions, options || {});
+    
+    return new Chart(ctx, {
+      type: 'bar',
       data: data,
       options: chartOptions
     });

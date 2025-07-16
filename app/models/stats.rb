@@ -22,6 +22,46 @@ class Stats
     end
   end
 
+  # Get spending data grouped by month and category for stacked bar chart
+  def spending_by_month_and_category(months_count = 6)
+    result = {}
+    
+    all.lazy.first(months_count).each do |month_data|
+      month_data.each do |month_date, data|
+        month_key = I18n.l(month_date.to_date, format: :month_year)
+        result[month_key] = {}
+        
+        # Process spending data for this month
+        data[:spending].each do |aggregated_transaction|
+          category_name = aggregated_transaction.category.name
+          result[month_key][category_name] = aggregated_transaction.amount
+        end
+      end
+    end
+    
+    result
+  end
+
+  # Get income data grouped by month and category for stacked bar chart
+  def income_by_month_and_category(months_count = 6)
+    result = {}
+    
+    all.lazy.first(months_count).each do |month_data|
+      month_data.each do |month_date, data|
+        month_key = I18n.l(month_date.to_date, format: :month_year)
+        result[month_key] = {}
+        
+        # Process income data for this month
+        data[:income].each do |aggregated_transaction|
+          category_name = aggregated_transaction.category.name
+          result[month_key][category_name] = aggregated_transaction.amount
+        end
+      end
+    end
+    
+    result
+  end
+
   private
 
   def months

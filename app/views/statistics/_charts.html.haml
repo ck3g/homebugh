@@ -5,15 +5,16 @@
         %fieldset
           %legend= title
           %div
-            = chartjs_pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending }, { height: 250, colors: ['#47a447', '#d9534f'] })
+            = chartjs_pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending }, { height: 250, colors: ['#28a745', '#dc3545'] })
       .col-md-6
         %fieldset
           %legend= t("parts.categories.income")
           %div
-            = chartjs_pie_chart income_chart_data, { height: 250, colors: ['#47a447', '#5cb85c', '#5bc0de', '#f0ad4e', '#9b59b6'] }
+            = chartjs_pie_chart income_chart_data, { height: 250 }
   .row
     .col-md-12
       %fieldset
         %legend= t("parts.categories.spending")
         %div
-          = chartjs_bar_chart spending_chart_data, { height: 200, colors: ['#d9534f'] }
+          - stacked_data = { "Current Month" => spending_chart_data }
+          = chartjs_stacked_bar_chart stacked_data, { height: 120 }

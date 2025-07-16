@@ -157,6 +157,7 @@ en:
       stats_by_months: "Statistics by months"
       income_total: "Income total"
       spending_total: "Spending total"
+      monthly_spending_trends: "Monthly spending trends"
     recurring_payments:
       you_have_no_recurring_payments: "You have no recurring payments yet."
       ended_recurring_payments_short: "Ended"

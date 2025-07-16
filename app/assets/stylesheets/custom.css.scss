@@ -412,6 +412,18 @@ ul.site-links {
   }
 }
 
+// Specific styling for stacked bar charts
+.stacked-chart-container {
+  position: relative;
+  height: 120px !important;
+  width: 100%;
+  
+  canvas {
+    max-width: 100%;
+    max-height: 120px !important;
+  }
+}
+
 // Statistics page improvements
 .statistics-charts {
   .row {
