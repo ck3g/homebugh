@@ -6,9 +6,6 @@
     %div.dashboard-main
       = render 'shared/flash_messages'
 
-      - if current_user.present?
-        = render 'shared/todo_list'
-
       = yield
 
     %footer.dashboard-footer

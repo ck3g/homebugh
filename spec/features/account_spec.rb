@@ -10,12 +10,12 @@ feature "Accounts" do
 
   scenario "should get list of accounts" do
     visit accounts_path
-    expect(page).to have_content("List of accounts")
+    expect(page).to have_content("Get started with your first account")
   end
 
   scenario "should visit create account page by pressing button" do
     visit accounts_path
-    click_link "New account", match: :first
+    click_link "Add account", match: :first
     expect(page).to have_content("New account")
     expect(page.has_button?("Create Account")).to be_truthy
   end

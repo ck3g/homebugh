@@ -1,10 +1,10 @@
-= render 'shared/sub_navbar_widget',
-  title_content: t('parts.accounts.accounts_list'),
-  add_link_title: t('parts.accounts.new_account'),
-  add_link_url: new_account_path
+- if @accounts.present?
+  = render 'shared/sub_navbar_widget',
+    title_content: t('parts.accounts.accounts_list'),
+    add_link_title: t('parts.accounts.new_account'),
+    add_link_url: new_account_path
 
-.row
-  - if @accounts.present?
+  .row
     .col-xs-12.col-lg-12
       .table-responsive
         %table.table
@@ -19,9 +19,40 @@
                 = render "account", account: account
               - else
                 = render "inactive_account", account: account
-  - else
-    .col-xs-12.col-lg-12
-      %p.empty-data
-        = t('parts.accounts.you_have_no_accounts')
 
-= paginate @accounts
+  = paginate @accounts
+- else
+  .accounts-empty-state
+    .empty-state-container
+      .empty-state-icon
+        = fa_icon "credit-card", class: "fa-4x"
+      
+      %h2.empty-state-title= t('parts.accounts.get_started_title')
+      %p.empty-state-description= t('parts.accounts.get_started_description')
+      
+      .empty-state-features
+        .feature-item
+          .feature-icon
+            = fa_icon "wallet"
+          .feature-content
+            %h4= t('parts.accounts.feature_track_title')
+            %p= t('parts.accounts.feature_track_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "exchange-alt"
+          .feature-content
+            %h4= t('parts.accounts.feature_transfer_title')
+            %p= t('parts.accounts.feature_transfer_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "chart-line"
+          .feature-content
+            %h4= t('parts.accounts.feature_insights_title')
+            %p= t('parts.accounts.feature_insights_description')
+      
+      .empty-state-action
+        = link_to new_account_path, class: "btn btn-success btn-lg" do
+          = fa_icon "plus"
+          = t('parts.accounts.add_account')

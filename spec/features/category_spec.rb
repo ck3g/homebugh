@@ -13,12 +13,12 @@ feature "Categories" do
   context "GET /categories" do
     scenario "should get list of categories" do
       visit categories_path
-      expect(page).to have_content "List of categories"
+      expect(page).to have_content "Create your first category"
     end
 
     scenario "move to create category by pressing button" do
       visit categories_path
-      click_link "New category", match: :first
+      click_link "Add category", match: :first
 
       expect(page).to have_content("New category")
       expect(page.has_button?("Create Category")).to eq(true)
@@ -78,7 +78,7 @@ feature "Categories" do
       click_link "Destroy"
 
       expect(page).not_to have_content("Food")
-      expect(page).to have_content("You have no categories.")
+      expect(page).to have_content("Create your first category")
     end
 
     private

@@ -1,21 +1,25 @@
-= render 'shared/sub_navbar_widget',
-  title_content: "Dashboard"
+- check_list = NewUserCheckList.new(user: current_user, locale: I18n.locale)
+- if check_list.all_hints_done?
+  = render 'shared/sub_navbar_widget',
+    title_content: "Dashboard"
 
-.card-panels
-  .row
-    .col-md-12
-      %fieldset
-        %legend Account summary
-        %div
-          = render 'layouts/total_funds'
+  .card-panels
+    .row
+      .col-md-12
+        %fieldset
+          %legend Account summary
+          %div
+            = render 'layouts/total_funds'
 
-- if @current_month_stats.present?
-  - @current_month_stats.each do |stats|
-    .card-panels
-      .row
-        .col-md-12
-          %fieldset
-            %legend Current month spending
-            %div
-              - stacked_data = { stats[:title] => stats[:spending_chart_data] }
-              = chartjs_stacked_bar_chart stacked_data, { height: 120 }
+  - if @current_month_stats.present?
+    - @current_month_stats.each do |stats|
+      .card-panels
+        .row
+          .col-md-12
+            %fieldset
+              %legend Current month spending
+              %div
+                - stacked_data = { stats[:title] => stats[:spending_chart_data] }
+                = chartjs_stacked_bar_chart stacked_data, { height: 120 }
+- else
+  = render 'dashboard_onboarding'

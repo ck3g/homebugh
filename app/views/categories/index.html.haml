@@ -1,18 +1,18 @@
-.row
-  .col-xs-12.col-lg-12
-    = form_tag categories_path, method: :get, class: 'form-horizontal col-xs-12 col-sm-12' do
-      .form-group.input-group
-        = text_field_tag :term, params[:term], class: 'form-control', placeholder: t(:search_categories)
-        %span.input-group-btn
-          = submit_tag t(:search), class: "btn btn-primary"
+- if @categories.present?
+  .row
+    .col-xs-12.col-lg-12
+      = form_tag categories_path, method: :get, class: 'form-horizontal col-xs-12 col-sm-12' do
+        .form-group.input-group
+          = text_field_tag :term, params[:term], class: 'form-control', placeholder: t(:search_categories)
+          %span.input-group-btn
+            = submit_tag t(:search), class: "btn btn-primary"
 
-= render 'shared/sub_navbar_widget',
-  title_content: t('parts.categories.categories_list'),
-  add_link_title: t('parts.categories.new_category'),
-  add_link_url: new_category_path
+  = render 'shared/sub_navbar_widget',
+    title_content: t('parts.categories.categories_list'),
+    add_link_title: t('parts.categories.new_category'),
+    add_link_url: new_category_path
 
-.row
-  - if @categories.present?
+  .row
     .col-xs-12.col-lg-12
       .table-responsive
         %table.table
@@ -34,9 +34,40 @@
                     = fa_icon "pencil"
                   = link_to category, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
                     = fa_icon "trash"
-  - else
-    .col-xs-12.col-lg-12
-      %p.empty-data
-        = t('parts.categories.you_have_no_categories')
 
-= paginate @categories
+  = paginate @categories
+- else
+  .categories-empty-state
+    .empty-state-container
+      .empty-state-icon
+        = fa_icon "tags", class: "fa-4x"
+      
+      %h2.empty-state-title= t('parts.categories.get_started_title')
+      %p.empty-state-description= t('parts.categories.get_started_description')
+      
+      .empty-state-features
+        .feature-item
+          .feature-icon
+            = fa_icon "arrow-up", class: "income-icon"
+          .feature-content
+            %h4= t('parts.categories.feature_income_title')
+            %p= t('parts.categories.feature_income_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "arrow-down", class: "spending-icon"
+          .feature-content
+            %h4= t('parts.categories.feature_spending_title')
+            %p= t('parts.categories.feature_spending_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "chart-pie"
+          .feature-content
+            %h4= t('parts.categories.feature_organize_title')
+            %p= t('parts.categories.feature_organize_description')
+      
+      .empty-state-action
+        = link_to new_category_path, class: "btn btn-success btn-lg" do
+          = fa_icon "plus"
+          = t('parts.categories.add_category')

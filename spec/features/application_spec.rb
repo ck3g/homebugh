@@ -19,6 +19,11 @@ feature "Application" do
     currency = create :currency, name: 'USD', unit: '$'
     create :account, name: 'Cash', user: user, currency: currency
     create :account, :deleted, name: 'Old Bank Card', user: user, currency: currency
+    
+    # Create categories and transaction to complete onboarding
+    income_category = create :income_category, user: user, name: "Salary"
+    spending_category = create :spending_category, user: user, name: "Food"
+    create :transaction, user: user, account: Account.find_by(name: 'Cash'), category: income_category
 
     sign_in_as 'user@example.com', 'password'
     visit dashboard_path

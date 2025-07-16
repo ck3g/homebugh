@@ -1,10 +1,10 @@
-= render 'shared/sub_navbar_widget',
-  title_content: t('parts.transactions.transactions_list'),
-  add_link_title: t('parts.transactions.new_transaction'),
-  add_link_url: new_transaction_path
+- if @transactions.present? || @recurring_payments.present?
+  = render 'shared/sub_navbar_widget',
+    title_content: t('parts.transactions.transactions_list'),
+    add_link_title: t('parts.transactions.new_transaction'),
+    add_link_url: new_transaction_path
 
-.row
-  - if @transactions.present? || @recurring_payments.present?
+  .row
     .col-xs-12.col-lg-12
       .table-responsive
         %table.table
@@ -52,8 +52,40 @@
                     = fa_icon 'retweet'
                   = link_to transaction, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
                     = fa_icon "share"
-  - else
-    .col-xs-12.col-lg-12
-      %p.empty-data= t('parts.transactions.you_have_no_transactions')
 
-= paginate @transactions
+  = paginate @transactions
+- else
+  .transactions-empty-state
+    .empty-state-container
+      .empty-state-icon
+        = fa_icon "exchange", class: "fa-4x"
+      
+      %h2.empty-state-title= t('parts.transactions.get_started_title')
+      %p.empty-state-description= t('parts.transactions.get_started_description')
+      
+      .empty-state-features
+        .feature-item
+          .feature-icon
+            = fa_icon "plus-circle"
+          .feature-content
+            %h4= t('parts.transactions.feature_record_title')
+            %p= t('parts.transactions.feature_record_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "history"
+          .feature-content
+            %h4= t('parts.transactions.feature_track_title')
+            %p= t('parts.transactions.feature_track_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "chart-bar"
+          .feature-content
+            %h4= t('parts.transactions.feature_analyze_title')
+            %p= t('parts.transactions.feature_analyze_description')
+      
+      .empty-state-action
+        = link_to new_transaction_path, class: "btn btn-success btn-lg" do
+          = fa_icon "plus"
+          = t('parts.transactions.new_transaction')

@@ -43,7 +43,7 @@ feature "Transaction" do
 
     expect(page).not_to have_content "1,000.00"
     expect(page).not_to have_content "My first salary"
-    expect(page).to have_content "You have no transactions."
+    expect(page).to have_content "Record your first transaction"
     expect(current_path).to eq transactions_path
   end
 

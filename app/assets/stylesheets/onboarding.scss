@@ -1,0 +1,319 @@
+// Dashboard Onboarding Styling
+.dashboard-onboarding {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  
+  .welcome-header {
+    text-align: center;
+    margin-bottom: 50px;
+    
+    .welcome-icon {
+      margin-bottom: 20px;
+      color: #47a447;
+      opacity: 0.8;
+    }
+    
+    .welcome-title {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .welcome-subtitle {
+      font-size: 1.2em;
+      color: #666;
+      margin-bottom: 0;
+    }
+  }
+  
+  .onboarding-progress {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      
+      h3 {
+        margin: 0;
+        color: #333;
+        font-size: 1.3em;
+      }
+      
+      .progress-counter {
+        color: #666;
+        font-weight: 500;
+        font-size: 0.9em;
+      }
+    }
+    
+    .progress-bar-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      
+      .progress-bar {
+        flex: 1;
+        height: 10px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+        overflow: hidden;
+        
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #47a447, #5cb85c);
+          transition: width 0.5s ease;
+          border-radius: 5px;
+        }
+      }
+      
+      .progress-text {
+        font-weight: 600;
+        color: #47a447;
+        font-size: 0.9em;
+        min-width: 40px;
+      }
+    }
+  }
+  
+  .onboarding-steps {
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+      
+      &.completed {
+        border-color: #47a447;
+        background: linear-gradient(135deg, #f8fff8, #fff);
+      }
+      
+      &.pending:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      
+      .step-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+        color: #666;
+        font-weight: 600;
+        font-size: 1.1em;
+        flex-shrink: 0;
+        
+        .completed & {
+          background-color: #47a447;
+          color: white;
+        }
+        
+        .pending & {
+          background-color: #47a447;
+          color: white;
+        }
+      }
+      
+      .step-content {
+        flex: 1;
+        
+        h4 {
+          margin: 0 0 8px 0;
+          color: #333;
+          font-size: 1.2em;
+          font-weight: 600;
+        }
+        
+        p {
+          margin: 0 0 15px 0;
+          color: #666;
+          line-height: 1.5;
+        }
+        
+        .step-status {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          
+          .fa {
+            font-size: 1.2em;
+          }
+          
+          .completed-text {
+            color: #47a447;
+            font-weight: 500;
+          }
+        }
+        
+        .step-action {
+          .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+              transform: translateY(-1px);
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .onboarding-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+    
+    .help-section, .motivation-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e9ecef;
+      
+      h4 {
+        margin: 0 0 15px 0;
+        color: #333;
+        font-size: 1.1em;
+        font-weight: 600;
+      }
+      
+      p {
+        margin: 0 0 15px 0;
+        color: #666;
+        line-height: 1.5;
+      }
+      
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        
+        li {
+          margin-bottom: 8px;
+          color: #666;
+          line-height: 1.4;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          
+          .fa {
+            color: #47a447;
+            width: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .dashboard-onboarding {
+    padding: 20px 15px;
+    
+    .welcome-header {
+      margin-bottom: 30px;
+      
+      .welcome-title {
+        font-size: 2em;
+      }
+      
+      .welcome-subtitle {
+        font-size: 1.1em;
+      }
+    }
+    
+    .onboarding-progress {
+      padding: 20px;
+      
+      .progress-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+    
+    .onboarding-steps {
+      .step-item {
+        padding: 20px;
+        gap: 15px;
+        
+        .step-number {
+          width: 35px;
+          height: 35px;
+          font-size: 1em;
+        }
+        
+        .step-content {
+          h4 {
+            font-size: 1.1em;
+          }
+        }
+      }
+    }
+    
+    .onboarding-footer {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 30px;
+      
+      .help-section, .motivation-section {
+        padding: 20px;
+      }
+    }
+  }
+}
+
+// Custom outline success button for Bootstrap 3
+.btn-outline-success {
+  color: #47a447;
+  background-color: transparent;
+  border: 2px solid #47a447;
+  
+  &:hover, &:focus {
+    color: #fff;
+    background-color: #47a447;
+    border-color: #47a447;
+  }
+  
+  &:active {
+    background-color: #398439;
+    border-color: #398439;
+  }
+}

@@ -5,6 +5,9 @@ feature "View dashboard" do
   given!(:currency) { create :currency, name: 'USD', unit: '$' }
   given!(:eur_currency) { create :currency, name: 'EUR', unit: '€' }
   given!(:account) { create :account, user: user, name: "Test Account", currency: currency, funds: 1000 }
+  given!(:income_category) { create :income_category, user: user, name: "Salary" }
+  given!(:spending_category) { create :spending_category, user: user, name: "Food" }
+  given!(:transaction) { create :transaction, user: user, account: account, category: income_category }
 
   background do
     sign_in_as "user@example.com", "password"
@@ -25,7 +28,7 @@ feature "View dashboard" do
     
     expect(page).to have_content "Account summary"
     expect(page).to have_content "Test Account"
-    expect(page).to have_content "1,000.00 $"
+    expect(page).to have_content "1,010.00 $"
   end
   
   scenario "user sees spending chart when EUR currency exists" do

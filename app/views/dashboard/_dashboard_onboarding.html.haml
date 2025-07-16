@@ -1,0 +1,109 @@
+.dashboard-onboarding
+  .welcome-header
+    .welcome-icon
+      = fa_icon "chart-line", class: "fa-4x"
+    %h1.welcome-title Welcome to HomeBugh!
+    %p.welcome-subtitle Let's get you started with managing your finances effectively.
+
+  .onboarding-progress
+    - check_list = NewUserCheckList.new(user: current_user, locale: I18n.locale)
+    - completed_steps = [check_list.account_hint_done?, check_list.income_category_hint_done?, check_list.spending_category_hint_done?, check_list.transaction_hint_done?].count(true)
+    - total_steps = 4
+    - progress_percentage = (completed_steps.to_f / total_steps * 100).round
+    
+    .progress-header
+      %h3 Setup Progress
+      %span.progress-counter #{completed_steps} of #{total_steps} completed
+    
+    .progress-bar-wrapper
+      .progress-bar
+        .progress-fill{style: "width: #{progress_percentage}%"}
+      .progress-text #{progress_percentage}%
+
+  .onboarding-steps
+    .step-item{class: check_list.account_hint_done? ? 'completed' : 'pending'}
+      .step-number 1
+      .step-content
+        %h4 Create Your First Account
+        %p Start by adding an account to track your finances. This could be your wallet, bank account, or any financial account.
+        - if check_list.account_hint_done?
+          .step-status
+            = fa_icon "check-circle", class: "text-success"
+            %span.completed-text Account created!
+        - else
+          .step-action
+            = link_to new_account_path, class: "btn btn-outline-success" do
+              = fa_icon "plus"
+              Add Account
+
+    .step-item{class: check_list.income_category_hint_done? ? 'completed' : 'pending'}
+      .step-number 2
+      .step-content
+        %h4 Add Income Category
+        %p Create a category for your income sources like "Salary", "Freelance", or "Investment Returns".
+        - if check_list.income_category_hint_done?
+          .step-status
+            = fa_icon "check-circle", class: "text-success"
+            %span.completed-text Income category created!
+        - else
+          .step-action
+            = link_to new_category_path, class: "btn btn-outline-success" do
+              = fa_icon "plus"
+              Add Category
+
+    .step-item{class: check_list.spending_category_hint_done? ? 'completed' : 'pending'}
+      .step-number 3
+      .step-content
+        %h4 Add Spending Categories
+        %p Create categories for your expenses like "Food", "Transportation", "Entertainment", or "Bills".
+        - if check_list.spending_category_hint_done?
+          .step-status
+            = fa_icon "check-circle", class: "text-success"
+            %span.completed-text Spending category created!
+        - else
+          .step-action
+            = link_to new_category_path, class: "btn btn-outline-success" do
+              = fa_icon "plus"
+              Add Category
+
+    .step-item{class: check_list.transaction_hint_done? ? 'completed' : 'pending'}
+      .step-number 4
+      .step-content
+        %h4 Record Your First Transaction
+        %p Add your first transaction to see how HomeBugh tracks your spending and income.
+        - if check_list.transaction_hint_done?
+          .step-status
+            = fa_icon "check-circle", class: "text-success"
+            %span.completed-text Transaction recorded!
+        - else
+          .step-action
+            = link_to new_transaction_path, class: "btn btn-outline-success" do
+              = fa_icon "plus"
+              Add Transaction
+
+  .onboarding-footer
+    .help-section
+      %h4 Need Help?
+      %p Check out our quick tips to get the most out of HomeBugh:
+      %ul.help-list
+        %li Start with a few basic categories - you can always add more later
+        %li Regular transaction recording gives you better insights
+        %li Use the budget feature to track your monthly spending goals
+        %li Review your statistics monthly to understand your spending patterns
+
+    .motivation-section
+      %h4 You're Almost Ready!
+      %p Once you complete these steps, you'll have access to:
+      %ul.feature-list
+        %li
+          = fa_icon "chart-pie"
+          %span Detailed spending analytics
+        %li
+          = fa_icon "calendar-alt"
+          %span Monthly budget tracking
+        %li
+          = fa_icon "exchange-alt"
+          %span Account transfer management
+        %li
+          = fa_icon "bell"
+          %span Recurring payment reminders

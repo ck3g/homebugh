@@ -68,3 +68,389 @@
     font-weight: 600;
   }
 }
+
+// Empty state styling for accounts page
+.accounts-empty-state {
+  padding: 60px 20px;
+  text-align: center;
+  
+  .empty-state-container {
+    max-width: 800px;
+    margin: 0 auto;
+    
+    .empty-state-icon {
+      margin-bottom: 30px;
+      color: #47a447;
+      opacity: 0.8;
+    }
+    
+    .empty-state-title {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .empty-state-description {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 50px;
+      line-height: 1.6;
+    }
+    
+    .empty-state-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+      
+      .feature-item {
+        text-align: left;
+        padding: 25px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e9ecef;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background-color: #f8fff8;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 15px;
+          
+          .fa {
+            color: #47a447;
+            font-size: 1.5em;
+          }
+        }
+        
+        .feature-content {
+          h4 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+          }
+          
+          p {
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+    
+    .empty-state-action {
+      .btn {
+        padding: 15px 30px;
+        font-size: 1.1em;
+        font-weight: 600;
+        border-radius: 8px;
+        
+        .fa {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments for accounts empty state
+@media (max-width: 768px) {
+  .accounts-empty-state {
+    padding: 40px 15px;
+    
+    .empty-state-container {
+      .empty-state-title {
+        font-size: 1.8em;
+      }
+      
+      .empty-state-description {
+        font-size: 1em;
+        margin-bottom: 40px;
+      }
+      
+      .empty-state-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+        
+        .feature-item {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+
+// Empty state styling for categories page
+.categories-empty-state {
+  padding: 60px 20px;
+  text-align: center;
+  
+  .empty-state-container {
+    max-width: 800px;
+    margin: 0 auto;
+    
+    .empty-state-icon {
+      margin-bottom: 30px;
+      color: #47a447;
+      opacity: 0.8;
+    }
+    
+    .empty-state-title {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .empty-state-description {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 50px;
+      line-height: 1.6;
+    }
+    
+    .empty-state-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+      
+      .feature-item {
+        text-align: left;
+        padding: 25px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e9ecef;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background-color: #f8fff8;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 15px;
+          
+          .fa {
+            font-size: 1.5em;
+          }
+          
+          .income-icon {
+            color: #5cb85c;
+          }
+          
+          .spending-icon {
+            color: #d9534f;
+          }
+          
+          .fa-chart-pie {
+            color: #47a447;
+          }
+        }
+        
+        .feature-content {
+          h4 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+          }
+          
+          p {
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+    
+    .empty-state-action {
+      .btn {
+        padding: 15px 30px;
+        font-size: 1.1em;
+        font-weight: 600;
+        border-radius: 8px;
+        
+        .fa {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments for categories empty state
+@media (max-width: 768px) {
+  .categories-empty-state {
+    padding: 40px 15px;
+    
+    .empty-state-container {
+      .empty-state-title {
+        font-size: 1.8em;
+      }
+      
+      .empty-state-description {
+        font-size: 1em;
+        margin-bottom: 40px;
+      }
+      
+      .empty-state-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+        
+        .feature-item {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+
+// Empty state styling for transactions page
+.transactions-empty-state {
+  padding: 60px 20px;
+  text-align: center;
+  
+  .empty-state-container {
+    max-width: 800px;
+    margin: 0 auto;
+    
+    .empty-state-icon {
+      margin-bottom: 30px;
+      color: #47a447;
+      opacity: 0.8;
+    }
+    
+    .empty-state-title {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .empty-state-description {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 50px;
+      line-height: 1.6;
+    }
+    
+    .empty-state-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+      
+      .feature-item {
+        text-align: left;
+        padding: 25px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e9ecef;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background-color: #f8fff8;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 15px;
+          
+          .fa {
+            color: #47a447;
+            font-size: 1.5em;
+          }
+        }
+        
+        .feature-content {
+          h4 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+          }
+          
+          p {
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+    
+    .empty-state-action {
+      .btn {
+        padding: 15px 30px;
+        font-size: 1.1em;
+        font-weight: 600;
+        border-radius: 8px;
+        
+        .fa {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments for transactions empty state
+@media (max-width: 768px) {
+  .transactions-empty-state {
+    padding: 40px 15px;
+    
+    .empty-state-container {
+      .empty-state-title {
+        font-size: 1.8em;
+      }
+      
+      .empty-state-description {
+        font-size: 1em;
+        margin-bottom: 40px;
+      }
+      
+      .empty-state-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+        
+        .feature-item {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
