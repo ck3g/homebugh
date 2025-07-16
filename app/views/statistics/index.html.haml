@@ -1,37 +1,71 @@
 = react_component('PageTitle', { title: t('parts.statistics.stats_by_months') })
 
-.currencies{role: 'tabpanel'}
-  %ul.nav.nav-tabs{tole: 'tablist'}
-    - current_user.currencies.each_with_index do |currency, index|
-      %li{class: ('active' if active_currency?(currency, :statistics_path, index.zero?))}
-        = link_to currency.name, statistics_path(currency: currency.name)
+- has_current_stats = @current_month_stats.any? { |stats| stats[:income] > 0 || stats[:spending] > 0 }
+- has_past_stats = @past_months_stats.any?
+- has_currency = current_user.currencies.any?
+- if (has_current_stats || has_past_stats) && has_currency
+  .currencies{role: 'tabpanel'}
+    %ul.nav.nav-tabs{tole: 'tablist'}
+      - current_user.currencies.each_with_index do |currency, index|
+        %li{class: ('active' if active_currency?(currency, :statistics_path, index.zero?))}
+          = link_to currency.name, statistics_path(currency: currency.name)
 
-#stats
-  - @current_month_stats.each do |stats|
-    = render 'charts',
-      title: stats[:title],
-      total_income: stats[:income],
-      total_spending: stats[:spending],
-      income_chart_data: stats[:income_chart_data],
-      spending_chart_data: stats[:spending_chart_data]
-
-  - if @past_months_stats.any?
-    %hr.past-months-separator
-
-  - @past_months_stats.each do |months|
-    - months.each do |month, monthly_data|
-      - income_chart_data = {}
-      - monthly_data[:income].each do |data|
-        - income_chart_data[data.category.name] = data.amount
-
-      - spending_chart_data = {}
-      - monthly_data[:spending].each do |data|
-        - spending_chart_data[data.category.name] = data.amount
-
+  #stats
+    - @current_month_stats.each do |stats|
       = render 'charts',
-        title: l(month.to_date, format: :month_year),
-        total_income: monthly_data[:income].pluck(:amount).inject(:+) || 0,
-        total_spending: monthly_data[:spending].pluck(:amount).inject(:+) || 0,
-        income_chart_data: income_chart_data,
-        spending_chart_data: spending_chart_data
+        title: stats[:title],
+        total_income: stats[:income],
+        total_spending: stats[:spending],
+        income_chart_data: stats[:income_chart_data],
+        spending_chart_data: stats[:spending_chart_data]
+
+    - if @past_months_stats.any?
+      %hr.past-months-separator
+
+    - @past_months_stats.each do |months|
+      - months.each do |month, monthly_data|
+        - income_chart_data = {}
+        - monthly_data[:income].each do |data|
+          - income_chart_data[data.category.name] = data.amount
+
+        - spending_chart_data = {}
+        - monthly_data[:spending].each do |data|
+          - spending_chart_data[data.category.name] = data.amount
+
+        = render 'charts',
+          title: l(month.to_date, format: :month_year),
+          total_income: monthly_data[:income].pluck(:amount).inject(:+) || 0,
+          total_spending: monthly_data[:spending].pluck(:amount).inject(:+) || 0,
+          income_chart_data: income_chart_data,
+          spending_chart_data: spending_chart_data
+- else
+  .statistics-empty-state
+    .empty-state-container
+      .empty-state-icon
+        = fa_icon "bar-chart", class: "fa-4x"
+      
+      %h2.empty-state-title= t('parts.statistics.get_started_title')
+      %p.empty-state-description= t('parts.statistics.get_started_description')
+      
+      .empty-state-features
+        .feature-item
+          .feature-icon
+            = fa_icon "calendar"
+          .feature-content
+            %h4= t('parts.statistics.feature_monthly_title')
+            %p= t('parts.statistics.feature_monthly_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "pie-chart"
+          .feature-content
+            %h4= t('parts.statistics.feature_breakdown_title')
+            %p= t('parts.statistics.feature_breakdown_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "line-chart"
+          .feature-content
+            %h4= t('parts.statistics.feature_trends_title')
+            %p= t('parts.statistics.feature_trends_description')
 

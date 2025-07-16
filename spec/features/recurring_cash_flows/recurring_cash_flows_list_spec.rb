@@ -18,7 +18,7 @@ feature "Recurring Cash Flows list" do
     visit recurring_cash_flows_path
 
     expect(current_path).to eq recurring_cash_flows_path
-    expect(page).to have_content "You have no active recurring cash flows yet."
+    expect(page).to have_content "Set up recurring transfers"
   end
 
   scenario "logged in users can see list of their existing recurring cash flows" do
@@ -29,7 +29,7 @@ feature "Recurring Cash Flows list" do
     visit recurring_cash_flows_path
 
     expect(current_path).to eq recurring_cash_flows_path
-    expect(page).not_to have_content "You have no active recurring cash flows yet."
+    expect(page).not_to have_content "Set up recurring transfers"
 
     within "#recurring_cash_flow_#{rcf1.id}" do
       expect(page).to have_content "Cash"

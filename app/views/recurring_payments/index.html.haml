@@ -1,17 +1,53 @@
-= render 'shared/sub_navbar_widget',
-  title_content: t('parts.recurring_payments.recurring_payments_list'),
-  add_link_title: t('parts.recurring_payments.new_recurring_payment'),
-  add_link_url: new_recurring_payment_path
+- if @active_recurring_payments.present? || @ended_recurring_payments.present?
+  = render 'shared/sub_navbar_widget',
+    title_content: t('parts.recurring_payments.recurring_payments_list'),
+    add_link_title: t('parts.recurring_payments.new_recurring_payment'),
+    add_link_url: new_recurring_payment_path
 
-.row#active_recurring_payments
-  - if @active_recurring_payments.present?
-    = render 'recurring_payments', recurring_payments: @active_recurring_payments
-  - else
-    .col-xs-12.col-lg-12
-      %p.empty-data= t('parts.recurring_payments.you_have_no_active_recurring_payments')
+  .row#active_recurring_payments
+    - if @active_recurring_payments.present?
+      = render 'recurring_payments', recurring_payments: @active_recurring_payments
+    - else
+      .col-xs-12.col-lg-12
+        %p.empty-data= t('parts.recurring_payments.you_have_no_active_recurring_payments')
 
-- if @ended_recurring_payments.present?
-  .row#ended_recurring_payments
-    .col-xs-12.col-lg-12
-      %h3= t('parts.recurring_payments.ended_recurring_payments_short')
-    = render 'recurring_payments', recurring_payments: @ended_recurring_payments
+  - if @ended_recurring_payments.present?
+    .row#ended_recurring_payments
+      .col-xs-12.col-lg-12
+        %h3= t('parts.recurring_payments.ended_recurring_payments_short')
+      = render 'recurring_payments', recurring_payments: @ended_recurring_payments
+- else
+  .recurring-payments-empty-state
+    .empty-state-container
+      .empty-state-icon
+        = fa_icon "repeat", class: "fa-4x"
+      
+      %h2.empty-state-title= t('parts.recurring_payments.get_started_title')
+      %p.empty-state-description= t('parts.recurring_payments.get_started_description')
+      
+      .empty-state-features
+        .feature-item
+          .feature-icon
+            = fa_icon "calendar"
+          .feature-content
+            %h4= t('parts.recurring_payments.feature_automatic_title')
+            %p= t('parts.recurring_payments.feature_automatic_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "bell"
+          .feature-content
+            %h4= t('parts.recurring_payments.feature_reminders_title')
+            %p= t('parts.recurring_payments.feature_reminders_description')
+        
+        .feature-item
+          .feature-icon
+            = fa_icon "credit-card"
+          .feature-content
+            %h4= t('parts.recurring_payments.feature_bills_title')
+            %p= t('parts.recurring_payments.feature_bills_description')
+      
+      .empty-state-action
+        = link_to new_recurring_payment_path, class: "btn btn-success btn-lg" do
+          = fa_icon "plus"
+          = t('parts.recurring_payments.new_recurring_payment')

@@ -19,7 +19,7 @@ feature "Recurring Payments list" do
     visit "/recurring_payments"
 
     expect(current_path).to eq recurring_payments_path
-    expect(page).to have_content "You have no active recurring payments yet."
+    expect(page).to have_content "Set up your first recurring payment"
   end
 
   scenario "logged in users can see list of their existing recurring payments" do
@@ -31,7 +31,7 @@ feature "Recurring Payments list" do
     visit "/recurring_payments"
 
     expect(current_path).to eq recurring_payments_path
-    expect(page).not_to have_content "You have no active recurring payments yet."
+    expect(page).not_to have_content "Set up your first recurring payment"
 
     within "#recurring_payment_#{rp1.id}" do
       expect(page).to have_content "User's rent #{rp1.decorate.next_payment_on}"
