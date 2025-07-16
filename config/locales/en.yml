@@ -107,6 +107,8 @@ en:
       last_month: Last month
       new_budget_intro: "Create a monthly budget for the selected category to track and control your spending."
       new_budget_tips: "Tip: Set a realistic amount based on your usual spending habits. You'll be able to track progress throughout the month."
+      edit_budget_intro: "Update your budget settings for the selected category."
+      edit_budget_tips: "Tip: Adjust your limit based on actual spending patterns and changes in your financial plans."
       category_hint: "Choose the category you want to set a budget for"
       limit_placeholder: "e.g. 500"
       limit_hint: "Maximum amount you plan to spend in this category this month"
