@@ -6,27 +6,46 @@
   
   .row
     .col-xs-12.col-lg-12
-      - date = Date.parse("#{params[:year]}-#{params[:month]}-1") rescue Date.current
-      = link_to t("parts.budgets.current_month"), url_for, class: "btn btn-default", disabled: params[:month].blank?
-      = link_to t("parts.budgets.last_month"), url_for(month: 1.month.ago.month, year: 1.month.ago.year), class: "btn btn-default", disabled: params[:month].present?
+      .budget-navigation
+        - date = Date.parse("#{params[:year]}-#{params[:month]}-1") rescue Date.current
+        .budget-nav-tabs
+          = link_to t("parts.budgets.current_month"), url_for, class: "budget-nav-tab #{'active' if params[:month].blank?}"
+          = link_to t("parts.budgets.last_month"), url_for(month: 1.month.ago.month, year: 1.month.ago.year), class: "budget-nav-tab #{'active' if params[:month].present?}"
+        .budget-period
+          = l(date, format: :month_year)
   .spacer
 
   .row
     .col-xs-12.col-lg-12
       .table-responsive
-        %table.table
+        %table.table.budget-table
+          %thead
+            %tr
+              %th= t('parts.budgets.category')
+              %th= t('parts.budgets.amount')
+              %th= t('parts.budgets.progress')
+              %th= t('parts.budgets.actions')
           %tbody
             - @budgets.each do |budget|
-              %tr{class: "bg-#{budget.decorate.expenses_color_class(date: date)}"}
-                %td= link_to budget.category.name, transactions_path(category: budget.category_id)
-                %td
-                  .pull-right
-                    %span{class: "text-#{budget.decorate.expenses_color_class(date: date)}"}
-                      = budget.decorate.current_expenses(date: date)
-                %td.actions
-                  = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", id: dom_id(budget, :edit), data: { toggle: 'tooltip' } do
+              - progress_percent = budget.decorate.progress_percentage(date: date)
+              - color_class = budget.decorate.expenses_color_class(date: date)
+              %tr.budget-row{class: "budget-#{color_class}"}
+                %td.budget-category
+                  = link_to budget.category.name, transactions_path(category: budget.category_id), class: "category-link"
+                %td.budget-amount
+                  .amount-display
+                    %span.amount-spent= budget.decorate.spent_amount(date: date)
+                    %span.amount-separator /
+                    %span.amount-budget= budget.decorate.budget_amount
+                %td.budget-progress
+                  .progress-bar-container
+                    .progress-bar
+                      .progress-fill{class: "progress-#{color_class}", style: "width: #{[progress_percent, 100].min}%"}
+                    .progress-percentage= "#{progress_percent}%"
+                %td.budget-actions
+                  = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-default btn-xs budget-action-btn", id: dom_id(budget, :edit), data: { toggle: 'tooltip' } do
                     = fa_icon "edit"
-                  = link_to budget, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
+                  = link_to budget, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-xs budget-action-btn" do
                     = fa_icon "trash"
 - else
   .row

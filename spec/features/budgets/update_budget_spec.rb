@@ -23,9 +23,11 @@ feature "Update a budget" do
         click_button "Update"
       end
 
-      within "tr" do
+      within "tbody tr" do
         expect(page).to have_content "Food"
-        expect(page).to have_content "0.00 / 503.00 EUR"
+        expect(page).to have_content "0.00"
+        expect(page).to have_content "503.00 EUR"
+        expect(page).to have_selector ".progress-bar"
       end
     end
   end

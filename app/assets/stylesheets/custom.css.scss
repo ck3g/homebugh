@@ -757,8 +757,248 @@ ul.site-links {
   }
 }
 
+// Budget list styling
+.budget-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  
+  .budget-nav-tabs {
+    display: flex;
+    gap: 0;
+    
+    .budget-nav-tab {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      color: #495057;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      
+      &:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+      
+      &:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-left: none;
+      }
+      
+      &:hover {
+        background-color: #e9ecef;
+        color: #333;
+        text-decoration: none;
+      }
+      
+      &.active {
+        background-color: #47a447;
+        color: white;
+        border-color: #47a447;
+      }
+    }
+  }
+  
+  .budget-period {
+    font-weight: 600;
+    color: #495057;
+    font-size: 16px;
+  }
+}
+
+.budget-table {
+  th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+    padding: 15px 12px;
+    
+    &:first-child {
+      width: 20%;
+    }
+    
+    &:nth-child(2) {
+      width: 25%;
+    }
+    
+    &:nth-child(3) {
+      width: 35%;
+    }
+    
+    &:last-child {
+      width: 20%;
+      text-align: center;
+    }
+  }
+  
+  .budget-row {
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+    
+    &.budget-success {
+      background-color: rgba(92, 184, 92, 0.1);
+    }
+    
+    &.budget-warning {
+      background-color: rgba(240, 173, 78, 0.1);
+    }
+    
+    &.budget-danger {
+      background-color: rgba(217, 83, 79, 0.1);
+    }
+  }
+  
+  .budget-category {
+    padding: 15px 12px;
+    vertical-align: middle;
+    
+    .category-link {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      
+      &:hover {
+        color: #47a447;
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .budget-amount {
+    padding: 15px 12px;
+    vertical-align: middle;
+    
+    .amount-display {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      
+      .amount-spent {
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .amount-separator {
+        color: #666;
+      }
+      
+      .amount-budget {
+        color: #666;
+      }
+    }
+  }
+  
+  .budget-progress {
+    padding: 15px 12px;
+    vertical-align: middle;
+    
+    .progress-bar-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      
+      .progress-bar {
+        flex: 1;
+        height: 8px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        overflow: hidden;
+        
+        .progress-fill {
+          height: 100%;
+          transition: width 0.3s ease;
+          border-radius: 4px;
+          
+          &.progress-success {
+            background-color: #5cb85c;
+          }
+          
+          &.progress-warning {
+            background-color: #f0ad4e;
+          }
+          
+          &.progress-danger {
+            background-color: #d9534f;
+          }
+        }
+      }
+      
+      .progress-percentage {
+        color: #666;
+        font-size: 13px;
+        font-weight: 500;
+        min-width: 45px;
+        text-align: right;
+      }
+    }
+  }
+  
+  .budget-actions {
+    padding: 15px 12px;
+    vertical-align: middle;
+    text-align: center;
+    
+    .budget-action-btn {
+      margin: 0 2px;
+      padding: 6px 8px;
+      
+      &:hover {
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
+  .budget-navigation {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+    
+    .budget-nav-tabs {
+      justify-content: center;
+    }
+    
+    .budget-period {
+      text-align: center;
+    }
+  }
+  
+  .budget-table {
+    th, td {
+      padding: 10px 8px;
+    }
+    
+    .budget-amount {
+      .amount-display {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+    }
+    
+    .budget-progress {
+      .progress-bar-container {
+        flex-direction: column;
+        gap: 5px;
+        
+        .progress-percentage {
+          text-align: left;
+          min-width: auto;
+        }
+      }
+    }
+  }
+  
   .budget-form-intro {
     padding: 15px;
     margin-bottom: 20px;

@@ -23,6 +23,18 @@ class BudgetDecorator < Draper::Decorator
     end
   end
 
+  def progress_percentage(date: Date.current)
+    expenses_percentage(date: date).round(1)
+  end
+
+  def spent_amount(date: Date.current)
+    h.get_number_to_currency(object.expenses(date: date), "").strip
+  end
+
+  def budget_amount
+    h.get_number_to_currency(object.limit, currency_unit)
+  end
+
   private
 
   def expenses_percentage(date: Date.current)
