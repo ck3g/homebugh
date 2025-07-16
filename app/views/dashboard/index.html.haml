@@ -1,8 +1,21 @@
 = render 'shared/sub_navbar_widget',
   title_content: "Dashboard"
 
-.row
-  .col-xs-12
-    %h2 Account Summary
+.statistics-charts
+  .row
+    .col-md-12
+      %fieldset
+        %legend Account summary
+        %div
+          = render 'layouts/total_funds'
 
-= render 'layouts/total_funds'
+- if @current_month_stats.present?
+  - @current_month_stats.each do |stats|
+    .statistics-charts
+      .row
+        .col-md-12
+          %fieldset
+            %legend Current month spending
+            %div
+              - stacked_data = { stats[:title] => stats[:spending_chart_data] }
+              = chartjs_stacked_bar_chart stacked_data, { height: 120 }

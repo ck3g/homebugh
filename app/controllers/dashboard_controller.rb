@@ -3,6 +3,14 @@ class DashboardController < ApplicationController
 
   def index
     authorize! :index, :dashboard
-    # Dashboard will show account summary and potentially other widgets
+    
+    # Get current month spending data for Euro currency
+    eur_currency = Currency.find_by(name: 'EUR')
+    if eur_currency && current_user
+      @current_month_stats = Statistic.current_month_stats(
+        eur_currency.id,
+        current_user.id
+      )
+    end
   end
 end
