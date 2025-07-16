@@ -558,6 +558,75 @@ ul.site-links {
   }
 }
 
+// Profile form styling
+.profile-form-group {
+  margin-bottom: 20px;
+  
+  .control-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .form-control-static {
+    color: #212529;
+    padding: 8px 0;
+    
+    &.warning {
+      color: #856404;
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 4px;
+      padding: 8px 12px;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+  }
+  
+  .help-block {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  .form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+    font-size: 14px;
+    
+    &:focus {
+      border-color: #47a447;
+      box-shadow: 0 0 0 0.2rem rgba(71, 164, 71, 0.25);
+    }
+  }
+}
+
+.profile-form-actions {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+  
+  .btn {
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: 6px;
+    
+    &.btn-primary {
+      background-color: #47a447;
+      border-color: #47a447;
+      
+      &:hover {
+        background-color: #3e8e41;
+        border-color: #3e8e41;
+      }
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .accounts-summary {

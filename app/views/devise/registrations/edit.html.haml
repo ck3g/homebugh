@@ -1,23 +1,31 @@
-= form_title t(:profile)
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f|
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
-  .form-inputs
-    - if current_user.demo_user?
-      .form-group
-        = f.label :email
-        .col-lg-10
-          %p.form-control-static= current_user.email
-      .form-group
-        = f.label :password
-        .col-lg-10
-          %p.form-control-static.warning= 'demouser'
-          %span.help-block= t('parts.demo_user.change_password_hint')
-    - else
-      = f.input :email, required: true, autofocus: true
-      = f.input :password, autocomplete: "off", hint: t("devise.registrations.leave_it_blank_if_dont_want_to_change"), required: false
-      = f.input :password_confirmation, required: false
-      = f.input :current_password, hint: t("devise.registrations.need_current_password_to_confirm"), required: true
-      .form-group.action-buttons
-        .col-lg-offset-2.col-lg-10
-          = f.button :submit, t('common.update'), class: "btn btn-primary"
+  
+  .card-panels
+    .row
+      .col-md-8.col-md-offset-2
+        %fieldset
+          %legend Edit Profile
+          %div
+            - if current_user.demo_user?
+              .profile-form-group
+                %label.control-label Email
+                %p.form-control-static= current_user.email
+              .profile-form-group
+                %label.control-label Password
+                %p.form-control-static.warning= 'demouser'
+                %span.help-block= t('parts.demo_user.change_password_hint')
+            - else
+              .profile-form-group
+                = f.input :email, required: true, autofocus: true
+              .profile-form-group
+                = f.input :password, autocomplete: "off", hint: t("devise.registrations.leave_it_blank_if_dont_want_to_change"), required: false
+              .profile-form-group
+                = f.input :password_confirmation, required: false
+              .profile-form-group
+                = f.input :current_password, hint: t("devise.registrations.need_current_password_to_confirm"), required: true
+              
+              .form-group
+                .col-lg-offset-2.col-lg-10
+                  = f.button :submit, t('common.update'), class: "btn btn-primary"
 
