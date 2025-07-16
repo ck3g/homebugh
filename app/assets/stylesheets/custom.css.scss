@@ -424,8 +424,8 @@ ul.site-links {
   }
 }
 
-// Statistics page improvements
-.statistics-charts {
+// Card-based panel layout used throughout the app
+.card-panels {
   .row {
     margin-bottom: 30px;
   }
@@ -471,6 +471,93 @@ ul.site-links {
   }
 }
 
+// Profile page styling
+.profile-info {
+  .profile-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    
+    strong {
+      min-width: 140px;
+      margin-right: 10px;
+      color: #495057;
+      font-weight: 600;
+    }
+    
+    span {
+      color: #212529;
+      
+      &.text-muted {
+        color: #6c757d;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  
+  .stat-item {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    
+    .stat-number {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      color: #47a447;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      display: block;
+      font-size: 12px;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+  }
+}
+
+.profile-actions {
+  text-align: center;
+  
+  .btn {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 6px;
+    
+    &.btn-primary {
+      background-color: #47a447;
+      border-color: #47a447;
+      
+      &:hover {
+        background-color: #3e8e41;
+        border-color: #3e8e41;
+      }
+    }
+    
+    &.btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      
+      &:hover {
+        background-color: #c82333;
+        border-color: #c82333;
+      }
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .accounts-summary {
@@ -486,6 +573,31 @@ ul.site-links {
     .account-amount, .total-amount {
       .amount-value {
         font-size: 20px;
+      }
+    }
+  }
+  
+  .profile-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    
+    .stat-item {
+      padding: 12px;
+      
+      .stat-number {
+        font-size: 20px;
+      }
+    }
+  }
+  
+  .profile-info {
+    .profile-item {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      strong {
+        min-width: auto;
+        margin-bottom: 5px;
       }
     }
   }

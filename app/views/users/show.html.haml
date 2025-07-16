@@ -1,18 +1,54 @@
-= form_title t('parts.users.profile')
+= render 'shared/sub_navbar_widget',
+  title_content: t('parts.users.profile')
 
-= simple_form_for :user, html: { class: 'form-horizontal' } do |f|
-  .form-inputs
-    .form-group
-      = f.label :email, required: false
-      .col-lg-10
-        %p.form-control-static= current_user.email
-    .form-group
-      = f.label t('activerecord.attributes.user.created_at'), required: false
-      .col-lg-10
-        %p.form-control-static= l(current_user.created_at, format: :long)
-    .form-group
-      .col-lg-offset-2.col-lg-10
-        = link_to t("parts.users.edit_profile"), edit_user_registration_path, class: "btn btn-default"
-    .form-group
-      .col-lg-offset-2.col-lg-10
-        = link_to t("parts.users.delete"), users_delete_path, class: "btn btn-default"
+.card-panels
+  .row
+    .col-md-6
+      %fieldset
+        %legend Profile Information
+        %div
+          .profile-info
+            .profile-item
+              %strong Email:
+              %span= current_user.email
+            .profile-item
+              %strong Member since:
+              %span= l(current_user.created_at, format: :long)
+            - if @user_stats[:first_transaction_date]
+              .profile-item
+                %strong First transaction:
+                %span= l(@user_stats[:first_transaction_date], format: :long)
+            - else
+              .profile-item
+                %strong First transaction:
+                %span.text-muted Not yet created
+                
+    .col-md-6
+      %fieldset
+        %legend Account Statistics
+        %div
+          .profile-stats
+            .stat-item
+              %span.stat-number= @user_stats[:accounts_count]
+              %span.stat-label Accounts
+            .stat-item
+              %span.stat-number= @user_stats[:transactions_count]
+              %span.stat-label Transactions
+            .stat-item
+              %span.stat-number= @user_stats[:categories_count]
+              %span.stat-label Categories
+            .stat-item
+              %span.stat-number= @user_stats[:budgets_count]
+              %span.stat-label Budgets
+            .stat-item
+              %span.stat-number= @user_stats[:currencies_count]
+              %span.stat-label Currencies
+              
+  .row
+    .col-md-12
+      %fieldset
+        %legend Account Actions
+        %div
+          .profile-actions
+            = link_to t("parts.users.edit_profile"), edit_user_registration_path, class: "btn btn-primary"
+            = link_to t("parts.users.delete"), users_delete_path, class: "btn btn-danger"

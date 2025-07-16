@@ -1,7 +1,7 @@
 = render 'shared/sub_navbar_widget',
   title_content: "Dashboard"
 
-.statistics-charts
+.card-panels
   .row
     .col-md-12
       %fieldset
@@ -11,7 +11,7 @@
 
 - if @current_month_stats.present?
   - @current_month_stats.each do |stats|
-    .statistics-charts
+    .card-panels
       .row
         .col-md-12
           %fieldset
