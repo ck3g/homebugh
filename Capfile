@@ -6,6 +6,10 @@ require "capistrano/setup"
 # Include default deployment tasks
 require "capistrano/deploy"
 
+# Load Git SCM plugin
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
+
 # Load Capistrano plugins
 require "capistrano/bundler"
 require "capistrano/rails/assets"
