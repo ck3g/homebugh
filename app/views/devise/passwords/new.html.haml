@@ -1,11 +1,10 @@
-.col-md-5.col-md-offset-3
+.col-md-5.offset-md-3
   = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
     %h2= title t(:forgot_your_password)
-    .form-group{class: ('has-error has-feedback' if resource.errors[:email].present?)}
-      .col-lg-12
-        = f.input_field :email, required: true, placeholder: t(:email)
-        = f.error :email
-        - if resource.errors[:email].present?
-          %span.glyphicon.glyphicon-remove.form-control-feedback
-    = f.button :submit, t(:send_me_reset_password_instructions), class: "btn btn-primary btn-block"
+    .mb-3{class: ('is-invalid' if resource.errors[:email].present?)}
+      = f.input_field :email, required: true, placeholder: t(:email), class: "form-control #{'is-invalid' if resource.errors[:email].present?}"
+      - if resource.errors[:email].present?
+        .invalid-feedback
+          = f.error :email
+    = f.button :submit, t(:send_me_reset_password_instructions), class: "btn btn-primary w-100"
   = render "devise/shared/links"
