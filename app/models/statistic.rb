@@ -21,4 +21,31 @@ class Statistic
       spending_chart_data: spending_chart_data
     }]
   end
+
+  def self.twelve_month_totals(currency, user, current_month_stats, past_months_stats)
+    twelve_month_income = 0
+    twelve_month_spending = 0
+    
+    # Sum from current month stats
+    current_month_stats.each do |stats|
+      twelve_month_income += stats[:income] || 0
+      twelve_month_spending += stats[:spending] || 0
+    end
+    
+    # Sum from past months stats (first 11 months)
+    past_months_stats.first(11).each do |months|
+      months.each do |month, monthly_data|
+        twelve_month_income += monthly_data[:income].pluck(:amount).inject(:+) || 0
+        twelve_month_spending += monthly_data[:spending].pluck(:amount).inject(:+) || 0
+      end
+    end
+    
+    twelve_month_net_balance = twelve_month_income - twelve_month_spending
+    
+    {
+      income: twelve_month_income,
+      spending: twelve_month_spending,
+      net_balance: twelve_month_net_balance
+    }
+  end
 end

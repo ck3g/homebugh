@@ -16,6 +16,18 @@ class StatisticsController < ApplicationController
       @current_currency,
       current_user.aggregated_transactions
     ).all.lazy.first(24)
+
+    # Calculate 12-month totals
+    twelve_month_totals = Statistic.twelve_month_totals(
+      @current_currency,
+      current_user,
+      @current_month_stats,
+      @past_months_stats
+    )
+    
+    @twelve_month_income = twelve_month_totals[:income]
+    @twelve_month_spending = twelve_month_totals[:spending]
+    @twelve_month_net_balance = twelve_month_totals[:net_balance]
   end
 
   def archived

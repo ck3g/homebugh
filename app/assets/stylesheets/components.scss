@@ -232,26 +232,201 @@
   }
 }
 
-// Separator between current month and past months
-.past-months-separator {
-  margin: 40px 0;
-  border: 0;
-  border-top: 2px solid #e9ecef;
-  position: relative;
+// Twelve month summary styling
+.twelve-month-summary {
+  margin-bottom: 40px;
   
-  &::after {
-    content: "Past Months";
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
-    padding: 0 20px;
-    color: #666;
-    font-size: 14px;
+  .summary-title {
+    font-size: 20px;
     font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 8px;
+    border-left: 4px solid #337ab7;
+    display: flex;
+    align-items: center;
+    
+    .fa {
+      margin-right: 10px;
+      color: #337ab7;
+    }
+  }
+  
+  .twelve-month-cards {
+    .twelve-month-card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      }
+      
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        
+        .card-icon {
+          font-size: 18px;
+          margin-right: 8px;
+          width: 20px;
+          text-align: center;
+        }
+        
+        .income-icon {
+          color: #5cb85c;
+        }
+        
+        .spending-icon {
+          color: #d9534f;
+        }
+        
+        .balance-icon {
+          color: #337ab7;
+        }
+        
+        h4 {
+          margin: 0;
+          font-size: 14px;
+          font-weight: 600;
+          color: #333;
+        }
+      }
+      
+      .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        .card-value {
+          font-size: 20px;
+          font-weight: 700;
+          margin-bottom: 5px;
+          color: #333;
+          
+          &.positive {
+            color: #5cb85c;
+          }
+          
+          &.negative {
+            color: #d9534f;
+          }
+        }
+        
+        .card-subtitle {
+          font-size: 12px;
+          color: #666;
+          font-weight: 500;
+        }
+      }
+    }
   }
 }
+
+// Responsive for twelve month summary
+@media (max-width: 768px) {
+  .twelve-month-summary {
+    .summary-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .twelve-month-cards {
+      .twelve-month-card {
+        height: 100px;
+        padding: 15px;
+        margin-bottom: 15px;
+        
+        .card-header {
+          margin-bottom: 10px;
+          
+          .card-icon {
+            font-size: 16px;
+          }
+          
+          h4 {
+            font-size: 13px;
+          }
+        }
+        
+        .card-body {
+          .card-value {
+            font-size: 18px;
+          }
+          
+          .card-subtitle {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .twelve-month-summary {
+    .twelve-month-cards {
+      .twelve-month-card {
+        height: 90px;
+        padding: 12px;
+        
+        .card-body {
+          .card-value {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Month section styling
+.month-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  border-left: 4px solid #337ab7;
+  display: flex;
+  align-items: center;
+  
+  .fa {
+    margin-right: 10px;
+    color: #337ab7;
+  }
+  
+  .month-period {
+    margin-left: 10px;
+    font-weight: 500;
+    color: #666;
+  }
+}
+
+// Different colors for current month vs past months
+#stats .month-section-title:first-of-type {
+  border-left-color: #5cb85c;
+  
+  .fa {
+    color: #5cb85c;
+  }
+}
+
 
 // Empty state styling for accounts page
 .accounts-empty-state {

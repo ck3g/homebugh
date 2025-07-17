@@ -37,7 +37,7 @@
     .col-md-6
       .stats-chart-container
         %fieldset
-          %legend= title
+          %legend= t("parts.statistics.income_vs_spending")
           %div
             = chartjs_pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending }, { height: 280 })
     .col-md-6
@@ -52,5 +52,5 @@
         %fieldset
           %legend= t("parts.categories.spending")
           %div
-            - stacked_data = { title => spending_chart_data }
+            - stacked_data = { t("parts.categories.spending") => spending_chart_data }
             = chartjs_stacked_bar_chart stacked_data, { height: 140 }

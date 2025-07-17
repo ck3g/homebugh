@@ -11,7 +11,43 @@
           = link_to currency.name, statistics_path(currency: currency.name)
 
   #stats
+    / 12-month summary section
+    - if @twelve_month_income > 0 || @twelve_month_spending > 0
+      .twelve-month-summary
+        %h3.summary-title
+          = fa_icon "calendar"
+          = t('parts.statistics.twelve_month_summary')
+        .row.twelve-month-cards
+          .col-md-4
+            .twelve-month-card.income-card
+              .card-header
+                = fa_icon "arrow-up", class: "card-icon income-icon"
+                %h4= t("parts.categories.income")
+              .card-body
+                .card-value= get_number_to_currency(@twelve_month_income, @current_currency.try(:unit) || @current_currency.try(:name))
+                .card-subtitle= t('parts.statistics.last_twelve_months')
+          .col-md-4
+            .twelve-month-card.spending-card
+              .card-header
+                = fa_icon "arrow-down", class: "card-icon spending-icon"
+                %h4= t("parts.categories.spending")
+              .card-body
+                .card-value= get_number_to_currency(@twelve_month_spending, @current_currency.try(:unit) || @current_currency.try(:name))
+                .card-subtitle= t('parts.statistics.last_twelve_months')
+          .col-md-4
+            .twelve-month-card.balance-card
+              .card-header
+                = fa_icon "balance-scale", class: "card-icon balance-icon"
+                %h4= t("parts.statistics.net_balance")
+              .card-body
+                .card-value{class: (@twelve_month_net_balance >= 0 ? 'positive' : 'negative')}= get_number_to_currency(@twelve_month_net_balance, @current_currency.try(:unit) || @current_currency.try(:name))
+                .card-subtitle= t('parts.statistics.last_twelve_months')
+    
     - @current_month_stats.each do |stats|
+      %h4.month-section-title
+        = fa_icon "calendar-o"
+        = t('parts.statistics.current_month_title')
+        %span.month-period= stats[:title]
       = render 'charts',
         title: stats[:title],
         total_income: stats[:income],
@@ -19,9 +55,6 @@
         income_chart_data: stats[:income_chart_data],
         spending_chart_data: stats[:spending_chart_data],
         currency_unit: @current_currency.try(:unit) || @current_currency.try(:name)
-
-    - if @past_months_stats.any?
-      %hr.past-months-separator
 
     - @past_months_stats.each do |months|
       - months.each do |month, monthly_data|
@@ -33,6 +66,10 @@
         - monthly_data[:spending].each do |data|
           - spending_chart_data[data.category.name] = data.amount
 
+        %h4.month-section-title
+          = fa_icon "calendar"
+          = t('parts.statistics.past_month_title')
+          %span.month-period= l(month.to_date, format: :month_year)
         = render 'charts',
           title: l(month.to_date, format: :month_year),
           total_income: monthly_data[:income].pluck(:amount).inject(:+) || 0,
