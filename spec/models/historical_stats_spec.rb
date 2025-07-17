@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Stats, type: :model do
+describe HistoricalStats, type: :model do
   describe '' do
     let!(:salary) { create :income_category, name: 'Salary' }
     let!(:food) { create :spending_category, name: 'Food' }
@@ -52,7 +52,7 @@ describe Stats, type: :model do
     end
 
     it "fetch stats for currency" do
-      expect(Stats.new(usd).all.take(2)).to eq([
+      expect(HistoricalStats.new(usd).all.take(2)).to eq([
         {
           1.month.ago.beginning_of_month => {
             income: [at11], spending: [at12, at13]

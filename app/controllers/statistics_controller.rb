@@ -6,19 +6,19 @@ class StatisticsController < ApplicationController
     @current_currency = current_currency
 
     # Get current month stats
-    @current_month_stats = Statistic.current_month_stats(
+    @current_month_stats = StatisticsService.current_month_stats(
       @current_currency.try(:id),
       current_user.id
     )
 
     # Get past months stats (last 24 months excluding current month)
-    @past_months_stats = Stats.new(
+    @past_months_stats = HistoricalStats.new(
       @current_currency,
       current_user.aggregated_transactions
     ).all.lazy.first(24)
 
     # Calculate 12-month totals
-    twelve_month_totals = Statistic.twelve_month_totals(
+    twelve_month_totals = StatisticsService.twelve_month_totals(
       @current_currency,
       current_user,
       @current_month_stats,
@@ -32,7 +32,7 @@ class StatisticsController < ApplicationController
 
   def archived
     authorize! :archived, :statistics
-    @stats = Stats.new(
+    @stats = HistoricalStats.new(
       current_currency,
       current_user.aggregated_transactions
     ).all.lazy.first(12)

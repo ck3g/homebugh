@@ -1,4 +1,4 @@
-class Statistics
+class TransactionStats
   def initialize(currency_id, user_id, date_from, date_to)
     @currency_id = currency_id
     @user_id = user_id

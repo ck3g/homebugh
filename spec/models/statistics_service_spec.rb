@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Statistic, type: :model do
+describe StatisticsService, type: :model do
   describe '.twelve_month_totals' do
     let!(:user) { create(:user) }
     let!(:usd) { create(:currency, name: 'USD', unit: '$') }
@@ -36,7 +36,7 @@ describe Statistic, type: :model do
     end
     
     subject do
-      Statistic.twelve_month_totals(usd, user, current_month_stats, past_months_stats)
+      StatisticsService.twelve_month_totals(usd, user, current_month_stats, past_months_stats)
     end
     
     it 'returns a hash with income, spending, and net_balance' do

@@ -1,4 +1,4 @@
-class Stats
+class HistoricalStats
   attr_reader :relation, :currency
 
   def initialize(currency, relation = AggregatedTransaction)

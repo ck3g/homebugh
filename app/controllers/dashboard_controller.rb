@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     # Get current month spending data for Euro currency (if available)
     eur_currency = Currency.find_by(name: 'EUR')
     if eur_currency && current_user
-      @current_month_stats = Statistic.current_month_stats(
+      @current_month_stats = StatisticsService.current_month_stats(
         eur_currency.id,
         current_user.id
       )
