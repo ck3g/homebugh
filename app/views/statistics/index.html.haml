@@ -17,7 +17,8 @@
         total_income: stats[:income],
         total_spending: stats[:spending],
         income_chart_data: stats[:income_chart_data],
-        spending_chart_data: stats[:spending_chart_data]
+        spending_chart_data: stats[:spending_chart_data],
+        currency_unit: @current_currency.try(:unit) || @current_currency.try(:name)
 
     - if @past_months_stats.any?
       %hr.past-months-separator
@@ -37,7 +38,8 @@
           total_income: monthly_data[:income].pluck(:amount).inject(:+) || 0,
           total_spending: monthly_data[:spending].pluck(:amount).inject(:+) || 0,
           income_chart_data: income_chart_data,
-          spending_chart_data: spending_chart_data
+          spending_chart_data: spending_chart_data,
+          currency_unit: @current_currency.try(:unit) || @current_currency.try(:name)
 - else
   .statistics-empty-state
     .empty-state-container

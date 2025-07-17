@@ -1,19 +1,56 @@
 .card-panels
-  .row
+  / Summary Cards Row
+  .row.stats-summary-cards
+    .col-md-4
+      .stats-card.income-card
+        .stats-card-header
+          = fa_icon "arrow-up", class: "stats-icon income-icon"
+          %h4= t("parts.categories.income")
+        .stats-card-body
+          .stats-value= get_number_to_currency(total_income, currency_unit)
+          - if total_income > 0
+            .stats-percentage.positive +100%
+    .col-md-4
+      .stats-card.spending-card
+        .stats-card-header
+          = fa_icon "arrow-down", class: "stats-icon spending-icon"
+          %h4= t("parts.categories.spending")
+        .stats-card-body
+          .stats-value= get_number_to_currency(total_spending, currency_unit)
+          - if total_spending > 0
+            .stats-percentage.negative -100%
+    .col-md-4
+      .stats-card.balance-card
+        .stats-card-header
+          = fa_icon "balance-scale", class: "stats-icon balance-icon"
+          %h4= t("parts.statistics.net_balance")
+        .stats-card-body
+          - net_balance = total_income - total_spending
+          .stats-value{class: (net_balance >= 0 ? 'positive' : 'negative')}= get_number_to_currency(net_balance, currency_unit)
+          - if net_balance >= 0
+            .stats-percentage.positive= "+#{((net_balance / [total_income, 1].max) * 100).round(1)}%"
+          - else
+            .stats-percentage.negative= "#{((net_balance / [total_income, 1].max) * 100).round(1)}%"
+
+  / Charts Row
+  .row.stats-charts-row
     .col-md-6
-      %fieldset
-        %legend= title
-        %div
-          = chartjs_pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending }, { height: 250 })
+      .stats-chart-container
+        %fieldset
+          %legend= title
+          %div
+            = chartjs_pie_chart({ t("parts.categories.income") => total_income, t("parts.categories.spending") => total_spending }, { height: 280 })
     .col-md-6
-      %fieldset
-        %legend= t("parts.categories.income")
-        %div
-          = chartjs_pie_chart income_chart_data, { height: 250 }
+      .stats-chart-container
+        %fieldset
+          %legend= t("parts.categories.income")
+          %div
+            = chartjs_pie_chart income_chart_data, { height: 280 }
   .row
     .col-md-12
-      %fieldset
-        %legend= t("parts.categories.spending")
-        %div
-          - stacked_data = { title => spending_chart_data }
-          = chartjs_stacked_bar_chart stacked_data, { height: 120 }
+      .stats-chart-container.spending-chart
+        %fieldset
+          %legend= t("parts.categories.spending")
+          %div
+            - stacked_data = { title => spending_chart_data }
+            = chartjs_stacked_bar_chart stacked_data, { height: 140 }

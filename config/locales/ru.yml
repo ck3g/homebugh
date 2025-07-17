@@ -264,6 +264,7 @@ ru:
       income_total: "Приход всего"
       spending_total: "Расход всего"
       monthly_spending_trends: "Тенденции трат по месяцам"
+      net_balance: "Чистый баланс"
       get_started_title: "Здесь будет ваша статистика"
       get_started_description: "Как только вы начнете записывать транзакции, эта страница будет отображать детальную аналитику и понимание ваших паттернов трат."
       feature_monthly_title: "Разбивка по месяцам"

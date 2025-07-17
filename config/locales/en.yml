@@ -217,6 +217,7 @@ en:
       income_total: "Income total"
       spending_total: "Spending total"
       monthly_spending_trends: "Monthly spending trends"
+      net_balance: "Net Balance"
       get_started_title: "Your statistics will appear here"
       get_started_description: "Once you start recording transactions, this page will display detailed analytics and insights about your spending patterns."
       feature_monthly_title: "Monthly Breakdowns"

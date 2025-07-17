@@ -48,6 +48,190 @@
   }
 }
 
+// Statistics page enhancements
+.stats-summary-cards {
+  margin-bottom: 30px;
+  
+  .stats-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .stats-card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      
+      .stats-icon {
+        font-size: 20px;
+        margin-right: 10px;
+        width: 24px;
+        text-align: center;
+      }
+      
+      .income-icon {
+        color: #5cb85c;
+      }
+      
+      .spending-icon {
+        color: #d9534f;
+      }
+      
+      .balance-icon {
+        color: #337ab7;
+      }
+      
+      h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+    
+    .stats-card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 10px;
+      
+      .stats-value {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: #333;
+        
+        &.positive {
+          color: #5cb85c;
+        }
+        
+        &.negative {
+          color: #d9534f;
+        }
+      }
+      
+      .stats-percentage {
+        font-size: 14px;
+        font-weight: 500;
+        
+        &.positive {
+          color: #5cb85c;
+        }
+        
+        &.negative {
+          color: #d9534f;
+        }
+      }
+    }
+  }
+}
+
+.stats-charts-row {
+  margin-bottom: 30px;
+  
+  .stats-chart-container {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
+    fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+      
+      legend {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+        padding: 0;
+        border: none;
+      }
+    }
+    
+    &.spending-chart {
+      .chart-container {
+        height: 140px;
+      }
+    }
+  }
+}
+
+// Responsive improvements for statistics page
+@media (max-width: 768px) {
+  .stats-summary-cards {
+    .stats-card {
+      margin-bottom: 15px;
+      padding: 15px;
+      height: 120px;
+      
+      .stats-card-header {
+        .stats-icon {
+          font-size: 18px;
+        }
+        
+        h4 {
+          font-size: 14px;
+        }
+      }
+      
+      .stats-card-body {
+        .stats-value {
+          font-size: 20px;
+        }
+        
+        .stats-percentage {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  
+  .stats-charts-row {
+    .stats-chart-container {
+      padding: 15px;
+      margin-bottom: 15px;
+      
+      fieldset {
+        legend {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-summary-cards {
+    .stats-card {
+      height: 110px;
+      padding: 12px;
+      
+      .stats-card-body {
+        .stats-value {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
 // Separator between current month and past months
 .past-months-separator {
   margin: 40px 0;

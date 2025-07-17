@@ -3,15 +3,17 @@ class StatisticsController < ApplicationController
   def index
     authorize! :index, :statistics
 
+    @current_currency = current_currency
+
     # Get current month stats
     @current_month_stats = Statistic.current_month_stats(
-      current_currency.try(:id),
+      @current_currency.try(:id),
       current_user.id
     )
 
     # Get past months stats (last 24 months excluding current month)
     @past_months_stats = Stats.new(
-      current_currency,
+      @current_currency,
       current_user.aggregated_transactions
     ).all.lazy.first(24)
   end
