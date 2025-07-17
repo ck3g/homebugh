@@ -11,26 +11,20 @@
     = stylesheet_link_tag :welcome
     = csrf_meta_tag
   %body
-    %nav.navbar.navbar-default.navbar-fixed-top.topnav{:role => "navigation"}
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top.topnav
       .container.topnav
-        / Brand and toggle get grouped for better mobile display
-        .navbar-header
-          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand.topnav{:href => root_path} HomeBugh
-        / Collect the nav links, forms, and other content for toggling
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li= link_to "Cookie Policy", cookiepolicy_path
-            %li= link_to t("welcome_page.nav.about"), root_path(anchor: "about")
-            %li= link_to t("welcome_page.nav.services"), root_path(anchor: "services")
-            %li= link_to t("welcome_page.nav.contact"), root_path(anchor: "contact")
-            %li= link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale)
-        / /.navbar-collapse
-      / /.container
+        / Brand
+        %a.navbar-brand.topnav{:href => root_path} HomeBugh
+        / Toggle button for mobile
+        %button.navbar-toggler{"data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button", "aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
+          %span.navbar-toggler-icon
+        / Collapsible content
+        #navbarNav.collapse.navbar-collapse
+          %ul.navbar-nav.ms-auto
+            %li.nav-item
+              = link_to "Cookie Policy", cookiepolicy_path, class: "nav-link"
+            %li.nav-item
+              = link_to image_tag("flags/#{inverse_locale}.png"), url_for(locale: inverse_locale), class: "nav-link"
     / Header
 
     = yield

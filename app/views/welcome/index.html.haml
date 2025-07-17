@@ -8,15 +8,12 @@
           %h1 HomeBugh
           %h3= t("welcome_page.slogan")
           %hr.intro-divider/
-          %ul.list-inline.intro-social-buttons
-            %li
-              = link_to new_user_registration_path, class: "btn btn-default btn-lg" do
-                %span.network-name= t("welcome_page.create_account_button")
-            %li
-              %h5= t("welcome_page.or")
-            %li
-              = link_to new_user_session_path, class: "btn btn-default btn-lg" do
-                %span.network-name= t("welcome_page.sign_in_button")
+          .intro-social-buttons.text-center
+            = link_to new_user_registration_path, class: "btn btn-light btn-lg me-3" do
+              %span.network-name= t("welcome_page.create_account_button")
+            %span.h5.text-white.mx-3= t("welcome_page.or")
+            = link_to new_user_session_path, class: "btn btn-light btn-lg ms-3" do
+              %span.network-name= t("welcome_page.sign_in_button")
   / /.container
 / /.intro-header
 
@@ -104,16 +101,10 @@
     .row
       .col-lg-12
         %ul.list-inline
-          %li.footer-menu-divider ⋅
-          %li= link_to t("parts.auth.sign_up"), new_user_registration_path
-          %li.footer-menu-divider ⋅
-          %li= link_to t("parts.auth.sign_in"), new_user_session_path
-          %li.footer-menu-divider ⋅
-          %li= link_to "Cookie Policy", cookiepolicy_path
-          %li.footer-menu-divider ⋅
-          %li= link_to t("welcome_page.nav.about"), root_path(anchor: "about")
-          %li.footer-menu-divider ⋅
-          %li= link_to t("welcome_page.nav.services"), root_path(anchor: "services")
-          %li.footer-menu-divider ⋅
-          %li= link_to t("welcome_page.nav.contact"), root_path(anchor: "contact")
+          %li.list-inline-item.footer-menu-divider ⋅
+          %li.list-inline-item= link_to t("parts.auth.sign_up"), new_user_registration_path
+          %li.list-inline-item.footer-menu-divider ⋅
+          %li.list-inline-item= link_to t("parts.auth.sign_in"), new_user_session_path
+          %li.list-inline-item.footer-menu-divider ⋅
+          %li.list-inline-item= link_to "Cookie Policy", cookiepolicy_path
         %p.copyright.text-muted.small= copyright

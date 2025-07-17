@@ -2,14 +2,12 @@
   .modal-dialog{ role: "document" }
     .modal-content
       .modal-header
-        %button.close{ type: "button", 'data-dismiss': "modal" }
-          %span
-            &times;
         %h4.modal-title
           = t('cookie_consent.title')
+        %button.btn-close{ type: "button", 'data-bs-dismiss': "modal", 'aria-label': "Close" }
       .modal-body
         = t('cookie_consent.text')
         = link_to t('cookie_consent.learn_more_here'), cookiepolicy_path
       .modal-footer
-        %button.btn.btn-primary{ id: 'cookie-consent-button-ok', type: "button", 'data-dismiss': "modal" }
+        %button.btn.btn-primary{ id: 'cookie-consent-button-ok', type: "button", 'data-bs-dismiss': "modal" }
           = t('cookie_consent.button_text')

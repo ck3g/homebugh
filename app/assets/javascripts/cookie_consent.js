@@ -13,7 +13,8 @@ class CookieConsent {
     const isAccepted = Cookies.get('cookie_consent_accepted');
 
     if(!isAccepted) {
-      $('#cookie-consent-modal').modal('show');
+      const modal = new bootstrap.Modal(document.getElementById('cookie-consent-modal'));
+      modal.show();
     }
   }
 }

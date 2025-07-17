@@ -71,14 +71,16 @@ h6 {
         font-size: 3em;
     }
 
-    ul.intro-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.intro-social-buttons > li:last-child {
-        margin-bottom: 0;
+    .intro-social-buttons {
+        .btn {
+            display: block;
+            margin: 10px auto;
+            width: 250px;
+        }
+        
+        .mx-3 {
+            margin: 10px 0 !important;
+        }
     }
 
     .intro-divider {
@@ -168,6 +170,14 @@ h6 {
 footer {
     padding: 50px 0;
     background-color: #f8f8f8;
+    
+    a {
+        text-decoration: none;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 p.copyright {
