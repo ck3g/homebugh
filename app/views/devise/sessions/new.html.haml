@@ -1,17 +1,14 @@
-.col-md-5.col-md-offset-3
+.col-md-5.offset-md-3
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     %h2= title t(:sign_in)
-    .form-group
-      .col-lg-12
-        = f.input_field :email, autofocus: true, placeholder: t(:email)
-    .form-group
-      .col-lg-12
-        = f.input_field :password, placeholder: t(:password)
+    .mb-3
+      = f.input_field :email, autofocus: true, placeholder: t(:email), class: "form-control"
+    .mb-3
+      = f.input_field :password, placeholder: t(:password), class: "form-control"
     - if devise_mapping.rememberable?
-      .form-group
-        .col-lg-12
-          .checkbox
-            = f.input :remember_me, as: :boolean, label: false, inline_label: true
-    = f.button :submit, t(:do_sign_in), class: "pull-left btn btn-primary btn-block"
+      .mb-3
+        .form-check
+          = f.input :remember_me, as: :boolean, label: false, inline_label: true, input_html: { class: "form-check-input" }
+    = f.button :submit, t(:do_sign_in), class: "btn btn-primary w-100"
   .clearfix
   = render "devise/shared/links"

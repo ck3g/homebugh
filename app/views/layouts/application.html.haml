@@ -15,11 +15,11 @@
       = render 'shared/dashboard_layout'
     - else
       = render 'shared/top_navbar'
-      .container
+      .container{style: "padding-top: 80px;"}
         = render 'shared/flash_messages'
         = yield
         .row
-          .col-xs-12.col-lg-12
+          .col-12
             %hr/
             %footer
               = render 'shared/footer'

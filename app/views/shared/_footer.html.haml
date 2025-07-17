@@ -1,20 +1,20 @@
 .text-center
-  .hidden-xs
-    %ul.site-links
-      %li.first= copyright
+  .d-none.d-sm-block
+    %ul.list-inline.site-links
+      %li.list-inline-item= copyright
       - if user_signed_in?
-        %li= link_to "Dashboard", dashboard_path
-        %li= link_to t("main_menu.transactions"), transactions_path
-        %li= link_to t("main_menu.recurring_payments"), recurring_payments_path
-        %li= link_to t("main_menu.cash_flows"), cash_flows_path
-        %li= link_to t("main_menu.recurring_cash_flows"), recurring_cash_flows_path
-        %li= link_to t("main_menu.accounts"), accounts_path
-        %li= link_to t("main_menu.categories"), categories_path
-        %li= link_to t("main_menu.budgets"), budgets_path
-        %li= link_to t("main_menu.statistics"), statistics_path
-        %li= link_to t("parts.auth.sign_out"), destroy_user_session_path, method: :delete
+        %li.list-inline-item= link_to "Dashboard", dashboard_path
+        %li.list-inline-item= link_to t("main_menu.transactions"), transactions_path
+        %li.list-inline-item= link_to t("main_menu.recurring_payments"), recurring_payments_path
+        %li.list-inline-item= link_to t("main_menu.cash_flows"), cash_flows_path
+        %li.list-inline-item= link_to t("main_menu.recurring_cash_flows"), recurring_cash_flows_path
+        %li.list-inline-item= link_to t("main_menu.accounts"), accounts_path
+        %li.list-inline-item= link_to t("main_menu.categories"), categories_path
+        %li.list-inline-item= link_to t("main_menu.budgets"), budgets_path
+        %li.list-inline-item= link_to t("main_menu.statistics"), statistics_path
+        %li.list-inline-item= link_to t("parts.auth.sign_out"), destroy_user_session_path, method: :delete
       - else
-        %li= link_to t("parts.auth.sign_up"), new_user_registration_path
-        %li= link_to t("parts.auth.sign_in"), new_user_session_path
+        %li.list-inline-item= link_to t("parts.auth.sign_up"), new_user_registration_path
+        %li.list-inline-item= link_to t("parts.auth.sign_in"), new_user_session_path
 
-  .visible-xs= copyright
+  .d-block.d-sm-none= copyright
