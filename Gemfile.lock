@@ -96,8 +96,6 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     airbrussh (1.5.3)
       sshkit (>= 1.6.1, != 1.7.0)
-    autoprefixer-rails (10.4.21.0)
-      execjs (~> 2)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -109,9 +107,8 @@ GEM
     bigdecimal (3.2.2)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (5.3.5)
+      popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
     cancancan (3.6.1)
     capistrano (3.18.1)
@@ -301,6 +298,7 @@ GEM
     observer (0.1.2)
     orm_adapter (0.5.0)
     ostruct (0.6.2)
+    popper_js (2.11.8)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -415,6 +413,12 @@ GEM
       sexp_processor (~> 4.16)
     sassc (2.4.0)
       ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     sassc-ruby (9001.0)
     securerandom (0.4.1)
     select2-rails (3.5.11)
@@ -484,7 +488,7 @@ DEPENDENCIES
   benchmark
   best_in_place!
   bootsnap
-  bootstrap-sass (~> 3.4.1)
+  bootstrap (~> 5.3.0)
   cancancan
   capistrano (~> 3.18.0)
   capistrano-bundler
@@ -534,6 +538,7 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-rails (~> 8.0.1)
   ruby-progressbar
+  sassc-rails
   sassc-ruby
   select2-rails (~> 3.5.11)
   shoulda-matchers (~> 5.3.0)

@@ -23,9 +23,10 @@ gem 'aasm'
 gem 'cancancan'
 gem 'rack-cors'
 
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap', '~> 5.3.0'
 gem "uglifier", ">= 4.2.0"
 gem "sassc-ruby"
+gem "sassc-rails"
 gem 'font-awesome-rails'
 gem 'ffi'
 
