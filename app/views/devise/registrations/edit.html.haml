@@ -3,18 +3,18 @@
   
   .card-panels
     .row
-      .col-md-8.col-md-offset-2
+      .col-md-8.offset-md-2
         %fieldset
           %legend Edit Profile
           %div
             - if current_user.demo_user?
               .profile-form-group
                 %label.control-label Email
-                %p.form-control-static= current_user.email
+                %p.form-control-plaintext= current_user.email
               .profile-form-group
                 %label.control-label Password
-                %p.form-control-static.warning= 'demouser'
-                %span.help-block= t('parts.demo_user.change_password_hint')
+                %p.form-control-plaintext.warning= 'demouser'
+                %span.form-text.text-muted= t('parts.demo_user.change_password_hint')
             - else
               .profile-form-group
                 = f.input :email, required: true, autofocus: true
@@ -26,6 +26,6 @@
                 = f.input :current_password, hint: t("devise.registrations.need_current_password_to_confirm"), required: true
               
               .form-group
-                .col-lg-offset-2.col-lg-10
+                .col-lg-10.offset-lg-2
                   = f.button :submit, t('common.update'), class: "btn btn-primary"
 

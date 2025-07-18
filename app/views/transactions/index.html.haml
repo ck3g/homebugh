@@ -5,7 +5,7 @@
     add_link_url: new_transaction_path
 
   .row
-    .col-xs-12.col-lg-12
+    .col-12
       .table-responsive
         %table.table
           %thead
@@ -20,7 +20,7 @@
               %tr.due-row{ id: dom_id(recurring_payment) }
                 %td.span2
                   %span= l(Date.today, format: :long)
-                  %a.btn.btn-link.btn-mini.btn-xs{tabindex: 0, role: 'button', data: { bs_toggle: 'popover', bs_trigger: 'focus', bs_content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
+                  %a.btn.btn-link.btn-sm{tabindex: 0, role: 'button', data: { bs_toggle: 'popover', bs_trigger: 'focus', bs_content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
                     = fa_icon 'question'
                 %td
                   %span.category= link_to recurring_payment.decorate.category_name, transactions_path(category: recurring_payment.category_id)

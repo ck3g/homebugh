@@ -1,9 +1,9 @@
 .row
-  .col-xs-12
+  .col-12
     = form_title t('parts.users.delete')
-    = simple_form_for current_user, html: { class: "form-horizontal" }, url: users_destroy_url, method: :delete do |f|
+    = simple_form_for current_user, url: users_destroy_url, method: :delete do |f|
       .form-group
-        .col-lg-offset-2.col-lg-10
+        .col-lg-10.offset-lg-2
           .alert.alert-danger
             = fa_icon 'exclamation-triangle'
             = t('parts.users.delete_warning')
@@ -11,7 +11,7 @@
       = f.input :password
 
       .form-group.action-buttons
-        .col-lg-offset-2.col-lg-10
+        .col-lg-10.offset-lg-2
           = f.button :submit, t('parts.users.delete'), class: "btn btn-danger"
           = link_to t("common.back"), root_path, class: "btn"
 

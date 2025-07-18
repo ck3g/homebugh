@@ -5,7 +5,7 @@
     add_link_url: new_cash_flow_path
 
   .row
-    .col-xs-12.col-lg-12
+    .col-12
       .table-responsive
         %table.table
           %thead
@@ -21,7 +21,7 @@
                 %tr.due-row{ id: dom_id(rcf) }
                   %td.span2
                     %span= l(Date.today, format: :long)
-                    %a.btn.btn-link.btn-mini.btn-xs{tabindex: 0, role: 'button', data: { bs_toggle: 'popover', bs_trigger: 'focus', bs_content: t('parts.recurring_cash_flows.due_description') }, title: t('parts.recurring_cash_flows.due')}
+                    %a.btn.btn-link.btn-sm{tabindex: 0, role: 'button', data: { bs_toggle: 'popover', bs_trigger: 'focus', bs_content: t('parts.recurring_cash_flows.due_description') }, title: t('parts.recurring_cash_flows.due')}
                       = fa_icon 'question'
                   %td
                     %span.category= rcf.from_account.name

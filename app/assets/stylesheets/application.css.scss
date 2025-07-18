@@ -122,15 +122,18 @@ select.form-select {
 }
 
 .due-row {
-  color: gray;
+  color: gray !important;
   border-bottom: 2px dotted #eee;
   background-color: rgba(92, 184, 92, 0.2) !important;
 
   td {
     background-color: transparent !important;
+    color: gray !important;
+    
     span {
       filter: alpha(opacity=60);
       opacity: 0.6;
+      color: gray !important;
     }
   }
 }

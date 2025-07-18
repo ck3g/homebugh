@@ -2,7 +2,7 @@
   .accounts-summary
     .row
       - current_user.accounts.active.show_in_summary.each do |account|
-        .col-xs-12.col-sm-6.col-lg-3
+        .col-12.col-sm-6.col-lg-3
           .account-card
             .account-header
               %h4.account-name= account.name
@@ -11,7 +11,7 @@
     
     .row.total-summary
       - TotalAmount.of(current_user).each do |unit, amount|
-        .col-xs-12.col-sm-6.col-lg-3
+        .col-12.col-sm-6.col-lg-3
           .total-card
             .total-header
               %h4.total-label Total #{unit}
