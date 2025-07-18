@@ -1,13 +1,15 @@
-= simple_form_for cash_flow, html: { class: "form-horizontal" } do |f|
+= simple_form_for cash_flow do |f|
   = f.association :from_account,
     collection: AccountDecorator.decorate_collection(current_user.accounts.active),
-    include_blank: false, input_html: { data: { select_2: true } }
+    include_blank: false, input_html: { data: { select_2: true }, class: "form-select" },
+    wrapper: :horizontal_form
   = f.association :to_account,
     collection: AccountDecorator.decorate_collection(current_user.accounts.active),
-    include_blank: false, input_html: { data: { select_2: true } }
-  = f.input :initial_amount, input_html: { class: 'medium-input' }
-  = f.input :amount, input_html: { class: 'medium-input' }
-  .form-group.action-buttons
-    .col-sm-offset-2.col-sm-10
+    include_blank: false, input_html: { data: { select_2: true }, class: "form-select" },
+    wrapper: :horizontal_form
+  = f.input :initial_amount, wrapper: :horizontal_form
+  = f.input :amount, wrapper: :horizontal_form
+  .row.mb-3
+    .col-12.col-xl-4.offset-xl-2
       = f.button :submit, t("parts.cash_flows.submit"), class: "btn btn-primary", id: :cash_flow_submit
-      = link_to t("common.back"), cash_flows_path, class: "btn"
+      = link_to t("common.back"), cash_flows_path, class: "btn btn-secondary ms-2"
