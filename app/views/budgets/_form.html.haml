@@ -1,8 +1,8 @@
-= simple_form_for budget, html: { class: "form-horizontal" } do |f|
-  = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true } }, hint: t("parts.budgets.category_hint")
-  = f.input :limit, input_html: { class: 'medium-input', placeholder: t("parts.budgets.limit_placeholder") }, hint: t("parts.budgets.limit_hint")
-  = f.association :currency, collection: current_user.currencies, input_html: { class: 'medium-input' }, hint: t("parts.budgets.currency_hint")
-  .form-group.action-buttons
-    .col-lg-offset-2.col-lg-10
+= simple_form_for budget do |f|
+  = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true }, class: "form-select" }, hint: t("parts.budgets.category_hint"), wrapper: :horizontal_form
+  = f.input :limit, input_html: { placeholder: t("parts.budgets.limit_placeholder") }, hint: t("parts.budgets.limit_hint"), wrapper: :horizontal_form
+  = f.association :currency, collection: current_user.currencies, input_html: { class: "form-select" }, hint: t("parts.budgets.currency_hint"), wrapper: :horizontal_form
+  .row.mb-3
+    .col-12.col-xl-4.offset-xl-2
       = f.button :submit, class: "btn btn-success"
-      = link_to t("common.back"), budgets_path, class: "btn"
+      = link_to t("common.back"), budgets_path, class: "btn btn-secondary ms-2"
