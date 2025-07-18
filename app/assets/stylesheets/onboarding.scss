@@ -300,20 +300,3 @@
   }
 }
 
-// Custom outline success button for Bootstrap 3
-.btn-outline-success {
-  color: #47a447;
-  background-color: transparent;
-  border: 2px solid #47a447;
-  
-  &:hover, &:focus {
-    color: #fff;
-    background-color: #47a447;
-    border-color: #47a447;
-  }
-  
-  &:active {
-    background-color: #398439;
-    border-color: #398439;
-  }
-}
