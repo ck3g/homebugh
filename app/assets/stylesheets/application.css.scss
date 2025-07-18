@@ -51,8 +51,49 @@ table .actions a {
 }
 
 .date-select {
-  float: left;
+  display: inline-block;
   margin-right: 10px;
+}
+
+// Bootstrap 5 date selector styling
+.date-select-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+  
+  @media (max-width: 576px) {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+
+select.form-select {
+  display: inline-block;
+  width: auto;
+  min-width: 60px;
+  flex-shrink: 1;
+  
+  &[id*="_1i"] { // Day selectors
+    width: 80px;
+    min-width: 60px;
+  }
+  
+  &[id*="_2i"] { // Month selectors  
+    width: 120px;
+    min-width: 100px;
+  }
+  
+  &[id*="_3i"] { // Year selectors
+    width: 80px;
+    min-width: 70px;
+  }
+  
+  @media (max-width: 576px) {
+    &[id*="_1i"] { width: 70px; min-width: 50px; }
+    &[id*="_2i"] { width: 100px; min-width: 90px; }
+    &[id*="_3i"] { width: 70px; min-width: 60px; }
+  }
 }
 
 .medium-input {

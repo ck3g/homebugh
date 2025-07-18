@@ -1,16 +1,31 @@
-= simple_form_for recurring_payment, html: { class: "form-horizontal", role: 'form' } do |f|
-  = f.input :title, input_html: { class: 'medium-input' }
+= simple_form_for recurring_payment do |f|
+  = f.input :title, wrapper: :horizontal_form
   = f.association :account,
     collection: AccountDecorator.decorate_collection(current_user.accounts.active.by_recently_used),
-    include_blank: false, input_html: { data: { select_2: true } }
-  = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true } }
-  = f.input :amount, input_html: { class: 'medium-input' }
-  = f.input :frequency, collection: recurring_payment_frequencies_collection, as: :select, input_html: { class: 'medium-input' }
-  = f.input :frequency_amount, input_html: { class: 'medium-input' }
-  = f.input :next_payment_on, as: :date, start_year: Date.today.year, order: [:day, :month, :year], input_html: { class: 'date-select' }
-  = f.input :ends_on, as: :date, start_year: Date.today.year, order: [:day, :month, :year], input_html: { class: 'date-select' }, include_blank: true
-  .clearfix
-  .form-group.action-buttons
-    .col-lg-offset-2.col-lg-10
+    include_blank: false, input_html: { data: { select_2: true }, class: "form-select" },
+    wrapper: :horizontal_form
+  = f.association :category, 
+    collection: current_user.categories.active.by_recently_used, 
+    input_html: { data: { select_2: true }, class: "form-select" },
+    wrapper: :horizontal_form
+  = f.input :amount, wrapper: :horizontal_form
+  = f.input :frequency, 
+    collection: recurring_payment_frequencies_collection, 
+    as: :select, 
+    wrapper: :horizontal_form
+  = f.input :frequency_amount, wrapper: :horizontal_form
+  = f.input :next_payment_on, 
+    as: :date, 
+    start_year: Date.today.year, 
+    order: [:day, :month, :year], 
+    wrapper: :horizontal_date_form
+  = f.input :ends_on, 
+    as: :date, 
+    start_year: Date.today.year, 
+    order: [:day, :month, :year], 
+    include_blank: true,
+    wrapper: :horizontal_date_form
+  .row.mb-3
+    .col-12.col-xl-4.offset-xl-2
       = f.button :submit, class: "btn btn-primary", id: :recurring_payment_submit
-      = link_to t("common.back"), recurring_payments_path, class: "btn"
+      = link_to t("common.back"), recurring_payments_path, class: "btn btn-secondary ms-2"

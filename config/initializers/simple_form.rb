@@ -67,6 +67,20 @@ SimpleForm.setup do |config|
     end
   end
 
+  # Bootstrap 5 horizontal form wrapper for date inputs
+  config.wrappers :horizontal_date_form, tag: 'div', class: 'row mb-3' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'col-12 col-xl-2 col-form-label'
+    b.wrapper tag: 'div', class: 'col-12 col-xl-4' do |ba|
+      ba.wrapper tag: 'div', class: 'date-select-container' do |bb|
+        bb.use :input, class: 'form-select'
+      end
+      ba.use :error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+      ba.use :hint, wrap_with: { tag: 'div', class: 'form-text' }
+    end
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 
