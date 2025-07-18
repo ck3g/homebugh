@@ -1,11 +1,15 @@
-= simple_form_for transaction, html: { class: "form-horizontal", role: 'form' } do |f|
+= simple_form_for transaction do |f|
   = f.association :account,
     collection: AccountDecorator.decorate_collection(current_user.accounts.active.by_recently_used),
-    include_blank: false, input_html: { data: { select_2: true } }
-  = f.association :category, collection: current_user.categories.active.by_recently_used, input_html: { data: { select_2: true } }
-  = f.input :summ, input_html: { class: "medium-input" }
-  = f.input :comment, input_html: { rows: 4, class: "medium-input" }
-  .form-group.action-buttons
-    .col-lg-offset-2.col-lg-10
+    include_blank: false, input_html: { data: { select_2: true }, class: "form-select" },
+    wrapper: :horizontal_form
+  = f.association :category, 
+    collection: current_user.categories.active.by_recently_used, 
+    input_html: { data: { select_2: true }, class: "form-select" },
+    wrapper: :horizontal_form
+  = f.input :summ, wrapper: :horizontal_form
+  = f.input :comment, input_html: { rows: 4 }, wrapper: :horizontal_form
+  .row.mb-3
+    .col-12.col-xl-4.offset-xl-2
       = f.button :submit, class: "btn btn-primary", id: :transaction_submit
-      = link_to t("common.back"), transactions_path, class: "btn"
+      = link_to t("common.back"), transactions_path, class: "btn btn-secondary ms-2"

@@ -36,7 +36,7 @@ module ApplicationHelper
   end
 
   def form_title(title)
-    content_tag(:h1, title, class: 'form-title col-lg-offset-2')
+    content_tag(:h1, title, class: 'form-title mb-4')
   end
 
   def new_recurring_payment_path_from(transaction)

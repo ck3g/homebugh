@@ -55,6 +55,18 @@ SimpleForm.setup do |config|
     end
   end
 
+  # Bootstrap 5 horizontal form wrapper
+  config.wrappers :horizontal_form, tag: 'div', class: 'row mb-3' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'col-12 col-xl-2 col-form-label'
+    b.wrapper tag: 'div', class: 'col-12 col-xl-4' do |ba|
+      ba.use :input, class: 'form-control'
+      ba.use :error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+      ba.use :hint, wrap_with: { tag: 'div', class: 'form-text' }
+    end
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 
