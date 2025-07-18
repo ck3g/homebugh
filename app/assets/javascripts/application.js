@@ -3,7 +3,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap
+// Bootstrap 5 loaded via CDN - removed require bootstrap
 //= require jquery.purr
 //= require best_in_place
 //= require select2
@@ -19,6 +19,9 @@
 
 jQuery(function() {
   $("[data-select-2]").select2();
-  $('[data-toggle="popover"]').popover()
-  $('[data-toggle="tooltip"]').tooltip()
+  
+  // Bootstrap 5 should handle dropdowns automatically
+  console.log('Bootstrap version:', typeof bootstrap !== 'undefined' ? 'Bootstrap 5' : 'Bootstrap 3 or not loaded');
+  
+  // Let Bootstrap handle everything automatically - no manual intervention needed
 });

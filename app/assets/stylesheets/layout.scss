@@ -63,31 +63,30 @@ body {
   }
 
   .topbar-right {
-    .nav {
+    .topbar-link {
+      color: #666;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
-      margin: 0;
+      transition: all 0.2s ease;
 
-      li {
-        margin-left: 10px;
+      &:hover {
+        background-color: #f8f9fa;
+        color: #333;
+        text-decoration: none;
+      }
 
-        a {
-          color: #666;
-          text-decoration: none;
-          padding: 8px 12px;
-          border-radius: 4px;
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(71, 164, 71, 0.25);
+      }
 
-          &:hover {
-            background-color: #f8f9fa;
-            color: #333;
-          }
-        }
-
-        .flag-icon {
-          width: 20px;
-          height: 15px;
-          margin-right: 5px;
-        }
+      .flag-icon {
+        width: 20px;
+        height: 15px;
+        margin-right: 5px;
       }
     }
   }
