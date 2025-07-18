@@ -167,22 +167,28 @@ body {
       margin: 0;
       padding: 0;
       
-      li {
+      .nav-item {
         list-style: none;
         margin: 0;
         
-        a {
+        .nav-link {
           display: block;
           padding: 12px 20px;
           color: #666;
           text-decoration: none;
           border-bottom: 1px solid #e7e7e7;
           transition: all 0.3s ease;
+          border-radius: 0;
           
           &:hover {
             background-color: #e9ecef;
             color: #333;
             text-decoration: none;
+          }
+          
+          &:focus {
+            color: #333;
+            background-color: #e9ecef;
           }
           
           i {
@@ -197,9 +203,15 @@ body {
           }
         }
         
-        &.active a {
+        &.active .nav-link {
           background-color: #47a447;
           color: #fff;
+          
+          &:hover,
+          &:focus {
+            background-color: #47a447;
+            color: #fff;
+          }
         }
       }
     }
@@ -209,8 +221,8 @@ body {
   &.collapsed {
     .sidebar-nav {
       .nav {
-        li {
-          a {
+        .nav-item {
+          .nav-link {
             text-align: center;
             padding: 12px 0;
             position: relative;
