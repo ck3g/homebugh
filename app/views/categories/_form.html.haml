@@ -1,11 +1,11 @@
-= simple_form_for category, html: { class: "form-horizontal" } do |f|
-  = f.input :name, input_html: { class: 'medium-input' }
-  = f.association :category_type, collection: collection_of_types, input_html: { class: 'medium-input' }
-  .form-group
-    .col-sm-offset-2.col-sm-10
-      .checkbox
-        = f.input :inactive, label: false, inline_label: true
-  .form-group.action-buttons
-    .col-sm-offset-2.col-sm-10
+= simple_form_for category do |f|
+  = f.input :name, wrapper: :horizontal_form
+  = f.association :category_type, collection: collection_of_types, wrapper: :horizontal_form
+  .row.mb-3
+    .col-12.col-xl-4.offset-xl-2
+      .form-check
+        = f.input :inactive, label: false, inline_label: true, input_html: { class: "form-check-input" }
+  .row.mb-3
+    .col-12.col-xl-4.offset-xl-2
       = f.button :submit, class: "btn btn-primary", id: :category_submit
-      = link_to t("common.back"), categories_path, class: "btn"
+      = link_to t("common.back"), categories_path, class: "btn btn-secondary ms-2"
