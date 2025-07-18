@@ -17,6 +17,14 @@ table .actions a {
   margin-left: 5px;
 }
 
+.table .actions-column {
+  width: 120px;
+}
+
+.table td .d-flex.align-items-center {
+  gap: 0.5rem;
+}
+
 #s2id_transaction_category_id,
 #s2id_transaction_account_id,
 #s2id_cash_flow_from_account_id,
@@ -116,12 +124,86 @@ select.form-select {
 .due-row {
   color: gray;
   border-bottom: 2px dotted #eee;
-  background-color: rgba(92, 184, 92, .1);
+  background-color: rgba(92, 184, 92, 0.2) !important;
 
   td {
+    background-color: transparent !important;
     span {
       filter: alpha(opacity=60);
       opacity: 0.6;
     }
   }
+}
+
+// Remove Bootstrap 5 default underlines from links
+a {
+  text-decoration: none !important;
+  
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
+
+// Remove underlines from sidebar links
+.dashboard-sidebar {
+  a {
+    text-decoration: none !important;
+    
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}
+
+// Fix Bootstrap 5 table cell vertical alignment
+.table {
+  td {
+    vertical-align: middle !important;
+  }
+}
+
+// Custom popover styling (fallback for Bootstrap 5 issues)
+.custom-popover {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  max-width: 300px;
+  padding: 0;
+  font-size: 14px;
+  
+  .popover-title {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 8px 12px;
+    font-weight: 600;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .popover-content {
+    padding: 8px 12px;
+    color: #333;
+  }
+  
+  .popover-arrow {
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #ccc;
+  }
+}
+
+// Custom tooltip styling
+.custom-tooltip {
+  background-color: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
 }

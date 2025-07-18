@@ -10,25 +10,28 @@ $(document).ready(function() {
 
   // Initialize tooltips - only show when sidebar is collapsed
   function initTooltips() {
-    $('.dashboard-sidebar .nav a[data-toggle="tooltip"]').each(function() {
-      $(this).tooltip('destroy'); // Clean up any existing tooltips
+    $('.dashboard-sidebar .nav a[data-bs-toggle="tooltip"]').each(function() {
+      // Remove any existing Bootstrap 5 tooltips
+      var existingTooltip = bootstrap.Tooltip.getInstance(this);
+      if (existingTooltip) {
+        existingTooltip.dispose();
+      }
 
       if ($('.dashboard-sidebar').hasClass('collapsed')) {
-        $(this).tooltip({
+        // Create new Bootstrap 5 tooltip
+        var tooltip = new bootstrap.Tooltip(this, {
           container: 'body',
           trigger: 'manual',
-          placement: 'right',
-          html: false,
-          animation: true
+          placement: 'right'
         });
 
         // Set up manual hover events
         $(this).hover(
           function() {
-            $(this).tooltip('show');
+            tooltip.show();
           },
           function() {
-            $(this).tooltip('hide');
+            tooltip.hide();
           }
         );
       }

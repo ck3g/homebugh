@@ -1,11 +1,10 @@
 - if @categories.present?
   .row
-    .col-xs-12.col-lg-12
-      = form_tag categories_path, method: :get, class: 'form-horizontal col-xs-12 col-sm-12' do
-        .form-group.input-group
+    .col-12
+      = form_tag categories_path, method: :get, class: 'col-12' do
+        .input-group
           = text_field_tag :term, params[:term], class: 'form-control', placeholder: t(:search_categories)
-          %span.input-group-btn
-            = submit_tag t(:search), class: "btn btn-primary"
+          = submit_tag t(:search), class: "btn btn-primary"
 
   = render 'shared/sub_navbar_widget',
     title_content: t('parts.categories.categories_list'),
@@ -13,26 +12,24 @@
     add_link_url: new_category_path
 
   .row
-    .col-xs-12.col-lg-12
+    .col-12
       .table-responsive
         %table.table
           %thead
             %tr
-              %th
-                .col-sm-12
-                  .col-sm-11.col-sm-offset-1= t('activerecord.attributes.category.name')
-              %th.span2
+              %th= t('activerecord.attributes.category.name')
+              %th.actions-column
           %tbody
             - @categories.each do |category|
               %tr{class: category.decorate.category_type}
                 %td
-                  .col-sm-12
-                    .col-sm-1= category.decorate.type_icon
-                    .col-sm-11= link_to category.name, transactions_path(category: category.id)
-                %td.span2.actions
-                  = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-mini btn-default btn-xs", data: { toggle: 'tooltip' } do
+                  .d-flex.align-items-center
+                    .me-2= category.decorate.type_icon
+                    = link_to category.name, transactions_path(category: category.id)
+                %td.actions
+                  = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-outline-secondary btn-sm", data: { bs_toggle: 'tooltip' } do
                     = fa_icon "pencil"
-                  = link_to category, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-mini btn-xs" do
+                  = link_to category, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-sm" do
                     = fa_icon "trash"
 
   = paginate @categories

@@ -1,18 +1,18 @@
 .row
-  .col-xs-12
+  .col-12
     %h2
       = title title_content
-      .pull-right.hidden-xs
+      .float-end.d-none.d-sm-block
         - if defined?(additional_links)
           - additional_links.each do |link|
-            = link_to link[:title], link[:url], class: 'btn btn-default'
+            = link_to link[:title], link[:url], class: 'btn btn-outline-secondary'
         - if defined?(add_link_title) && defined?(add_link_url)
           = link_to add_link_title, add_link_url, class: 'btn btn-success'
-  .col-xs-12.col-sm-6.hidden-sm.hidden-md.hidden-lg
+  .col-12.d-block.d-sm-none
     - if defined?(additional_links)
       - additional_links.each do |link|
-        = link_to link[:title], link[:url], class: 'btn btn-default btn-block'
+        = link_to link[:title], link[:url], class: 'btn btn-outline-secondary d-block w-100 mb-2'
     - if defined?(add_link_title) && defined?(add_link_url)
-      = link_to add_link_title, add_link_url, class: 'btn btn-success btn-block'
+      = link_to add_link_title, add_link_url, class: 'btn btn-success d-block w-100'
 
 .clearfix.spacer

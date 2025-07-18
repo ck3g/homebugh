@@ -181,6 +181,11 @@
 }
 
 .budget-table {
+  // Override Bootstrap 5 table styling
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: transparent;
+  --bs-table-hover-bg: transparent;
+  
   th {
     background-color: #f8f9fa;
     border-bottom: 2px solid #dee2e6;
@@ -206,25 +211,41 @@
     }
   }
   
-  .budget-row {
-    transition: background-color 0.2s ease;
-    
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.02);
-    }
-    
-    &.budget-success {
-      background-color: rgba(92, 184, 92, 0.1);
-    }
-    
-    &.budget-warning {
-      background-color: rgba(240, 173, 78, 0.1);
-    }
-    
-    &.budget-danger {
-      background-color: rgba(217, 83, 79, 0.1);
+  // Bootstrap 5 override - more specific targeting
+  tbody tr {
+    &.budget-row {
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.02) !important;
+      }
+      
+      &.budget-success {
+        background-color: rgba(92, 184, 92, 0.2) !important;
+        
+        td {
+          background-color: transparent !important;
+        }
+      }
+      
+      &.budget-warning {
+        background-color: rgba(240, 173, 78, 0.2) !important;
+        
+        td {
+          background-color: transparent !important;
+        }
+      }
+      
+      &.budget-danger {
+        background-color: rgba(217, 83, 79, 0.2) !important;
+        
+        td {
+          background-color: transparent !important;
+        }
+      }
     }
   }
+  
   
   .budget-category {
     padding: 15px 12px;

@@ -20,7 +20,7 @@
               %tr.due-row{ id: dom_id(recurring_payment) }
                 %td.span2
                   %span= l(Date.today, format: :long)
-                  %a.btn.btn-link.btn-mini.btn-xs{tabindex: 0, role: 'button', data: { toggle: 'popover', trigger: 'focus', content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
+                  %a.btn.btn-link.btn-mini.btn-xs{tabindex: 0, role: 'button', data: { bs_toggle: 'popover', bs_trigger: 'focus', bs_content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
                     = fa_icon 'question'
                 %td
                   %span.category= link_to recurring_payment.decorate.category_name, transactions_path(category: recurring_payment.category_id)
@@ -32,9 +32,9 @@
                 %td.span2
                   %span= link_to recurring_payment.account_name, transactions_path(account: recurring_payment.account_id)
                 %td.span2.actions
-                  = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-mini btn-success btn-xs create-transaction", data: { toggle: 'tooltip' } do
+                  = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-success btn-sm create-transaction", data: { bs_toggle: 'tooltip' } do
                     = fa_icon "plus"
-                  = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-mini btn-default btn-xs move-to-next-payment", data: { toggle: 'tooltip' } do
+                  = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-outline-secondary btn-sm move-to-next-payment", data: { bs_toggle: 'tooltip' } do
                     = fa_icon "forward"
 
             - @transactions.each do |transaction|
@@ -48,9 +48,9 @@
                   = transaction.decorate.type_icon
                 %td.span2= link_to transaction.account_name, transactions_path(account: transaction.account_id)
                 %td.span2.actions
-                  = link_to new_recurring_payment_path_from(transaction), class: 'btn btn-default btn-mini btn-xs btn-create-rp', data: { toggle: 'tooltip' }, title: t('parts.recurring_payments.create_from_transaction') do
+                  = link_to new_recurring_payment_path_from(transaction), class: 'btn btn-outline-secondary btn-sm btn-create-rp', data: { bs_toggle: 'tooltip' }, title: t('parts.recurring_payments.create_from_transaction') do
                     = fa_icon 'retweet'
-                  = link_to transaction, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-mini btn-xs" do
+                  = link_to transaction, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
                     = fa_icon "share"
 
   = paginate @transactions

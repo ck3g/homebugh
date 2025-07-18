@@ -43,9 +43,9 @@
                       .progress-fill{class: "progress-#{color_class}", style: "width: #{[progress_percent, 100].min}%"}
                     .progress-percentage= "#{progress_percent}%"
                 %td.budget-actions
-                  = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-default btn-xs budget-action-btn", id: dom_id(budget, :edit), data: { toggle: 'tooltip' } do
+                  = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-outline-secondary btn-sm budget-action-btn", id: dom_id(budget, :edit), data: { bs_toggle: 'tooltip' } do
                     = fa_icon "edit"
-                  = link_to budget, data: { confirm: t('common.are_you_sure'), toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-xs budget-action-btn" do
+                  = link_to budget, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-sm budget-action-btn" do
                     = fa_icon "trash"
 - else
   .row

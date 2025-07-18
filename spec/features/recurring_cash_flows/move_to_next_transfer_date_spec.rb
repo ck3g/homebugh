@@ -15,7 +15,7 @@ feature 'Move recurring cash flow to the next transfer date' do
     visit recurring_cash_flows_path
 
     within "#recurring_cash_flow_#{rcf.id}" do
-      find('a.btn-xs[title="Move to next transfer date"]').click
+      find('a.btn-sm[title="Move to next transfer date"]').click
     end
 
     expect(page).to have_current_path(recurring_cash_flows_path)

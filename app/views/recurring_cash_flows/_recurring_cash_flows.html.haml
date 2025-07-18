@@ -21,11 +21,11 @@
             %td= l(rcf.next_transfer_on.to_date, format: :long)
             %td= rcf.decorate.frequency
             %td.span2.actions
-              = link_to perform_transfer_recurring_cash_flow_path(rcf), class: 'btn btn-success btn-xs', method: :post, title: t('parts.recurring_cash_flows.perform_transfer') do
+              = link_to perform_transfer_recurring_cash_flow_path(rcf), class: 'btn btn-success btn-sm', method: :post, title: t('parts.recurring_cash_flows.perform_transfer') do
                 = fa_icon "plus"
-              = link_to move_to_next_transfer_recurring_cash_flow_path(rcf), class: 'btn btn-default btn-xs', method: :put, title: t('parts.recurring_cash_flows.move_to_next_transfer') do
+              = link_to move_to_next_transfer_recurring_cash_flow_path(rcf), class: 'btn btn-outline-secondary btn-sm', method: :put, title: t('parts.recurring_cash_flows.move_to_next_transfer') do
                 = fa_icon "forward"
-              = link_to edit_recurring_cash_flow_path(rcf), class: 'btn btn-default btn-edit btn-xs', title: t('common.edit') do
+              = link_to edit_recurring_cash_flow_path(rcf), class: 'btn btn-outline-secondary btn-edit btn-sm', title: t('common.edit') do
                 = fa_icon "pencil"
-              = link_to recurring_cash_flow_path(rcf), class: 'btn btn-danger btn-delete btn-xs', method: :delete, data: { confirm: t('common.are_you_sure') }, title: t('common.destroy') do
+              = link_to recurring_cash_flow_path(rcf), class: 'btn btn-danger btn-delete btn-sm', method: :delete, data: { confirm: t('common.are_you_sure') }, title: t('common.destroy') do
                 = fa_icon "trash"

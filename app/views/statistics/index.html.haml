@@ -5,10 +5,10 @@
 - has_currency = current_user.currencies.any?
 - if (has_current_stats || has_past_stats) && has_currency
   .currencies{role: 'tabpanel'}
-    %ul.nav.nav-tabs{tole: 'tablist'}
+    %ul.nav.nav-tabs{role: 'tablist'}
       - current_user.currencies.each_with_index do |currency, index|
-        %li{class: ('active' if active_currency?(currency, :statistics_path, index.zero?))}
-          = link_to currency.name, statistics_path(currency: currency.name)
+        %li.nav-item
+          = link_to currency.name, statistics_path(currency: currency.name), class: "nav-link #{'active' if active_currency?(currency, :statistics_path, index.zero?)}"
 
   #stats
     / 12-month summary section

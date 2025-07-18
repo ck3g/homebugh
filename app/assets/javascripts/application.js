@@ -20,8 +20,18 @@
 jQuery(function() {
   $("[data-select-2]").select2();
   
-  // Bootstrap 5 should handle dropdowns automatically
-  console.log('Bootstrap version:', typeof bootstrap !== 'undefined' ? 'Bootstrap 5' : 'Bootstrap 3 or not loaded');
-  
-  // Let Bootstrap handle everything automatically - no manual intervention needed
+  // Initialize Bootstrap 5 popovers and tooltips
+  if (typeof bootstrap !== 'undefined') {
+    // Initialize popovers
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
+      return new bootstrap.Popover(popoverTriggerEl);
+    });
+    
+    // Initialize tooltips (excluding sidebar tooltips which are handled separately)
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]:not(.dashboard-sidebar [data-bs-toggle="tooltip"])');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  }
 });
