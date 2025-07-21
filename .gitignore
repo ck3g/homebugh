@@ -8,3 +8,6 @@ tmp/
 .idea/*
 .sass-cache/
 coverage
+.DS_Store
+
+/config/master.key
