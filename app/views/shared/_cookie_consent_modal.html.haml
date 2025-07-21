@@ -1,13 +1,17 @@
 .modal.fade#cookie-consent-modal{ tabindex: "-1", role: "dialog" }
-  .modal-dialog{ role: "document" }
-    .modal-content
-      .modal-header
-        %h4.modal-title
+  .modal-dialog.modal-dialog-centered.modal-lg{ role: "document" }
+    .modal-content.modern-cookie-modal
+      .modal-header.border-0.text-center
+        %h5.modal-title.fw-bold.w-100
           = t('cookie_consent.title')
         %button.btn-close{ type: "button", 'data-bs-dismiss': "modal", 'aria-label': "Close" }
-      .modal-body
-        = t('cookie_consent.text')
-        = link_to t('cookie_consent.learn_more_here'), cookiepolicy_path
-      .modal-footer
-        %button.btn.btn-primary{ id: 'cookie-consent-button-ok', type: "button", 'data-bs-dismiss': "modal" }
+      .modal-body.px-4.pb-4.text-center
+        %p.mb-3
+          We use cookies to give you the best online experience.
+          %br
+          By using our website, you agree to our use of cookies.
+        %p.small.text-muted.mb-0
+          = link_to t('cookie_consent.learn_more_here'), cookiepolicy_path, class: "text-decoration-none text-success"
+      .modal-footer.border-0.px-4.pb-4.justify-content-center
+        %button.btn.btn-success.btn-lg.px-5{ id: 'cookie-consent-button-ok', type: "button", 'data-bs-dismiss': "modal" }
           = t('cookie_consent.button_text')

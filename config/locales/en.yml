@@ -365,5 +365,53 @@ en:
     budget:
       heading: "Finance budgeting"
       description: "Establish budgeting limit for every expense category and keep an eye on them."
+    features:
+      section_title: "Take Control of Your Finances"
+      section_subtitle: "Powerful tools to help you manage, track, and optimize your financial life"
+      transactions:
+        title: "Track Transactions"
+        description: "Record your income and expenses with detailed categories and comments. Get complete visibility into your financial activities."
+        highlights:
+          recording: "Easy recording"
+          history: "Complete history"
+          analytics: "Detailed analytics"
+      accounts:
+        title: "Manage Accounts"
+        description: "Track multiple accounts including bank accounts, cash, and different currencies. Transfer funds and monitor balances."
+        highlights:
+          multiple: "Multiple accounts"
+          transfers: "Easy transfers"
+          insights: "Financial insights"
+      categories:
+        title: "Organize Categories"
+        description: "Create income and expense categories to organize your financial activities and get better insights."
+        highlights:
+          income: "Income tracking"
+          expense: "Expense tracking"
+          organization: "Smart organization"
+      budgets:
+        title: "Set Budgets"
+        description: "Establish spending limits for each category and monitor your progress throughout the month."
+        highlights:
+          limits: "Spending limits"
+          tracking: "Progress tracking"
+          alerts: "Budget alerts"
+      statistics:
+        title: "View Reports"
+        description: "Get detailed monthly reports and statistics to understand your spending patterns and trends."
+        highlights:
+          monthly: "Monthly reports"
+          breakdown: "Category breakdown"
+          trends: "Trend analysis"
+      recurring:
+        title: "Automate Payments"
+        description: "Set up recurring payments and transfers to automate your regular financial activities."
+        highlights:
+          scheduled: "Scheduled payments"
+          reminders: "Smart reminders"
+          management: "Easy management"
+    cta:
+      title: "Ready to Take Control?"
+      subtitle: "Start managing your finances today with powerful, easy-to-use tools."
 
 
