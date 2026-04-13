@@ -293,6 +293,13 @@ body {
   }
 }
 
+// Hide footer on short viewports (e.g. 13" MacBook)
+@media (max-height: 800px) {
+  .dashboard-footer {
+    display: none;
+  }
+}
+
 // Mobile responsive
 @media (max-width: 768px) {
   .dashboard-sidebar {
