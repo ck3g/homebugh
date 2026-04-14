@@ -1,11 +1,17 @@
-%h2 Change your password
-= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+%h2.auth-form-title= t(:change_your_password, default: "Change your password")
+%p.auth-form-subtitle= t(:change_password_subtitle, default: "Enter your new password below")
+
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "auth-form" }) do |f|
   = f.error_notification
-  = f.input :reset_password_token, :as => :hidden
+  = f.input :reset_password_token, as: :hidden
   = f.full_error :reset_password_token
-  .form-inputs
-    = f.input :password, :label => "New password", :required => true
-    = f.input :password_confirmation, :label => "Confirm your new password", :required => true
-  .form-actions
-    = f.button :submit, "Change my password"
-= render "devise/shared/links"
+  .mb-3
+    = f.input_field :password, required: true, placeholder: t(:new_password, default: "New password"), class: "form-control"
+  .mb-3
+    = f.input_field :password_confirmation, required: true, placeholder: t(:confirm_new_password, default: "Confirm new password"), class: "form-control"
+  = f.button :submit, t(:change_my_password, default: "Change my password"), class: "auth-submit"
+
+.auth-links
+  %span
+    = t(:remember_password, default: "Remember your password?")
+    = link_to t(:sign_in), new_session_path(resource_name)

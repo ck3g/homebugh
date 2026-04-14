@@ -458,6 +458,197 @@ h6 {
 }
 
 // ============================================
+// Auth Pages (Sign In, Sign Up, etc.)
+// ============================================
+.auth-page {
+    background: #f5f5f7;
+    padding: 3rem 1.75rem;
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    max-width: 440px;
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+}
+
+.auth-card-icon {
+    width: 48px;
+    height: 48px;
+    background: #f0f9f0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #47a447;
+    font-size: 1.25rem;
+    margin: 0 auto 1.5rem;
+}
+
+.auth-form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 0.3rem;
+    text-align: center;
+}
+
+.auth-form-subtitle {
+    color: #86868b;
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.auth-form {
+    width: 100%;
+
+    .form-control {
+        border: 1px solid #e8e8ed;
+        border-radius: 10px;
+        padding: 0.6rem 0.85rem;
+        font-size: 0.9rem;
+        color: #1d1d1f;
+        background: #f5f5f7;
+        transition: border-color 0.2s ease;
+
+        &::placeholder {
+            color: #b0b0b5;
+        }
+
+        &:focus {
+            border-color: #47a447;
+            box-shadow: 0 0 0 3px rgba(71, 164, 71, 0.1);
+            outline: none;
+            background: #fff;
+        }
+
+        &.is-invalid {
+            border-color: #dc3545;
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            }
+        }
+    }
+
+    .form-check-input {
+        border-color: #d1d1d6;
+        border-radius: 3px;
+
+        &:checked {
+            background-color: #47a447;
+            border-color: #47a447;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba(71, 164, 71, 0.1);
+        }
+    }
+
+    .form-check-label,
+    .form-check {
+        font-size: 0.8rem;
+        color: #86868b;
+    }
+
+    .invalid-feedback {
+        font-size: 0.8rem;
+    }
+}
+
+.auth-submit {
+    background: #47a447 !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 10px;
+    padding: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        background: #3a8a3a !important;
+        color: #fff !important;
+        transform: translateY(-1px);
+    }
+}
+
+.auth-links {
+    width: 100%;
+    text-align: center;
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    a {
+        font-size: 0.8rem;
+        color: #47a447;
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+            color: #3a8a3a;
+        }
+    }
+
+    span {
+        font-size: 0.8rem;
+        color: #86868b;
+    }
+}
+
+.auth-forgot-password {
+    font-size: 0.8rem;
+    color: #47a447;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+        color: #3a8a3a;
+    }
+}
+
+.auth-remember-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+
+    .form-check {
+        white-space: nowrap;
+        margin-bottom: 0;
+    }
+}
+
+input.registration-name {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .auth-page {
+        padding: 2rem 1rem;
+        min-height: auto;
+    }
+
+    .auth-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+// ============================================
 // Cookie Consent Modal (preserved from original)
 // ============================================
 .modern-cookie-modal {

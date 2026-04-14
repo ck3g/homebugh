@@ -1,31 +1,33 @@
-.col-md-5.offset-md-3
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    %h2= title t(:sign_up)
-    
-    = text_field_tag 'user[name]', '', required: false, autofocus: false, placeholder: 'Name', class: 'registration-name', id: 'user_name'
-    
-    .mb-3
-      = f.input_field :email, required: true, autofocus: true, placeholder: t(:email), class: "form-control #{'is-invalid' if resource.errors[:email].present?}"
-      - if resource.errors[:email].present?
-        .invalid-feedback
-          = f.error :email
+%h2.auth-form-title= t(:sign_up)
+%p.auth-form-subtitle= t(:sign_up_subtitle, default: "Create your free account")
 
-    .mb-3
-      = f.input_field :password, required: true, placeholder: t(:password), class: "form-control #{'is-invalid' if resource.errors[:password].present?}"
-      - if resource.errors[:password].present?
-        .invalid-feedback
-          = f.error :password
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "auth-form" }) do |f|
+  = text_field_tag 'user[name]', '', required: false, autofocus: false, placeholder: 'Name', class: 'registration-name', id: 'user_name'
 
-    .mb-3
-      = f.input_field :password_confirmation, required: true, placeholder: t(:password_confirmation), class: "form-control #{'is-invalid' if resource.errors[:password_confirmation].present?}"
-      - if resource.errors[:password_confirmation].present?
-        .invalid-feedback
-          = f.error :password_confirmation
-          
-    .mb-3
-      = recaptcha_tags(site_key: ENV['RECAPTCHA_SITE_KEY'])
-      
-    = f.button :submit, t(:do_sign_up), class: "btn btn-primary w-100"
-  .clearfix
-  = render "devise/shared/links"
+  .mb-3
+    = f.input_field :email, required: true, autofocus: true, placeholder: t(:email), class: "form-control #{'is-invalid' if resource.errors[:email].present?}"
+    - if resource.errors[:email].present?
+      .invalid-feedback
+        = f.error :email
 
+  .mb-3
+    = f.input_field :password, required: true, placeholder: t(:password), class: "form-control #{'is-invalid' if resource.errors[:password].present?}"
+    - if resource.errors[:password].present?
+      .invalid-feedback
+        = f.error :password
+
+  .mb-3
+    = f.input_field :password_confirmation, required: true, placeholder: t(:password_confirmation), class: "form-control #{'is-invalid' if resource.errors[:password_confirmation].present?}"
+    - if resource.errors[:password_confirmation].present?
+      .invalid-feedback
+        = f.error :password_confirmation
+
+  .mb-3
+    = recaptcha_tags(site_key: ENV['RECAPTCHA_SITE_KEY'])
+
+  = f.button :submit, t(:do_sign_up), class: "auth-submit"
+
+.auth-links
+  %span
+    = t(:already_have_account, default: "Already have an account?")
+    = link_to t(:sign_in), new_session_path(resource_name)

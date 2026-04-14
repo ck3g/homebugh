@@ -1,0 +1,23 @@
+!!!
+%html{ lang: I18n.locale }
+  %head
+    %title Your finance manager
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}/
+    = stylesheet_link_tag :welcome
+    = csrf_meta_tag
+  %body
+    = render 'shared/welcome_navbar'
+
+    .auth-page
+      .auth-card
+        .auth-card-icon
+          = fa_icon "user"
+        = render 'shared/flash_messages'
+        = yield
+
+    = render 'shared/welcome_footer'
+
+    = javascript_include_tag :welcome
+    = render 'shared/analytics'
+    = render 'shared/cookie_consent_modal'

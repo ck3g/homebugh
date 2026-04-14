@@ -1,14 +1,23 @@
-.col-md-5.offset-md-3
-  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    %h2= title t(:sign_in)
-    .mb-3
-      = f.input_field :email, autofocus: true, placeholder: t(:email), class: "form-control"
-    .mb-3
-      = f.input_field :password, placeholder: t(:password), class: "form-control"
+%h2.auth-form-title= t(:sign_in)
+%p.auth-form-subtitle= t(:sign_in_subtitle, default: "Enter your credentials to continue")
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f|
+  .mb-3
+    = f.input_field :email, autofocus: true, placeholder: t(:email), class: "form-control"
+  .mb-3
+    = f.input_field :password, placeholder: t(:password), class: "form-control"
+  .auth-remember-row
     - if devise_mapping.rememberable?
-      .mb-3
-        .form-check
-          = f.input :remember_me, as: :boolean, label: false, inline_label: true, input_html: { class: "form-check-input" }
-    = f.button :submit, t(:do_sign_in), class: "btn btn-primary w-100"
-  .clearfix
-  = render "devise/shared/links"
+      .form-check
+        = f.input :remember_me, as: :boolean, label: false, inline_label: true, input_html: { class: "form-check-input" }
+    - if devise_mapping.recoverable?
+      = link_to t(:forgot_your_password), new_password_path(resource_name), class: "auth-forgot-password"
+  = f.button :submit, t(:do_sign_in), class: "auth-submit"
+
+.auth-links
+  - if devise_mapping.registerable?
+    %span
+      = t(:no_account, default: "Don't have an account?")
+      = link_to t(:sign_up), new_registration_path(resource_name)
+  - if devise_mapping.confirmable?
+    = link_to t(:didnt_receive_confirmation_instructions), new_confirmation_path(resource_name)

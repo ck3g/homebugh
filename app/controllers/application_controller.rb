@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user?
+  layout :layout_for_resource
 
   rescue_from CanCan::AccessDenied do |exception|
     path = user_signed_in? ? root_path : new_user_session_path
@@ -17,6 +18,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def layout_for_resource
+    if devise_controller? && !user_signed_in?
+      "auth"
+    else
+      "application"
+    end
+  end
 
   def instantiate_controller_and_action_names
     @controller_name = controller_name
