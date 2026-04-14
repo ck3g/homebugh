@@ -1,24 +1,27 @@
 - if @accounts.present?
-  = render 'shared/sub_navbar_widget',
-    title_content: t('parts.accounts.accounts_list'),
-    add_link_title: t('parts.accounts.new_account'),
-    add_link_url: new_account_path
+  .accounts-header
+    %h2= title t('parts.accounts.accounts_list')
+    = link_to t('parts.accounts.new_account'), new_account_path, class: "btn btn-success accounts-new-btn"
 
-  .row
-    .col-12
-      .table-responsive
-        %table.table
-          %thead
-            %tr
-              %th= t('activerecord.attributes.account.name')
-              %th.span2.number= t('activerecord.attributes.account.funds')
-              %th.span2.actions
-          %tbody
-            - @accounts.each do |account|
-              - if account.active?
-                = render "account", account: account
-              - else
-                = render "inactive_account", account: account
+  - if @currency_totals.present?
+    .accounts-summary
+      - @currency_totals.each do |currency, total|
+        .accounts-summary-card
+          .accounts-summary-currency= currency.unit.presence || currency.name
+          .accounts-summary-total= get_number_to_currency(total, currency.unit.presence || currency.name)
+          .accounts-summary-count
+            = pluralize(@active_accounts.count { |a| a.currency_id == currency.id }, t('parts.accounts.account_singular', default: 'account'))
+
+  - if @active_accounts.present?
+    - @active_accounts.each do |account|
+      = render "account", account: account
+
+  - if @inactive_accounts.present?
+    .accounts-archived
+      .accounts-archived-label= t('parts.accounts.archived', default: "Archived (%{count})") % { count: @inactive_accounts.size }
+      .accounts-archived-list
+        - @inactive_accounts.each do |account|
+          = render "inactive_account", account: account
 
   = paginate @accounts
 - else
@@ -26,10 +29,10 @@
     .empty-state-container
       .empty-state-icon
         = fa_icon "credit-card", class: "fa-4x"
-      
+
       %h2.empty-state-title= t('parts.accounts.get_started_title')
       %p.empty-state-description= t('parts.accounts.get_started_description')
-      
+
       .empty-state-features
         .feature-item
           .feature-icon
@@ -37,21 +40,21 @@
           .feature-content
             %h4= t('parts.accounts.feature_track_title')
             %p= t('parts.accounts.feature_track_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "exchange"
           .feature-content
             %h4= t('parts.accounts.feature_transfer_title')
             %p= t('parts.accounts.feature_transfer_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "line-chart"
           .feature-content
             %h4= t('parts.accounts.feature_insights_title')
             %p= t('parts.accounts.feature_insights_description')
-      
+
       .empty-state-action
         = link_to new_account_path, class: "btn btn-success btn-lg" do
           = fa_icon "plus"

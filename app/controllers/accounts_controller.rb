@@ -4,6 +4,11 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = current_user.accounts.by_recently_used.page(params[:page])
+    @active_accounts = @accounts.select(&:active?)
+    @inactive_accounts = @accounts.reject(&:active?)
+    @currency_totals = current_user.accounts.active.includes(:currency)
+      .group_by(&:currency)
+      .transform_values { |accounts| accounts.sum(&:funds) }
   end
 
   def new

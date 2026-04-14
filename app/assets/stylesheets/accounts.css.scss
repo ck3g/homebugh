@@ -1,0 +1,175 @@
+// ============================================
+// Accounts Page
+// ============================================
+
+.accounts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.accounts-new-btn {
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// Currency summary cards
+.accounts-summary {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.accounts-summary-card {
+  flex: 1;
+  min-width: 140px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.accounts-summary-currency {
+  font-size: 0.7rem;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.accounts-summary-total {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+.accounts-summary-count {
+  font-size: 0.75rem;
+  color: #86868b;
+  margin-top: 2px;
+}
+
+// Account list items
+.accounts-list-item {
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.accounts-list-name {
+  font-weight: 500;
+  color: #1d1d1f;
+  font-size: 0.9rem;
+}
+
+.accounts-list-currency-label {
+  font-size: 0.75rem;
+  color: #86868b;
+  margin-left: 6px;
+}
+
+.accounts-list-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.accounts-list-balance {
+  font-weight: 600;
+  color: #1d1d1f;
+  font-size: 0.95rem;
+
+  &.zero-balance {
+    font-weight: 500;
+    color: #86868b;
+  }
+}
+
+.accounts-list-actions {
+  display: flex;
+  gap: 4px;
+}
+
+// Archived section
+.accounts-archived {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+}
+
+.accounts-archived-label {
+  font-size: 0.75rem;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.accounts-archived-list {
+  opacity: 0.45;
+}
+
+.accounts-archived-item {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.accounts-archived-name {
+  font-weight: 500;
+  color: #86868b;
+  font-size: 0.85rem;
+  text-decoration: line-through;
+}
+
+.accounts-archived-balance {
+  color: #86868b;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 767px) {
+  .accounts-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .accounts-new-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .accounts-summary {
+    flex-direction: column;
+  }
+
+  .accounts-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .accounts-list-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
