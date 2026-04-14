@@ -1,168 +1,89 @@
-.hero-section
-  .hero-content
-    .container
-      = render 'shared/flash_messages'
-      .row.justify-content-center
-        .col-lg-8.text-center
-          %h1.hero-title HomeBugh
-          %p.hero-subtitle= t("welcome_page.slogan")
-          .hero-buttons
-            = link_to new_user_registration_path, class: "btn btn-success btn-lg hero-btn" do
-              = fa_icon "user-plus", class: "me-2"
-              = t("welcome_page.create_account_button")
-            %span.hero-divider= t("welcome_page.or")
-            = link_to new_user_session_path, class: "btn btn-success btn-lg hero-btn" do
-              = fa_icon "sign-in", class: "me-2"
-              = t("welcome_page.sign_in_button")
-
-/ Features Section
-.features-section
+/ Hero Section
+.welcome-hero
   .container
-    .section-header.text-center.mb-5
-      %h2.section-title= t('welcome_page.features.section_title')
-      %p.section-subtitle= t('welcome_page.features.section_subtitle')
-    
-    .row.g-4
-      / Transactions
-      .col-lg-4.col-md-6
-        .feature-card.h-100
-          .feature-icon.text-center
-            = fa_icon "exchange", class: "fa-3x"
-          .feature-content
-            %h3= t('welcome_page.features.transactions.title')
-            %p= t('welcome_page.features.transactions.description')
-            .feature-highlights
-              .highlight-item
-                = fa_icon "plus-circle", class: "me-2"
-                %span= t('welcome_page.features.transactions.highlights.recording')
-              .highlight-item
-                = fa_icon "history", class: "me-2"
-                %span= t('welcome_page.features.transactions.highlights.history')
-              .highlight-item
-                = fa_icon "bar-chart", class: "me-2"
-                %span= t('welcome_page.features.transactions.highlights.analytics')
-      
-      / Accounts
-      .col-lg-4.col-md-6
-        .feature-card.h-100
-          .feature-icon.text-center
-            = fa_icon "credit-card", class: "fa-3x"
-          .feature-content
-            %h3= t('welcome_page.features.accounts.title')
-            %p= t('welcome_page.features.accounts.description')
-            .feature-highlights
-              .highlight-item
-                = fa_icon "university", class: "me-2"
-                %span= t('welcome_page.features.accounts.highlights.multiple')
-              .highlight-item
-                = fa_icon "exchange", class: "me-2"
-                %span= t('welcome_page.features.accounts.highlights.transfers')
-              .highlight-item
-                = fa_icon "line-chart", class: "me-2"
-                %span= t('welcome_page.features.accounts.highlights.insights')
-      
-      / Categories
-      .col-lg-4.col-md-6
-        .feature-card.h-100
-          .feature-icon.text-center
-            = fa_icon "tags", class: "fa-3x"
-          .feature-content
-            %h3= t('welcome_page.features.categories.title')
-            %p= t('welcome_page.features.categories.description')
-            .feature-highlights
-              .highlight-item
-                = fa_icon "arrow-up", class: "me-2 income-icon"
-                %span= t('welcome_page.features.categories.highlights.income')
-              .highlight-item
-                = fa_icon "arrow-down", class: "me-2 spending-icon"
-                %span= t('welcome_page.features.categories.highlights.expense')
-              .highlight-item
-                = fa_icon "pie-chart", class: "me-2"
-                %span= t('welcome_page.features.categories.highlights.organization')
-      
-      / Budgets
-      .col-lg-4.col-md-6
-        .feature-card.h-100
-          .feature-icon.text-center
-            = fa_icon "bar-chart", class: "fa-3x"
-          .feature-content
-            %h3= t('welcome_page.features.budgets.title')
-            %p= t('welcome_page.features.budgets.description')
-            .feature-highlights
-              .highlight-item
-                = fa_icon "target", class: "me-2"
-                %span= t('welcome_page.features.budgets.highlights.limits')
-              .highlight-item
-                = fa_icon "eye", class: "me-2"
-                %span= t('welcome_page.features.budgets.highlights.tracking')
-              .highlight-item
-                = fa_icon "warning", class: "me-2"
-                %span= t('welcome_page.features.budgets.highlights.alerts')
-      
-      / Statistics
-      .col-lg-4.col-md-6
-        .feature-card.h-100
-          .feature-icon.text-center
-            = fa_icon "line-chart", class: "fa-3x"
-          .feature-content
-            %h3= t('welcome_page.features.statistics.title')
-            %p= t('welcome_page.features.statistics.description')
-            .feature-highlights
-              .highlight-item
-                = fa_icon "calendar", class: "me-2"
-                %span= t('welcome_page.features.statistics.highlights.monthly')
-              .highlight-item
-                = fa_icon "pie-chart", class: "me-2"
-                %span= t('welcome_page.features.statistics.highlights.breakdown')
-              .highlight-item
-                = fa_icon "line-chart", class: "me-2"
-                %span= t('welcome_page.features.statistics.highlights.trends')
-      
-      / Recurring Payments
-      .col-lg-4.col-md-6
-        .feature-card.h-100
-          .feature-icon.text-center
-            = fa_icon "repeat", class: "fa-3x"
-          .feature-content
-            %h3= t('welcome_page.features.recurring.title')
-            %p= t('welcome_page.features.recurring.description')
-            .feature-highlights
-              .highlight-item
-                = fa_icon "calendar", class: "me-2"
-                %span= t('welcome_page.features.recurring.highlights.scheduled')
-              .highlight-item
-                = fa_icon "bell", class: "me-2"
-                %span= t('welcome_page.features.recurring.highlights.reminders')
-              .highlight-item
-                = fa_icon "cog", class: "me-2"
-                %span= t('welcome_page.features.recurring.highlights.management')
+    = render 'shared/flash_messages'
+    %h1.welcome-hero-title= t('welcome_page.hero_title')
+    %p.welcome-hero-subtitle= t('welcome_page.hero_subtitle')
+    .welcome-hero-buttons
+      = link_to new_user_registration_path, class: "btn-pill-hero-primary" do
+        = t("welcome_page.create_account_button")
+      = link_to new_user_session_path, class: "btn-pill-hero-secondary" do
+        = t("welcome_page.sign_in_button")
+
+/ Feature Grid
+.welcome-features
+  .welcome-grid
+    / Row 1: Transactions (wide) + Accounts (small)
+    .welcome-card.welcome-card-wide
+      .welcome-card-content
+        .welcome-card-label= t('welcome_page.features.transactions.title')
+        .welcome-card-title= t('welcome_page.features.transactions.description')
+        %p.welcome-card-text= t('welcome_page.features.transactions.short_description')
+      .welcome-viz
+        .welcome-viz-bars
+          .bar{style: "height: 18px; background: #a3d9a3;"}
+          .bar{style: "height: 30px; background: #7ec87e;"}
+          .bar{style: "height: 22px; background: #5cb85c;"}
+          .bar{style: "height: 40px; background: #47a447;"}
+          .bar{style: "height: 34px; background: #3a8a3a;"}
+
+    .welcome-card.welcome-card-small
+      .welcome-card-icon
+        = fa_icon "credit-card"
+      .welcome-card-title= t('welcome_page.features.accounts.title')
+      %p.welcome-card-text= t('welcome_page.features.accounts.short_description')
+
+    / Row 2: Categories (small) + Budgets (wide)
+    .welcome-card.welcome-card-small
+      .welcome-card-icon
+        = fa_icon "tags"
+      .welcome-card-title= t('welcome_page.features.categories.title')
+      %p.welcome-card-text= t('welcome_page.features.categories.short_description')
+
+    .welcome-card.welcome-card-wide
+      .welcome-card-content
+        .welcome-card-label= t('welcome_page.features.budgets.title')
+        .welcome-card-title= t('welcome_page.features.budgets.description')
+        %p.welcome-card-text= t('welcome_page.features.budgets.short_description')
+      .welcome-viz-progress
+        .progress-row
+          .progress-label Food
+          .progress-track
+            .progress-fill{style: "width: 65%; background: #47a447;"}
+        .progress-row
+          .progress-label Transport
+          .progress-track
+            .progress-fill{style: "width: 40%; background: #5cb85c;"}
+        .progress-row
+          .progress-label Shopping
+          .progress-track
+            .progress-fill{style: "width: 88%; background: #e8a735;"}
+
+    / Row 3: Reports (wide) + Recurring (small)
+    .welcome-card.welcome-card-wide
+      .welcome-card-content
+        .welcome-card-label= t('welcome_page.features.statistics.title')
+        .welcome-card-title= t('welcome_page.features.statistics.description')
+        %p.welcome-card-text= t('welcome_page.features.statistics.short_description')
+      .welcome-viz-pie
+        %svg{width: "50", height: "50", viewBox: "0 0 50 50"}
+          %circle{cx: "25", cy: "25", r: "20", fill: "none", stroke: "#e2f2e2", "stroke-width": "8"}
+          %circle{cx: "25", cy: "25", r: "20", fill: "none", stroke: "#47a447", "stroke-width": "8", "stroke-dasharray": "50 126", "stroke-dashoffset": "0", transform: "rotate(-90 25 25)"}
+          %circle{cx: "25", cy: "25", r: "20", fill: "none", stroke: "#7ec87e", "stroke-width": "8", "stroke-dasharray": "35 126", "stroke-dashoffset": "-50", transform: "rotate(-90 25 25)"}
+          %circle{cx: "25", cy: "25", r: "20", fill: "none", stroke: "#a3d9a3", "stroke-width": "8", "stroke-dasharray": "25 126", "stroke-dashoffset": "-85", transform: "rotate(-90 25 25)"}
+
+    .welcome-card.welcome-card-small
+      .welcome-card-icon
+        = fa_icon "repeat"
+      .welcome-card-title= t('welcome_page.features.recurring.title')
+      %p.welcome-card-text= t('welcome_page.features.recurring.short_description')
+
+/ CTA Section
+.welcome-cta-wrapper
+  .welcome-cta
+    %h2.welcome-cta-title= t('welcome_page.cta.title')
+    %p.welcome-cta-subtitle= t('welcome_page.cta.subtitle')
+    = link_to new_user_registration_path, class: "btn-pill-hero-primary" do
+      = t("welcome_page.create_account_button")
 
 
-/ Call to Action Section
-.cta-section
-  .container
-    .row.justify-content-center
-      .col-lg-8.text-center
-        %h2.cta-title= t('welcome_page.cta.title')
-        %p.cta-subtitle= t('welcome_page.cta.subtitle')
-        .cta-buttons
-          = link_to new_user_registration_path, class: "btn btn-success btn-lg hero-btn" do
-            = fa_icon "user-plus", class: "me-2"
-            = t("welcome_page.create_account_button")
-          %span.hero-divider= t("welcome_page.or")
-          = link_to new_user_session_path, class: "btn btn-success btn-lg hero-btn" do
-            = fa_icon "sign-in", class: "me-2"
-            = t("welcome_page.sign_in_button")
-
-%footer
-  .container
-    .row
-      .col-lg-12.text-center
-        %ul.list-inline.justify-content-center
-          %li.list-inline-item.footer-menu-divider ⋅
-          %li.list-inline-item= link_to t("parts.auth.sign_up"), new_user_registration_path
-          %li.list-inline-item.footer-menu-divider ⋅
-          %li.list-inline-item= link_to t("parts.auth.sign_in"), new_user_session_path
-          %li.list-inline-item.footer-menu-divider ⋅
-          %li.list-inline-item= link_to "Cookie Policy", cookiepolicy_path
-        %p.copyright.text-muted.small= copyright

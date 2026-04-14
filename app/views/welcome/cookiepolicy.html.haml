@@ -1,0 +1,64 @@
+.welcome-policy-page
+  .welcome-policy-card
+    / Header
+    .welcome-policy-header
+      .welcome-policy-icon
+        = fa_icon "shield"
+      %h1.welcome-policy-title Cookie Policy
+      %p.welcome-policy-subtitle Learn how HomeBugh uses cookies to enhance your experience
+
+    / What Are Cookies
+    .welcome-policy-section
+      .welcome-card-label About
+      %h3.welcome-policy-heading What Are Cookies
+      %p.welcome-policy-text
+        As is common practice with almost all professional websites, HomeBugh uses cookies — tiny files downloaded to your computer to improve your experience. This page describes what information they gather, how we use it, and why we sometimes need to store these cookies.
+      %p.welcome-policy-text
+        For more general information on cookies, please read
+        = link_to '"What Are Cookies"', "https://www.cookieconsent.com/what-are-cookies/", class: "welcome-policy-link"
+        \.
+
+    / How We Use Cookies
+    .welcome-policy-section
+      .welcome-card-label Usage
+      %h3.welcome-policy-heading How We Use Cookies
+      %p.welcome-policy-text We use cookies for a variety of reasons detailed below. It is recommended that you leave all cookies enabled if you are not sure whether you need them, as they may be used to provide services that you use.
+
+    / The Cookies We Set
+    .welcome-policy-section
+      .welcome-card-label Our Cookies
+      %h3.welcome-policy-heading The Cookies We Set
+      .welcome-policy-grid
+        .welcome-policy-cookie-card
+          .welcome-card-icon
+            = fa_icon "user"
+          .welcome-policy-cookie-title Account Cookies
+          %p.welcome-policy-cookie-text Used for managing the signup process and general administration. Usually deleted when you log out, but may remain to remember your preferences.
+        .welcome-policy-cookie-card
+          .welcome-card-icon
+            = fa_icon "lock"
+          .welcome-policy-cookie-title Login Cookies
+          %p.welcome-policy-cookie-text Remember that you are logged in, preventing you from having to log in every time you visit a new page. Cleared when you log out.
+
+    / Third Party Cookies
+    .welcome-policy-section
+      .welcome-card-label Third Party
+      %h3.welcome-policy-heading Third Party Cookies
+      .welcome-policy-cookie-card.welcome-policy-cookie-card-wide
+        .welcome-card-icon
+          = fa_icon "bar-chart"
+        .welcome-policy-cookie-wide-content
+          .welcome-policy-cookie-title Google Analytics
+          %p.welcome-policy-cookie-text We use Google Analytics to understand how you use the site and improve your experience. These cookies track page visits and time spent on the site to help us create better content.
+
+    / Disabling Cookies
+    .welcome-policy-section
+      .welcome-card-label Settings
+      %h3.welcome-policy-heading Disabling Cookies
+      %p.welcome-policy-text You can disable cookies by adjusting your browser settings. However, this may affect the functionality of HomeBugh and other websites you visit.
+
+    / Contact
+    .welcome-policy-contact
+      %p.welcome-policy-contact-title Need More Information?
+      %p.welcome-policy-contact-text If you have questions about our cookie policy, feel free to contact us:
+      %p.welcome-policy-contact-email Ex.Khalai at gmail dot com

@@ -351,8 +351,11 @@ en:
       contact: Contact
     slogan: Manage your finances with ease
     create_account_button: Create an account
-    sign_in_button: Sign in using existing one
+    sign_in_button: Sign In
     or: or
+    hero_title: "Home finances. Simply organized."
+    hero_subtitle: "Track spending, set budgets, and understand where your money goes."
+    get_started_button: "Get Started"
     expenses:
       heading: "Control your expenses by keeping track of them"
       description: "Fill in the expenses and see where your money goes"
@@ -371,6 +374,7 @@ en:
       transactions:
         title: "Track Transactions"
         description: "Record your income and expenses with detailed categories and comments. Get complete visibility into your financial activities."
+        short_description: "Filter by date, category, or account."
         highlights:
           recording: "Easy recording"
           history: "Complete history"
@@ -378,6 +382,7 @@ en:
       accounts:
         title: "Manage Accounts"
         description: "Track multiple accounts including bank accounts, cash, and different currencies. Transfer funds and monitor balances."
+        short_description: "Cash, cards, savings in one place"
         highlights:
           multiple: "Multiple accounts"
           transfers: "Easy transfers"
@@ -385,6 +390,7 @@ en:
       categories:
         title: "Organize Categories"
         description: "Create income and expense categories to organize your financial activities and get better insights."
+        short_description: "Custom income & expense types"
         highlights:
           income: "Income tracking"
           expense: "Expense tracking"
@@ -392,6 +398,7 @@ en:
       budgets:
         title: "Set Budgets"
         description: "Establish spending limits for each category and monitor your progress throughout the month."
+        short_description: "Define spending limits per category."
         highlights:
           limits: "Spending limits"
           tracking: "Progress tracking"
@@ -399,6 +406,7 @@ en:
       statistics:
         title: "View Reports"
         description: "Get detailed monthly reports and statistics to understand your spending patterns and trends."
+        short_description: "Understand where your money goes each month."
         highlights:
           monthly: "Monthly reports"
           breakdown: "Category breakdown"
@@ -406,12 +414,13 @@ en:
       recurring:
         title: "Automate Payments"
         description: "Set up recurring payments and transfers to automate your regular financial activities."
+        short_description: "Automate regular payments"
         highlights:
           scheduled: "Scheduled payments"
           reminders: "Smart reminders"
           management: "Easy management"
     cta:
-      title: "Ready to Take Control?"
-      subtitle: "Start managing your finances today with powerful, easy-to-use tools."
+      title: "Ready to start?"
+      subtitle: "Free personal finance management."
 
 
