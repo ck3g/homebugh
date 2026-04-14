@@ -1,65 +1,80 @@
 - if @cash_flows.present? || @due_recurring_cash_flows.present?
-  = render 'shared/sub_navbar_widget',
-    title_content: t('parts.cash_flows.flows_list'),
-    add_link_title: t('parts.cash_flows.new_cash_flows'),
-    add_link_url: new_cash_flow_path
-
   .row
     .col-12
-      .table-responsive
-        %table.table
-          %thead
-            %tr
-              %th.span2= t('common.date')
-              %th= t('parts.cash_flows.from_to')
-              %th.span2.number= CashFlow.human_attribute_name :initial_amount
-              %th.span2.number= CashFlow.human_attribute_name :amount
-              %th.span2.actions
-          %tbody
-            - if @due_recurring_cash_flows.present?
+      .cash-flows-header
+        %h2= title t('parts.cash_flows.flows_list')
+        = link_to t('parts.cash_flows.new_cash_flows'), new_cash_flow_path, class: "btn btn-success cash-flows-new-btn"
+
+  - if @due_recurring_cash_flows.present?
+    .row
+      .col-12
+        .pending-transfers
+          .pending-transfers-header= t('parts.cash_flows.pending_transfers', default: 'Pending transfers')
+          %table.pending-transfers-table
+            %colgroup
+              %col{ style: "width: 15%" }
+              %col
+              %col{ style: "width: 12%" }
+              %col{ style: "width: 12%" }
+              %col{ style: "width: 10%" }
+            %tbody
               - @due_recurring_cash_flows.each do |rcf|
-                %tr.due-row{ id: dom_id(rcf) }
-                  %td.span2
-                    %span= l(Date.today, format: :long)
-                    %a.btn.btn-link.btn-sm{tabindex: 0, role: 'button', data: { bs_toggle: 'popover', bs_trigger: 'focus', bs_content: t('parts.recurring_cash_flows.due_description') }, title: t('parts.recurring_cash_flows.due')}
-                      = fa_icon 'question'
-                  %td
-                    %span.category= rcf.from_account.name
+                %tr{ id: dom_id(rcf) }
+                  %td.span2.pending-transfers-date= l(rcf.next_transfer_on, format: :long)
+                  %td.pending-transfers-route
+                    = rcf.from_account.name
                     = t(:arrow)
-                    %span.comment= rcf.to_account.name
+                    = rcf.to_account.name
                   %td.span2.number
-                    %span
-                  %td.span2.number
-                    %span= rcf.decorate.amount
-                  %td.span2.actions
+                  %td.span2.number.pending-transfers-amount= rcf.decorate.amount
+                  %td.span2.actions.pending-transfers-actions
                     = link_to perform_transfer_recurring_cash_flow_path(rcf), title: t('parts.recurring_cash_flows.perform_transfer'), method: :post, class: "btn btn-success btn-sm", data: { bs_toggle: 'tooltip' } do
                       = fa_icon "plus"
                     = link_to move_to_next_transfer_recurring_cash_flow_path(rcf), title: t('parts.recurring_cash_flows.move_to_next_transfer'), method: :put, class: "btn btn-outline-secondary btn-sm", data: { bs_toggle: 'tooltip' } do
                       = fa_icon "forward"
 
-            - @cash_flows.each do |cash_flow|
+  - if @cash_flows.present?
+    .row
+      .col-12
+        .table-responsive
+          %table.table
+            %colgroup
+              %col{ style: "width: 15%" }
+              %col
+              %col{ style: "width: 12%" }
+              %col{ style: "width: 12%" }
+              %col{ style: "width: 10%" }
+            %thead
               %tr
-                %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
-                %td
-                  = cash_flow.from_account_name
-                  = t(:arrow)
-                  = cash_flow.to_account_name
-                %td.span2.number= cash_flow.decorate.initial_amount
-                %td.span2.number= cash_flow.decorate.amount
-                %td.span2.actions
-                  = link_to cash_flow, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
-                    = fa_icon "trash"
+                %th.span2= t('common.date')
+                %th= t('parts.cash_flows.from_to')
+                %th.span2.number= CashFlow.human_attribute_name :initial_amount
+                %th.span2.number= CashFlow.human_attribute_name :amount
+                %th.span2.actions
+            %tbody
+              - @cash_flows.each do |cash_flow|
+                %tr
+                  %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
+                  %td
+                    = cash_flow.from_account_name
+                    = t(:arrow)
+                    = cash_flow.to_account_name
+                  %td.span2.number= cash_flow.decorate.initial_amount
+                  %td.span2.number= cash_flow.decorate.amount
+                  %td.span2.actions
+                    = link_to cash_flow, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
+                      = fa_icon "trash"
 
-  = paginate @cash_flows
+    = paginate @cash_flows
 - else
   .cash-flows-empty-state
     .empty-state-container
       .empty-state-icon
         = fa_icon "exchange", class: "fa-4x"
-      
+
       %h2.empty-state-title= t('parts.cash_flows.get_started_title')
       %p.empty-state-description= t('parts.cash_flows.get_started_description')
-      
+
       .empty-state-features
         .feature-item
           .feature-icon
@@ -67,21 +82,21 @@
           .feature-content
             %h4= t('parts.cash_flows.feature_transfer_title')
             %p= t('parts.cash_flows.feature_transfer_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "history"
           .feature-content
             %h4= t('parts.cash_flows.feature_history_title')
             %p= t('parts.cash_flows.feature_history_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "balance-scale"
           .feature-content
             %h4= t('parts.cash_flows.feature_balance_title')
             %p= t('parts.cash_flows.feature_balance_description')
-      
+
       .empty-state-action
         = link_to new_cash_flow_path, class: "btn btn-success btn-lg" do
           = fa_icon "plus"
