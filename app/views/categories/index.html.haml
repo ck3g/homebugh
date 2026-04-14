@@ -1,15 +1,12 @@
 - if @categories.present?
-  .row
-    .col-12
-      = form_tag categories_path, method: :get, class: 'col-12' do
+  .categories-header
+    %h2= title t('parts.categories.categories_list')
+    .categories-header-actions
+      = form_tag categories_path, method: :get, class: "categories-search-form" do
         .input-group
           = text_field_tag :term, params[:term], class: 'form-control', placeholder: t(:search_categories)
-          = submit_tag t(:search), class: "btn btn-primary"
-
-  = render 'shared/sub_navbar_widget',
-    title_content: t('parts.categories.categories_list'),
-    add_link_title: t('parts.categories.new_category'),
-    add_link_url: new_category_path
+          = submit_tag t(:search), class: "btn btn-outline-secondary"
+      = link_to t('parts.categories.new_category'), new_category_path, class: "btn btn-success categories-new-btn"
 
   .row
     .col-12
