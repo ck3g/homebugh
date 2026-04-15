@@ -1,57 +1,73 @@
 - if @transactions.present? || @recurring_payments.present?
-  = render 'shared/sub_navbar_widget',
-    title_content: t('parts.transactions.transactions_list'),
-    add_link_title: t('parts.transactions.new_transaction'),
-    add_link_url: new_transaction_path
-
   .row
     .col-12
-      .table-responsive
-        %table.table
-          %thead
-            %tr
-              %th.span2= t('common.date')
-              %th= "#{t('common.category')} / #{t('parts.transactions.comment')}"
-              %th.span2.number= t('parts.transactions.sum')
-              %th.span2= t('common.account')
-              %th.span2
-          %tbody
-            - @recurring_payments.each do |recurring_payment|
-              %tr.due-row{ id: dom_id(recurring_payment) }
-                %td.span2
-                  %span= l(Date.today, format: :long)
-                  %a.btn.btn-link.btn-sm{tabindex: 0, role: 'button', data: { bs_toggle: 'popover', bs_trigger: 'focus', bs_content: t('parts.recurring_payments.due_description') }, title: t('parts.recurring_payments.due')}
-                    = fa_icon 'question'
-                %td
-                  %span.category= link_to recurring_payment.decorate.category_name, transactions_path(category: recurring_payment.category_id)
-                  %span.comment= recurring_payment.title
-                %td.span2.number
-                  %span
+      .cash-flows-header
+        %h2= title t('parts.transactions.transactions_list')
+        = link_to t('parts.transactions.new_transaction'), new_transaction_path, class: "btn btn-success cash-flows-new-btn"
+
+  - if @recurring_payments.present?
+    .row
+      .col-12
+        .pending-transfers
+          .pending-transfers-header= t('parts.recurring_payments.pending_payments', default: 'Pending payments')
+          %table.pending-transfers-table
+            %colgroup
+              %col{ style: "width: 15%" }
+              %col
+              %col{ style: "width: 15%" }
+              %col{ style: "width: 12%" }
+              %col{ style: "width: 10%" }
+            %tbody
+              - @recurring_payments.each do |recurring_payment|
+                %tr{ id: dom_id(recurring_payment) }
+                  %td.span2.pending-transfers-date= l(recurring_payment.next_payment_on, format: :long)
+                  %td.pending-transfers-route
+                    %span.category= link_to recurring_payment.decorate.category_name, transactions_path(category: recurring_payment.category_id)
+                    %span.comment= recurring_payment.title
+                  %td.span2.number.pending-transfers-amount
                     = recurring_payment.decorate.amount
                     = recurring_payment.decorate.type_icon
-                %td.span2
-                  %span= link_to recurring_payment.account_name, transactions_path(account: recurring_payment.account_id)
-                %td.span2.actions
-                  = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-success btn-sm create-transaction", data: { bs_toggle: 'tooltip' } do
-                    = fa_icon "plus"
-                  = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-outline-secondary btn-sm move-to-next-payment", data: { bs_toggle: 'tooltip' } do
-                    = fa_icon "forward"
+                  %td.span2.pending-transfers-route= link_to recurring_payment.account_name, transactions_path(account: recurring_payment.account_id)
+                  %td.span2.actions.pending-transfers-actions
+                    = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-success btn-sm create-transaction", data: { bs_toggle: 'tooltip' } do
+                      = fa_icon "plus"
+                    = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-outline-secondary btn-sm move-to-next-payment", data: { bs_toggle: 'tooltip' } do
+                      = fa_icon "forward"
 
-            - @transactions.each do |transaction|
-              %tr{ id: dom_id(transaction) }
-                %td.span2= transaction.decorate.created_on
-                %td
-                  %span.category= link_to transaction.decorate.category_name, transactions_path(category: transaction.category_id)
-                  %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
-                %td.span2.number
-                  = transaction.decorate.amount
-                  = transaction.decorate.type_icon
-                %td.span2= link_to transaction.account_name, transactions_path(account: transaction.account_id)
-                %td.span2.actions
-                  = link_to new_recurring_payment_path_from(transaction), class: 'btn btn-outline-secondary btn-sm btn-create-rp', data: { bs_toggle: 'tooltip' }, title: t('parts.recurring_payments.create_from_transaction') do
-                    = fa_icon 'retweet'
-                  = link_to transaction, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
-                    = fa_icon "share"
+  - if @transactions.present?
+    .row
+      .col-12
+        .table-responsive
+          %table.table
+            %colgroup
+              %col{ style: "width: 15%" }
+              %col
+              %col{ style: "width: 15%" }
+              %col{ style: "width: 12%" }
+              %col{ style: "width: 10%" }
+            %thead
+              %tr
+                %th.span2= t('common.date')
+                %th= "#{t('common.category')} / #{t('parts.transactions.comment')}"
+                %th.span2.number= t('parts.transactions.sum')
+                %th.span2= t('common.account')
+                %th.span2
+            %tbody
+              - @transactions.each do |transaction|
+                %tr{ id: dom_id(transaction) }
+                  %td.span2= transaction.decorate.created_on
+                  %td
+                    %span.category= link_to transaction.decorate.category_name, transactions_path(category: transaction.category_id)
+                    %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
+                  %td.span2.number
+                    = transaction.decorate.amount
+                    = transaction.decorate.type_icon
+                  %td.span2= link_to transaction.account_name, transactions_path(account: transaction.account_id)
+                  %td.span2.actions
+                    = link_to new_recurring_payment_path_from(transaction), class: 'btn btn-outline-secondary btn-sm btn-create-rp', data: { bs_toggle: 'tooltip' }, title: t('parts.recurring_payments.create_from_transaction') do
+                      = fa_icon 'retweet'
+                    = link_to transaction, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
+                      = fa_icon "share"
 
   = paginate @transactions
 - else
@@ -59,10 +75,10 @@
     .empty-state-container
       .empty-state-icon
         = fa_icon "exchange", class: "fa-4x"
-      
+
       %h2.empty-state-title= t('parts.transactions.get_started_title')
       %p.empty-state-description= t('parts.transactions.get_started_description')
-      
+
       .empty-state-features
         .feature-item
           .feature-icon
@@ -70,21 +86,21 @@
           .feature-content
             %h4= t('parts.transactions.feature_record_title')
             %p= t('parts.transactions.feature_record_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "history"
           .feature-content
             %h4= t('parts.transactions.feature_track_title')
             %p= t('parts.transactions.feature_track_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "bar-chart"
           .feature-content
             %h4= t('parts.transactions.feature_analyze_title')
             %p= t('parts.transactions.feature_analyze_description')
-      
+
       .empty-state-action
         = link_to new_transaction_path, class: "btn btn-success btn-lg" do
           = fa_icon "plus"
