@@ -1,7 +1,7 @@
-// Account Summary Cards
-.accounts-summary {
+// Account Summary Cards (Dashboard)
+.dashboard-accounts-summary {
   margin-bottom: 30px;
-  
+
   .account-card, .total-card {
     background: #fff;
     border-radius: 8px;
@@ -9,6 +9,7 @@
     border: 1px solid #e9ecef;
     padding: 20px;
     margin-bottom: 20px;
+    overflow: hidden;
     transition: box-shadow 0.3s ease, transform 0.2s ease;
     
     &:hover {
@@ -35,6 +36,7 @@
   
   .account-amount, .total-amount {
     .amount-value {
+      display: block;
       font-size: 24px;
       font-weight: 700;
       color: #212529;
@@ -66,7 +68,7 @@
 
 // Responsive adjustments
 @media (max-width: 768px) {
-  .accounts-summary {
+  .dashboard-accounts-summary {
     .account-card, .total-card {
       padding: 15px;
       margin-bottom: 15px;
