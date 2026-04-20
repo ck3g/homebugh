@@ -81,6 +81,16 @@ SimpleForm.setup do |config|
     end
   end
 
+  # Stacked form wrapper (label above input)
+  config.wrappers :stacked_form, tag: 'div', class: 'mb-3', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'transaction-form-label'
+    b.use :input, class: 'form-control'
+    b.use :error, wrap_with: { tag: 'div', class: 'transaction-form-error' }
+    b.use :hint, wrap_with: { tag: 'div', class: 'form-text' }
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 

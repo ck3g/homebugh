@@ -1,2 +1,5 @@
-= form_title t('parts.transactions.new_transaction')
-= render 'form', transaction: @transaction, categories: @categories, accounts: @accounts
+.transaction-form
+  .cash-flows-header
+    %h2= title t('parts.transactions.new_transaction')
+    = link_to "← #{t('common.back')}", transactions_path, class: "transaction-form-back"
+  = render 'form', transaction: @transaction, categories: @categories, accounts: @accounts

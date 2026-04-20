@@ -8,14 +8,122 @@
   }
 }
 
-tr.due-recurring-payments {
-  border-bottom: 2px dotted #eee;
-  background-color: rgba(92, 184, 92, .1);
+// Transaction form styles
+.transaction-form {
+  max-width: 520px;
 
-  td {
-    span {
-      filter: alpha(opacity=60);
-      opacity: 0.6;
+  .cash-flows-header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.transaction-form-back {
+  color: #86868b;
+  font-size: 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    color: #495057;
+  }
+}
+
+.transaction-form-label,
+.transaction-form label.control-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #86868b;
+
+  margin-bottom: 6px;
+
+  abbr {
+    display: inline !important;
+    float: none !important;
+    text-decoration: none;
+    border: none;
+    margin-left: 2px;
+  }
+}
+
+.transaction-form-amount-input {
+  border: 2px solid #495057 !important;
+  border-radius: 10px !important;
+  padding: 16px 18px !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: #1d1d1f;
+
+  &::placeholder {
+    color: #adb5bd;
+    font-weight: 700;
+  }
+
+  &:focus {
+    border-color: #212529 !important;
+    box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.15) !important;
+  }
+}
+
+
+.transaction-form-submit {
+  width: 100%;
+  background: #47a447;
+  border-color: #47a447;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+
+  &:hover {
+    background: #3d8b3d;
+    border-color: #3d8b3d;
+  }
+}
+
+// Stacked form inputs styling
+.transaction-form {
+  .select2-container {
+    width: 100% !important;
+  }
+
+  .form-control:not(.transaction-form-amount-input) {
+    border-color: #e9ecef;
+  }
+
+  // Override for amount field (keep its specific styles)
+  .transaction-form-amount-input {
+    border-color: #495057 !important;
+  }
+}
+
+// Validation error styles
+.transaction-form {
+  .has-error {
+    .transaction-form-label,
+    .transaction-form-label abbr,
+    label.control-label,
+    label.control-label abbr {
+      color: #dc3545;
     }
+
+    .form-control,
+    .form-select {
+      border-color: #dc3545 !important;
+    }
+
+    .transaction-form-amount-input {
+      border-color: #dc3545 !important;
+
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15) !important;
+      }
+    }
+  }
+
+  .transaction-form-error {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 4px;
   }
 }
