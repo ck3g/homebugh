@@ -1283,26 +1283,68 @@
 @media (max-width: 768px) {
   .recurring-cash-flows-empty-state {
     padding: 40px 15px;
-    
+
     .empty-state-container {
       .empty-state-title {
         font-size: 1.8em;
       }
-      
+
       .empty-state-description {
         font-size: 1em;
         margin-bottom: 40px;
       }
-      
+
       .empty-state-features {
         grid-template-columns: 1fr;
         gap: 20px;
         margin-bottom: 40px;
-        
+
         .feature-item {
           padding: 20px;
         }
       }
     }
   }
+}
+
+// Categories archived section
+.categories-archived {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+}
+
+.categories-archived-label {
+  font-size: 0.75rem;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.categories-archived-list {
+  opacity: 0.45;
+}
+
+.categories-archived-item {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.categories-archived-left {
+  display: flex;
+  align-items: center;
+}
+
+.categories-archived-name {
+  font-weight: 500;
+  color: #86868b;
+  font-size: 0.85rem;
+  text-decoration: line-through;
 }

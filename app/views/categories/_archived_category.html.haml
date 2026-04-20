@@ -1,0 +1,7 @@
+.categories-archived-item
+  .categories-archived-left
+    .me-2= category.decorate.type_icon
+    %s.categories-archived-name= category.name
+  .categories-archived-actions
+    = link_to unarchive_category_path(category), method: :put, title: t('common.rollback'), class: "btn btn-outline-success btn-sm", data: { bs_toggle: 'tooltip' } do
+      = fa_icon "undo"

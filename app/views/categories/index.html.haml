@@ -1,4 +1,4 @@
-- if @categories.present?
+- if @categories.present? || @archived_categories.present?
   .row
     .col-12
       .categories-header
@@ -10,37 +10,45 @@
               = submit_tag t(:search), class: "btn btn-outline-secondary"
           = link_to t('parts.categories.new_category'), new_category_path, class: "btn btn-success categories-new-btn"
 
-  .row
-    .col-12
-      .table-responsive
-        %table.table
-          %thead
-            %tr
-              %th= t('activerecord.attributes.category.name')
-              %th.actions-column
-          %tbody
-            - @categories.each do |category|
-              %tr{class: category.decorate.category_type}
-                %td
-                  .d-flex.align-items-center
-                    .me-2= category.decorate.type_icon
-                    = link_to category.name, transactions_path(category: category.id)
-                %td.actions
-                  = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-outline-secondary btn-sm", data: { bs_toggle: 'tooltip' } do
-                    = fa_icon "pencil"
-                  = link_to category, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-sm" do
-                    = fa_icon "trash"
+  - if @categories.present?
+    .row
+      .col-12
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th= t('activerecord.attributes.category.name')
+                %th.actions-column
+            %tbody
+              - @categories.each do |category|
+                %tr{class: category.decorate.category_type}
+                  %td
+                    .d-flex.align-items-center
+                      .me-2= category.decorate.type_icon
+                      = link_to category.name, transactions_path(category: category.id)
+                  %td.actions
+                    = link_to edit_category_path(category), title: t('common.edit'), class: "btn btn-outline-secondary btn-sm", data: { bs_toggle: 'tooltip' } do
+                      = fa_icon "pencil"
+                    = link_to category, data: { confirm: t('parts.categories.archive_confirm'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.archive'), class: "btn btn-outline-warning btn-sm" do
+                      = fa_icon "archive"
 
-  = paginate @categories
+    = paginate @categories
+
+  - if @archived_categories.present?
+    .categories-archived
+      .categories-archived-label= t('parts.categories.archived', count: @archived_categories.size)
+      .categories-archived-list
+        - @archived_categories.each do |category|
+          = render "archived_category", category: category
 - else
   .categories-empty-state
     .empty-state-container
       .empty-state-icon
         = fa_icon "tags", class: "fa-4x"
-      
+
       %h2.empty-state-title= t('parts.categories.get_started_title')
       %p.empty-state-description= t('parts.categories.get_started_description')
-      
+
       .empty-state-features
         .feature-item
           .feature-icon
@@ -48,21 +56,21 @@
           .feature-content
             %h4= t('parts.categories.feature_income_title')
             %p= t('parts.categories.feature_income_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "arrow-down", class: "spending-icon"
           .feature-content
             %h4= t('parts.categories.feature_spending_title')
             %p= t('parts.categories.feature_spending_description')
-        
+
         .feature-item
           .feature-icon
             = fa_icon "pie-chart"
           .feature-content
             %h4= t('parts.categories.feature_organize_title')
             %p= t('parts.categories.feature_organize_description')
-      
+
       .empty-state-action
         = link_to new_category_path, class: "btn btn-success btn-lg" do
           = fa_icon "plus"
