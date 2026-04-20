@@ -71,14 +71,26 @@ feature "Categories" do
       expect(page).to have_content("New category name")
     end
 
-    scenario "destroy category" do
+    scenario "archive category" do
       create_category
       expect(page).to have_content("Food")
 
-      click_link "Destroy"
+      click_link "Archive"
 
-      expect(page).not_to have_content("Food")
-      expect(page).to have_content("Create your first category")
+      expect(page).to have_content("Category was archived.")
+      expect(page).to have_content("Food")
+    end
+
+    scenario "unarchive category" do
+      create_category
+      expect(page).to have_content("Food")
+
+      click_link "Archive"
+      expect(page).to have_content("Category was archived.")
+
+      click_link "Rollback"
+      expect(page).to have_content("Category was restored.")
+      expect(page).to have_content("Food")
     end
 
     private
