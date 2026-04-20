@@ -5,7 +5,7 @@
     input_html: { data: { select_2: true }, class: "form-select" },
     wrapper: :stacked_form
   = f.association :category,
-    collection: current_user.categories.active.by_recently_used,
+    collection: current_user.categories.available.by_recently_used,
     input_html: { data: { select_2: true }, class: "form-select" },
     wrapper: :stacked_form
   = f.input :summ, wrapper: :stacked_form,

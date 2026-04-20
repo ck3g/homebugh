@@ -48,7 +48,7 @@ class TransactionsController < ApplicationController
   end
 
   def find_categories
-    @categories = current_user.categories.active
+    @categories = current_user.categories.available
   end
 
   def find_accounts
