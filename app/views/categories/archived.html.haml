@@ -1,0 +1,31 @@
+.row
+  .col-12
+    .categories-header
+      %h2= title t('parts.categories.archived_categories_list')
+      .categories-header-actions
+        = link_to t("common.back"), categories_path, class: "btn btn-outline-secondary"
+
+- if @archived_categories.present?
+  .row
+    .col-12
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th= t('activerecord.attributes.category.name')
+              %th.actions-column
+          %tbody
+            - @archived_categories.each do |category|
+              %tr.categories-archived-row
+                %td
+                  .d-flex.align-items-center
+                    .me-2= category.decorate.type_icon
+                    %s= category.name
+                %td.actions
+                  = link_to unarchive_category_path(category), method: :put, title: t('common.rollback'), class: "btn btn-outline-success btn-sm", data: { bs_toggle: 'tooltip' } do
+                    = fa_icon "undo"
+
+  = paginate @archived_categories
+- else
+  .text-center.text-muted.py-4
+    = t('parts.categories.no_archived_categories')

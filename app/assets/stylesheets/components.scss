@@ -1314,11 +1314,18 @@
 }
 
 .categories-archived-label {
+  display: block;
   font-size: 0.75rem;
   color: #86868b;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  text-decoration: none;
+
+  &:hover {
+    color: #555;
+  }
 }
 
 .categories-archived-list {
@@ -1326,7 +1333,7 @@
 }
 
 .categories-archived-item {
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1347,4 +1354,8 @@
   color: #86868b;
   font-size: 0.85rem;
   text-decoration: line-through;
+}
+
+.categories-archived-row {
+  opacity: 0.55;
 }

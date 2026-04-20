@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   authorize_resource
   before_action :find_category, only: [:show, :edit, :update, :destroy, :unarchive]
 
+  ARCHIVED_PREVIEW_LIMIT = 5
+
   def index
     all_categories = current_user
       .categories
@@ -10,7 +12,17 @@ class CategoriesController < ApplicationController
       .by_recently_used
 
     @categories = all_categories.active.page(params[:page])
-    @archived_categories = all_categories.deleted
+    @archived_categories = all_categories.deleted.limit(ARCHIVED_PREVIEW_LIMIT)
+    @archived_categories_count = all_categories.deleted.count
+  end
+
+  def archived
+    @archived_categories = current_user
+      .categories
+      .deleted
+      .includes(:category_type)
+      .by_recently_used
+      .page(params[:page])
   end
 
   def show

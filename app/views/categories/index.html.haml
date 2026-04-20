@@ -35,11 +35,13 @@
     = paginate @categories
 
   - if @archived_categories.present?
-    .categories-archived
-      .categories-archived-label= t('parts.categories.archived', count: @archived_categories.size)
-      .categories-archived-list
-        - @archived_categories.each do |category|
-          = render "archived_category", category: category
+    .row
+      .col-12
+        .categories-archived
+          = link_to t('parts.categories.archived', count: @archived_categories_count), archived_categories_path, class: "categories-archived-label"
+          .categories-archived-list
+            - @archived_categories.each do |category|
+              = render "archived_category", category: category
 - else
   .categories-empty-state
     .empty-state-container
