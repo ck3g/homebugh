@@ -9,7 +9,7 @@ describe User, type: :model do
     it { is_expected.to have_many(:aggregated_transactions).dependent :destroy }
     it { is_expected.to have_many(:accounts).dependent :destroy }
     it { is_expected.to have_many(:budgets).dependent :destroy }
-    it { is_expected.to have_many(:categories).dependent :destroy }
+    it { is_expected.to have_many(:categories).dependent :delete_all }
     it { is_expected.to have_many(:transactions).dependent :destroy }
     it { is_expected.to have_many(:cash_flows).dependent :destroy }
     it { is_expected.to have_many(:recurring_payments).dependent :destroy }
