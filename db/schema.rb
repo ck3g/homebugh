@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_14_073623) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_20_102627) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.integer "user_id", null: false
@@ -82,7 +82,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_14_073623) do
     t.integer "user_id"
     t.boolean "inactive", default: false
     t.datetime "updated_at", precision: nil
+    t.string "status", default: "active", null: false
     t.index ["category_type_id"], name: "index_categories_on_category_type_id"
+    t.index ["status"], name: "index_categories_on_status"
     t.index ["updated_at"], name: "index_categories_on_updated_at"
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
