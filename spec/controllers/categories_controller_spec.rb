@@ -90,14 +90,34 @@ describe CategoriesController do
   describe "DELETE #destroy" do
     let!(:category) { create :category, user: user }
     let!(:salary) { create :category, user: user, name: "Salary" }
-    it "deletes the category" do
+
+    it "archives the category instead of deleting it" do
       expect {
         delete :destroy, params: { id: category }
-      }.to change(Category, :count).by(-1)
+      }.not_to change(Category, :count)
+    end
+
+    it "transitions the category to deleted state" do
+      delete :destroy, params: { id: category }
+      expect(category.reload).to be_deleted
     end
 
     it "redirects to categories page" do
       delete :destroy, params: { id: salary }
+      is_expected.to redirect_to categories_path
+    end
+  end
+
+  describe "PUT #unarchive" do
+    let!(:archived_category) { create :category, user: user, status: "deleted" }
+
+    it "restores the category to active state" do
+      put :unarchive, params: { id: archived_category }
+      expect(archived_category.reload).to be_active
+    end
+
+    it "redirects to categories page" do
+      put :unarchive, params: { id: archived_category }
       is_expected.to redirect_to categories_path
     end
   end

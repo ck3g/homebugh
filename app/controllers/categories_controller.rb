@@ -1,14 +1,16 @@
 class CategoriesController < ApplicationController
   authorize_resource
-  before_action :find_category, only: [:show, :edit, :update, :destroy]
+  before_action :find_category, only: [:show, :edit, :update, :destroy, :unarchive]
 
   def index
-    @categories = current_user
+    all_categories = current_user
       .categories
       .search(params[:term])
       .includes(:category_type)
       .by_recently_used
-      .page(params[:page])
+
+    @categories = all_categories.active.page(params[:page])
+    @archived_categories = all_categories.deleted
   end
 
   def show
@@ -41,7 +43,12 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_path
+    redirect_to categories_path, notice: t('parts.categories.successfully_archived')
+  end
+
+  def unarchive
+    @category.restore!
+    redirect_to categories_path, notice: t('parts.categories.successfully_unarchived')
   end
 
   private
