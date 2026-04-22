@@ -18,7 +18,7 @@ class CashFlowsController < ApplicationController
     if @cash_flow.save
       session[:from_account_id] = @cash_flow.from_account_id
       session[:to_account_id] = @cash_flow.to_account_id
-      redirect_to cash_flows_path, notice: t('parts.cash_flows.successfully_updated')
+      redirect_to cash_flows_path, notice: t('parts.cash_flows.successfully_created')
     else
       render "new"
     end
