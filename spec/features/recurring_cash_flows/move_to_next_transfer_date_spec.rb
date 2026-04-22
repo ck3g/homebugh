@@ -19,6 +19,7 @@ feature 'Move recurring cash flow to the next transfer date' do
     end
 
     expect(page).to have_current_path(recurring_cash_flows_path)
+    expect(page).to have_content("Moved to the next transfer date.")
     rcf.reload
     expect(rcf.next_transfer_on).to eq(1.month.since(initial_transfer_on))
   end

@@ -20,6 +20,7 @@ feature "Delete recurring cash flows" do
     end
 
     expect(current_path).to eq recurring_cash_flows_path
+    expect(page).to have_content "The recurring cash flow was successfully deleted."
     expect(page).not_to have_selector("#recurring_cash_flow_#{rcf2.id}")
   end
 end

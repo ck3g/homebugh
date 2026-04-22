@@ -53,6 +53,7 @@ feature "Cash Flows" do
     expect(page).to have_content("From Account → To Account")
     expect(page).to have_content("15.00")
     click_link "Rollback"
+    expect(page).to have_content("Cash flow was successfully rolled back.")
     expect(page).not_to have_content("From Account → To Account")
     expect(page).not_to have_content("15.00")
   end

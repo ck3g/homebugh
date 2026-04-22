@@ -26,7 +26,7 @@ class CashFlowsController < ApplicationController
 
   def destroy
     @cash_flow.destroy
-    redirect_to cash_flows_path
+    redirect_to cash_flows_path, notice: t('parts.cash_flows.successfully_destroyed')
   end
 
   private

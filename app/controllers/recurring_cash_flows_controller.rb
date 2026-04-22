@@ -34,12 +34,12 @@ class RecurringCashFlowsController < ApplicationController
 
   def destroy
     @recurring_cash_flow.destroy
-    redirect_to recurring_cash_flows_path
+    redirect_to recurring_cash_flows_path, notice: t('parts.recurring_cash_flows.successfully_destroyed')
   end
 
   def move_to_next_transfer
     @recurring_cash_flow.move_to_next_transfer
-    redirect_to recurring_cash_flows_path
+    redirect_to recurring_cash_flows_path, notice: t('parts.recurring_cash_flows.moved_to_next_transfer')
   end
 
   def perform_transfer
