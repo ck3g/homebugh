@@ -36,6 +36,33 @@ describe CashFlow do
     expect(cash_flow).not_to be_valid
   end
 
+  describe "initial_amount validation" do
+    let(:from) { create(:from_account, user: user) }
+    let(:to) { create(:to_account, user: user) }
+
+    it "allows blank initial_amount" do
+      cf = build(:cash_flow, user: user, from_account: from, to_account: to, initial_amount: nil)
+      expect(cf).to be_valid
+    end
+
+    it "allows valid initial_amount" do
+      cf = build(:cash_flow, user: user, from_account: from, to_account: to, initial_amount: 10.50)
+      expect(cf).to be_valid
+    end
+
+    it "rejects initial_amount of zero" do
+      cf = build(:cash_flow, user: user, from_account: from, to_account: to, initial_amount: 0)
+      expect(cf).not_to be_valid
+      expect(cf.errors[:initial_amount]).to be_present
+    end
+
+    it "rejects negative initial_amount" do
+      cf = build(:cash_flow, user: user, from_account: from, to_account: to, initial_amount: -5)
+      expect(cf).not_to be_valid
+      expect(cf.errors[:initial_amount]).to be_present
+    end
+  end
+
   it "should not move to same account" do
     cash_flow = build(:cash_flow, from_account: from_account, to_account: from_account)
     expect(cash_flow).not_to be_valid

@@ -7,6 +7,9 @@ class CashFlow < ApplicationRecord
   validates :amount, presence: true, numericality: {
     greater_than_or_equal_to: 0.01
   }
+  validates :initial_amount, numericality: {
+    greater_than_or_equal_to: 0.01
+  }, allow_blank: true
   validate :accounts_cannot_be_equal
 
   delegate :name, to: :from_account, prefix: true

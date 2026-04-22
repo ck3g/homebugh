@@ -56,4 +56,18 @@ feature "Cash Flows" do
     expect(page).not_to have_content("From Account → To Account")
     expect(page).not_to have_content("15.00")
   end
+
+  context "when validation fails" do
+    scenario "rejects negative initial_amount" do
+      visit new_cash_flow_path
+      select "From Account", from: "cash_flow_from_account_id"
+      select "To Account", from: "cash_flow_to_account_id"
+      fill_in "cash_flow_initial_amount", with: -5
+      fill_in "cash_flow_amount", with: 15
+      click_button "cash_flow_submit"
+
+      expect(page).to have_content "Initial amount"
+      expect(page).not_to have_content "Funds was successfully moved."
+    end
+  end
 end
