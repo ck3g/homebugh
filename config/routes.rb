@@ -1,5 +1,6 @@
 Homebugh::Application.routes.draw do
-  resources :transactions, :cash_flows, only: [:index, :new, :create, :update, :destroy]
+  resources :transactions, only: [:index, :new, :create, :update, :destroy]
+  resources :cash_flows, only: [:index, :new, :create, :destroy]
   resources :categories, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       get :archived

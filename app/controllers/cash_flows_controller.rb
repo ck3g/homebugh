@@ -1,7 +1,7 @@
 class CashFlowsController < ApplicationController
   authorize_resource
   before_action :find_cash_flow, only: [:destroy]
-  before_action :find_accounts, only: [:new, :create, :destroy]
+  before_action :find_accounts, only: [:new, :create]
 
   def index
     @due_recurring_cash_flows = current_user.recurring_cash_flows.due
