@@ -56,7 +56,7 @@ SimpleForm.setup do |config|
   end
 
   # Bootstrap 5 horizontal form wrapper
-  config.wrappers :horizontal_form, tag: 'div', class: 'row mb-3' do |b|
+  config.wrappers :horizontal_form, tag: 'div', class: 'row mb-3', error_class: 'has-validation-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label, class: 'col-12 col-xl-2 col-form-label'
@@ -68,7 +68,7 @@ SimpleForm.setup do |config|
   end
 
   # Bootstrap 5 horizontal form wrapper for date inputs
-  config.wrappers :horizontal_date_form, tag: 'div', class: 'row mb-3' do |b|
+  config.wrappers :horizontal_date_form, tag: 'div', class: 'row mb-3', error_class: 'has-validation-error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label, class: 'col-12 col-xl-2 col-form-label'

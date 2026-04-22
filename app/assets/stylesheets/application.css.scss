@@ -117,6 +117,20 @@ select.form-select {
   margin-bottom: 40px;
 }
 
+// Validation error display for horizontal form wrappers
+.has-validation-error {
+  .form-control, .form-select {
+    border-color: #dc3545;
+  }
+
+  .invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+  }
+}
+
 .form-group.action-buttons {
   margin-top: 20px;
 }

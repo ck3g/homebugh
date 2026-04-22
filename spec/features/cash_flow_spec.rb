@@ -70,5 +70,16 @@ feature "Cash Flows" do
       expect(page).to have_content "Initial amount"
       expect(page).not_to have_content "Funds was successfully moved."
     end
+
+    scenario "shows validation errors when amount is blank" do
+      visit new_cash_flow_path
+      select "From Account", from: "cash_flow_from_account_id"
+      select "To Account", from: "cash_flow_to_account_id"
+      fill_in "cash_flow_amount", with: ""
+      click_button "cash_flow_submit"
+
+      expect(page).to have_content "cannot be blank"
+      expect(page).not_to have_content "Funds was successfully moved."
+    end
   end
 end

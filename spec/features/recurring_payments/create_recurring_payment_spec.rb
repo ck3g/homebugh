@@ -47,6 +47,15 @@ feature 'Create Recurring Payment' do
     expect(rp.ends_on).to eq(1.year.from_now.to_date)
   end
 
+  scenario 'shows validation errors when submitting an empty form' do
+    sign_in_as 'user@example.com', 'password'
+    visit new_recurring_payment_path
+
+    click_button 'recurring_payment_submit'
+
+    expect(page).to have_content "cannot be blank"
+  end
+
   scenario 'a logged in user can create a recurring payment from a transaction' do
     t = create(:transaction, user: user, category: category, account: account)
 
