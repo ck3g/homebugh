@@ -43,7 +43,8 @@ class RecurringCashFlowsController < ApplicationController
   end
 
   def perform_transfer
-    if current_user.cash_flows.create(**cash_flow_params_from(@recurring_cash_flow))
+    cash_flow = current_user.cash_flows.new(**cash_flow_params_from(@recurring_cash_flow))
+    if cash_flow.save
       @recurring_cash_flow.move_to_next_transfer
       redirect_to cash_flows_path, notice: t('parts.cash_flows.successfully_created')
     else

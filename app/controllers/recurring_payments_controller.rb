@@ -43,7 +43,8 @@ class RecurringPaymentsController < ApplicationController
   end
 
   def create_transaction
-    if current_user.transactions.create(**transaction_params_from(@recurring_payment))
+    transaction = current_user.transactions.new(**transaction_params_from(@recurring_payment))
+    if transaction.save
       @recurring_payment.move_to_next_payment
       redirect_to transactions_path, notice: t('parts.transactions.successfully_created')
     else
