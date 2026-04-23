@@ -80,6 +80,25 @@ describe CashFlow do
     it "deposit to to_account" do
       expect(to_account.reload.funds).to eq(55)
     end
+
+    context "with initial_amount (currency conversion)" do
+      let(:source_account) { create(:account, user: user, funds: 100) }
+      let(:dest_account) { create(:account, user: user, funds: 0) }
+      let(:cash_flow_with_conversion) do
+        create(:cash_flow, user: user, from_account: source_account,
+               to_account: dest_account, amount: 40, initial_amount: 50)
+      end
+
+      it "withdraws initial_amount from source account" do
+        cash_flow_with_conversion
+        expect(source_account.reload.funds).to eq(50)
+      end
+
+      it "deposits amount to destination account" do
+        cash_flow_with_conversion
+        expect(dest_account.reload.funds).to eq(40)
+      end
+    end
   end
 
   describe "#destroy" do
@@ -96,6 +115,28 @@ describe CashFlow do
     it "take money from to_account" do
       to_account.reload
       expect(to_account.funds).to eq(0)
+    end
+
+    context "with initial_amount (currency conversion)" do
+      let(:source_account) { create(:account, user: user, funds: 100) }
+      let(:dest_account) { create(:account, user: user, funds: 0) }
+      let(:cash_flow_with_conversion) do
+        create(:cash_flow, user: user, from_account: source_account,
+               to_account: dest_account, amount: 40, initial_amount: 50)
+      end
+
+      before do
+        cash_flow_with_conversion
+        cash_flow_with_conversion.destroy
+      end
+
+      it "refunds initial_amount back to source account" do
+        expect(source_account.reload.funds).to eq(100)
+      end
+
+      it "takes amount back from destination account" do
+        expect(dest_account.reload.funds).to eq(0)
+      end
     end
   end
 end

@@ -15,8 +15,8 @@ class CashFlow < ApplicationRecord
   delegate :name, to: :from_account, prefix: true
   delegate :name, to: :to_account, prefix: true
 
-  after_create :affect_on_accounts_after_create
-  before_destroy :affect_on_accounts_before_destroy
+  after_create -> { AccountBalance.apply(self) }
+  before_destroy -> { AccountBalance.reverse(self) }
 
   def accounts_cannot_be_equal
     if from_account_id == to_account_id
@@ -27,20 +27,5 @@ class CashFlow < ApplicationRecord
   def from_account_id=(account)
     from_account_id_will_change!
     super
-  end
-
-  private
-  def affect_on_accounts_after_create
-    FundsTransferService.new(from_account, to_account).
-      transfer _initial_amount, amount
-  end
-
-  def affect_on_accounts_before_destroy
-    FundsTransferService.new(to_account, from_account).
-      transfer amount, _initial_amount
-  end
-
-  def _initial_amount
-    initial_amount.presence || amount
   end
 end

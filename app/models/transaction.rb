@@ -12,8 +12,8 @@ class Transaction < ApplicationRecord
   delegate :name, to: :category, prefix: true
   delegate :name, :currency_id, to: :account, prefix: true
 
-  after_create :affect_on_account_after_create
-  before_destroy :affect_on_account_before_destroy
+  after_create -> { AccountBalance.apply(self) }
+  before_destroy -> { AccountBalance.reverse(self) }
 
   scope :account, ->(account_id) { where(account_id: account_id) }
   scope :currency, -> currency_id {
@@ -22,18 +22,4 @@ class Transaction < ApplicationRecord
   scope :created_between, -> date_from, date_to {
     where(created_at: date_from..date_to)
   }
-
-  private
-
-  def affect_on_account_after_create
-    Transaction.transaction do
-      income? ? account.deposit(summ) : account.withdrawal(summ)
-    end
-  end
-
-  def affect_on_account_before_destroy
-    Transaction.transaction do
-      income? ? account.withdrawal(summ) : account.deposit(summ)
-    end
-  end
 end
