@@ -28,7 +28,7 @@ feature "Application" do
     sign_in_as 'user@example.com', 'password'
     visit dashboard_path
 
-    within '.accounts-summary' do
+    within '.dashboard-accounts-summary' do
       expect(page).to have_content 'Cash'
       expect(page).not_to have_content 'Old Bank Card'
     end

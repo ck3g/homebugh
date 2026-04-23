@@ -15,6 +15,26 @@ require 'capybara/rspec'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/shared_behaviors/**/*.rb")].each {|f| require f}
 
+# Devise 4.9.4 + Ruby 3.4 compatibility fix:
+# Warden's serialize_from_session block passes a single array argument,
+# but Devise's serialize_from_session expects two positional arguments (key, salt).
+# Ruby 3.4 changed how block arguments are splatted, causing ArgumentError.
+# See: https://github.com/heartcombo/devise/issues/5771
+module DeviseRuby34Fix
+  def serialize_from_session(*args)
+    if args.size == 1 && args.first.is_a?(self)
+      # Warden passed the raw User object (not serialized key + salt).
+      # This happens in controller specs where sign_in stores the object directly.
+      args.first
+    elsif args.size == 1 && args.first.is_a?(Array)
+      super(*args.first)
+    else
+      super
+    end
+  end
+end
+User.singleton_class.prepend(DeviseRuby34Fix)
+
 I18n.locale = :en
 
 RSpec.configure do |config|
