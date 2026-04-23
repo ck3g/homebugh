@@ -9,7 +9,7 @@
     input_html: { data: { select_2: true }, class: "form-select" },
     wrapper: :stacked_form
   = f.input :summ, wrapper: :stacked_form,
-    input_html: { class: "form-control transaction-form-amount-input", placeholder: "0.00" },
+    input_html: { class: "form-control transaction-form-amount-input", placeholder: "0.00", value: (transaction.summ if transaction.summ&.positive?) },
     label_html: { class: "transaction-form-label" }
   = f.input :comment, wrapper: :stacked_form, input_html: { rows: 3 }
   = f.button :submit, class: "btn btn-success transaction-form-submit", id: :transaction_submit
