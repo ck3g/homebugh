@@ -11,7 +11,7 @@ gem 'devise', "~> 4.9.4"
 gem "devise-encryptable", "~> 0.2.0"
 gem 'haml'
 gem 'has_scope', "~> 0.5.1"
-gem "psych", "~> 3.3.4"
+gem "psych"
 gem "simple_form", "~> 5.4"
 gem "kaminari", "~> 1.2.2"
 gem "meta-tags", "~> 2.23", require: "meta_tags"
