@@ -10,7 +10,7 @@ gem 'mysql2', "~> 0.5.7"
 gem 'devise', "~> 4.9.4"
 gem "devise-encryptable", "~> 0.2.0"
 gem 'haml'
-gem 'has_scope', "~> 0.5.1"
+gem 'has_scope', "~> 0.9"
 gem "psych"
 gem "simple_form", "~> 5.4"
 gem "kaminari", "~> 1.2.2"
