@@ -62,7 +62,7 @@ gem 'recaptcha'
 gem "puma"
 
 group :development do
-  gem "capistrano", "~> 3.18.0", require: false
+  gem "capistrano", "~> 3.20", require: false
   gem 'capistrano-rbenv', require: false
   gem 'capistrano-puma', '~> 0.2.3', require: false
   
@@ -78,19 +78,19 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 8.0.1'
-  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'rspec-rails', '~> 8.0'
+  gem 'factory_bot_rails', '~> 6.5'
   gem "pry-rails"
 end
 
 group :test do
   gem 'rspec-activemodel-mocks'
   gem 'rails-controller-testing'
-  gem "faker", "~> 2.14.0"
+  gem "faker", "~> 3.8"
   gem "launchy"
   gem "capybara"
   gem "database_cleaner"
-  gem "shoulda-matchers", '~> 5.3.0'
+  gem "shoulda-matchers", '~> 7.0'
   gem "email_spec"
   gem 'simplecov', require: false
 
