@@ -4,7 +4,7 @@ gem 'rails', '8.0.2'
 
 gem 'bootsnap', require: false
 
-gem "json", "~> 2.3.0"
+gem "json", "~> 2.19"
 
 gem 'mysql2', "~> 0.5.7"
 gem 'devise', "~> 4.9.4"
