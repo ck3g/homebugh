@@ -6,15 +6,15 @@ gem 'bootsnap', require: false
 
 gem "json", "~> 2.3.0"
 
-gem 'mysql2', "0.5.6"
+gem 'mysql2', "~> 0.5.7"
 gem 'devise', "~> 4.9.4"
 gem "devise-encryptable", "~> 0.2.0"
 gem 'haml'
 gem 'has_scope', "~> 0.5.1"
 gem "psych", "~> 3.3.4"
-gem "simple_form", "~> 5.3.0"
+gem "simple_form", "~> 5.4"
 gem "kaminari", "~> 1.2.2"
-gem "meta-tags", "~> 2.22.0", require: "meta_tags"
+gem "meta-tags", "~> 2.23", require: "meta_tags"
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 gem "select2-rails", '~> 3.5.11'
 # gem 'chartkick', '~> 3.4.0' # Replaced with Chart.js
@@ -41,7 +41,7 @@ gem 'react-rails'
 
 gem 'ruby-progressbar'
 
-gem 'whenever', '~> 1.0.0'
+gem 'whenever', '~> 1.1'
 gem 'mailgun-ruby'
 
 gem 'eventmachine', '~> 1.2.7', require: false
