@@ -7,8 +7,8 @@ gem 'bootsnap', require: false
 gem "json", "~> 2.19"
 
 gem 'mysql2', "~> 0.5.7"
-gem 'devise', "~> 4.9.4"
-gem "devise-encryptable", "~> 0.2.0"
+gem 'devise', "~> 5.0"
+gem "devise-encryptable", "~> 0.3"
 gem 'haml'
 gem 'has_scope', "~> 0.9"
 gem "psych"
