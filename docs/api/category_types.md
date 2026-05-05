@@ -1,6 +1,6 @@
 # Category Types
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Read-only. The two category types used to classify categories as income or expense.
 

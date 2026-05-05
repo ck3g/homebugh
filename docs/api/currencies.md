@@ -1,6 +1,6 @@
 # Currencies
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Read-only. Currencies available in the system (e.g., "US Dollar", "Euro"). Used by accounts and budgets.
 
