@@ -1,6 +1,6 @@
 # Sync
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Bidirectional data synchronization between the iOS app and the server. Handles push (iOS changes to server) and pull (server changes to iOS) in a single request.
 

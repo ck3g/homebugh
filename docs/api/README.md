@@ -19,7 +19,7 @@ Base URL: `https://<your-server>/api/v1`
 | [Currencies](currencies.md) | Implemented |
 | [Category Types](category_types.md) | Implemented |
 | [Statistics](statistics.md) | Implemented |
-| [Sync](sync.md) | Not yet implemented |
+| [Sync](sync.md) | Implemented |
 
 ## Conventions
 

@@ -58,6 +58,7 @@ Homebugh::Application.routes.draw do
         end
       end
       resources :categories, only: [:index, :show, :create, :update, :destroy]
+      resource :sync, only: [:create], controller: 'sync'
       get 'statistics', to: 'statistics#index'
       get 'statistics/months', to: 'statistics#months'
       resources :currencies, only: [:index, :show]
