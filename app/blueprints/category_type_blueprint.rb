@@ -1,7 +1,9 @@
 class CategoryTypeBlueprint < Blueprinter::Base
+  NAME_MAPPINGS = { 'spending' => 'expense' }.freeze
+
   identifier :id
 
   field :name do |category_type|
-    category_type.name == 'spending' ? 'expense' : category_type.name
+    NAME_MAPPINGS.fetch(category_type.name, category_type.name)
   end
 end

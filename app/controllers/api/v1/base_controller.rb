@@ -3,12 +3,15 @@ module Api
     class BaseController < ActionController::API
       include Api::Authenticatable
 
+      DEFAULT_PER_PAGE = 20
+      MAX_PER_PAGE = 50
+
       before_action :authenticate_token!
 
       private
 
       def per_page
-        [params.fetch(:per_page, 20).to_i, 50].min
+        [params.fetch(:per_page, DEFAULT_PER_PAGE).to_i, MAX_PER_PAGE].min
       end
 
       def pagination_meta(collection)
