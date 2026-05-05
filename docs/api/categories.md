@@ -1,6 +1,6 @@
 # Categories
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Transaction categories (e.g., "Food", "Salary"). Each category has a type: income (category_type_id=1) or expense (category_type_id=2).
 

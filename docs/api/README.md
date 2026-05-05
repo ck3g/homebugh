@@ -10,7 +10,7 @@ Base URL: `https://<your-server>/api/v1`
 |---|---|
 | [Authentication](authentication.md) | Implemented |
 | [Accounts](accounts.md) | Not yet implemented |
-| [Categories](categories.md) | Not yet implemented |
+| [Categories](categories.md) | Implemented |
 | [Transactions](transactions.md) | Not yet implemented |
 | [Cash Flows](cash_flows.md) | Not yet implemented |
 | [Budgets](budgets.md) | Not yet implemented |

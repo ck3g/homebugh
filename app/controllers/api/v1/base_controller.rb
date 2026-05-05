@@ -26,6 +26,13 @@ module Api
       def render_not_found
         render json: { error: 'Not found' }, status: :not_found
       end
+
+      def render_validation_errors(record)
+        render json: {
+          error: 'Validation failed',
+          details: record.errors.messages
+        }, status: :unprocessable_entity
+      end
     end
   end
 end
