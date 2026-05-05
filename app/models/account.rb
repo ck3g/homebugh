@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
   include AASM
   include Orderable
+  include SyncDeletionTrackable
 
   belongs_to :user
   belongs_to :currency, touch: true

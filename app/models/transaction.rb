@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
   include Categorizable
+  include SyncDeletionTrackable
 
   belongs_to :user
   belongs_to :account, touch: true

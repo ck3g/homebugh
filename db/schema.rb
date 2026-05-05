@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_05_111636) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "client_uuid"
     t.datetime "created_at", precision: nil
@@ -144,6 +144,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_111636) do
     t.index ["category_id"], name: "index_recurring_payments_on_category_id"
     t.index ["user_id", "client_uuid"], name: "index_recurring_payments_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_recurring_payments_on_user_id"
+  end
+
+  create_table "sync_deletions", charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "deleted_at", null: false
+    t.bigint "resource_id", null: false
+    t.string "resource_type", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id", "deleted_at"], name: "index_sync_deletions_on_user_id_and_deleted_at"
   end
 
   create_table "transactions", charset: "utf8mb3", force: :cascade do |t|

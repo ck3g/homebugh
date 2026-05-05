@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   include AASM
   include Orderable
+  include SyncDeletionTrackable
 
   belongs_to :category_type
   belongs_to :user

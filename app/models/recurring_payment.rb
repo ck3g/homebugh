@@ -1,6 +1,7 @@
 class RecurringPayment < ApplicationRecord
   include Categorizable
   include Schedulable
+  include SyncDeletionTrackable
 
   schedulable_date_column :next_payment_on
 
