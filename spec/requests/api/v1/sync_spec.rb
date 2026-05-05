@@ -18,6 +18,39 @@ RSpec.describe 'Sync API', type: :request do
       end
     end
 
+    context 'payload size limit' do
+      it 'rejects requests exceeding max changes per request' do
+        created_items = (Api::V1::SyncController::MAX_CHANGES_PER_REQUEST + 1).times.map do |i|
+          { client_uuid: "ios-#{i}", amount: 10.0, account_id: account.id, category_id: category.id }
+        end
+
+        post '/api/v1/sync', params: {
+          last_synced_at: 1.day.ago.iso8601,
+          changes: {
+            transactions: { created: created_items }
+          }
+        }, headers: headers
+
+        expect(response).to have_http_status(:payload_too_large)
+        expect(json_response['error']).to include('Too many changes')
+      end
+
+      it 'accepts requests at exactly the limit' do
+        created_items = Api::V1::SyncController::MAX_CHANGES_PER_REQUEST.times.map do |i|
+          { client_uuid: "ios-#{i}", amount: 10.0, account_id: account.id, category_id: category.id }
+        end
+
+        post '/api/v1/sync', params: {
+          last_synced_at: 1.day.ago.iso8601,
+          changes: {
+            transactions: { created: created_items }
+          }
+        }, headers: headers
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
     context 'push and pull' do
       it 'creates records and returns pull data' do
         server_txn = create(:transaction, user: user, account: account, category: category)
