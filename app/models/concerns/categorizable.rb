@@ -4,7 +4,7 @@ module Categorizable
   included do
     belongs_to :category, touch: true
 
-    scope :category, ->(category_id) { where(category_id: category_id) }
+    scope :category, ->(category_id) { where(category_id: category_id) if category_id.present? }
     scope :category_type, -> category_type_id {
       joins(:category).where(:'categories.category_type_id' => category_type_id)
     }

@@ -4,9 +4,9 @@ module Api
       def index
         transactions = current_user.transactions
                         .updated_since(params[:updated_since])
-        transactions = transactions.where(account_id: params[:account_id]) if params[:account_id].present?
-        transactions = transactions.where(category_id: params[:category_id]) if params[:category_id].present?
-        transactions = transactions.page(params[:page]).per(per_page)
+                        .account(params[:account_id])
+                        .category(params[:category_id])
+                        .page(params[:page]).per(per_page)
 
         render json: {
           transactions: TransactionBlueprint.render_as_hash(transactions),

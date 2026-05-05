@@ -15,7 +15,7 @@ class Transaction < ApplicationRecord
   after_create -> { AccountBalance.apply(self) }
   before_destroy -> { AccountBalance.reverse(self) }
 
-  scope :account, ->(account_id) { where(account_id: account_id) }
+  scope :account, ->(account_id) { where(account_id: account_id) if account_id.present? }
   scope :currency, -> currency_id {
     joins(:account).where(:'accounts.currency_id' => currency_id)
   }
