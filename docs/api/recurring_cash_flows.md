@@ -1,6 +1,6 @@
 # Recurring Cash Flows
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Templates for automatically creating account transfers on a schedule. Each recurring cash flow defines an amount, source and target accounts, frequency, and next transfer date.
 

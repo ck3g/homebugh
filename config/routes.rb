@@ -51,6 +51,12 @@ Homebugh::Application.routes.draw do
           post :create_transaction
         end
       end
+      resources :recurring_cash_flows, only: [:index, :show, :create, :update, :destroy] do
+        member do
+          put :move_to_next_transfer
+          post :perform_transfer
+        end
+      end
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :currencies, only: [:index, :show]
       resources :category_types, only: [:index, :show]

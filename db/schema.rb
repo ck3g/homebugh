@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_05_111403) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_05_111636) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "client_uuid"
     t.datetime "created_at", precision: nil
@@ -111,6 +111,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_111403) do
 
   create_table "recurring_cash_flows", charset: "utf8mb3", force: :cascade do |t|
     t.decimal "amount", precision: 10, scale: 2, null: false
+    t.string "client_uuid"
     t.datetime "created_at", null: false
     t.date "ends_on"
     t.integer "frequency", default: 0, null: false
@@ -122,6 +123,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_111403) do
     t.bigint "user_id", null: false
     t.index ["from_account_id"], name: "index_recurring_cash_flows_on_from_account_id"
     t.index ["to_account_id"], name: "index_recurring_cash_flows_on_to_account_id"
+    t.index ["user_id", "client_uuid"], name: "index_recurring_cash_flows_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_recurring_cash_flows_on_user_id"
   end
 
