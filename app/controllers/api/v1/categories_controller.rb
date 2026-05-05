@@ -3,8 +3,8 @@ module Api
     class CategoriesController < BaseController
       def index
         categories = current_user.categories
-        categories = categories.where('updated_at > ?', params[:updated_since]) if params[:updated_since].present?
-        categories = categories.page(params[:page]).per(per_page)
+                      .updated_since(params[:updated_since])
+                      .page(params[:page]).per(per_page)
 
         render json: {
           categories: CategoryBlueprint.render_as_hash(categories),
