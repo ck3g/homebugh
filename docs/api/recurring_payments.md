@@ -1,6 +1,6 @@
 # Recurring Payments
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Templates for automatically creating transactions on a schedule. Each recurring payment defines an amount, account, category, frequency, and next payment date.
 

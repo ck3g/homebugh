@@ -45,6 +45,12 @@ Homebugh::Application.routes.draw do
       resources :transactions, only: [:index, :show, :create, :update, :destroy]
       resources :cash_flows, only: [:index, :show, :create, :destroy]
       resources :budgets, only: [:index, :show, :create, :update, :destroy]
+      resources :recurring_payments, only: [:index, :show, :create, :update, :destroy] do
+        member do
+          put :move_to_next_payment
+          post :create_transaction
+        end
+      end
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :currencies, only: [:index, :show]
       resources :category_types, only: [:index, :show]
