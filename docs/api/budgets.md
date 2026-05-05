@@ -1,6 +1,6 @@
 # Budgets
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Spending limits per category per currency. The budget tracks a `limit` amount; actual spending is calculated from transactions.
 

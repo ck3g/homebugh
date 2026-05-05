@@ -44,6 +44,7 @@ Homebugh::Application.routes.draw do
       resources :accounts, only: [:index, :show, :create, :update, :destroy]
       resources :transactions, only: [:index, :show, :create, :update, :destroy]
       resources :cash_flows, only: [:index, :show, :create, :destroy]
+      resources :budgets, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :currencies, only: [:index, :show]
       resources :category_types, only: [:index, :show]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_05_105345) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_05_111048) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "client_uuid"
     t.datetime "created_at", precision: nil
@@ -55,6 +55,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_105345) do
 
   create_table "budgets", charset: "utf8mb3", force: :cascade do |t|
     t.integer "category_id", null: false
+    t.string "client_uuid"
     t.datetime "created_at", precision: nil, null: false
     t.integer "currency_id", null: false
     t.decimal "limit", precision: 10, scale: 2, null: false
@@ -62,6 +63,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_105345) do
     t.integer "user_id", null: false
     t.index ["category_id"], name: "index_budgets_on_category_id"
     t.index ["currency_id"], name: "index_budgets_on_currency_id"
+    t.index ["user_id", "client_uuid"], name: "index_budgets_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_budgets_on_user_id"
   end
 
