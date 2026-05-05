@@ -12,7 +12,7 @@ Base URL: `https://<your-server>/api/v1`
 | [Accounts](accounts.md) | Implemented |
 | [Categories](categories.md) | Implemented |
 | [Transactions](transactions.md) | Implemented |
-| [Cash Flows](cash_flows.md) | Not yet implemented |
+| [Cash Flows](cash_flows.md) | Implemented |
 | [Budgets](budgets.md) | Not yet implemented |
 | [Recurring Payments](recurring_payments.md) | Not yet implemented |
 | [Recurring Cash Flows](recurring_cash_flows.md) | Not yet implemented |

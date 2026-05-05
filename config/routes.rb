@@ -43,6 +43,7 @@ Homebugh::Application.routes.draw do
       resource :token, only: [:create, :destroy], controller: 'token'
       resources :accounts, only: [:index, :show, :create, :update, :destroy]
       resources :transactions, only: [:index, :show, :create, :update, :destroy]
+      resources :cash_flows, only: [:index, :show, :create, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :currencies, only: [:index, :show]
       resources :category_types, only: [:index, :show]

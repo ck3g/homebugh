@@ -1,6 +1,6 @@
 # Cash Flows
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Transfers between two accounts. Supports cross-currency transfers via the `initial_amount` field.
 
