@@ -1,6 +1,6 @@
 # Authentication
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Token-based authentication using Bearer tokens. Tokens are stored in the `auth_sessions` table with a 90-day expiry that auto-extends on each authenticated request.
 

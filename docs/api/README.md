@@ -8,7 +8,7 @@ Base URL: `https://<your-server>/api/v1`
 
 | Resource | Status |
 |---|---|
-| [Authentication](authentication.md) | Not yet implemented |
+| [Authentication](authentication.md) | Implemented |
 | [Accounts](accounts.md) | Not yet implemented |
 | [Categories](categories.md) | Not yet implemented |
 | [Transactions](transactions.md) | Not yet implemented |

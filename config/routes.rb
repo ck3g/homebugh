@@ -38,7 +38,11 @@ Homebugh::Application.routes.draw do
     delete 'users/destroy'
   end
 
-  post "/api/token" => "api/token#create"
+  namespace :api do
+    namespace :v1 do
+      resource :token, only: [:create, :destroy], controller: 'token'
+    end
+  end
 
   get '/cookiepolicy' => "welcome#cookiepolicy"
 
