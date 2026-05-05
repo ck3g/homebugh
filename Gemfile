@@ -22,6 +22,8 @@ gem 'draper'
 gem 'aasm'
 gem 'cancancan'
 gem 'rack-cors'
+gem 'rack-attack'
+gem 'blueprinter'
 
 gem 'bootstrap', '~> 5.3.0'
 gem "uglifier", ">= 4.2.0"
