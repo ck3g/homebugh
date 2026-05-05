@@ -11,7 +11,7 @@ Base URL: `https://<your-server>/api/v1`
 | [Authentication](authentication.md) | Implemented |
 | [Accounts](accounts.md) | Implemented |
 | [Categories](categories.md) | Implemented |
-| [Transactions](transactions.md) | Not yet implemented |
+| [Transactions](transactions.md) | Implemented |
 | [Cash Flows](cash_flows.md) | Not yet implemented |
 | [Budgets](budgets.md) | Not yet implemented |
 | [Recurring Payments](recurring_payments.md) | Not yet implemented |

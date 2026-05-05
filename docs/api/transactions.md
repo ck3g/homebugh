@@ -1,6 +1,6 @@
 # Transactions
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Financial transactions. Each transaction records an amount, belongs to an account and a category, and optionally has a comment. Creating/deleting transactions automatically adjusts the account balance.
 
