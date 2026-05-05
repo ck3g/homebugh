@@ -1,6 +1,6 @@
 # Statistics
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Read-only. Income/expense totals and per-category breakdowns for a given month. The server handles the distinction between live transaction data (current month) and pre-aggregated historical data internally — the response shape is identical regardless.
 

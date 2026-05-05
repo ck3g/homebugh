@@ -18,7 +18,7 @@ Base URL: `https://<your-server>/api/v1`
 | [Recurring Cash Flows](recurring_cash_flows.md) | Implemented |
 | [Currencies](currencies.md) | Implemented |
 | [Category Types](category_types.md) | Implemented |
-| [Statistics](statistics.md) | Not yet implemented |
+| [Statistics](statistics.md) | Implemented |
 | [Sync](sync.md) | Not yet implemented |
 
 ## Conventions

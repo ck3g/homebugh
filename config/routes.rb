@@ -58,6 +58,8 @@ Homebugh::Application.routes.draw do
         end
       end
       resources :categories, only: [:index, :show, :create, :update, :destroy]
+      get 'statistics', to: 'statistics#index'
+      get 'statistics/months', to: 'statistics#months'
       resources :currencies, only: [:index, :show]
       resources :category_types, only: [:index, :show]
     end
