@@ -1,6 +1,6 @@
 # Accounts
 
-> **Status: Not yet implemented**
+> **Status: Implemented**
 
 Financial accounts (e.g., "Cash", "Bank Card", "Savings"). Each account has a balance and belongs to a currency.
 

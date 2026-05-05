@@ -41,6 +41,7 @@ Homebugh::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :token, only: [:create, :destroy], controller: 'token'
+      resources :accounts, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :currencies, only: [:index, :show]
       resources :category_types, only: [:index, :show]

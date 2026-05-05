@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_05_095652) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_05_101200) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
+    t.string "client_uuid"
     t.datetime "created_at", precision: nil
     t.integer "currency_id"
     t.decimal "funds", precision: 10, scale: 2, default: "0.0"
@@ -22,6 +23,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_095652) do
     t.integer "user_id", null: false
     t.index ["currency_id"], name: "index_accounts_on_currency_id"
     t.index ["status"], name: "index_accounts_on_status"
+    t.index ["user_id", "client_uuid"], name: "index_accounts_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
