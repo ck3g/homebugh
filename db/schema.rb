@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_06_054320) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "client_uuid"
     t.datetime "created_at", precision: nil
@@ -23,6 +23,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
     t.integer "user_id", null: false
     t.index ["currency_id"], name: "index_accounts_on_currency_id"
     t.index ["status"], name: "index_accounts_on_status"
+    t.index ["updated_at"], name: "index_accounts_on_updated_at"
     t.index ["user_id", "client_uuid"], name: "index_accounts_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
@@ -63,6 +64,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
     t.integer "user_id", null: false
     t.index ["category_id"], name: "index_budgets_on_category_id"
     t.index ["currency_id"], name: "index_budgets_on_currency_id"
+    t.index ["updated_at"], name: "index_budgets_on_updated_at"
     t.index ["user_id", "client_uuid"], name: "index_budgets_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_budgets_on_user_id"
   end
@@ -78,6 +80,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
     t.integer "user_id", null: false
     t.index ["from_account_id"], name: "index_cash_flows_on_from_account_id"
     t.index ["to_account_id"], name: "index_cash_flows_on_to_account_id"
+    t.index ["updated_at"], name: "index_cash_flows_on_updated_at"
     t.index ["user_id", "client_uuid"], name: "index_cash_flows_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_cash_flows_on_user_id"
   end
@@ -123,6 +126,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
     t.bigint "user_id", null: false
     t.index ["from_account_id"], name: "index_recurring_cash_flows_on_from_account_id"
     t.index ["to_account_id"], name: "index_recurring_cash_flows_on_to_account_id"
+    t.index ["updated_at"], name: "index_recurring_cash_flows_on_updated_at"
     t.index ["user_id", "client_uuid"], name: "index_recurring_cash_flows_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_recurring_cash_flows_on_user_id"
   end
@@ -142,6 +146,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
     t.integer "user_id", null: false
     t.index ["account_id"], name: "index_recurring_payments_on_account_id"
     t.index ["category_id"], name: "index_recurring_payments_on_category_id"
+    t.index ["updated_at"], name: "index_recurring_payments_on_updated_at"
     t.index ["user_id", "client_uuid"], name: "index_recurring_payments_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_recurring_payments_on_user_id"
   end
@@ -166,6 +171,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_05_114719) do
     t.integer "user_id"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["category_id"], name: "index_transactions_on_category_id"
+    t.index ["updated_at"], name: "index_transactions_on_updated_at"
     t.index ["user_id", "client_uuid"], name: "index_transactions_on_user_id_and_client_uuid", unique: true
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
