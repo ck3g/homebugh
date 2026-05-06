@@ -1,6 +1,7 @@
 module Api
   class TokenService
     TOKEN_LIFETIME = 90.days
+    TOKEN_REFRESH_THRESHOLD = 30.days
 
     def self.authenticate(email, password)
       user = User.find_by(email: email)
@@ -20,7 +21,7 @@ module Api
       return unless session
       return unless session.expired_at > Time.current
 
-      session.update!(expired_at: TOKEN_LIFETIME.from_now)
+      session.update!(expired_at: TOKEN_LIFETIME.from_now) if session.expired_at < TOKEN_REFRESH_THRESHOLD.from_now
       session.user
     end
 

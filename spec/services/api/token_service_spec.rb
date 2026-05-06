@@ -51,8 +51,8 @@ RSpec.describe Api::TokenService do
   describe '.find_user_by_token' do
     let(:user) { create(:user) }
 
-    context 'with a valid token' do
-      let!(:session) { create(:auth_session, user: user, expired_at: 30.days.from_now) }
+    context 'with a valid token close to expiry' do
+      let!(:session) { create(:auth_session, user: user, expired_at: 10.days.from_now) }
 
       it 'returns the user' do
         result = described_class.find_user_by_token(session.token)
@@ -65,6 +65,25 @@ RSpec.describe Api::TokenService do
 
         session.reload
         expect(session.expired_at).to be_within(1.minute).of(Api::TokenService::TOKEN_LIFETIME.from_now)
+      end
+    end
+
+    context 'with a valid token far from expiry' do
+      let!(:session) { create(:auth_session, user: user, expired_at: 60.days.from_now) }
+
+      it 'returns the user' do
+        result = described_class.find_user_by_token(session.token)
+
+        expect(result).to eq(user)
+      end
+
+      it 'does not extend the token expiry' do
+        original_expiry = session.expired_at
+
+        described_class.find_user_by_token(session.token)
+
+        session.reload
+        expect(session.expired_at).to be_within(1.second).of(original_expiry)
       end
     end
 
