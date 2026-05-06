@@ -20,7 +20,7 @@ module Api
       end
 
       def create
-        category = current_user.categories.new(category_params)
+        category = current_user.categories.new(create_params)
 
         if category.save
           render json: CategoryBlueprint.render_as_hash(category), status: :created
@@ -33,7 +33,7 @@ module Api
         category = current_user.categories.find_by(id: params[:id])
         return render_not_found unless category
 
-        if category.update(category_params)
+        if category.update(update_params)
           render json: CategoryBlueprint.render_as_hash(category)
         else
           render_validation_errors(category)
@@ -54,8 +54,12 @@ module Api
 
       private
 
-      def category_params
+      def create_params
         params.permit(:name, :category_type_id, :inactive, :client_uuid)
+      end
+
+      def update_params
+        params.permit(:name, :inactive)
       end
     end
   end

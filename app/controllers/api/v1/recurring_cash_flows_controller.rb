@@ -19,7 +19,7 @@ module Api
       end
 
       def create
-        recurring_cash_flow = current_user.recurring_cash_flows.new(recurring_cash_flow_params)
+        recurring_cash_flow = current_user.recurring_cash_flows.new(create_params)
 
         if recurring_cash_flow.save
           render json: RecurringCashFlowBlueprint.render_as_hash(recurring_cash_flow), status: :created
@@ -29,7 +29,7 @@ module Api
       end
 
       def update
-        if @recurring_cash_flow.update(recurring_cash_flow_params)
+        if @recurring_cash_flow.update(update_params)
           render json: RecurringCashFlowBlueprint.render_as_hash(@recurring_cash_flow)
         else
           render_validation_errors(@recurring_cash_flow)
@@ -68,9 +68,14 @@ module Api
         render_not_found unless @recurring_cash_flow
       end
 
-      def recurring_cash_flow_params
+      def create_params
         params.permit(:amount, :from_account_id, :to_account_id,
                       :frequency, :frequency_amount, :next_transfer_on, :ends_on, :client_uuid)
+      end
+
+      def update_params
+        params.permit(:amount, :from_account_id, :to_account_id,
+                      :frequency, :frequency_amount, :next_transfer_on, :ends_on)
       end
     end
   end

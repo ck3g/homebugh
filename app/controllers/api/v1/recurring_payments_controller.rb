@@ -19,7 +19,7 @@ module Api
       end
 
       def create
-        recurring_payment = current_user.recurring_payments.new(recurring_payment_params)
+        recurring_payment = current_user.recurring_payments.new(create_params)
 
         if recurring_payment.save
           render json: RecurringPaymentBlueprint.render_as_hash(recurring_payment), status: :created
@@ -29,7 +29,7 @@ module Api
       end
 
       def update
-        if @recurring_payment.update(recurring_payment_params)
+        if @recurring_payment.update(update_params)
           render json: RecurringPaymentBlueprint.render_as_hash(@recurring_payment)
         else
           render_validation_errors(@recurring_payment)
@@ -69,9 +69,14 @@ module Api
         render_not_found unless @recurring_payment
       end
 
-      def recurring_payment_params
+      def create_params
         params.permit(:title, :amount, :account_id, :category_id,
                       :frequency, :frequency_amount, :next_payment_on, :ends_on, :client_uuid)
+      end
+
+      def update_params
+        params.permit(:title, :amount, :account_id, :category_id,
+                      :frequency, :frequency_amount, :next_payment_on, :ends_on)
       end
     end
   end

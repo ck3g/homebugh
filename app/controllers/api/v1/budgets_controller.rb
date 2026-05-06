@@ -20,7 +20,7 @@ module Api
       end
 
       def create
-        budget = current_user.budgets.new(budget_params)
+        budget = current_user.budgets.new(create_params)
 
         if budget.save
           render json: BudgetBlueprint.render_as_hash(budget), status: :created
@@ -33,7 +33,7 @@ module Api
         budget = current_user.budgets.find_by(id: params[:id])
         return render_not_found unless budget
 
-        if budget.update(budget_params)
+        if budget.update(update_params)
           render json: BudgetBlueprint.render_as_hash(budget)
         else
           render_validation_errors(budget)
@@ -50,8 +50,12 @@ module Api
 
       private
 
-      def budget_params
+      def create_params
         params.permit(:category_id, :currency_id, :limit, :client_uuid)
+      end
+
+      def update_params
+        params.permit(:category_id, :currency_id, :limit)
       end
     end
   end
