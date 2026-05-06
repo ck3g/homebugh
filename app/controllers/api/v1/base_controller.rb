@@ -8,10 +8,13 @@ module Api
 
       before_action :authenticate_token!
 
+      rescue_from StandardError, with: :render_internal_error
+      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+
       private
 
       def per_page
-        [params.fetch(:per_page, DEFAULT_PER_PAGE).to_i, MAX_PER_PAGE].min
+        [[params.fetch(:per_page, DEFAULT_PER_PAGE).to_i, 1].max, MAX_PER_PAGE].min
       end
 
       def pagination_meta(collection)
@@ -32,6 +35,12 @@ module Api
           error: 'Validation failed',
           details: record.errors.messages
         }, status: :unprocessable_entity
+      end
+
+      def render_internal_error(exception)
+        Rails.logger.error("API Error: #{exception.message}")
+        Rails.logger.error(exception.backtrace&.first(10)&.join("\n"))
+        render json: { error: 'Internal server error' }, status: :internal_server_error
       end
     end
   end
