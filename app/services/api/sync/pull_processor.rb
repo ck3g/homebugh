@@ -20,27 +20,34 @@ module Api
       def process(last_synced_at:, exclude_ids: {}, pull_limit: DEFAULT_PULL_LIMIT)
         result = {}
         remaining = pull_limit
+        total_available = 0
         cursor = nil
 
         RESOURCE_ASSOCIATIONS.each do |resource_type, config|
-          break if remaining <= 0
-
           records = fetch_records(resource_type, last_synced_at, exclude_ids)
           blueprint = config[:blueprint].constantize
 
-          batch = records.limit(remaining).to_a
-          result[resource_type] = blueprint.render_as_hash(batch)
-          remaining -= batch.length
+          if remaining > 0
+            batch = records.limit(remaining + 1).to_a
+            total_available += batch.length
+            batch = batch.first(remaining)
 
-          if batch.any?
-            last_updated = batch.last.updated_at
-            cursor = last_updated.iso8601(3) if cursor.nil? || last_updated < Time.parse(cursor)
+            result[resource_type] = blueprint.render_as_hash(batch)
+            remaining -= batch.length
+
+            if batch.any?
+              last_updated = batch.last.updated_at
+              cursor = last_updated.iso8601(3) if cursor.nil? || last_updated > Time.parse(cursor)
+            end
+          else
+            result[resource_type] = []
+            total_available += records.limit(1).count
           end
         end
 
         result[:deletions] = fetch_deletions(last_synced_at)
 
-        has_more = remaining <= 0 && more_records_exist?(last_synced_at, exclude_ids, pull_limit)
+        has_more = total_available > pull_limit
         result[:has_more] = has_more
         result[:cursor] = has_more ? cursor : nil
 
@@ -71,14 +78,6 @@ module Api
             deleted_at: deletion.deleted_at
           }
         end
-      end
-
-      def more_records_exist?(last_synced_at, exclude_ids, pull_limit)
-        total = 0
-        RESOURCE_ASSOCIATIONS.each do |resource_type, _|
-          total += fetch_records(resource_type, last_synced_at, exclude_ids).count
-        end
-        total > pull_limit
       end
     end
   end
