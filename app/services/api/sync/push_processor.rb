@@ -50,20 +50,22 @@ module Api
       def process(changes)
         results = {}
 
-        changes.each do |resource_type, operations|
-          config = RESOURCE_CONFIG[resource_type]
-          next unless config
+        ActiveRecord::Base.transaction do
+          changes.each do |resource_type, operations|
+            config = RESOURCE_CONFIG[resource_type]
+            next unless config
 
-          results[resource_type.to_sym] = {
-            created: [],
-            updated: [],
-            deleted: [],
-            rejected: []
-          }
+            results[resource_type.to_sym] = {
+              created: [],
+              updated: [],
+              deleted: [],
+              rejected: []
+            }
 
-          process_creates(resource_type, operations['created'] || [], config, results)
-          process_updates(resource_type, operations['updated'] || [], config, results)
-          process_deletes(resource_type, operations['deleted'] || [], config, results)
+            process_creates(resource_type, operations['created'] || [], config, results)
+            process_updates(resource_type, operations['updated'] || [], config, results)
+            process_deletes(resource_type, operations['deleted'] || [], config, results)
+          end
         end
 
         results
@@ -95,11 +97,18 @@ module Api
             track_pushed_id(config[:model], record.id)
             results[resource_type.to_sym][:created] << { client_uuid: client_uuid, server_id: record.id, status: 'ok' }
           else
-            results[resource_type.to_sym][:rejected] << {
-              client_uuid: client_uuid,
-              operation: 'create',
-              reason: record.errors.full_messages.join(', ')
-            }
+            # For categories, resolve duplicate name by returning existing record
+            existing = resolve_duplicate(resource_type, record, item)
+            if existing
+              track_pushed_id(config[:model], existing.id)
+              results[resource_type.to_sym][:created] << { client_uuid: client_uuid, server_id: existing.id, status: 'ok' }
+            else
+              results[resource_type.to_sym][:rejected] << {
+                client_uuid: client_uuid,
+                operation: 'create',
+                reason: record.errors.full_messages.join(', ')
+              }
+            end
           end
         end
       end
@@ -178,6 +187,13 @@ module Api
           attrs[config[:amount_field]] = item['amount']
         end
         attrs
+      end
+
+      def resolve_duplicate(resource_type, record, item)
+        return unless resource_type == 'categories'
+        return unless record.errors[:name]&.any?
+
+        @user.categories.find_by(name: item['name'])
       end
 
       def extract_update_attrs(item, config)
