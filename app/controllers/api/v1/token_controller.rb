@@ -4,12 +4,6 @@ module Api
       skip_before_action :authenticate_token!, only: [:create]
 
       def create
-        user = User.find_by(email: params[:email])
-
-        if user && !user.confirmed_at.present?
-          return render json: { error: 'User not confirmed' }, status: :unauthorized
-        end
-
         session = Api::TokenService.authenticate(params[:email], params[:password])
 
         if session

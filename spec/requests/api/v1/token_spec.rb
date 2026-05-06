@@ -41,11 +41,11 @@ RSpec.describe 'Token API', type: :request do
     context 'with unconfirmed user' do
       let!(:unconfirmed_user) { create(:user, email: 'unconfirmed@example.com', confirmed_at: nil) }
 
-      it 'returns unauthorized' do
+      it 'returns unauthorized with generic error' do
         post '/api/v1/token', params: { email: 'unconfirmed@example.com', password: 'password' }
 
         expect(response).to have_http_status(:unauthorized)
-        expect(json_response['error']).to eq('User not confirmed')
+        expect(json_response['error']).to eq('Invalid email or password')
       end
     end
   end
