@@ -6,6 +6,9 @@ module Api
 
         year = params[:year].to_i
         month = params[:month].to_i
+        return render_bad_request('month must be between 1 and 12') unless month.between?(1, 12)
+        return render_bad_request('year must be positive') unless year > 0
+
         currency_id = params[:currency_id]
         date = Date.new(year, month, 1)
 
@@ -71,9 +74,11 @@ module Api
       end
 
       def build_categories(category_data, category_type_id)
+        categories_by_name = current_user.categories.index_by(&:name)
+
         category_data.map do |cat|
           {
-            category_id: Category.find_by(name: cat[:name], user: current_user)&.id,
+            category_id: categories_by_name[cat[:name]]&.id,
             name: cat[:name],
             amount: cat[:sum],
             category_type_id: category_type_id
