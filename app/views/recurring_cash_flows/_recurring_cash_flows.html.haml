@@ -3,11 +3,11 @@
     %table.table.table-hover.table-cards.table-cards--stacked-actions
       %thead
         %tr
-          %th= t('common.date')
+          %th= t('parts.recurring_cash_flows.created_on')
           %th= t('parts.cash_flows.from_to')
           %th= t('common.amount')
           %th= t('common.next_transfer')
-          %th= t('common.update')
+          %th= RecurringCashFlow.human_attribute_name(:frequency)
           %th
       %tbody
         - recurring_cash_flows.each do |rcf|

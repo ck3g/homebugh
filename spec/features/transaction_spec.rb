@@ -13,7 +13,7 @@ feature "Transaction" do
 
   scenario "should visit transactions page" do
     visit transactions_path
-    expect(page).to have_content("List of transactions")
+    expect(page).to have_css("h2", text: "Transactions")
   end
 
   scenario "visit new transaction page" do

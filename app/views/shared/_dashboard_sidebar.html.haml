@@ -2,9 +2,9 @@
   %nav.sidebar-nav
     %ul.nav.flex-column
       %li.nav-item{class: ("active" if controller_name == 'dashboard')}
-        = link_to dashboard_path, title: "Dashboard", "data-bs-toggle" => "tooltip", "data-bs-placement" => "right", class: "nav-link" do
+        = link_to dashboard_path, title: t("main_menu.dashboard"), "data-bs-toggle" => "tooltip", "data-bs-placement" => "right", class: "nav-link" do
           %i.fa.fa-dashboard
-          %span Dashboard
+          %span= t("main_menu.dashboard")
 
       %li.nav-item{class: ("active" if controller_name == 'transactions')}
         = link_to transactions_path, title: t("main_menu.transactions"), "data-bs-toggle" => "tooltip", "data-bs-placement" => "right", class: "nav-link" do

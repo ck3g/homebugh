@@ -8,12 +8,12 @@
               %h4.account-name= account.name
             .account-amount
               %span.amount-value= account.decorate.amount
-    
+
     .row.total-summary
       - TotalAmount.of(current_user).each do |unit, amount|
         .col-12.col-sm-6.col-xl-3
           .total-card
             .total-header
-              %h4.total-label Total #{unit}
+              %h4.total-label= t('parts.dashboard.total', unit: unit)
             .total-amount
               %span.amount-value= get_number_to_currency(amount, unit)

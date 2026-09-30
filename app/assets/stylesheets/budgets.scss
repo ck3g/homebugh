@@ -220,9 +220,9 @@
         background-color: rgba(0, 0, 0, 0.02) !important;
       }
 
+      // Within budget is the normal state: no tint. Only rows that need
+      // attention (close to or over the limit) are coloured.
       &.budget-success {
-        background-color: rgba(var(--hb-accent-rgb), 0.2) !important;
-
         td {
           background-color: transparent !important;
         }
@@ -237,7 +237,7 @@
       }
 
       &.budget-danger {
-        background-color: rgba(217, 83, 79, 0.2) !important;
+        background-color: rgba(198, 40, 40, 0.12) !important;
 
         td {
           background-color: transparent !important;
@@ -300,13 +300,12 @@
       .progress-bar {
         flex: 1;
         height: 8px;
-        background-color: var(--hb-border);
+        background-color: var(--hb-border-strong); // track stays visible at 0%
         border-radius: var(--hb-radius-sm);
         overflow: hidden;
 
         .progress-fill {
           height: 100%;
-          transition: width 0.3s ease;
           border-radius: var(--hb-radius-sm);
 
           &.progress-success {
@@ -369,7 +368,7 @@
   .budget-table.table-cards tr.budget-row {
     padding: 12px;
     margin-bottom: 8px;
-    border-bottom: 0;
+    border: 1px solid var(--hb-border);
     border-radius: var(--hb-radius-md);
   }
 

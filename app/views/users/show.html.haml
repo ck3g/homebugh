@@ -5,49 +5,49 @@
   .row
     .col-md-6
       %fieldset
-        %legend Profile Information
+        %legend= t("parts.users.profile_information")
         %div
           .profile-info
             .profile-item
-              %strong Email:
+              %strong= t("parts.users.email")
               %span= current_user.email
             .profile-item
-              %strong Member since:
+              %strong= t("parts.users.member_since")
               %span= l(current_user.created_at, format: :long)
             - if @user_stats[:first_transaction_date]
               .profile-item
-                %strong First transaction:
+                %strong= t("parts.users.first_transaction")
                 %span= l(@user_stats[:first_transaction_date], format: :long)
             - else
               .profile-item
-                %strong First transaction:
-                %span.text-muted Not yet created
+                %strong= t("parts.users.first_transaction")
+                %span.text-muted= t("parts.users.not_yet_created")
 
     .col-md-6
       %fieldset
-        %legend Account Statistics
+        %legend= t("parts.users.account_statistics")
         %div
           .profile-stats
             .stat-item
               %span.stat-number= @user_stats[:accounts_count]
-              %span.stat-label Accounts
+              %span.stat-label= t("parts.users.stats_accounts")
             .stat-item
               %span.stat-number= @user_stats[:transactions_count]
-              %span.stat-label Transactions
+              %span.stat-label= t("parts.users.stats_transactions")
             .stat-item
               %span.stat-number= @user_stats[:categories_count]
-              %span.stat-label Categories
+              %span.stat-label= t("parts.users.stats_categories")
             .stat-item
               %span.stat-number= @user_stats[:budgets_count]
-              %span.stat-label Budgets
+              %span.stat-label= t("parts.users.stats_budgets")
             .stat-item
               %span.stat-number= @user_stats[:currencies_count]
-              %span.stat-label Currencies
+              %span.stat-label= t("parts.users.stats_currencies")
 
   .row
     .col-md-12
       %fieldset
-        %legend Account Actions
+        %legend= t("parts.users.account_actions")
         %div
           %div
             = link_to t("parts.users.edit_profile"), edit_user_registration_path, class: "btn btn-primary"

@@ -112,6 +112,7 @@ ru:
               greater_than_or_equal_to: "не может быть меньше чем %{count}"
 
   main_menu:
+    dashboard: "Обзор"
     transactions: "Транзакции"
     categories: "Категории"
     accounts: "Счета"
@@ -154,6 +155,10 @@ ru:
     next_transfer: "Следующий перевод"
 
   parts:
+    dashboard:
+      account_summary: "Сводка по счетам"
+      current_month_spending: "Расходы за текущий месяц"
+      total: "Итого %{unit}"
     budgets:
       delete_confirm: "Удалить бюджет «%{category}»? Транзакции останутся."
       index: Бюджет
@@ -250,7 +255,7 @@ ru:
       edit_account: "Редактировать данные о счете"
       new_account: "Создание нового счета"
       add_account: "Добавить счет"
-      accounts_list: "Список счетов"
+      accounts_list: "Счета"
       you_have_no_accounts: "Список счетов пуст"
       successfully_created: "Счет успешно создан"
       successfully_updated: "Счет успешно изменен"
@@ -268,7 +273,7 @@ ru:
       submit: "Перевести средства"
       edit_cash_flows: "Редактировать перевод средств"
       new_cash_flows: "Перевести средства"
-      flows_list: "Список переводов средств"
+      flows_list: "Движение средств"
       successfully_created: "Средства успешно переведены"
       successfully_updated: "Средства успешно переведены"
       successfully_destroyed: "Перевод средств успешно отменен."
@@ -338,6 +343,7 @@ ru:
       due_description: 'Вы можете создать транзакцию из данного повторяющегося платежа нажав на кнопку со знаком плюс. Вы так же можете пропустить текущий платеж и перейти к следующему периоду, нажав кнопку с изображением стрелок.'
       create_from_transaction: 'Завести повторяющийся платеж из текущей транзакции'
     recurring_cash_flows:
+      created_on: "Создан"
       delete_confirm: "Удалить периодический перевод со счёта %{from} на %{to}? Уже сделанные переводы останутся."
       recurring_cash_flows_list: "Периодические движения средств"
       new_recurring_cash_flow: "Новое периодическое движение средств"
@@ -381,6 +387,18 @@ ru:
       email: "email"
       password: "Пароль"
     users:
+      profile_information: "Информация профиля"
+      email: "Эл. почта"
+      member_since: "Зарегистрирован"
+      first_transaction: "Первая транзакция"
+      not_yet_created: "Пока нет"
+      account_statistics: "Статистика"
+      account_actions: "Действия"
+      stats_accounts: "Счета"
+      stats_transactions: "Транзакции"
+      stats_categories: "Категории"
+      stats_budgets: "Бюджеты"
+      stats_currencies: "Валюты"
       danger_zone: "Удаление аккаунта"
       danger_zone_description: "Будут удалены пользователь и все его счета, транзакции и бюджеты. На следующей странице нужно будет подтвердить паролем."
       delete: "Удалить текущего пользователя"

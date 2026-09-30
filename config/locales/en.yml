@@ -59,6 +59,7 @@ en:
         cannot_be_in_the_past: 'cannot be in the past'
 
   main_menu:
+    dashboard: "Dashboard"
     transactions: "Transactions"
     categories: "Categories"
     accounts: "Accounts"
@@ -99,6 +100,10 @@ en:
     next_transfer: "Next transfer"
     title: "Title"
   parts:
+    dashboard:
+      account_summary: "Account summary"
+      current_month_spending: "Current month spending"
+      total: "Total %{unit}"
     budgets:
       delete_confirm: "Delete the %{category} budget? Your transactions stay."
       index: Budgets
@@ -137,7 +142,7 @@ en:
           bills: "Bills & Utilities"
           bills_desc: " - Phone, internet, electricity"
     categories:
-      categories_list: "List of categories"
+      categories_list: "Categories"
       new_category: "New category"
       add_category: "Add category"
       edit_category: "Edit category"
@@ -166,7 +171,7 @@ en:
       feature_organize_description: "Get detailed insights and reports based on your categorized transactions."
     transactions:
       rollback_confirm: "Roll back %{amount} for %{category}? %{account} will go back to %{balance}."
-      transactions_list: "List of transactions"
+      transactions_list: "Transactions"
       new_transaction: "New transaction"
       recent_categories: "Recent categories"
       day_total: "Day total"
@@ -194,7 +199,7 @@ en:
       edit_account: "Edit account"
       new_account: "New account"
       add_account: "Add account"
-      accounts_list: "List of accounts"
+      accounts_list: "Accounts"
       you_have_no_accounts: "You have no accounts."
       successfully_created: "Account was successfully created."
       successfully_updated: "Account was successfully updated."
@@ -212,7 +217,7 @@ en:
       submit: "Move funds"
       edit_cash_flows: "Edit moving funds"
       new_cash_flows: "Move funds"
-      flows_list: "List of cash flows"
+      flows_list: "Cash flows"
       successfully_created: "Funds was successfully moved."
       successfully_updated: "Funds was successfully moved."
       successfully_destroyed: "Cash flow was successfully rolled back."
@@ -282,6 +287,7 @@ en:
       due_description: 'You can create a new transaction from this recurring payment by clicking the "plus" button. You can skip this due recurring payment and move it to the next payment period by clicking the "arrows" button.'
       create_from_transaction: 'Create a recurring payment from the transaction'
     recurring_cash_flows:
+      created_on: "Created"
       delete_confirm: "Delete the recurring transfer from %{from} to %{to}? Transfers it already made stay."
       recurring_cash_flows_list: "Recurring cash flows"
       new_recurring_cash_flow: "New recurring cash flow"
@@ -323,6 +329,18 @@ en:
       email: "email"
       password: "Password"
     users:
+      profile_information: "Profile information"
+      email: "Email"
+      member_since: "Member since"
+      first_transaction: "First transaction"
+      not_yet_created: "Not yet created"
+      account_statistics: "Account statistics"
+      account_actions: "Account actions"
+      stats_accounts: "Accounts"
+      stats_transactions: "Transactions"
+      stats_categories: "Categories"
+      stats_budgets: "Budgets"
+      stats_currencies: "Currencies"
       danger_zone: "Delete account"
       danger_zone_description: "This removes your user and all your accounts, transactions and budgets. You will confirm with your password on the next page."
       delete: "Delete this user"
