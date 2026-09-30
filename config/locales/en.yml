@@ -164,6 +164,8 @@ en:
     transactions:
       transactions_list: "List of transactions"
       new_transaction: "New transaction"
+      recent_categories: "Recent categories"
+      income: "income"
       edit_transaction: "Edit transaction"
       type: "Type"
       name: "Name"

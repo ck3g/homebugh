@@ -440,3 +440,39 @@ body {
     transition: none !important;
   }
 }
+
+// Floating "New transaction" button (phones only, see _dashboard_layout)
+.fab-new-transaction {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 997; // under the drawer backdrop
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--hb-accent);
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 6px 16px rgba(var(--hb-accent-rgb), 0.35), 0 2px 4px rgba(29, 29, 31, 0.15);
+
+  &:hover,
+  &:focus {
+    background: var(--hb-accent-hover);
+    color: #fff;
+    text-decoration: none !important;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+@media (max-width: 767.98px) {
+  // Room so the floating button never covers the last row's actions
+  .dashboard-wrapper .dashboard-content .dashboard-main {
+    padding-bottom: 88px;
+  }
+}

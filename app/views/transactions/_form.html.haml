@@ -1,15 +1,31 @@
+- recent_categories = current_user.categories.available.by_recently_used.limit(6)
 = simple_form_for transaction do |f|
+  = f.input :summ, wrapper: :stacked_form,
+    input_html: { class: "form-control transaction-form-amount-input", placeholder: "0.00", inputmode: "decimal", autofocus: true,
+                  value: (transaction.summ if transaction.summ&.positive?) },
+    label_html: { class: "transaction-form-label" }
+
+  .mb-3.transaction-category-field{ class: ("has-error" if transaction.errors[:category_id].any? || transaction.errors[:category].any?) }
+    = f.label :category_id, class: "transaction-form-label", required: true
+    - if recent_categories.size > 1
+      .category-chips{ role: "group", "aria-label": t("parts.transactions.recent_categories") }
+        - recent_categories.each do |category|
+          %button.category-chip{ type: "button", data: { category_id: category.id }, "aria-pressed": (category.id == transaction.category_id).to_s }
+            = category.name
+            - if category.income?
+              = fa_icon "arrow-up", class: "category-chip-income", "aria-hidden": "true"
+              %span.visually-hidden= t("parts.transactions.income")
+    = f.association :category,
+      collection: current_user.categories.available.by_recently_used,
+      label: false,
+      input_html: { data: { select_2: true }, class: "form-select" },
+      wrapper: :stacked_form,
+      wrapper_html: { class: "mb-0" }
+
   = f.association :account,
     collection: AccountDecorator.decorate_collection(current_user.accounts.active.by_recently_used),
     include_blank: false,
     input_html: { data: { select_2: true }, class: "form-select" },
     wrapper: :stacked_form
-  = f.association :category,
-    collection: current_user.categories.available.by_recently_used,
-    input_html: { data: { select_2: true }, class: "form-select" },
-    wrapper: :stacked_form
-  = f.input :summ, wrapper: :stacked_form,
-    input_html: { class: "form-control transaction-form-amount-input", placeholder: "0.00", value: (transaction.summ if transaction.summ&.positive?) },
-    label_html: { class: "transaction-form-label" }
   = f.input :comment, wrapper: :stacked_form, input_html: { rows: 3 }
   = f.button :submit, class: "btn btn-success transaction-form-submit", id: :transaction_submit

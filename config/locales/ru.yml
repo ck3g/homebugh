@@ -211,6 +211,8 @@ ru:
     transactions:
       transactions_list: "Транзакции"
       new_transaction: "Новая транзакция"
+      recent_categories: "Недавние категории"
+      income: "доход"
       edit_transaction: "Редактировать транзакцию"
       type: "Тип"
       name: "Название"

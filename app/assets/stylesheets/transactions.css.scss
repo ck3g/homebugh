@@ -59,6 +59,15 @@
     font-weight: 700;
   }
 
+  // Spinner arrows make no sense for money
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   &:focus {
     border-color: var(--hb-text) !important;
     box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.15) !important;
@@ -125,5 +134,67 @@
     color: var(--hb-danger);
     font-size: 0.8rem;
     margin-top: 4px;
+  }
+}
+
+// Recent-category chips (one-tap shortcut for the category select)
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--hb-border-strong);
+  border-radius: var(--hb-radius-pill);
+  background: var(--hb-surface);
+  color: var(--hb-text);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--hb-accent);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  // Pressed = the selected category: tint, accent border and bold weight,
+  // so the state does not rely on colour alone
+  &[aria-pressed="true"] {
+    background: var(--hb-accent-tint);
+    border-color: var(--hb-accent);
+    color: var(--hb-accent-hover);
+    font-weight: 600;
+  }
+
+  .category-chip-income {
+    color: var(--hb-accent);
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .category-chip {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-chip {
+    transition: none;
+
+    &:active {
+      transform: none;
+    }
   }
 }

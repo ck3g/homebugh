@@ -11,3 +11,8 @@
 
     %footer.dashboard-footer
       = render 'shared/footer'
+
+  -# Phones: the daily action stays one tap away, in thumb reach
+  - unless controller_name == 'transactions' && %w[new create].include?(action_name)
+    = link_to new_transaction_path, class: "fab-new-transaction d-md-none", title: t('parts.transactions.new_transaction'), "aria-label": t('parts.transactions.new_transaction') do
+      = fa_icon "plus", "aria-hidden": "true"

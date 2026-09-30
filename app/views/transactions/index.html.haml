@@ -3,7 +3,7 @@
     .col-12
       .cash-flows-header
         %h2= title t('parts.transactions.transactions_list')
-        = link_to t('parts.transactions.new_transaction'), new_transaction_path, class: "btn btn-success cash-flows-new-btn"
+        = link_to t('parts.transactions.new_transaction'), new_transaction_path, class: "btn btn-success cash-flows-new-btn d-none d-md-inline-block"
 
   - if @recurring_payments.present?
     .row
