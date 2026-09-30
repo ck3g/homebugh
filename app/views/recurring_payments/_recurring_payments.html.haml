@@ -1,6 +1,6 @@
 .col-12
   .table-responsive
-    %table.table
+    %table.table.table-cards.table-cards--stacked-actions
       %thead
         %tr
           %th.span2= t('activerecord.attributes.recurring_payment.title')
@@ -12,15 +12,15 @@
       %tbody
         - recurring_payments.each do |recurring_payment|
           %tr{id: dom_id(recurring_payment)}
-            %td.span2= recurring_payment.title
-            %td= recurring_payment.decorate.next_payment_on
-            %td.span2.number
+            %td.span2.cell-main= recurring_payment.title
+            %td.cell-date= recurring_payment.decorate.next_payment_on
+            %td.span2.number.cell-amount
               = recurring_payment.decorate.amount
               = recurring_payment.decorate.type_icon
-            %td.span2= recurring_payment.account_name
-            %td
+            %td.span2.cell-meta= recurring_payment.account_name
+            %td.cell-extra{ data: { label: RecurringPayment.human_attribute_name(:category) } }
               %span.category= recurring_payment.decorate.category_name
-            %td.span2.actions
+            %td.span2.actions.cell-actions
               = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-success btn-sm create-transaction", data: { bs_toggle: 'tooltip' } do
                 = fa_icon "plus"
               = link_to move_to_next_payment_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.move_to_next_payment'), method: :put, class: "btn btn-outline-secondary btn-sm move-to-next-payment", data: { bs_toggle: 'tooltip' } do

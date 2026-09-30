@@ -17,7 +17,8 @@ $(document).ready(function() {
         existingTooltip.dispose();
       }
 
-      if ($('.dashboard-sidebar').hasClass('collapsed')) {
+      // Icon-only collapsed sidebar exists on desktop only; no hover tooltips on touch
+      if ($('.dashboard-sidebar').hasClass('collapsed') && !window.matchMedia('(max-width: 767.98px)').matches) {
         // Create new Bootstrap 5 tooltip
         var tooltip = new bootstrap.Tooltip(this, {
           container: 'body',
@@ -47,10 +48,29 @@ $(document).ready(function() {
     initTooltips();
   }, 100);
 
-  // Mobile sidebar toggle functionality
+  // Mobile sidebar (drawer) - matches Bootstrap's md breakpoint
+  var mobileQuery = window.matchMedia('(max-width: 767.98px)');
+
+  function setMobileSidebar(open) {
+    $('.dashboard-sidebar').toggleClass('show', open);
+    $('body').toggleClass('sidebar-open', open);
+    $('.sidebar-toggle').attr('aria-expanded', open ? 'true' : 'false');
+  }
+
   $('.sidebar-toggle').on('click', function(e) {
     e.preventDefault();
-    $('.dashboard-sidebar').toggleClass('show');
+    setMobileSidebar(!$('.dashboard-sidebar').hasClass('show'));
+  });
+
+  $('.sidebar-backdrop').on('click', function() {
+    setMobileSidebar(false);
+  });
+
+  $(document).on('keydown', function(e) {
+    if (e.key === 'Escape' && $('.dashboard-sidebar').hasClass('show')) {
+      setMobileSidebar(false);
+      $('.sidebar-toggle').trigger('focus');
+    }
   });
 
   // Desktop sidebar collapse functionality
@@ -68,19 +88,10 @@ $(document).ready(function() {
     initTooltips();
   });
 
-  // Close sidebar when clicking outside on mobile
-  $(document).on('click', function(e) {
-    if ($(window).width() <= 768) {
-      if (!$(e.target).closest('.dashboard-sidebar, .sidebar-toggle').length) {
-        $('.dashboard-sidebar').removeClass('show');
-      }
-    }
-  });
-
-  // Handle window resize
-  $(window).on('resize', function() {
-    if ($(window).width() > 768) {
-      $('.dashboard-sidebar').removeClass('show');
+  // Leaving the phone layout closes the drawer
+  mobileQuery.addEventListener('change', function(e) {
+    if (!e.matches) {
+      setMobileSidebar(false);
     }
   });
 });

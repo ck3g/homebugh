@@ -68,6 +68,7 @@ en:
     recurring_payments: Recurring payments
     recurring_cash_flows: Recurring cash flows
     profile: Profile
+    menu: Menu
   helpers:
     submit:
       create: "Create %{model}"

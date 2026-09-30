@@ -1,4 +1,4 @@
-%div.dashboard-sidebar
+%div.dashboard-sidebar#dashboard-sidebar
   %nav.sidebar-nav
     %ul.nav.flex-column
       %li.nav-item{class: ("active" if controller_name == 'dashboard')}
@@ -46,6 +46,21 @@
           %i.fa.fa-bar-chart
           %span= t("main_menu.statistics")
 
-  %div.sidebar-toggle-footer
+    -# On phones the topbar links move here, within thumb reach
+    %ul.nav.flex-column.sidebar-account.d-md-none
+      %li.nav-item{class: ("active" if controller_name == 'users')}
+        = link_to users_profile_path, class: "nav-link" do
+          %i.fa.fa-user{ "aria-hidden": "true" }
+          %span= t("main_menu.profile")
+      %li.nav-item
+        = link_to url_for(locale: inverse_locale), class: "nav-link" do
+          = image_tag("flags/#{inverse_locale}.png", class: "flag-icon", alt: "")
+          %span= t("locales.#{inverse_locale}")
+      %li.nav-item
+        = link_to destroy_user_session_path, method: :delete, class: "nav-link" do
+          %i.fa.fa-sign-out{ "aria-hidden": "true" }
+          %span= t("parts.auth.sign_out")
+
+  %div.sidebar-toggle-footer.d-none.d-md-block
     %button.sidebar-collapse-btn{type: "button"}
       %i.fa.fa-angle-left

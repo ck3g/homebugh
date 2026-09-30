@@ -112,6 +112,7 @@ ru:
     recurring_payments: Периодические платежи
     recurring_cash_flows: Периодические движения средств
     profile: Профиль
+    menu: Меню
 
   helpers:
     submit:

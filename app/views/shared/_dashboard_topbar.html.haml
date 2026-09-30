@@ -1,13 +1,13 @@
 %div.dashboard-topbar
   %div.topbar-left
-    %button.sidebar-toggle{type: "button"}
-      %i.fa.fa-bars
+    %button.sidebar-toggle{ type: "button", "aria-label": t("main_menu.menu"), "aria-controls": "dashboard-sidebar", "aria-expanded": "false" }
+      %i.fa.fa-bars{ "aria-hidden": "true" }
     = link_to "HomeBugh", root_path, class: "brand-name"
 
-  %div.topbar-right
+  %div.topbar-right.d-none.d-md-block
     .d-flex.align-items-center
       = link_to url_for(locale: inverse_locale), class: "topbar-link me-3" do
-        = image_tag("flags/#{inverse_locale}.png", class: "flag-icon")
+        = image_tag("flags/#{inverse_locale}.png", class: "flag-icon", alt: "")
         = t("locales.#{inverse_locale}")
       = link_to t("main_menu.profile"), users_profile_path, class: "topbar-link me-3"
       = link_to t("parts.auth.sign_out"), destroy_user_session_path, method: :delete, class: "topbar-link"

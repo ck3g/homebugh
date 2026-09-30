@@ -10,7 +10,7 @@
       .col-12
         .pending-transfers
           .pending-transfers-header= t('parts.cash_flows.pending_transfers', default: 'Pending transfers')
-          %table.pending-transfers-table
+          %table.pending-transfers-table.table-cards
             %colgroup
               %col{ style: "width: 15%" }
               %col
@@ -20,14 +20,14 @@
             %tbody
               - @due_recurring_cash_flows.each do |rcf|
                 %tr{ id: dom_id(rcf) }
-                  %td.span2.pending-transfers-date= l(rcf.next_transfer_on, format: :long)
-                  %td.pending-transfers-route
+                  %td.span2.pending-transfers-date.cell-date= l(rcf.next_transfer_on, format: :long)
+                  %td.pending-transfers-route.cell-main
                     = rcf.from_account.name
                     = t(:arrow)
                     = rcf.to_account.name
-                  %td.span2.number
-                  %td.span2.number.pending-transfers-amount= rcf.decorate.amount
-                  %td.span2.actions.pending-transfers-actions
+                  %td.span2.number.cell-desktop
+                  %td.span2.number.pending-transfers-amount.cell-amount= rcf.decorate.amount
+                  %td.span2.actions.pending-transfers-actions.cell-actions
                     = link_to perform_transfer_recurring_cash_flow_path(rcf), title: t('parts.recurring_cash_flows.perform_transfer'), method: :post, class: "btn btn-success btn-sm", data: { bs_toggle: 'tooltip' } do
                       = fa_icon "plus"
                     = link_to move_to_next_transfer_recurring_cash_flow_path(rcf), title: t('parts.recurring_cash_flows.move_to_next_transfer'), method: :put, class: "btn btn-outline-secondary btn-sm", data: { bs_toggle: 'tooltip' } do
@@ -37,7 +37,7 @@
     .row
       .col-12
         .table-responsive
-          %table.table
+          %table.table.table-cards
             %colgroup
               %col{ style: "width: 15%" }
               %col
@@ -54,14 +54,14 @@
             %tbody
               - @cash_flows.each do |cash_flow|
                 %tr
-                  %td.span2= I18n.l(cash_flow.created_at.to_date, format: :long)
-                  %td
+                  %td.span2.cell-date= I18n.l(cash_flow.created_at.to_date, format: :long)
+                  %td.cell-main
                     = cash_flow.from_account_name
                     = t(:arrow)
                     = cash_flow.to_account_name
-                  %td.span2.number= cash_flow.decorate.initial_amount
-                  %td.span2.number= cash_flow.decorate.amount
-                  %td.span2.actions
+                  %td.span2.number.cell-extra{ data: { label: CashFlow.human_attribute_name(:initial_amount) } }= cash_flow.decorate.initial_amount
+                  %td.span2.number.cell-amount= cash_flow.decorate.amount
+                  %td.span2.actions.cell-actions
                     = link_to cash_flow, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
                       = fa_icon "trash"
 

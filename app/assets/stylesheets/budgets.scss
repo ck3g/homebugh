@@ -365,30 +365,12 @@
     }
   }
 
-  .budget-table {
-    th, td {
-      padding: 10px 8px;
-    }
-
-    .budget-amount {
-      .amount-display {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-      }
-    }
-
-    .budget-progress {
-      .progress-bar-container {
-        flex-direction: column;
-        gap: 5px;
-
-        .progress-percentage {
-          text-align: left;
-          min-width: auto;
-        }
-      }
-    }
+  // Rows become cards (see table_cards.scss); keep the status tint inside
+  .budget-table.table-cards tr.budget-row {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-bottom: 0;
+    border-radius: var(--hb-radius-md);
   }
 
   .budget-form-intro {

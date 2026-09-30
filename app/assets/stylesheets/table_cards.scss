@@ -1,0 +1,153 @@
+// ============================================
+// Table cards
+// ============================================
+// On phones, list tables (`table.table-cards`) turn each row into a compact
+// card instead of scrolling sideways. Cells opt into a slot with a class:
+//
+//   .cell-main     row 1, left   (what it is: category, route, title)
+//   .cell-amount   row 1, right  (the money)
+//   .cell-date     row 2, left   (when)
+//   .cell-meta     row 2, middle (where: account, frequency)
+//   .cell-sub      row 2, full   (a wide secondary element, e.g. progress)
+//   .cell-extra    row 3, full   (optional detail; give it data-label)
+//   .cell-actions  right column, bottom-aligned
+//   .cell-desktop  hidden on phones
+//
+// `.table-cards--stacked-actions` puts the actions on their own row, for
+// tables with more than two buttons.
+
+@media (max-width: 767.98px) {
+  .table-cards {
+    colgroup,
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      column-gap: 12px;
+      row-gap: 2px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--hb-border);
+    }
+
+    td {
+      display: block;
+      padding: 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      min-width: 0;
+    }
+
+    td:empty,
+    .cell-desktop {
+      display: none;
+    }
+
+    .cell-main {
+      grid-row: 1;
+      grid-column: 1 / 3;
+      font-weight: 500;
+      overflow-wrap: anywhere;
+
+      // Inline, like desktop: an empty best_in_place placeholder stays a
+      // tap target without adding a blank line
+      .comment {
+        margin-left: 6px;
+        font-weight: 400;
+        font-size: 0.875rem;
+      }
+    }
+
+    .cell-amount {
+      grid-row: 1;
+      // Keep the amount and its income/expense arrow together
+      .fa {
+        margin-left: 2px;
+      }
+
+      grid-column: 3;
+      justify-self: end;
+      text-align: right;
+      white-space: nowrap;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cell-date,
+    .cell-meta,
+    .cell-extra {
+      font-size: 0.875rem;
+      color: var(--hb-text-muted);
+      text-align: left !important; // beats the global .number rule
+    }
+
+    .cell-date {
+      grid-row: 2;
+      grid-column: 1;
+      align-self: center;
+      white-space: nowrap;
+    }
+
+    .cell-meta {
+      grid-row: 2;
+      grid-column: 2;
+      align-self: center;
+      overflow-wrap: anywhere;
+    }
+
+    .cell-date ~ .cell-meta::before {
+      content: "·";
+      margin-right: 8px;
+      color: var(--hb-text-muted);
+    }
+
+    .cell-sub {
+      grid-row: 2;
+      grid-column: 1 / 3;
+      align-self: center;
+    }
+
+    .cell-extra {
+      grid-row: 3;
+      grid-column: 1 / 3;
+
+      &[data-label]::before {
+        content: attr(data-label) ": ";
+      }
+    }
+
+    .cell-actions {
+      grid-row: 2;
+      grid-column: 3;
+      align-self: center;
+      justify-self: end;
+      display: flex;
+      gap: 8px;
+      padding-top: 6px !important;
+      white-space: nowrap;
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        margin: 0;
+      }
+    }
+
+    &.table-cards--stacked-actions .cell-actions {
+      grid-row: 4;
+      grid-column: 1 / 4;
+      padding-top: 10px !important;
+    }
+  }
+}
