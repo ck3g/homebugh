@@ -18,13 +18,13 @@
 }
 
 .transaction-form-back {
-  color: #86868b;
+  color: var(--hb-text-muted);
   font-size: 0.85rem;
   text-decoration: none;
   white-space: nowrap;
 
   &:hover {
-    color: #495057;
+    color: var(--hb-text-secondary);
   }
 }
 
@@ -33,7 +33,7 @@
   display: block;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #86868b;
+  color: var(--hb-text-muted);
 
   margin-bottom: 6px;
 
@@ -47,20 +47,20 @@
 }
 
 .transaction-form-amount-input {
-  border: 2px solid #495057 !important;
-  border-radius: 10px !important;
+  border: 2px solid var(--hb-text-secondary) !important;
+  border-radius: var(--hb-radius-md) !important;
   padding: 16px 18px !important;
   font-size: 1.6rem !important;
   font-weight: 700 !important;
-  color: #1d1d1f;
+  color: var(--hb-text);
 
   &::placeholder {
-    color: #adb5bd;
+    color: var(--hb-text-muted);
     font-weight: 700;
   }
 
   &:focus {
-    border-color: #212529 !important;
+    border-color: var(--hb-text) !important;
     box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.15) !important;
   }
 }
@@ -68,16 +68,16 @@
 
 .transaction-form-submit {
   width: 100%;
-  background: #47a447;
-  border-color: #47a447;
-  border-radius: 8px;
+  background: var(--hb-accent);
+  border-color: var(--hb-accent);
+  border-radius: var(--hb-radius-md);
   padding: 14px;
   font-size: 1rem;
   font-weight: 600;
 
   &:hover {
-    background: #3d8b3d;
-    border-color: #3d8b3d;
+    background: var(--hb-accent-hover);
+    border-color: var(--hb-accent-hover);
   }
 }
 
@@ -88,12 +88,12 @@
   }
 
   .form-control:not(.transaction-form-amount-input) {
-    border-color: #e9ecef;
+    border-color: var(--hb-border);
   }
 
   // Override for amount field (keep its specific styles)
   .transaction-form-amount-input {
-    border-color: #495057 !important;
+    border-color: var(--hb-text-secondary) !important;
   }
 }
 
@@ -104,16 +104,16 @@
     .transaction-form-label abbr,
     label.control-label,
     label.control-label abbr {
-      color: #dc3545;
+      color: var(--hb-danger);
     }
 
     .form-control,
     .form-select {
-      border-color: #dc3545 !important;
+      border-color: var(--hb-danger) !important;
     }
 
     .transaction-form-amount-input {
-      border-color: #dc3545 !important;
+      border-color: var(--hb-danger) !important;
 
       &:focus {
         box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15) !important;
@@ -122,7 +122,7 @@
   }
 
   .transaction-form-error {
-    color: #dc3545;
+    color: var(--hb-danger);
     font-size: 0.8rem;
     margin-top: 4px;
   }

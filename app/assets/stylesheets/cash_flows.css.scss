@@ -16,7 +16,7 @@
 }
 
 .cash-flows-new-btn {
-  border-radius: 8px;
+  border-radius: var(--hb-radius-md);
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
@@ -24,9 +24,9 @@
 
 // Pending transfers banner
 .pending-transfers {
-  background: #fefce8;
-  border: 1px solid #fde68a;
-  border-radius: 8px;
+  background: var(--hb-pending-bg);
+  border: 1px solid var(--hb-pending-border);
+  border-radius: var(--hb-radius-md);
   overflow: hidden;
   margin-left: -1px;
   margin-right: -1px;
@@ -38,7 +38,7 @@
   background: rgba(253, 230, 138, 0.4);
   font-size: 0.75rem;
   font-weight: 600;
-  color: #92400e;
+  color: var(--hb-pending-text);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -62,15 +62,15 @@
 }
 
 .pending-transfers-route {
-  color: #1d1d1f;
+  color: var(--hb-text);
 }
 
 .pending-transfers-amount {
-  color: #92400e;
+  color: var(--hb-pending-text);
 }
 
 .pending-transfers-date {
-  color: #92400e;
+  color: var(--hb-pending-text);
 }
 
 @media (max-width: 767px) {

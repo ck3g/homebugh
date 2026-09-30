@@ -6,6 +6,7 @@
 *= require_tree .
 */
 
+@import 'tokens';
 @import 'bootstrap';
 
 
@@ -69,7 +70,7 @@ table .actions a {
   flex-wrap: nowrap;
   gap: 8px;
   align-items: center;
-  
+
   @media (max-width: 576px) {
     flex-wrap: wrap;
     gap: 5px;
@@ -81,22 +82,22 @@ select.form-select {
   width: auto;
   min-width: 60px;
   flex-shrink: 1;
-  
+
   &[id*="_1i"] { // Day selectors
     width: 80px;
     min-width: 60px;
   }
-  
-  &[id*="_2i"] { // Month selectors  
+
+  &[id*="_2i"] { // Month selectors
     width: 120px;
     min-width: 100px;
   }
-  
+
   &[id*="_3i"] { // Year selectors
     width: 80px;
     min-width: 70px;
   }
-  
+
   @media (max-width: 576px) {
     &[id*="_1i"] { width: 70px; min-width: 50px; }
     &[id*="_2i"] { width: 100px; min-width: 90px; }
@@ -120,12 +121,12 @@ select.form-select {
 // Validation error display for horizontal form wrappers
 .has-validation-error {
   .form-control, .form-select {
-    border-color: #dc3545;
+    border-color: var(--hb-danger);
   }
 
   .invalid-feedback {
     display: block;
-    color: #dc3545;
+    color: var(--hb-danger);
     font-size: 0.875em;
     margin-top: 0.25rem;
   }
@@ -136,18 +137,16 @@ select.form-select {
 }
 
 .due-row {
-  color: gray !important;
+  color: var(--hb-text-muted) !important;
   border-bottom: 2px dotted #eee;
-  background-color: rgba(92, 184, 92, 0.2) !important;
+  background-color: rgba(var(--hb-accent-rgb), 0.2) !important;
 
   td {
     background-color: transparent !important;
-    color: gray !important;
-    
+    color: var(--hb-text-muted) !important;
+
     span {
-      filter: alpha(opacity=60);
-      opacity: 0.6;
-      color: gray !important;
+      color: var(--hb-text-muted) !important;
     }
   }
 }
@@ -155,7 +154,7 @@ select.form-select {
 // Remove Bootstrap 5 default underlines from links
 a {
   text-decoration: none !important;
-  
+
   &:hover {
     text-decoration: underline !important;
   }
@@ -165,7 +164,7 @@ a {
 .dashboard-sidebar {
   a {
     text-decoration: none !important;
-    
+
     &:hover {
       text-decoration: none !important;
     }
@@ -182,26 +181,26 @@ a {
 // Custom popover styling (fallback for Bootstrap 5 issues)
 .custom-popover {
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--hb-border-strong);
+  border-radius: var(--hb-radius-sm);
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   max-width: 300px;
   padding: 0;
   font-size: 14px;
-  
+
   .popover-title {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
+    background-color: var(--hb-surface-subtle);
+    border-bottom: 1px solid var(--hb-border);
     padding: 8px 12px;
     font-weight: 600;
-    border-radius: 4px 4px 0 0;
+    border-radius: var(--hb-radius-sm) var(--hb-radius-sm) 0 0;
   }
-  
+
   .popover-content {
     padding: 8px 12px;
-    color: #333;
+    color: var(--hb-text);
   }
-  
+
   .popover-arrow {
     position: absolute;
     top: -5px;
@@ -210,16 +209,16 @@ a {
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 5px solid #ccc;
+    border-bottom: 5px solid var(--hb-border-strong);
   }
 }
 
 // Custom tooltip styling
 .custom-tooltip {
-  background-color: #333;
+  background-color: var(--hb-text);
   color: #fff;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: var(--hb-radius-sm);
   font-size: 12px;
   white-space: nowrap;
   pointer-events: none;

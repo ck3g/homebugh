@@ -1,0 +1,89 @@
+// ============================================
+// Design tokens
+// ============================================
+// Shared by the app bundle (application.css.scss) and the public/auth bundle
+// (welcome.css.scss). Import this BEFORE `@import 'bootstrap'` so the Sass
+// overrides below reach Bootstrap. Stylesheets are compiled one file at a
+// time by Sprockets, so other files use the CSS custom properties, not Sass
+// variables.
+//
+// Every text/background pair used in the app meets WCAG AA (4.5:1):
+//   accent on white 5.1, white on accent 5.1, muted on --hb-bg 4.7,
+//   danger on white 5.6, pending text on pending bg 6.9.
+
+// Sass values (for Bootstrap and for the :root block)
+$hb-accent: #2e7d32;
+$hb-accent-hover: #256a29;
+$hb-danger: #c62828;
+$hb-danger-hover: #a31f1f;
+$hb-warning: #9a6200;
+$hb-info: #1f63a8;
+$hb-text: #1d1d1f;
+$hb-text-secondary: #495057;
+$hb-text-muted: #6e6e73;
+
+// Bootstrap overrides: one accent for buttons, links and success states
+$primary: $hb-accent;
+$success: $hb-accent;
+$danger: $hb-danger;
+$warning: $hb-warning;
+$info: $hb-info;
+$body-color: $hb-text;
+$input-placeholder-color: $hb-text-muted;
+$border-radius-sm: 6px;
+$border-radius: 6px;
+$border-radius-lg: 10px;
+
+:root {
+  // Accent
+  --hb-accent: #{$hb-accent};
+  --hb-accent-rgb: 46, 125, 50;
+  --hb-accent-hover: #{$hb-accent-hover};
+  --hb-accent-tint: #edf5ed;
+  --hb-accent-tint-strong: #dcecdc;
+
+  // Status
+  --hb-danger: #{$hb-danger};
+  --hb-danger-hover: #{$hb-danger-hover};
+  --hb-warning: #{$hb-warning};
+  --hb-warning-fill: #f0ad4e; // progress fills only, never text
+  --hb-info: #{$hb-info};
+
+  // Pending payments / notices
+  --hb-pending-bg: #fefce8;
+  --hb-pending-border: #fde68a;
+  --hb-pending-text: #92400e;
+
+  // Text
+  --hb-text: #{$hb-text};
+  --hb-text-secondary: #{$hb-text-secondary};
+  --hb-text-muted: #{$hb-text-muted};
+  --hb-text-on-dark-muted: #a1a1a6; // 6.9:1 on --hb-text
+
+  // Surfaces and borders
+  --hb-bg: #f5f5f7;
+  --hb-surface: #fff;
+  --hb-surface-subtle: #f8f9fa;
+  --hb-border: #e6e6ea;
+  --hb-border-strong: #d1d1d6;
+
+  // Shape: controls use sm, panels md, cards lg, chips and pill buttons pill
+  --hb-radius-sm: 6px;
+  --hb-radius-md: 10px;
+  --hb-radius-lg: 14px;
+  --hb-radius-pill: 999px;
+
+  // Focus
+  --hb-focus-ring: 0 0 0 3px rgba(46, 125, 50, 0.35);
+}
+
+// Visible keyboard focus everywhere; mouse clicks stay clean
+:focus-visible {
+  outline: 2px solid var(--hb-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--hb-accent-tint-strong);
+  color: var(--hb-text);
+}

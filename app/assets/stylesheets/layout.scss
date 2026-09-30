@@ -18,7 +18,7 @@ body {
   right: 0;
   height: 60px;
   background-color: #fff;
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid var(--hb-border);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -35,52 +35,50 @@ body {
       font-size: 18px;
       margin-right: 15px;
       cursor: pointer;
-      color: #666;
+      color: var(--hb-text-muted);
 
       &:hover {
-        color: #333;
+        color: var(--hb-text);
       }
     }
 
     .brand-name {
       font-size: 20px;
       font-weight: bold;
-      color: #333;
+      color: var(--hb-text);
       text-decoration: none;
       transition: color 0.3s ease;
 
       &:hover {
-        color: #47a447;
+        color: var(--hb-accent);
         text-decoration: none;
       }
 
       &:focus {
-        color: #47a447;
+        color: var(--hb-accent);
         text-decoration: none;
-        outline: none;
       }
     }
   }
 
   .topbar-right {
     .topbar-link {
-      color: #666;
+      color: var(--hb-text-muted);
       text-decoration: none;
       padding: 8px 12px;
-      border-radius: 4px;
+      border-radius: var(--hb-radius-sm);
       display: flex;
       align-items: center;
       transition: all 0.2s ease;
 
       &:hover {
-        background-color: #f8f9fa;
-        color: #333;
+        background-color: var(--hb-surface-subtle);
+        color: var(--hb-text);
         text-decoration: none;
       }
 
       &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(71, 164, 71, 0.25);
+        box-shadow: var(--hb-focus-ring);
       }
 
       .flag-icon {
@@ -98,125 +96,124 @@ body {
   left: 0;
   width: 250px;
   height: calc(100vh - 60px);
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: var(--hb-surface-subtle);
+  color: var(--hb-text);
   overflow-y: auto;
   z-index: 999;
-  border-right: 1px solid #e7e7e7;
-  
+  border-right: 1px solid var(--hb-border);
+
   &.animate {
     transition: width 0.3s ease;
   }
-  
+
   &.collapsed {
     width: 60px;
   }
-  
+
   .sidebar-toggle-footer {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 20px;
-    border-top: 1px solid #e7e7e7;
-    background-color: #f8f9fa;
-    
+    border-top: 1px solid var(--hb-border);
+    background-color: var(--hb-surface-subtle);
+
     .sidebar-collapse-btn {
       background: none;
-      border: 1px solid #dee2e6;
-      color: #666;
+      border: 1px solid var(--hb-border);
+      color: var(--hb-text-muted);
       font-size: 18px;
       cursor: pointer;
       padding: 12px 16px;
-      border-radius: 6px;
+      border-radius: var(--hb-radius-sm);
       width: 100%;
       transition: all 0.3s ease;
-      
+
       &:hover {
-        background-color: #e9ecef;
-        color: #333;
-        border-color: #adb5bd;
+        background-color: var(--hb-border);
+        color: var(--hb-text);
+        border-color: var(--hb-border-strong);
       }
-      
+
       &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(71, 164, 71, 0.25);
+        box-shadow: var(--hb-focus-ring);
       }
     }
   }
-  
+
   &.collapsed .sidebar-toggle-footer {
     text-align: center;
     padding: 15px 10px;
-    
+
     .sidebar-collapse-btn {
       padding: 12px;
-      
+
       i {
         transform: rotate(180deg);
       }
     }
   }
-  
+
   .sidebar-nav {
     padding: 0;
     padding-bottom: 80px; // Leave space for footer button
     margin-top: 0;
-    
+
     .nav {
       margin: 0;
       padding: 0;
-      
+
       .nav-item {
         list-style: none;
         margin: 0;
-        
+
         .nav-link {
           display: block;
           padding: 12px 20px;
-          color: #666;
+          color: var(--hb-text-muted);
           text-decoration: none;
-          border-bottom: 1px solid #e7e7e7;
+          border-bottom: 1px solid var(--hb-border);
           transition: all 0.3s ease;
           border-radius: 0;
-          
+
           &:hover {
-            background-color: #e9ecef;
-            color: #333;
+            background-color: var(--hb-border);
+            color: var(--hb-text);
             text-decoration: none;
           }
-          
+
           &:focus {
-            color: #333;
-            background-color: #e9ecef;
+            color: var(--hb-text);
+            background-color: var(--hb-border);
           }
-          
+
           i {
             margin-right: 10px;
             width: 20px;
             text-align: center;
             display: inline-block;
           }
-          
+
           span {
             transition: opacity 0.3s ease;
           }
         }
-        
+
         &.active .nav-link {
-          background-color: #47a447;
+          background-color: var(--hb-accent);
           color: #fff;
-          
+
           &:hover,
           &:focus {
-            background-color: #47a447;
+            background-color: var(--hb-accent);
             color: #fff;
           }
         }
       }
     }
   }
-  
+
   // Collapsed state styles
   &.collapsed {
     .sidebar-nav {
@@ -226,12 +223,12 @@ body {
             text-align: center;
             padding: 12px 0;
             position: relative;
-            
+
             i {
               margin-right: 0;
               width: 100%;
             }
-            
+
             span {
               display: none;
             }
@@ -245,15 +242,15 @@ body {
 // Tooltip styling for collapsed sidebar
 .tooltip {
   z-index: 1050;
-  
+
   &.right {
     margin-left: 5px;
   }
-  
+
   .tooltip-inner {
-    background-color: #333;
+    background-color: var(--hb-text);
     color: #fff;
-    border-radius: 4px;
+    border-radius: var(--hb-radius-sm);
     font-size: 12px;
     padding: 6px 8px;
   }
@@ -269,25 +266,25 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  
+
   &.animate {
     transition: left 0.3s ease;
   }
-  
+
   &.sidebar-collapsed {
     left: 60px;
   }
-  
+
   .dashboard-main {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
   }
-  
+
   .dashboard-footer {
     margin-top: auto;
     padding: 20px;
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid var(--hb-border);
     background-color: #fff;
     flex-shrink: 0;
   }
@@ -305,16 +302,16 @@ body {
   .dashboard-sidebar {
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    
+
     &.show {
       transform: translateX(0);
     }
   }
-  
+
   .dashboard-content {
     left: 0;
   }
-  
+
   .dashboard-topbar .topbar-left .sidebar-toggle {
     display: block;
   }

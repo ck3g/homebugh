@@ -2,6 +2,7 @@
 *= require_self
 */
 
+@import 'tokens';
 @import 'bootstrap';
 @import 'font-awesome';
 
@@ -12,7 +13,7 @@ body,
 html {
     width: 100%;
     height: 100%;
-    background: #f5f5f7;
+    background: var(--hb-bg);
 }
 
 body,
@@ -33,18 +34,18 @@ h6 {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e8e8ed;
+    border-bottom: 1px solid var(--hb-border);
     padding: 0.6rem 0;
 
     .navbar-brand {
         font-weight: 700;
         font-size: 1.3rem;
-        color: #1d1d1f !important;
+        color: var(--hb-text) !important;
         letter-spacing: -0.5px;
     }
 
     .navbar-toggler {
-        border: 1px solid #d1d1d6;
+        border: 1px solid var(--hb-border-strong);
         padding: 0.25rem 0.5rem;
 
         &:focus {
@@ -57,40 +58,40 @@ h6 {
     }
 
     .nav-link-muted {
-        color: #86868b !important;
+        color: var(--hb-text-muted) !important;
         font-weight: 400;
         font-size: 0.9rem;
         transition: color 0.2s ease;
 
         &:hover {
-            color: #1d1d1f !important;
+            color: var(--hb-text) !important;
         }
     }
 
     .nav-link-green {
-        color: #47a447 !important;
+        color: var(--hb-accent) !important;
         font-weight: 500;
         font-size: 0.9rem;
         transition: color 0.2s ease;
 
         &:hover {
-            color: #3a8a3a !important;
+            color: var(--hb-accent-hover) !important;
         }
     }
 }
 
 .btn-pill-green {
-    background: #47a447;
+    background: var(--hb-accent);
     color: #fff !important;
     border: none;
-    border-radius: 20px;
+    border-radius: var(--hb-radius-pill);
     padding: 0.35rem 1.1rem;
     font-size: 0.85rem;
     font-weight: 600;
     transition: all 0.2s ease;
 
     &:hover {
-        background: #3a8a3a;
+        background: var(--hb-accent-hover);
         color: #fff !important;
         transform: translateY(-1px);
     }
@@ -102,20 +103,20 @@ h6 {
 .welcome-hero {
     text-align: center;
     padding: 4rem 1rem 3rem;
-    background: #f5f5f7;
+    background: var(--hb-bg);
 }
 
 .welcome-hero-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1d1d1f;
+    color: var(--hb-text);
     line-height: 1.1;
     letter-spacing: -1px;
     margin-bottom: 1rem;
 }
 
 .welcome-hero-subtitle {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 1.1rem;
     font-weight: 400;
     max-width: 420px;
@@ -131,10 +132,10 @@ h6 {
 }
 
 .btn-pill-hero-primary {
-    background: #47a447;
+    background: var(--hb-accent);
     color: #fff !important;
     border: none;
-    border-radius: 24px;
+    border-radius: var(--hb-radius-pill);
     padding: 0.7rem 1.8rem;
     font-size: 1rem;
     font-weight: 600;
@@ -142,7 +143,7 @@ h6 {
     text-decoration: none;
 
     &:hover {
-        background: #3a8a3a;
+        background: var(--hb-accent-hover);
         color: #fff !important;
         transform: translateY(-1px);
     }
@@ -150,9 +151,9 @@ h6 {
 
 .btn-pill-hero-secondary {
     background: rgba(0, 0, 0, 0.06);
-    color: #1d1d1f !important;
+    color: var(--hb-text) !important;
     border: none;
-    border-radius: 24px;
+    border-radius: var(--hb-radius-pill);
     padding: 0.7rem 1.8rem;
     font-size: 1rem;
     font-weight: 500;
@@ -161,7 +162,7 @@ h6 {
 
     &:hover {
         background: rgba(0, 0, 0, 0.1);
-        color: #1d1d1f !important;
+        color: var(--hb-text) !important;
     }
 }
 
@@ -170,7 +171,7 @@ h6 {
 // ============================================
 .welcome-features {
     padding: 0 1.75rem 1.75rem;
-    background: #f5f5f7;
+    background: var(--hb-bg);
 }
 
 .welcome-grid {
@@ -183,7 +184,7 @@ h6 {
 
 .welcome-card {
     background: #fff;
-    border-radius: 20px;
+    border-radius: var(--hb-radius-lg);
     padding: 1.5rem;
     transition: transform 0.2s ease;
 
@@ -200,7 +201,7 @@ h6 {
 }
 
 .welcome-card-label {
-    color: #47a447;
+    color: var(--hb-accent);
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -210,13 +211,13 @@ h6 {
 
 .welcome-card-title {
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--hb-text);
     font-size: 1.05rem;
     margin-bottom: 0.25rem;
 }
 
 .welcome-card-text {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.4;
@@ -226,12 +227,12 @@ h6 {
 .welcome-card-icon {
     width: 36px;
     height: 36px;
-    background: #f0f9f0;
-    border-radius: 10px;
+    background: var(--hb-accent-tint);
+    border-radius: var(--hb-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #47a447;
+    color: var(--hb-accent);
     font-size: 1rem;
     margin-bottom: 0.75rem;
     flex-shrink: 0;
@@ -252,8 +253,8 @@ h6 {
 .welcome-viz {
     flex: 0 0 100px;
     height: 70px;
-    background: linear-gradient(135deg, #f0f9f0, #e2f2e2);
-    border-radius: 12px;
+    background: linear-gradient(135deg, var(--hb-accent-tint), var(--hb-accent-tint-strong));
+    border-radius: var(--hb-radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -266,7 +267,7 @@ h6 {
 
     .bar {
         width: 8px;
-        border-radius: 2px;
+        border-radius: var(--hb-radius-sm);
     }
 }
 
@@ -283,18 +284,18 @@ h6 {
 
     .progress-label {
         font-size: 0.55rem;
-        color: #86868b;
+        color: var(--hb-text-muted);
         margin-bottom: 0.1rem;
     }
 
     .progress-track {
-        background: #f0f0f0;
-        border-radius: 4px;
+        background: var(--hb-surface-subtle);
+        border-radius: var(--hb-radius-sm);
         height: 6px;
 
         .progress-fill {
             height: 100%;
-            border-radius: 4px;
+            border-radius: var(--hb-radius-sm);
         }
     }
 }
@@ -302,8 +303,8 @@ h6 {
 .welcome-viz-pie {
     flex: 0 0 100px;
     height: 70px;
-    background: linear-gradient(135deg, #f0f9f0, #e2f2e2);
-    border-radius: 12px;
+    background: linear-gradient(135deg, var(--hb-accent-tint), var(--hb-accent-tint-strong));
+    border-radius: var(--hb-radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,13 +315,13 @@ h6 {
 // ============================================
 .welcome-cta-wrapper {
     padding: 0 1.75rem 2rem;
-    background: #f5f5f7;
+    background: var(--hb-bg);
 }
 
 .welcome-cta {
     text-align: center;
     background: #fff;
-    border-radius: 20px;
+    border-radius: var(--hb-radius-lg);
     padding: 2.5rem;
     max-width: 960px;
     margin: 0 auto;
@@ -329,12 +330,12 @@ h6 {
 .welcome-cta-title {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #1d1d1f;
+    color: var(--hb-text);
     margin-bottom: 0.4rem;
 }
 
 .welcome-cta-subtitle {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 0.9rem;
     font-weight: 400;
     margin-bottom: 1.25rem;
@@ -344,14 +345,14 @@ h6 {
 // Footer
 // ============================================
 .welcome-footer {
-    background: #1d1d1f;
+    background: var(--hb-text);
     padding: 1.4rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .footer-copyright {
-        color: #86868b;
+        color: var(--hb-text-on-dark-muted);
         font-size: 0.8rem;
         font-weight: 400;
         margin: 0;
@@ -362,7 +363,7 @@ h6 {
         gap: 1.25rem;
 
         a {
-            color: #a1a1a6;
+            color: var(--hb-text-on-dark-muted);
             font-size: 0.8rem;
             font-weight: 400;
             text-decoration: none;
@@ -461,7 +462,7 @@ h6 {
 // Auth Pages (Sign In, Sign Up, etc.)
 // ============================================
 .auth-page {
-    background: #f5f5f7;
+    background: var(--hb-bg);
     padding: 3rem 1.75rem;
     min-height: calc(100vh - 120px);
     display: flex;
@@ -473,19 +474,19 @@ h6 {
     max-width: 440px;
     width: 100%;
     background: #fff;
-    border-radius: 20px;
+    border-radius: var(--hb-radius-lg);
     padding: 2.5rem;
 }
 
 .auth-card-icon {
     width: 48px;
     height: 48px;
-    background: #f0f9f0;
-    border-radius: 12px;
+    background: var(--hb-accent-tint);
+    border-radius: var(--hb-radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #47a447;
+    color: var(--hb-accent);
     font-size: 1.25rem;
     margin: 0 auto 1.5rem;
 }
@@ -493,13 +494,13 @@ h6 {
 .auth-form-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1d1d1f;
+    color: var(--hb-text);
     margin-bottom: 0.3rem;
     text-align: center;
 }
 
 .auth-form-subtitle {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 0.85rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
@@ -510,27 +511,27 @@ h6 {
     width: 100%;
 
     .form-control {
-        border: 1px solid #e8e8ed;
-        border-radius: 10px;
+        border: 1px solid var(--hb-border);
+        border-radius: var(--hb-radius-md);
         padding: 0.6rem 0.85rem;
         font-size: 0.9rem;
-        color: #1d1d1f;
-        background: #f5f5f7;
+        color: var(--hb-text);
+        background: var(--hb-bg);
         transition: border-color 0.2s ease;
 
         &::placeholder {
-            color: #b0b0b5;
+            color: var(--hb-text-muted);
         }
 
         &:focus {
-            border-color: #47a447;
-            box-shadow: 0 0 0 3px rgba(71, 164, 71, 0.1);
+            border-color: var(--hb-accent);
+            box-shadow: var(--hb-focus-ring);
             outline: none;
             background: #fff;
         }
 
         &.is-invalid {
-            border-color: #dc3545;
+            border-color: var(--hb-danger);
 
             &:focus {
                 box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
@@ -539,23 +540,23 @@ h6 {
     }
 
     .form-check-input {
-        border-color: #d1d1d6;
-        border-radius: 3px;
+        border-color: var(--hb-border-strong);
+        border-radius: var(--hb-radius-sm);
 
         &:checked {
-            background-color: #47a447;
-            border-color: #47a447;
+            background-color: var(--hb-accent);
+            border-color: var(--hb-accent);
         }
 
         &:focus {
-            box-shadow: 0 0 0 3px rgba(71, 164, 71, 0.1);
+            box-shadow: 0 0 0 3px rgba(var(--hb-accent-rgb), 0.1);
         }
     }
 
     .form-check-label,
     .form-check {
         font-size: 0.8rem;
-        color: #86868b;
+        color: var(--hb-text-muted);
     }
 
     .invalid-feedback {
@@ -564,10 +565,10 @@ h6 {
 }
 
 .auth-submit {
-    background: #47a447 !important;
+    background: var(--hb-accent) !important;
     color: #fff !important;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--hb-radius-md);
     padding: 0.65rem;
     font-size: 0.9rem;
     font-weight: 600;
@@ -576,7 +577,7 @@ h6 {
     cursor: pointer;
 
     &:hover {
-        background: #3a8a3a !important;
+        background: var(--hb-accent-hover) !important;
         color: #fff !important;
         transform: translateY(-1px);
     }
@@ -587,37 +588,37 @@ h6 {
     text-align: center;
     padding-top: 1.25rem;
     margin-top: 1.25rem;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--hb-surface-subtle);
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
 
     a {
         font-size: 0.8rem;
-        color: #47a447;
+        color: var(--hb-accent);
         font-weight: 500;
         text-decoration: none;
 
         &:hover {
-            color: #3a8a3a;
+            color: var(--hb-accent-hover);
         }
     }
 
     span {
         font-size: 0.8rem;
-        color: #86868b;
+        color: var(--hb-text-muted);
     }
 }
 
 .auth-forgot-password {
     font-size: 0.8rem;
-    color: #47a447;
+    color: var(--hb-accent);
     font-weight: 500;
     text-decoration: none;
     display: inline-block;
 
     &:hover {
-        color: #3a8a3a;
+        color: var(--hb-accent-hover);
     }
 }
 
@@ -652,7 +653,7 @@ input.registration-name {
 // Cookie Consent Modal (preserved from original)
 // ============================================
 .modern-cookie-modal {
-    border-radius: 16px;
+    border-radius: var(--hb-radius-lg);
     border: none;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 
@@ -667,16 +668,16 @@ input.registration-name {
 
     .modal-body {
         p {
-            color: #495057;
+            color: var(--hb-text-secondary);
             line-height: 1.6;
         }
 
         .text-success {
-            color: #47a447 !important;
+            color: var(--hb-accent) !important;
             font-weight: 500;
 
             &:hover {
-                color: #3d8b3d !important;
+                color: var(--hb-accent-hover) !important;
             }
         }
     }
@@ -685,17 +686,17 @@ input.registration-name {
         padding-top: 0;
 
         .btn-success {
-            background: linear-gradient(135deg, #47a447 0%, #5cb85c 100%);
+            background: linear-gradient(135deg, var(--hb-accent) 0%, var(--hb-accent) 100%);
             border: none;
-            border-radius: 12px;
+            border-radius: var(--hb-radius-lg);
             font-weight: 600;
             transition: all 0.3s ease;
             min-width: 120px;
 
             &:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(71, 164, 71, 0.3);
-                background: linear-gradient(135deg, #3d8b3d 0%, #4cae4c 100%);
+                box-shadow: 0 6px 20px rgba(var(--hb-accent-rgb), 0.3);
+                background: linear-gradient(135deg, var(--hb-accent-hover) 0%, #4cae4c 100%);
             }
         }
     }
@@ -705,7 +706,7 @@ input.registration-name {
 // Cookie Policy Page
 // ============================================
 .welcome-policy-page {
-    background: #f5f5f7;
+    background: var(--hb-bg);
     padding: 2.5rem 1.75rem;
 }
 
@@ -713,7 +714,7 @@ input.registration-name {
     max-width: 720px;
     margin: 0 auto;
     background: #fff;
-    border-radius: 20px;
+    border-radius: var(--hb-radius-lg);
     padding: 3rem;
 }
 
@@ -725,12 +726,12 @@ input.registration-name {
 .welcome-policy-icon {
     width: 56px;
     height: 56px;
-    background: #f0f9f0;
-    border-radius: 14px;
+    background: var(--hb-accent-tint);
+    border-radius: var(--hb-radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #47a447;
+    color: var(--hb-accent);
     font-size: 1.5rem;
     margin: 0 auto 1rem;
 }
@@ -738,12 +739,12 @@ input.registration-name {
 .welcome-policy-title {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #1d1d1f;
+    color: var(--hb-text);
     margin-bottom: 0.5rem;
 }
 
 .welcome-policy-subtitle {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 0.95rem;
     font-weight: 400;
 }
@@ -755,12 +756,12 @@ input.registration-name {
 .welcome-policy-heading {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--hb-text);
     margin-bottom: 0.5rem;
 }
 
 .welcome-policy-text {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 0.85rem;
     font-weight: 400;
     line-height: 1.6;
@@ -768,12 +769,12 @@ input.registration-name {
 }
 
 .welcome-policy-link {
-    color: #47a447 !important;
+    color: var(--hb-accent) !important;
     font-weight: 500;
     text-decoration: none;
 
     &:hover {
-        color: #3a8a3a !important;
+        color: var(--hb-accent-hover) !important;
     }
 }
 
@@ -784,8 +785,8 @@ input.registration-name {
 }
 
 .welcome-policy-cookie-card {
-    background: #f5f5f7;
-    border-radius: 14px;
+    background: var(--hb-bg);
+    border-radius: var(--hb-radius-lg);
     padding: 1.25rem;
 }
 
@@ -801,21 +802,21 @@ input.registration-name {
 
 .welcome-policy-cookie-title {
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--hb-text);
     font-size: 0.9rem;
     margin-bottom: 0.35rem;
 }
 
 .welcome-policy-cookie-text {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 0.8rem;
     line-height: 1.5;
     margin: 0;
 }
 
 .welcome-policy-contact {
-    background: #f5f5f7;
-    border-radius: 14px;
+    background: var(--hb-bg);
+    border-radius: var(--hb-radius-lg);
     padding: 1.5rem;
     text-align: center;
     margin-top: 2rem;
@@ -823,19 +824,19 @@ input.registration-name {
 
 .welcome-policy-contact-title {
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--hb-text);
     font-size: 0.95rem;
     margin-bottom: 0.35rem;
 }
 
 .welcome-policy-contact-text {
-    color: #86868b;
+    color: var(--hb-text-muted);
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
 }
 
 .welcome-policy-contact-email {
-    color: #47a447;
+    color: var(--hb-accent);
     font-weight: 600;
     font-size: 0.9rem;
     margin: 0;

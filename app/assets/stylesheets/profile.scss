@@ -4,19 +4,19 @@
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    
+
     strong {
       min-width: 140px;
       margin-right: 10px;
-      color: #495057;
+      color: var(--hb-text-secondary);
       font-weight: 600;
     }
-    
+
     span {
-      color: #212529;
-      
+      color: var(--hb-text);
+
       &.text-muted {
-        color: #6c757d;
+        color: var(--hb-text-muted);
         font-style: italic;
       }
     }
@@ -27,26 +27,26 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 20px;
-  
+
   .stat-item {
     text-align: center;
     padding: 15px;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    
+    border-radius: var(--hb-radius-md);
+    background-color: var(--hb-surface-subtle);
+    border: 1px solid var(--hb-border);
+
     .stat-number {
       display: block;
       font-size: 24px;
       font-weight: 700;
-      color: #47a447;
+      color: var(--hb-accent);
       margin-bottom: 5px;
     }
-    
+
     .stat-label {
       display: block;
       font-size: 12px;
-      color: #6c757d;
+      color: var(--hb-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-weight: 600;
@@ -56,30 +56,30 @@
 
 .profile-actions {
   text-align: center;
-  
+
   .btn {
     margin: 0 10px;
     padding: 10px 20px;
     font-weight: 600;
-    border-radius: 6px;
-    
+    border-radius: var(--hb-radius-sm);
+
     &.btn-primary {
-      background-color: #47a447;
-      border-color: #47a447;
-      
+      background-color: var(--hb-accent);
+      border-color: var(--hb-accent);
+
       &:hover {
-        background-color: #3e8e41;
-        border-color: #3e8e41;
+        background-color: var(--hb-accent-hover);
+        border-color: var(--hb-accent-hover);
       }
     }
-    
+
     &.btn-danger {
-      background-color: #dc3545;
-      border-color: #dc3545;
-      
+      background-color: var(--hb-danger);
+      border-color: var(--hb-danger);
+
       &:hover {
-        background-color: #c82333;
-        border-color: #c82333;
+        background-color: var(--hb-danger-hover);
+        border-color: var(--hb-danger-hover);
       }
     }
   }
@@ -88,45 +88,45 @@
 // Profile form styling
 .profile-form-group {
   margin-bottom: 20px;
-  
+
   .control-label {
     font-weight: 600;
-    color: #495057;
+    color: var(--hb-text-secondary);
     margin-bottom: 5px;
     display: block;
   }
-  
+
   .form-control-static {
-    color: #212529;
+    color: var(--hb-text);
     padding: 8px 0;
-    
+
     &.warning {
       color: #856404;
-      background-color: #fff3cd;
-      border: 1px solid #ffeaa7;
-      border-radius: 4px;
+      background-color: var(--hb-pending-bg);
+      border: 1px solid var(--hb-pending-border);
+      border-radius: var(--hb-radius-sm);
       padding: 8px 12px;
       display: inline-block;
       margin-bottom: 5px;
     }
   }
-  
+
   .help-block {
     font-size: 12px;
-    color: #6c757d;
+    color: var(--hb-text-muted);
     margin-top: 5px;
     display: block;
   }
-  
+
   .form-control {
-    border-radius: 6px;
+    border-radius: var(--hb-radius-sm);
     border: 1px solid #ced4da;
     padding: 10px 15px;
     font-size: 14px;
-    
+
     &:focus {
-      border-color: #47a447;
-      box-shadow: 0 0 0 0.2rem rgba(71, 164, 71, 0.25);
+      border-color: var(--hb-accent);
+      box-shadow: 0 0 0 0.2rem rgba(var(--hb-accent-rgb), 0.25);
     }
   }
 }
@@ -135,20 +135,20 @@
   text-align: center;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #e9ecef;
-  
+  border-top: 1px solid var(--hb-border);
+
   .btn {
     padding: 12px 30px;
     font-weight: 600;
-    border-radius: 6px;
-    
+    border-radius: var(--hb-radius-sm);
+
     &.btn-primary {
-      background-color: #47a447;
-      border-color: #47a447;
-      
+      background-color: var(--hb-accent);
+      border-color: var(--hb-accent);
+
       &:hover {
-        background-color: #3e8e41;
-        border-color: #3e8e41;
+        background-color: var(--hb-accent-hover);
+        border-color: var(--hb-accent-hover);
       }
     }
   }
@@ -159,21 +159,21 @@
   .profile-stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    
+
     .stat-item {
       padding: 12px;
-      
+
       .stat-number {
         font-size: 20px;
       }
     }
   }
-  
+
   .profile-info {
     .profile-item {
       flex-direction: column;
       align-items: flex-start;
-      
+
       strong {
         min-width: auto;
         margin-bottom: 5px;

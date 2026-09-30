@@ -25,28 +25,28 @@
   .input-group {
     .form-control {
       width: 200px;
-      border-color: #ddd;
-      border-radius: 8px 0 0 8px;
+      border-color: var(--hb-border-strong);
+      border-radius: var(--hb-radius-md) 0 0 var(--hb-radius-md);
       font-size: 0.9rem;
-      background: #f8f9fa;
+      background: var(--hb-surface-subtle);
 
       &:focus {
-        border-color: #47a447;
-        box-shadow: 0 0 0 2px rgba(71, 164, 71, 0.1);
+        border-color: var(--hb-accent);
+        box-shadow: 0 0 0 2px rgba(var(--hb-accent-rgb), 0.1);
         background: #fff;
       }
     }
 
     .btn {
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 var(--hb-radius-md) var(--hb-radius-md) 0;
       font-size: 0.9rem;
-      border-color: #ddd;
+      border-color: var(--hb-border-strong);
     }
   }
 }
 
 .categories-new-btn {
-  border-radius: 8px;
+  border-radius: var(--hb-radius-md);
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;

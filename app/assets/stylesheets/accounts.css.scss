@@ -16,7 +16,7 @@
 }
 
 .accounts-new-btn {
-  border-radius: 8px;
+  border-radius: var(--hb-radius-md);
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
@@ -33,14 +33,14 @@
 .accounts-summary-card {
   flex: 1;
   min-width: 140px;
-  background: #f8f9fa;
-  border-radius: 10px;
+  background: var(--hb-surface-subtle);
+  border-radius: var(--hb-radius-md);
   padding: 14px 16px;
 }
 
 .accounts-summary-currency {
   font-size: 0.7rem;
-  color: #86868b;
+  color: var(--hb-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 2px;
@@ -49,12 +49,12 @@
 .accounts-summary-total {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #1d1d1f;
+  color: var(--hb-text);
 }
 
 .accounts-summary-count {
   font-size: 0.75rem;
-  color: #86868b;
+  color: var(--hb-text-muted);
   margin-top: 2px;
 }
 
@@ -64,7 +64,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--hb-surface-subtle);
 
   &:last-child {
     border-bottom: none;
@@ -73,13 +73,13 @@
 
 .accounts-list-name {
   font-weight: 500;
-  color: #1d1d1f;
+  color: var(--hb-text);
   font-size: 0.9rem;
 }
 
 .accounts-list-currency-label {
   font-size: 0.75rem;
-  color: #86868b;
+  color: var(--hb-text-muted);
   margin-left: 6px;
 }
 
@@ -91,12 +91,12 @@
 
 .accounts-list-balance {
   font-weight: 600;
-  color: #1d1d1f;
+  color: var(--hb-text);
   font-size: 0.95rem;
 
   &.zero-balance {
     font-weight: 500;
-    color: #86868b;
+    color: var(--hb-text-muted);
   }
 }
 
@@ -113,7 +113,7 @@
 
 .accounts-archived-label {
   font-size: 0.75rem;
-  color: #86868b;
+  color: var(--hb-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
@@ -128,7 +128,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--hb-surface-subtle);
 
   &:last-child {
     border-bottom: none;
@@ -137,13 +137,13 @@
 
 .accounts-archived-name {
   font-weight: 500;
-  color: #86868b;
+  color: var(--hb-text-muted);
   font-size: 0.85rem;
   text-decoration: line-through;
 }
 
 .accounts-archived-balance {
-  color: #86868b;
+  color: var(--hb-text-muted);
   font-size: 0.85rem;
 }
 
