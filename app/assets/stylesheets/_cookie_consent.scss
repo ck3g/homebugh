@@ -1,0 +1,58 @@
+// Cookie consent bar, shared by the app and public bundles.
+// Fixed to the bottom, above the floating New transaction button.
+.cookie-consent {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  background: var(--hb-surface);
+  border: 1px solid var(--hb-border-strong);
+  border-radius: var(--hb-radius-md);
+  box-shadow: 0 8px 24px rgba(29, 29, 31, 0.12);
+  color: var(--hb-text);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.45;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cookie-consent-text {
+  flex: 1;
+  margin: 0;
+
+  a {
+    margin-left: 4px;
+  }
+}
+
+.cookie-consent-ok {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 10px 24px;
+  border: 0;
+  border-radius: var(--hb-radius-sm);
+  background: var(--hb-accent);
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    background: var(--hb-accent-hover);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cookie-consent {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

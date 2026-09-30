@@ -4,6 +4,7 @@
 
 @import 'tokens';
 @import 'bootstrap';
+@import 'cookie_consent';
 @import 'font-awesome';
 
 // ============================================
@@ -646,59 +647,6 @@ input.registration-name {
 
     .auth-card {
         padding: 2rem 1.5rem;
-    }
-}
-
-// ============================================
-// Cookie Consent Modal (preserved from original)
-// ============================================
-.modern-cookie-modal {
-    border-radius: var(--hb-radius-lg);
-    border: none;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-
-    .modal-header {
-        padding: 2rem 2rem 0 2rem;
-
-        .modal-title {
-            color: #2c3e50;
-            font-size: 1.4rem;
-        }
-    }
-
-    .modal-body {
-        p {
-            color: var(--hb-text-secondary);
-            line-height: 1.6;
-        }
-
-        .text-success {
-            color: var(--hb-accent) !important;
-            font-weight: 500;
-
-            &:hover {
-                color: var(--hb-accent-hover) !important;
-            }
-        }
-    }
-
-    .modal-footer {
-        padding-top: 0;
-
-        .btn-success {
-            background: linear-gradient(135deg, var(--hb-accent) 0%, var(--hb-accent) 100%);
-            border: none;
-            border-radius: var(--hb-radius-lg);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            min-width: 120px;
-
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(var(--hb-accent-rgb), 0.3);
-                background: linear-gradient(135deg, var(--hb-accent-hover) 0%, #4cae4c 100%);
-            }
-        }
     }
 }
 

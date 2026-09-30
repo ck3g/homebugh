@@ -1,0 +1,7 @@
+-# A bar at the bottom of the page, shown until accepted (cookie_consent.js).
+-# It does not block the page, so visitors can read and sign in right away.
+%section.cookie-consent#cookie-consent{ "aria-label": t('cookie_consent.title'), hidden: true }
+  %p.cookie-consent-text
+    = t('cookie_consent.text')
+    = link_to t('cookie_consent.learn_more_here'), cookiepolicy_path
+  %button.cookie-consent-ok#cookie-consent-button-ok{ type: "button" }= t('cookie_consent.button_text')
