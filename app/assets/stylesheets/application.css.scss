@@ -7,6 +7,11 @@
 */
 
 @import 'tokens';
+
+// In the app, text links use the link hue; green stays for actions and income
+$link-color: $hb-link;
+$link-hover-color: $hb-link-hover;
+
 @import 'bootstrap';
 
 

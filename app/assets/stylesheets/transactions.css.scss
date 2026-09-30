@@ -199,27 +199,6 @@
   }
 }
 
-// Transactions page links: categories in ink blue, accounts muted.
-// Both are filters; hover underlines them.
-.transactions-table,
-.pending-transfers-table {
-  td a:not(.btn) {
-    color: var(--hb-link);
-
-    &:hover {
-      color: var(--hb-link-hover);
-    }
-  }
-
-  td.cell-meta a:not(.btn) {
-    color: var(--hb-text-muted);
-
-    &:hover {
-      color: var(--hb-text);
-    }
-  }
-}
-
 // Pending band shares the table's columns; the due date sits under the title
 .pending-transfers-table {
   table-layout: fixed;

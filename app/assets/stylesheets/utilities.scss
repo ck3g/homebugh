@@ -70,3 +70,13 @@ ul.site-links {
     padding-top: 8px;
   }
 }
+
+// Secondary links in list rows (e.g. an account used as a filter) stay muted
+// so the row keeps one link color; hover underlines them like any link
+td.cell-meta a:not(.btn) {
+  color: var(--hb-text-muted);
+
+  &:hover {
+    color: var(--hb-text);
+  }
+}

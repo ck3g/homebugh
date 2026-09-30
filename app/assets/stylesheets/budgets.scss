@@ -252,12 +252,12 @@
     vertical-align: middle;
 
     .category-link {
-      color: var(--hb-text);
+      color: var(--hb-link);
       text-decoration: none;
       font-weight: 500;
 
       &:hover {
-        color: var(--hb-accent);
+        color: var(--hb-link-hover);
         text-decoration: underline;
       }
     }

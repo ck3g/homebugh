@@ -18,6 +18,8 @@ $hb-danger: #c62828;
 $hb-danger-hover: #a31f1f;
 $hb-warning: #9a6200;
 $hb-info: #1f63a8;
+$hb-link: #2f5b9a;
+$hb-link-hover: #234780;
 $hb-text: #1d1d1f;
 $hb-text-secondary: #495057;
 $hb-text-muted: #6e6e73;
@@ -50,8 +52,8 @@ $border-radius-lg: 10px;
   --hb-info: #{$hb-info};
 
   // Links in lists: a second hue so green keeps meaning "income" and "action"
-  --hb-link: #2f5b9a;       // 6.8:1 on white, 6.6:1 on --hb-pending-bg
-  --hb-link-hover: #234780;
+  --hb-link: #{$hb-link};       // 6.8:1 on white, 6.6:1 on --hb-pending-bg
+  --hb-link-hover: #{$hb-link-hover};
 
   // Pending payments / notices
   --hb-pending-bg: #fefce8;
