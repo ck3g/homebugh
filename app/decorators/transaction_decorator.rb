@@ -5,8 +5,8 @@ class TransactionDecorator < Draper::Decorator
     h.get_number_to_currency object.summ, unit
   end
 
-  def type_icon
-    object.income? ? h.up_arrow : h.down_arrow
+  def signed_amount
+    h.signed_money object.summ, unit, income: object.income?
   end
 
   def created_on

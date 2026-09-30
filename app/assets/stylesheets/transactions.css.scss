@@ -198,3 +198,51 @@
     }
   }
 }
+
+// Transactions page links: categories in ink blue, accounts muted.
+// Both are filters; hover underlines them.
+.transactions-table,
+.pending-transfers-table {
+  td a:not(.btn) {
+    color: var(--hb-link);
+
+    &:hover {
+      color: var(--hb-link-hover);
+    }
+  }
+
+  td.cell-meta a:not(.btn) {
+    color: var(--hb-text-muted);
+
+    &:hover {
+      color: var(--hb-text);
+    }
+  }
+}
+
+// Pending band shares the table's columns; the due date sits under the title
+.pending-transfers-table {
+  table-layout: fixed;
+
+  .pending-due {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.8rem;
+    color: var(--hb-pending-text);
+
+    &.is-overdue {
+      font-weight: 600;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  // Cards inside the yellow band need their own inner padding
+  .pending-transfers .table-cards tr {
+    padding: 12px;
+  }
+
+  .pending-transfers-table .pending-due {
+    margin-top: 0;
+  }
+}

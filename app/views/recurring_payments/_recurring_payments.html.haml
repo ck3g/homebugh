@@ -14,9 +14,7 @@
           %tr{id: dom_id(recurring_payment)}
             %td.span2.cell-main= recurring_payment.title
             %td.cell-date= recurring_payment.decorate.next_payment_on
-            %td.span2.number.cell-amount
-              = recurring_payment.decorate.amount
-              = recurring_payment.decorate.type_icon
+            %td.span2.number.cell-amount= recurring_payment.decorate.signed_amount
             %td.span2.cell-meta= recurring_payment.account_name
             %td.cell-extra{ data: { label: RecurringPayment.human_attribute_name(:category) } }
               %span.category= recurring_payment.decorate.category_name

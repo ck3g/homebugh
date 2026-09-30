@@ -3,6 +3,28 @@ module ApplicationHelper
     number_to_currency number, unit: unit, format: '%n %u'
   end
 
+  # An amount with its direction shown: expenses get a real minus sign
+  # (read aloud as "minus"), income is shown plain in the income colour.
+  def signed_money(number, unit, income:)
+    sign = income ? "" : "\u2212"
+    content_tag :span, "#{sign}#{get_number_to_currency(number, unit)}",
+                class: ["money", income ? "money-income" : "money-expense"]
+  end
+
+  def pending_due_label(date)
+    key = date < Date.current ? 'overdue_since' : 'due_on'
+    content_tag :span, t("parts.recurring_payments.#{key}", date: l(date, format: :long)),
+                class: ["pending-due", ("is-overdue" if date < Date.current)]
+  end
+
+  def day_label(date)
+    case date
+    when Date.current then t('common.today')
+    when Date.yesterday then t('common.yesterday')
+    else l(date, format: :long)
+    end
+  end
+
   def inverse_locale
     is_ru? ? 'en' : 'ru'
   end

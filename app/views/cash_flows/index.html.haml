@@ -59,7 +59,7 @@
                     = cash_flow.from_account_name
                     = t(:arrow)
                     = cash_flow.to_account_name
-                  %td.span2.number.cell-extra{ data: { label: CashFlow.human_attribute_name(:initial_amount) } }= cash_flow.decorate.initial_amount
+                  %td.span2.number.cell-extra{ data: { label: CashFlow.human_attribute_name(:initial_amount) } }= cash_flow.decorate.initial_amount if cash_flow.decorate.initial_amount_differs?
                   %td.span2.number.cell-amount= cash_flow.decorate.amount
                   %td.span2.actions.cell-actions
                     = link_to cash_flow, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do

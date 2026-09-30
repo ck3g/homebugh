@@ -10,7 +10,9 @@ class TransactionsController < ApplicationController
   has_scope :account
 
   def index
-    @transactions = apply_scopes(current_user.transactions.includes(:category, :account)).order('created_at desc').page(params[:page])
+    scope = apply_scopes(current_user.transactions)
+    @transactions = scope.includes(:category, :account).order('created_at desc').page(params[:page])
+    @daily_totals = DailyTransactionTotals.new(scope, @transactions).by_day
     @recurring_payments = current_user.recurring_payments.upcoming.due
   end
 

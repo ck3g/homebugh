@@ -9,24 +9,22 @@
     .row
       .col-12
         .pending-transfers
-          .pending-transfers-header= t('parts.recurring_payments.pending_payments', default: 'Pending payments')
+          .pending-transfers-header= t('parts.recurring_payments.pending_payments')
           %table.pending-transfers-table.table-cards
+            -# Same columns as the transactions table below, so amounts line up
             %colgroup
-              %col{ style: "width: 15%" }
               %col
-              %col{ style: "width: 15%" }
-              %col{ style: "width: 12%" }
+              %col{ style: "width: 18%" }
+              %col{ style: "width: 18%" }
               %col{ style: "width: 10%" }
             %tbody
               - @recurring_payments.each do |recurring_payment|
                 %tr{ id: dom_id(recurring_payment) }
-                  %td.span2.pending-transfers-date.cell-date= l(recurring_payment.next_payment_on, format: :long)
                   %td.pending-transfers-route.cell-main
                     %span.category= link_to recurring_payment.decorate.category_name, transactions_path(category: recurring_payment.category_id)
                     %span.comment= recurring_payment.title
-                  %td.span2.number.pending-transfers-amount.cell-amount
-                    = recurring_payment.decorate.amount
-                    = recurring_payment.decorate.type_icon
+                    = pending_due_label(recurring_payment.next_payment_on)
+                  %td.span2.number.pending-transfers-amount.cell-amount= recurring_payment.decorate.signed_amount
                   %td.span2.pending-transfers-route.cell-meta= link_to recurring_payment.account_name, transactions_path(account: recurring_payment.account_id)
                   %td.span2.actions.pending-transfers-actions.cell-actions
                     = link_to create_transaction_recurring_payment_path(recurring_payment), title: t('parts.recurring_payments.create_transaction'), method: :post, class: "btn btn-success btn-sm create-transaction", data: { bs_toggle: 'tooltip' } do
@@ -38,36 +36,39 @@
     .row
       .col-12
         .table-responsive
-          %table.table.table-cards
+          %table.table.table-cards.transactions-table
             %colgroup
-              %col{ style: "width: 15%" }
               %col
-              %col{ style: "width: 15%" }
-              %col{ style: "width: 12%" }
+              %col{ style: "width: 18%" }
+              %col{ style: "width: 18%" }
               %col{ style: "width: 10%" }
             %thead
               %tr
-                %th.span2= t('common.date')
                 %th= "#{t('common.category')} / #{t('parts.transactions.comment')}"
                 %th.span2.number= t('parts.transactions.sum')
                 %th.span2= t('common.account')
                 %th.span2
-            %tbody
-              - @transactions.each do |transaction|
-                %tr{ id: dom_id(transaction) }
-                  %td.span2.cell-date= transaction.decorate.created_on
-                  %td.cell-main
-                    %span.category= link_to transaction.decorate.category_name, transactions_path(category: transaction.category_id)
-                    %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
-                  %td.span2.number.cell-amount
-                    = transaction.decorate.amount
-                    = transaction.decorate.type_icon
-                  %td.span2.cell-meta= link_to transaction.account_name, transactions_path(account: transaction.account_id)
-                  %td.span2.actions.cell-actions
-                    = link_to new_recurring_payment_path_from(transaction), class: 'btn btn-outline-secondary btn-sm btn-create-rp', data: { bs_toggle: 'tooltip' }, title: t('parts.recurring_payments.create_from_transaction') do
-                      = fa_icon 'retweet'
-                    = link_to transaction, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
-                      = fa_icon "share"
+            - @transactions.group_by { |transaction| transaction.created_at.to_date }.each do |day, transactions|
+              %tbody.transactions-day
+                %tr.day-row
+                  %th.day-date{ scope: "rowgroup" }= day_label(day)
+                  %td.day-total.number
+                    %span.visually-hidden= t('parts.transactions.day_total')
+                    - Array(@daily_totals[day]).each do |total|
+                      = signed_money total.amount.abs, (total.currency.unit.presence || total.currency.name), income: total.income?
+                  %td{ colspan: 2 }
+                - transactions.each do |transaction|
+                  %tr{ id: dom_id(transaction) }
+                    %td.cell-main
+                      %span.category= link_to transaction.decorate.category_name, transactions_path(category: transaction.category_id)
+                      %span.comment= best_in_place transaction, :comment, as: :textarea, place_holder: '&nbsp;&nbsp;'.html_safe
+                    %td.span2.number.cell-amount= transaction.decorate.signed_amount
+                    %td.span2.cell-meta= link_to transaction.account_name, transactions_path(account: transaction.account_id)
+                    %td.span2.actions.cell-actions
+                      = link_to new_recurring_payment_path_from(transaction), class: 'btn btn-outline-secondary btn-sm btn-create-rp', data: { bs_toggle: 'tooltip' }, title: t('parts.recurring_payments.create_from_transaction') do
+                        = fa_icon 'retweet'
+                      = link_to transaction, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
+                        = fa_icon "share"
 
   = paginate @transactions
 - else

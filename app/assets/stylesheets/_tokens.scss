@@ -9,7 +9,7 @@
 //
 // Every text/background pair used in the app meets WCAG AA (4.5:1):
 //   accent on white 5.1, white on accent 5.1, muted on --hb-bg 4.7,
-//   danger on white 5.6, pending text on pending bg 6.9.
+//   danger on white 5.6, pending text on pending bg 6.9, link on white 6.8.
 
 // Sass values (for Bootstrap and for the :root block)
 $hb-accent: #2e7d32;
@@ -48,6 +48,10 @@ $border-radius-lg: 10px;
   --hb-warning: #{$hb-warning};
   --hb-warning-fill: #f0ad4e; // progress fills only, never text
   --hb-info: #{$hb-info};
+
+  // Links in lists: a second hue so green keeps meaning "income" and "action"
+  --hb-link: #2f5b9a;       // 6.8:1 on white, 6.6:1 on --hb-pending-bg
+  --hb-link-hover: #234780;
 
   // Pending payments / notices
   --hb-pending-bg: #fefce8;

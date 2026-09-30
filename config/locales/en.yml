@@ -77,6 +77,8 @@ en:
         create: Add
         update: Update
   common:
+    today: "Today"
+    yesterday: "Yesterday"
     edit: "Edit"
     destroy: "Destroy"
     archive: "Archive"
@@ -165,6 +167,7 @@ en:
       transactions_list: "List of transactions"
       new_transaction: "New transaction"
       recent_categories: "Recent categories"
+      day_total: "Day total"
       income: "income"
       edit_transaction: "Edit transaction"
       type: "Type"
@@ -248,6 +251,9 @@ en:
       you_have_no_active_recurring_payments: "You have no active recurring payments yet."
       recurring_payments_list: "Recurring payments"
       new_recurring_payment: 'New recurring payment'
+      pending_payments: 'Pending payments'
+      due_on: 'Due %{date}'
+      overdue_since: 'Overdue since %{date}'
       get_started_title: "Set up your first recurring payment"
       get_started_description: "Automate your regular bills and payments to never miss a due date and keep your finances organized."
       feature_automatic_title: "Automatic Tracking"
