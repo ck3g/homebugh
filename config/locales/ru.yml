@@ -155,6 +155,7 @@ ru:
 
   parts:
     budgets:
+      delete_confirm: "Удалить бюджет «%{category}»? Транзакции останутся."
       index: Бюджет
       no_budgets_yet: Бюджет еще не запланирован
       no_budgets_yet_desc: Планирование бюджета позволит Вам отслеживать ваши расходы и знать, когда нужно немного остепениться
@@ -220,6 +221,7 @@ ru:
       feature_organize_description: "Получайте детальную аналитику и отчеты на основе категоризированных транзакций."
 
     transactions:
+      rollback_confirm: "Отменить %{amount} (%{category})? Баланс счёта %{account} станет %{balance}."
       transactions_list: "Транзакции"
       new_transaction: "Новая транзакция"
       recent_categories: "Недавние категории"
@@ -244,6 +246,7 @@ ru:
       feature_analyze_title: "Анализ трат"
       feature_analyze_description: "Получайте детальные отчеты и аналитику на основе истории транзакций."
     accounts:
+      archive_confirm: "Перенести «%{name}» в архив? Счёт исчезнет из списка и итогов."
       edit_account: "Редактировать данные о счете"
       new_account: "Создание нового счета"
       add_account: "Добавить счет"
@@ -261,6 +264,7 @@ ru:
       feature_insights_title: "Финансовая аналитика"
       feature_insights_description: "Получите полное представление о своих финансах по всем счетам."
     cash_flows:
+      rollback_confirm: "Отменить перевод %{amount} со счёта %{from} на %{to}? Баланс %{from} станет %{from_balance}, баланс %{to} станет %{to_balance}."
       submit: "Перевести средства"
       edit_cash_flows: "Редактировать перевод средств"
       new_cash_flows: "Перевести средства"
@@ -302,6 +306,7 @@ ru:
       feature_trends_title: "Тенденции трат"
       feature_trends_description: "Отслеживайте финансовые тенденции со временем для лучшего планирования бюджета."
     recurring_payments:
+      delete_confirm: "Удалить периодический платёж «%{title}»? Уже созданные транзакции останутся."
       you_have_no_recurring_payments: "Вы еще не завели периодических платежей."
       ended_recurring_payments_short: "Завершенные"
       you_have_no_active_recurring_payments: "У вас нет активных периодических платежей."
@@ -333,6 +338,7 @@ ru:
       due_description: 'Вы можете создать транзакцию из данного повторяющегося платежа нажав на кнопку со знаком плюс. Вы так же можете пропустить текущий платеж и перейти к следующему периоду, нажав кнопку с изображением стрелок.'
       create_from_transaction: 'Завести повторяющийся платеж из текущей транзакции'
     recurring_cash_flows:
+      delete_confirm: "Удалить периодический перевод со счёта %{from} на %{to}? Уже сделанные переводы останутся."
       recurring_cash_flows_list: "Периодические движения средств"
       new_recurring_cash_flow: "Новое периодическое движение средств"
       successfully_created: "Периодическое движение средств успешно создано."
@@ -375,6 +381,8 @@ ru:
       email: "email"
       password: "Пароль"
     users:
+      danger_zone: "Удаление аккаунта"
+      danger_zone_description: "Будут удалены пользователь и все его счета, транзакции и бюджеты. На следующей странице нужно будет подтвердить паролем."
       delete: "Удалить текущего пользователя"
       delete_warning: "После удаления пользователя его данные нельзя будет восстановить."
       profile: "Профиль"

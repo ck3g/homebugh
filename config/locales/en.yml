@@ -100,6 +100,7 @@ en:
     title: "Title"
   parts:
     budgets:
+      delete_confirm: "Delete the %{category} budget? Your transactions stay."
       index: Budgets
       no_budgets_yet: No active budgets
       no_budgets_yet_desc: With budgets you can monitor your current expenses and see when you need to slow a little bit down.
@@ -164,6 +165,7 @@ en:
       feature_organize_title: "Smart Organization"
       feature_organize_description: "Get detailed insights and reports based on your categorized transactions."
     transactions:
+      rollback_confirm: "Roll back %{amount} for %{category}? %{account} will go back to %{balance}."
       transactions_list: "List of transactions"
       new_transaction: "New transaction"
       recent_categories: "Recent categories"
@@ -188,6 +190,7 @@ en:
       feature_analyze_title: "Analyze Your Spending"
       feature_analyze_description: "Get detailed reports and insights based on your transaction history."
     accounts:
+      archive_confirm: "Archive “%{name}”? It will leave your account list and totals."
       edit_account: "Edit account"
       new_account: "New account"
       add_account: "Add account"
@@ -205,6 +208,7 @@ en:
       feature_insights_title: "Financial Insights"
       feature_insights_description: "Get a complete view of your finances across all accounts."
     cash_flows:
+      rollback_confirm: "Roll back the transfer of %{amount} from %{from} to %{to}? %{from} will go back to %{from_balance} and %{to} to %{to_balance}."
       submit: "Move funds"
       edit_cash_flows: "Edit moving funds"
       new_cash_flows: "Move funds"
@@ -246,6 +250,7 @@ en:
       feature_trends_title: "Spending Trends"
       feature_trends_description: "Track your financial trends over time to make better budgeting decisions."
     recurring_payments:
+      delete_confirm: "Delete the recurring payment “%{title}”? Transactions it already created stay."
       you_have_no_recurring_payments: "You have no recurring payments yet."
       ended_recurring_payments_short: "Ended"
       you_have_no_active_recurring_payments: "You have no active recurring payments yet."
@@ -277,6 +282,7 @@ en:
       due_description: 'You can create a new transaction from this recurring payment by clicking the "plus" button. You can skip this due recurring payment and move it to the next payment period by clicking the "arrows" button.'
       create_from_transaction: 'Create a recurring payment from the transaction'
     recurring_cash_flows:
+      delete_confirm: "Delete the recurring transfer from %{from} to %{to}? Transfers it already made stay."
       recurring_cash_flows_list: "Recurring cash flows"
       new_recurring_cash_flow: "New recurring cash flow"
       successfully_created: "The recurring cash flow was successfully created."
@@ -317,6 +323,8 @@ en:
       email: "email"
       password: "Password"
     users:
+      danger_zone: "Delete account"
+      danger_zone_description: "This removes your user and all your accounts, transactions and budgets. You will confirm with your password on the next page."
       delete: "Delete this user"
       delete_warning: "Once you delete a user, there is no going back. Please be certain."
       profile: "Profile"

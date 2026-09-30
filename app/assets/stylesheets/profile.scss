@@ -181,3 +181,27 @@
     }
   }
 }
+
+// Account deletion lives in its own section, away from "Edit profile"
+.profile-danger-zone {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  margin-top: 32px;
+  padding: 20px;
+  border: 1px solid rgba(198, 40, 40, 0.35);
+  border-radius: var(--hb-radius-md);
+
+  h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--hb-danger);
+  }
+
+  p {
+    margin: 0 0 4px;
+    max-width: 65ch;
+    color: var(--hb-text-secondary);
+  }
+}

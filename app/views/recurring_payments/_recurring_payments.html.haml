@@ -25,5 +25,6 @@
                 = fa_icon "forward"
               = link_to edit_recurring_payment_path(recurring_payment), title: t('common.edit'), class: "btn btn-outline-secondary btn-sm btn-edit", data: { bs_toggle: 'tooltip' } do
                 = fa_icon "pencil"
-              = link_to recurring_payment, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-sm delete" do
-                = fa_icon "trash"
+              = link_to recurring_payment, data: { confirm: t('parts.recurring_payments.delete_confirm', title: recurring_payment.title), bs_toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-outline-secondary btn-sm btn-row-danger delete" do
+                = fa_icon "trash", "aria-hidden": "true"
+                %span.visually-hidden= t('common.destroy')

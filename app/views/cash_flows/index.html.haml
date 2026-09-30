@@ -62,8 +62,9 @@
                   %td.span2.number.cell-extra{ data: { label: CashFlow.human_attribute_name(:initial_amount) } }= cash_flow.decorate.initial_amount if cash_flow.decorate.initial_amount_differs?
                   %td.span2.number.cell-amount= cash_flow.decorate.amount
                   %td.span2.actions.cell-actions
-                    = link_to cash_flow, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-danger btn-sm" do
-                      = fa_icon "trash"
+                    = link_to cash_flow, data: { confirm: cash_flow.decorate.rollback_confirmation, bs_toggle: 'tooltip' }, method: :delete, title: t('common.rollback'), class: "btn btn-outline-secondary btn-sm btn-row-danger" do
+                      = fa_icon "undo", "aria-hidden": "true"
+                      %span.visually-hidden= t('common.rollback')
 
     = paginate @cash_flows
 - else

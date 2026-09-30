@@ -45,8 +45,9 @@
                 %td.budget-actions.cell-actions
                   = link_to edit_budget_path(budget), title: t('common.edit'), class: "btn btn-outline-secondary btn-sm budget-action-btn", id: dom_id(budget, :edit), data: { bs_toggle: 'tooltip' } do
                     = fa_icon "edit"
-                  = link_to budget, data: { confirm: t('common.are_you_sure'), bs_toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-danger btn-sm budget-action-btn" do
-                    = fa_icon "trash"
+                  = link_to budget, data: { confirm: t('parts.budgets.delete_confirm', category: budget.category.name), bs_toggle: 'tooltip' }, method: :delete, title: t('common.destroy'), class: "btn btn-outline-secondary btn-sm btn-row-danger budget-action-btn" do
+                    = fa_icon "trash", "aria-hidden": "true"
+                    %span.visually-hidden= t('common.destroy')
 - else
   .row
     .col-12
