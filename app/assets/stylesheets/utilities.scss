@@ -48,25 +48,17 @@ ul.site-links {
 
 // Transactions grouped by day
 .transactions-table {
-  .day-row {
-    th,
-    td {
-      padding-top: 18px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--hb-border-strong);
-      background: transparent;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--hb-text-secondary);
-    }
-
-    .day-total .money + .money {
-      margin-left: 12px;
-    }
+  .day-row th {
+    padding-top: 18px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--hb-border-strong);
+    background: transparent;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--hb-text-secondary);
   }
 
-  tbody.transactions-day:first-of-type .day-row th,
-  tbody.transactions-day:first-of-type .day-row td {
+  tbody.transactions-day:first-of-type .day-row th {
     padding-top: 8px;
   }
 }

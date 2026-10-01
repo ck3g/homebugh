@@ -149,29 +149,16 @@
       }
     }
 
-    // Group header rows (e.g. a day with its total) stay a simple strip
+    // Group header rows (e.g. a day) stay a simple strip
     tr.day-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
+      display: block;
       padding: 20px 0 6px;
       border-bottom: 1px solid var(--hb-border-strong);
 
-      th,
-      td {
+      th {
         font-size: 0.875rem;
         font-weight: 600;
         color: var(--hb-text-secondary);
-      }
-
-      td:not(.day-total) {
-        display: none;
-      }
-
-      .day-total {
-        text-align: right !important;
-        white-space: normal;
       }
     }
 

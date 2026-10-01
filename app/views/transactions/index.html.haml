@@ -51,12 +51,7 @@
             - @transactions.group_by { |transaction| transaction.created_at.to_date }.each do |day, transactions|
               %tbody.transactions-day
                 %tr.day-row
-                  %th.day-date{ scope: "rowgroup" }= day_label(day)
-                  %td.day-total.number
-                    %span.visually-hidden= t('parts.transactions.day_total')
-                    - Array(@daily_totals[day]).each do |total|
-                      = signed_money total.amount.abs, (total.currency.unit.presence || total.currency.name), income: total.income?
-                  %td{ colspan: 2 }
+                  %th.day-date{ scope: "rowgroup", colspan: 4 }= day_label(day)
                 - transactions.each do |transaction|
                   %tr{ id: dom_id(transaction) }
                     %td.cell-main

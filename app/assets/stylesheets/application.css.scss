@@ -157,11 +157,12 @@ select.form-select {
   }
 }
 
-// Remove Bootstrap 5 default underlines from links
+// Remove Bootstrap 5 default underlines from links; only text links get one
+// on hover. Buttons, the logo and navigation links are not text links.
 a {
   text-decoration: none !important;
 
-  &:hover {
+  &:not(.btn):not(.brand-name):not(.nav-link):not(.topbar-link):not(.fab-new-transaction):hover {
     text-decoration: underline !important;
   }
 }

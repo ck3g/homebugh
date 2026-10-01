@@ -174,7 +174,6 @@ en:
       transactions_list: "Transactions"
       new_transaction: "New transaction"
       recent_categories: "Recent categories"
-      day_total: "Day total"
       income: "income"
       edit_transaction: "Edit transaction"
       type: "Type"
